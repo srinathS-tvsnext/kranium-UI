@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <p style="color:steelblue;"><strong>Master Sync</strong></p>
+        <div class="row mytable">
+            <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                <table class="table table-striped table-bordered text-center" cellspacing="0" width="100%">
+                    <thead class="tbheader">
+                        <tr>
+                            <th><strong>SN</strong></th>
+                            <th><strong>Scheduler</strong></th>
+                            <th><strong>Frequency</strong></th>
+                            <th><strong>Last Activity</strong></th>
+                            <th><strong>Action</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cronjob of cornjobdata;let i = index;">
+                            <td>{{i+1}}</td>
+                            <td>{{cronjob.cronjob_item_name}}</td>
+                            <td>{{cronjob.duration}} {{cronjob.units}}</td>
+                            <td>{{cronjob.MD}}</td>
+                            <td>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="geteditduration(cronjob)" style="cursor:pointer;"></i>
+                                <i class="fa fa-refresh" aria-hidden="true" style="cursor:pointer;" (click)="getcron_now(cronjob)" ></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

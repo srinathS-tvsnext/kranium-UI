@@ -1,0 +1,14 @@
+.btn-steelblue {
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover {
+    background-color: steelblue;
+    color: white;
+}
+
+.flex-50 {
+    width: 100%;
+}

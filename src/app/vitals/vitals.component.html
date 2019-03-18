@@ -1,0 +1,191 @@
+<div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
+    <p class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
+        <span *ngIf="sub_view_menu.sub_view_name=='vitals'">
+            <span *ngIf="datevalidation.nowdate">
+        <button  *ngIf="sub_view_menu.add_edit && addvital_btn" class="btn btn-steelblue" id="addvital_btn" style="float:right;" routerLink='/Homescreen/Patientdetails/Addvitals'>Add Vitals</button>
+<button *ngIf="sub_view_menu.add_edit && editvital_btn" class="btn btn-steelblue" id="editvital_btn" style="float:right;"  (click)="edit_vitals(vitals_data)">Edit Vitals</button>
+</span>
+
+        <!-- //(click)="edit_vitals(vitals_data)" -->
+
+        <span *ngIf="vitals_data!=''">
+       <div class="row" *ngIf="sub_view_menu.view">
+            <div class="col-md-12">
+                <div class="">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table borderless" style='text-align: center'>
+                                    <thead class="headercolor">
+                                        <tr>
+                                            <th style='text-align: center'>&nbsp;</th>
+                                            <th style='text-align: center'>Types</th>
+                                            <th style='text-align: center'>Units</th>
+                                            <th style='text-align: center'>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let value of vitals_data.Formvalue">
+                                        <tr>
+                                            <td>&nbsp; </td>
+                                            <td>Height</td>
+                                            <td>{{value.height||"-"}} {{value.height_id}}</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp; </td>
+                                            <td>Weight</td>
+                                            <td>{{value.weight||"-"}} {{value.weight_id}}</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp; </td>
+                                            <td>Temperature</td>
+                                            <td>{{value.temperature||"-"}} {{value.temperature_id}}</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp; </td>
+                                            <td>Pulse</td>
+                                            <td>{{value.pulse||"-"}} {{value.pulse_id}}</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>&nbsp; </td>
+                                            <td>Respiratory Rate</td>
+                                            <td>{{value.respiratory||"-"}} {{value.respirator_id}} </td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp; </td>
+                                            <td>BP</td>
+                                            <td>{{value.bp_systolic||"-"}} / {{value.bp_diastolic||"-"}}  {{value.bp_diastolic_id}} / {{value.bp_systolic_id}}</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp; </td>
+                                            <td>BMI</td>
+                                            <td>{{value.bmi||"-"}}</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp; </td>
+                                            <td>BSA</td>
+                                            <td>{{value.bsa||"-"}}</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                    <!-- {{vitals_data.Formvalue.length}} -->
+                                    <!-- <tbody *ngIf="vitals_data.Formvalue.length==0">
+                                <tr>
+                                    No data Found
+                                </tr>
+                            </tbody> -->
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="bolder">Preferred Language : English</p>
+                            <div class='col-md-12'>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="bolder">Pain Assessment:</p>
+                            <div class='col-md-12'>
+                                <div class='col-md-2' *ngFor="let pain of vitals_data.Formvalue">
+                                    <img src="../../assets/img/{{pain.pain_assesment}}" class='imgsize' />
+                                    <div class='textsiz'>{{pain.pain_assesment_hurt}}</div>
+                                    <div class='painrate'>{{pain.pain_assesment_painrate}}</div>
+                                </div>
+                                <!-- <div class='col-md-2' *ngIf="vitals_data.Formvalue.length==0">
+                            <div class='painrate'>No data Found</div>
+                        </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="bolder">NOTES:</p>
+                            <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.notes||"-"}}</p>
+                            <!-- <p class="" *ngIf="vitals_data.Formvalue.length==0"> &nbsp; &nbsp; &nbsp; &nbsp; No notes Found</p> -->
+
+                        </div>
+                    </div>
+                    <p class='bolder'>Allergy</p>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table table borderless" style="text-align:center;">
+                                <thead class="headercolor">
+                                    <tr>
+                                        <th style='text-align: center'>Allery Type</th>
+                                        <th style='text-align: center'>Allergic Too</th>
+                                        <th style='text-align: center'>Severity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let notes of vitals_data.allergy">
+                                        <td>{{notes.allergy_type1||"-"}}</td>
+                                        <td>{{notes.allergy_type2||"-"}}</td>
+                                        <td>{{notes.allergy_severity||"-"}}</td>
+                                    </tr>
+                                    <!-- <tr *ngIf="vitals_data.allergy.length==0">
+                                <td>No data Found</td>
+                            </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <p class='bolder'>Active Medication</p>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table borderless" style="text-align:center;">
+                                    <thead class="headercolor">
+                                        <tr>
+                                            <th style='text-align: center'>Brand Name</th>
+                                            <th style='text-align: center'>Frequency</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let medi of vitals_data.medication">
+                                            <td>{{medi.activemedication_brandname||"-"}}
+                                                <br>({{medi.activemedication_genericname||"-"}})</td>
+                                            <td>{{medi.activemedication_frequency||"-"}}</td>
+                                        </tr>
+                                        <!-- <tr *ngIf="vitals_data.medication.length==0">
+                                    <td>No data Found</td>
+                                </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </span>
+        <span>
+        <div class="row" *ngIf="vitals_data ==''">
+            <div class="col-md-12">
+                <div class="">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="emptymsg">No Data Found. To Add Vitals, Click Add Vitals Button</p>
+                            <div class='col-md-12'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </span>
+        </span>
+    </p>
+</div>

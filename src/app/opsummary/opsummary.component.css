@@ -1,0 +1,141 @@
+.borderless td,
+.borderless th {
+    border: none;
+}
+
+.headercolor {
+    background-color: lightblue;
+    font-weight: 600;
+}
+
+.texthighlightcolor {
+    font-weight: 600;
+    color: steelblue;
+}
+
+.btn-white {
+    border-radius: 50px;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid lightgray;
+    cursor: default;
+    font-size: 10px;
+}
+
+.btn-white:hover {
+    background-color: white;
+    color: steelblue;
+}
+
+.badgewhite {
+    background-color: white;
+    color: steelblue;
+    cursor: pointer;
+    font-size: 10px;
+    position: relative;
+    left: 18px;
+}
+
+.badgewhite:hover {
+    background-color: lightgray;
+    color: white;
+    cursor: pointer;
+}
+
+.headingclr {
+    font-weight: 600;
+    color: grey;
+}
+
+.contentclr {
+    font-weight: 600;
+    color: black;
+}
+
+.bolder {
+    font-weight: 600;
+    color: steelblue;
+}
+
+.imgsize {
+    width: 75px;
+    height: 75px;
+}
+
+.textsiz {
+    font-weight: 600;
+    font-size: 8px;
+}
+
+.painrate {
+    font-weight: 600;
+    font-size: 9px;
+    padding-left: 20px;
+}
+
+.lang-size {
+    font-weight: 600
+}
+
+.btn-steelblue {
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover {
+    background-color: steelblue;
+    color: white;
+}
+
+.btn-infos {
+    background-color: transparent;
+    color: #4FC4F3;
+    border: 1px solid #4FC4F3;
+}
+
+.btn-infos:hover {
+    background-color: #4FC4F3;
+    color: white;
+}
+
+.btn-red {
+    background-color: transparent;
+    color: #ED3F31;
+    border: 1px solid #ED3F31;
+}
+
+.btn-red:hover {
+    background-color: #ED3F31;
+    color: white;
+}
+
+.btn-green {
+    background-color: transparent;
+    color: green;
+    border: 1px solid green;
+}
+
+.btn-green:hover {
+    background-color: green;
+    color: white;
+}
+
+.btn-steelblue:active {
+    background-color: steelblue !important;
+}
+
+.btn-red:active {
+    background-color: #ED3F31 !important;
+}
+
+.btn-green:active {
+    background-color: green !important;
+}
+
+.btn-infos:active {
+    background-color: #4FC4F3 !important;
+}
+.btncntr{
+    text-align: center;
+}

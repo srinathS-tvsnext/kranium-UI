@@ -1,0 +1,49 @@
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}
+
+.headercolor{
+    font-weight:600;
+    color: steelblue;
+}
+
+.size{
+    width:100%;
+}
+
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+.example-full-width {
+  width: 100%;
+}
+
+
+.tbheader{
+    color:steelblue;
+}
+.tbheader th{
+    text-align: center;
+}
+.headerclr{
+    color:steelblue;
+}
+
+
+
+@media (max-width: 768px) {
+    
+    .doctname{ padding-top: 12px; }
+        
+}

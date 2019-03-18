@@ -1,0 +1,136 @@
+<!-- <div class="main-content"> -->
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <p class="pull-left">
+                <strong>Manage Activity</strong>
+            </p>
+            <p class="pull-right"  *ngFor="let sub_menu of acess_rights; let i =index;">
+                <span *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Create Role Master')">
+                    <button type="button" class="btn pull-right" style="background:steelblue;font-size:10px;" routerLink='/Homescreen/Master/Createroles'>
+                    <i class="fa fa-plus" style="font-size:12px;" aria-hidden="true"></i> Create Role</button>
+                </span>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class='col-md-6 form-group'>
+                        <mat-form-field>
+                    <mat-select placeholder='Select Role' class="size" [(ngModel)]="form.role_id" (ngModelChange)="get_role_permission(form)">
+                        <mat-option *ngFor="let Roles of RolesName" [value]="Roles.roles_name">
+                            {{ Roles.roles_name}}
+                        </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class='col-md-6 form-group'>
+                    <!-- <ng-select *ngIf="showGreeting"  [allowClear]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)"
+              (removed)="removed($event)" (typed)="typed($event)" (deselected)="onDeselected($event)" placeholder="Select Department" >
+            </ng-select> -->
+                </div>
+
+
+
+                <!-- <div class='col-md-12 form-group'>
+            <mat-select placeholder="Select Menu" class="size" [(ngModel)]="menu_id" (ngModelChange)="submenu(menu_id)">
+              <mat-option *ngFor="let main_menu of socialmentions" [value]="main_menu.menu_id">
+                {{ main_menu.menu_name }}
+              </mat-option>
+            </mat-select>
+          </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle="true" *ngFor="let sub_menu of social_sub_menu; let i =index;">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span *ngIf="sub_menu.menu_id=='2'|| sub_menu.menu_id=='3' ||sub_menu.menu_id=='5'" style="color:steelblue;">
+                <strong>{{sub_menu.sub_menu_name}}</strong>
+                <!-- <md-slide-toggle class="example-margin" color="primary" [(ngModel)]="sub_menu.add_edit">
+                         Add / Edit
+                    </md-slide-toggle> -->
+                    <mat-slide-toggle class="example-margin" color="primary" [(ngModel)]="sub_menu.view">
+                             View
+                    </mat-slide-toggle>
+              </span>
+                        <span *ngIf="sub_menu.menu_id=='1' ||sub_menu.menu_id=='4'">
+                <strong>{{sub_menu.sub_menu_name}}</strong>
+                <!-- <md-slide-toggle class="example-margin" color="primary" [(ngModel)]="sub_menu.add_edit">
+                         Add / Edit
+                    </md-slide-toggle> -->
+                <mat-slide-toggle class="example-margin" color="primary" [(ngModel)]="sub_menu.view">
+                         View
+                    </mat-slide-toggle>
+              </span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="table-responsive">
+                    <span *ngIf="sub_menu.menu_id != '4'">
+                    <table class="table table borderless">
+                        <thead class="headercolor">
+                            <tr>
+                                <th style='font-weight: 600;'>&nbsp;</th>
+                                <th style='font-weight: 600;'>SubView Contents</th>
+                                <th style='font-weight: 600;'>View</th>
+                                <th style='font-weight: 600;'>Add / Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
+                                <td>&nbsp; </td>
+                                <td>{{sub_view_menu.sub_view_name}}</td>
+                                <td>
+                                    <mat-slide-toggle class="example-margin" color="primary" [(ngModel)]="sub_view_menu.view">
+                                        View
+                                    </mat-slide-toggle>
+                                </td>
+                                <td>
+                                    <mat-slide-toggle class="example-margin" color="primary" [(ngModel)]="sub_view_menu.add_edit">
+                                        Add / Edit
+                                    </mat-slide-toggle>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </span>
+                </div>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+            <div>
+                <button type="button" class="btn btn-steelblue pull-right" (click)='save(form,social_sub_menu)'>Save</button>
+                <!-- <button type="button" class="btn btn-warning pull-right" (click)='save(form)'>Cancel</button> -->
+            </div>
+        </mat-accordion>
+    </div>
+</div>
+
+<!-- <div style="width: 300px; margin-bottom: 20px;">
+    <h3>Select a single city</h3>
+    <ng-select [allowClear]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)"
+      (removed)="removed($event)" (typed)="typed($event)" placeholder="No city selected">
+    </ng-select>
+    <p></p>
+    <pre>{{value.text}}</pre>
+    <div>
+      <button type="button" class="btn btn-primary" [(ngModel)]="disabledV" btnCheckbox btnCheckboxTrue="1" btnCheckboxFalse="0">
+        {{disabled === '1' ? 'Enable' : 'Disable'}}
+      </button>
+    </div>
+  </div> -->
+
+
+<!-- <div class="form-group">
+    <ng-select *ngIf="showGreeting" [allowClear]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)"
+      (removed)="removed($event)" (typed)="typed($event)" (deselected)="onDeselected($event)" placeholder="Select Any Department">
+    </ng-select>
+  </div> -->
+
+<!-- </div> -->

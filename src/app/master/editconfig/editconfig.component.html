@@ -1,0 +1,24 @@
+<div class="col-md-12">
+  <div class="col-md-12"><strong class="headclr">Update IP Config</strong></div>
+  <div class="col-md-12" style="padding:5px;">&nbsp;</div>
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <mat-form-field style="width:100%;">
+        <input matInput placeholder="Insert IP Address" [(ngModel)]="editdata.inst_ip_adr">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field style="width:100%;">
+        <input matInput placeholder="Get IP Address" [(ngModel)]="editdata.get_ip_adr">
+      </mat-form-field>
+    </div>
+    <div class="col-md-12">
+      <button type="button" class="btn btn-steelblue pull-right" (click)="closepopup()" >Cancel</button>
+      <button type="button" class="btn btn-steelblue pull-right" (click)="update_ip_addr(editdata)" >Update</button>
+    </div>
+  </div>
+  <!-- <div class="col-md-12">
+    <button type="button" class="btn btn-steelblue pull-right" (click)="update_ip_addr(editdata)" >Update</button>
+    <button type="button" class="btn btn-steelblue pull-right" (click)="closepopup()" >Cancel</button>
+  </div> -->
+</div>

@@ -1,0 +1,84 @@
+.textalign{
+    padding: 18px;
+    color: steelblue;
+    font-weight: 600;
+}
+.headercolor{
+    color:steelblue;
+    font-weight:600;
+    padding-left: 15px;
+}
+
+.btn-white{
+    border-radius: 50px;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid lightgray;
+    cursor: default;
+    font-size: 10px;
+}
+.btn-white:hover{
+    background-color: white;
+    color:steelblue;
+}
+.badgewhite{
+    background-color: white;
+    color:steelblue;
+    cursor: pointer;
+    font-size:10px;
+    position: relative;
+    left: 18px;
+}
+.badgewhite:hover{
+    background-color: lightgray;
+    color:white;
+    cursor: pointer;
+}
+
+.header{
+    font-weight: 600;
+}
+
+.divalignment{
+    padding: 10px;
+}
+
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}
+.clearimg{
+    cursor:pointer;
+    padding-top: 15px;
+}
+
+.wordsize{
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    max-width:500px;
+    display:inline-block;
+}
+
+.xword{
+    margin-top: -5px;
+}
+
+.badge{
+    margin-bottom: -5px;
+}
+
+.myboxsize{
+    height:135px !important;
+}
+
+.handsymbol{
+    cursor: pointer;
+}

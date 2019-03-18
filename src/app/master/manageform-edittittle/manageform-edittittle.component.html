@@ -1,0 +1,19 @@
+<div class="col-md-12">
+  <div class="col-md-12"><strong class="headclr">Update Manage Form Title</strong></div>
+  <div class="col-md-12" style="padding:5px;">&nbsp;</div>
+  <div class="col-md-12">
+    <div class="col-md-8">
+      <mat-form-field style="width:100%;">
+        <input matInput placeholder="Title Name" [(ngModel)]="editdata.tittle">
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <button type="button" class="btn btn-steelblue pull-right" (click)="cancel()" >Cancel</button>
+      <button type="button" class="btn btn-steelblue pull-right" (click)="update_mf_tittle(editdata)" >Update</button>
+    </div>
+  </div>
+  <!-- <div class="col-md-12">
+    <button type="button" class="btn btn-steelblue pull-right" (click)="update_mf_tittle(editdata)" >Update</button>
+    <button type="button" class="btn btn-steelblue pull-right" (click)="closepopup()" >Cancel</button>
+  </div> -->
+</div>

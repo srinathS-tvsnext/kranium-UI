@@ -1,0 +1,15 @@
+.tbheader{
+    color:steelblue;
+}
+.tbheader th{
+    text-align: center;
+}
+.headerclr{
+    color:steelblue;
+}
+
+.syncicon {
+    margin-top:20px;
+    margin-right: 10px;
+    cursor: pointer;
+}

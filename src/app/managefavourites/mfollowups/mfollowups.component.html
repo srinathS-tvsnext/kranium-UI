@@ -1,0 +1,107 @@
+<div class="row" style='padding:10px;'>
+  <div class="col-md-12">
+    <div class="">
+      <p class=""><mat-checkbox color='primary'></mat-checkbox>&nbsp; <strong>Follow-Up</strong></p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-6">
+            <mat-form-field style="width:100%;">
+              <input matInput [matDatepicker]="pickers" placeholder="Next Follow Update">
+              <mat-datepicker-toggle mdSuffix [for]="pickers"></mat-datepicker-toggle>
+              <mat-datepicker #pickers></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+              <mat-form-field>
+            <mat-select placeholder="Select Slots" style="width:100%;">
+              <mat-option *ngFor="let food of slots" [value]="food.value">
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <p class=""><mat-checkbox color='primary'></mat-checkbox>&nbsp; <strong>Recommend Admission </strong></p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-6">
+            <mat-checkbox color='primary' style="width:100%;">Immediate</mat-checkbox>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field style="width:100%;">
+              <input matInput [matDatepicker]="pickeres" placeholder="Date">
+              <mat-datepicker-toggle mdSuffix [for]="pickeres"></mat-datepicker-toggle>
+              <mat-datepicker #pickeres></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <p class=""><mat-checkbox color='primary'></mat-checkbox>&nbsp; <strong>Surgery/Procedure</strong></p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-6">
+            <mat-checkbox color='primary' style="width:100%;">Surgery</mat-checkbox>
+          </div>
+          <div class="col-md-6">
+            <mat-checkbox color='primary' style="width:100%;">Procedure</mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <p class=""><mat-checkbox color='primary'></mat-checkbox>&nbsp; <strong>Cross Consultation</strong></p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-6">
+              <mat-form-field>
+            <mat-select placeholder="Select Department Name" style="width:100%;">
+              <mat-option *ngFor="let food of depts" [value]="food.value">
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+              <mat-form-field>
+            <mat-select placeholder="Select Doctor Name" style="width:100%;">
+              <mat-option *ngFor="let food of docs" [value]="food.value">
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <p class=""><mat-checkbox color='primary'></mat-checkbox>&nbsp; <strong>Refer to an External Doctor</strong></p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-6">
+            <p class="">To,</p>
+            <mat-form-field>
+              <input matInput placeholder="Enter Doctor name">
+            </mat-form-field>
+            <p class="">Patient Info</p>
+            <div class="aligntext">
+              <p class="">Mahendra singh,<br></p>
+              <p class="">s/o,harbajan singh,<br></p>
+              <p class="">12,northcar street,chennai<br></p>
+              <p class="">Tamilnadu,<br></p>
+              <p class="">India.<br></p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-steelblue pull-right">Save & Preview</button>
+</div>

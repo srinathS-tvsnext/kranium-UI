@@ -1,0 +1,9 @@
+.tbheader{
+    color:steelblue;
+}
+.tbheader th{
+    text-align: center;
+}
+.mytable{
+    padding-top: 30px;
+}

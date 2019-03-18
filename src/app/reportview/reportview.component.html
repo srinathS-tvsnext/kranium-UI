@@ -1,0 +1,35 @@
+<div class="">
+  <p class="textheader">Result<span class='pull-right' style='cursor:pointer;' (click)="reportviewpopupclose()">X </span></p>
+  <div class="table-responsive">
+    <table class="table table borderless" style='text-align: center'>
+      <thead class="tableheadercolor">
+        <tr>
+          <th style='text-align: center'>&nbsp;</th>
+          <th style='text-align: center'>Tests</th>
+          <th style='text-align: center'>Values</th>
+          <th style='text-align: center'>Units</th>
+          <th style='text-align: center'>Normal Ranges</th>
+          <th style='text-align: center'>Graphical View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>&nbsp; </td>
+          <td>Thyroid</td>
+          <td>6.30</td>
+          <td>uL/Ml</td>
+          <td>4.65-4.68</td>
+          <td style='cursor:pointer;'><i class="material-icons" (click)="graphicalview()">insert_chart</i></td>
+        </tr>
+        <tr>
+            <td>&nbsp; </td>
+            <td>Fever</td>
+            <td>100</td>
+            <td>Degree</td>
+            <td>98-99deg</td>
+            <td style='cursor:pointer;'><i class="material-icons" (click)="graphicalview()">insert_chart</i></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

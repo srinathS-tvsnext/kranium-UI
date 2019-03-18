@@ -1,0 +1,108 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                                <div class="col-md-10 col-sm-10 col-xs-10" *ngFor="let patient of patient_details">
+                                    <p class="headtext">{{patient.Patient_name}}</p>
+                                    <p class="headtext" style="text-transform: uppercase;">{{patient.Gender}} / {{patient.age}} | UHID: {{patient.UHIDNO}} | Call: {{patient.Phone||'-'}}
+                                        | Encounter No: {{patient.EncounterNo||'-'}}</p>
+                                    <!-- <a class="tabtext">Allergy(s) - Tab Amoxil 250 mg. Pollen Extracts </a> -->
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
+                                        <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Past Encounters')">
+                                            <button type="button" class="btn btn-white pull-right" routerLink='Past_Encounters' routerLinkActive="active">Past Encounters</button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 col-sm-10 col-xs-10" *ngFor="let vitals of vitals_data.Formvalue">
+                                    <span class="headtext_status" *ngIf="vitals.notes_status==1">
+                                        <span class="headtext">Notes: </span>
+                                        <span class="valuetext">{{vitals.notes}}</span>
+                                    </span> &nbsp;
+                                    <span class="headtext_status" *ngIf="vitals.height_status==1">
+                                        <span class="headtext">Height: </span>
+                                        <span class="valuetext">{{vitals.height}}</span>
+                                    </span>&nbsp;
+                                    <span class="headtext_status" *ngIf="vitals.bsa_status==1">
+                                        <span class="headtext">Bsa: </span>
+                                        <span class="valuetext">{{vitals.bsa}}</span>
+                                    </span>&nbsp;
+                                    <span class="headtext_status" *ngIf="vitals.bp_syaytolic_status==1">
+                                        <span class="headtext">Bp:</span>
+                                        <span class="valuetext"> {{vitals.bp_systolic}}/{{vitals.bp_diastolic}}</span>
+                                    </span>&nbsp;
+                                    <span class="headtext_status" *ngIf="vitals.bmi_status==1">
+                                        <span class="headtext">Bmi: </span>
+                                        <span class="valuetext">{{vitals.bmi}}</span>
+                                    </span>&nbsp;
+                                    <span class="headtext_status" *ngIf="vitals.pulse_status==1">
+                                        <span class="headtext">Pulse:</span>
+                                        <span class="valuetext"> {{vitals.pulse}}</span>
+                                    </span>&nbsp;
+                                    <span class="headtext_status" *ngIf="vitals.respiratory_status==1">
+                                        <span class="headtext">Respiratory:</span>
+                                        <span class="valuetext"> {{vitals.respiratory}}</span>
+                                    </span>&nbsp;
+                                    <span class="headtext_status" *ngIf="vitals.temperature_status==1">
+                                        <span class="headtext">Temperature: </span>
+                                        <span class="valuetext">{{vitals.temperature}}</span>
+                                    </span>&nbsp;
+                                    <span class="headtext_status" *ngIf="vitals.weight_status==1">
+                                        <span class="headtext">Weight:</span>
+                                        <span class="valuetext"> {{vitals.weight}}</span>
+                                    </span>&nbsp;
+                                    <div class="headtext_status" *ngIf="vitals.allergy_status==1">
+                                        <p *ngFor="let vitals_aller of vitals_data.allergy">
+                                            <span class="headtext">Allergy:&nbsp;
+                                                <a class="valuetext">{{vitals_aller.allergy_type1}}&nbsp;( {{vitals_aller.allergy_severity}} )
+                                                    - {{vitals_aller.allergy_type2}}</a>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                                <div class="" style="display:inline-block;" *ngFor="let sub_menu of acess_rights; let i =index;">
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Vitals')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Vitals' routerLinkActive="active">Vitals</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='History')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='History' routerLinkActive="active">History</button>                                        
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Examination')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Examination' routerLinkActive="active">Examination</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Diagnosis')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Diagnosis' routerLinkActive="active">Diagnosis</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Investigation')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Investigation' routerLinkActive="active">Investigation</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Prescription')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Prescription' routerLinkActive="active">Prescription</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Reports')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Reports' routerLinkActive="active">Reports</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Follow-up')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Followups' routerLinkActive="active">Follow-up</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='OP Summary')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Opsummary' routerLinkActive="active">OP Summary</button>    
+                                    </a>  
+                                </div> 
+                            </div>
+                        </div>
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

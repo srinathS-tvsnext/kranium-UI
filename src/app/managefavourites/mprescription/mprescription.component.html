@@ -1,0 +1,182 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="">
+      <p class="headercolor">
+        <mat-checkbox color='primary'></mat-checkbox>&nbsp; Medication</p>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-3">
+            <mat-form-field>
+              <input matInput placeholder="Unit value">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field>
+              <input matInput placeholder="Unit value">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field>
+            <mat-select class="pull-right paddingselect" placeholder="Select From Favourite">
+              <mat-option *ngFor="let food of favs" [value]="food.value">
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+              <mat-form-field>
+            <mat-select class="pull-right paddingselect" placeholder="Favourite Drug">
+              <mat-option *ngFor="let food of favdrgs" [value]="food.value">
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <p class='headercolor'>
+        <mat-checkbox color='primary'></mat-checkbox>&nbsp; Frequency</p>
+      <div class="row" style='    padding-left: 25px;'>
+
+        <mat-checkbox color='primary'></mat-checkbox>
+        <mat-select placeholder="Morning">
+          <mat-option *ngFor="let food of days" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+
+        <mat-checkbox color='primary'></mat-checkbox>
+        <mat-select placeholder="Noon">
+          <mat-option *ngFor="let food of days" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+
+        <mat-checkbox color='primary'></mat-checkbox>
+        <mat-select placeholder="Night">
+          <mat-option *ngFor="let food of days" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+
+        <mat-form-field>
+          <input matInput placeholder="Duration">
+        </mat-form-field>
+        <mat-select placeholder="Days">
+          <mat-option *ngFor="let food of days" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+
+        <mat-select placeholder="Medicine Timing">
+          <mat-option *ngFor="let food of meds" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <mat-checkbox color='primary'></mat-checkbox>&nbsp;
+    <div class="table-responsive">
+      <table class="table table borderless" style='text-align: center'>
+        <thead class="headercolor">
+          <tr>
+            <th style='text-align: center'>&nbsp; </th>
+            <th style='text-align: center'>Medication Name</th>
+            <th style='text-align: center'>Route</th>
+            <th style='text-align: center'>Frequency</th>
+            <th style='text-align: center'>Duration</th>
+            <th style='text-align: center'>Action</th>
+            <th style='text-align: center'>Favourite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <mat-checkbox color='primary'></mat-checkbox>&nbsp; </td>
+            <td>
+              <span [hidden]='edit'>Dolo 650mg</span>
+              <span [hidden]='!edit'><input type="text" value="height"></span>
+            </td>
+            <td>
+              <span [hidden]='edit'>oral</span>
+              <span [hidden]='!edit'><input type="text" value="height"></span>
+            </td>
+            <td>
+              <span [hidden]='edit'>1 - 0 - 1</span>
+              <span [hidden]='!edit'><input type="text" value="height"></span>
+            </td>
+            <td>
+              <span [hidden]='edit'>5 days</span>
+              <span [hidden]='!edit'><input type="text" value="height"></span>
+            </td>
+            <td>
+              <span [hidden]='edit'><i class="material-icons" style="cursor:pointer;" (click)='editfunction()'>edit</i><i class="material-icons">delete</i></span>
+              <span [hidden]='!edit'><i class="material-icons" style="cursor:pointer;" (click)='savefunction()'>save</i><i class="material-icons">delete</i></span>
+            </td>
+            <td>
+              <mat-checkbox color='primary'></mat-checkbox>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-checkbox color='primary'></mat-checkbox>&nbsp; </td>
+            <td>
+              <span [hidden]='edit' (click)="medicineshortage()" style='color:red;'>Crocine 10mg</span>
+              <span [hidden]='!edit'><input type="text" value="height"></span>
+            </td>
+            <td>
+              <span [hidden]='edit'>oral</span>
+              <span [hidden]='!edit'><input type="text" value="height"></span>
+            </td>
+            <td>
+              <span [hidden]='edit'>1 - 0 - 1</span>
+              <span [hidden]='!edit'><input type="text" value="height"></span>
+            </td>
+            <td>
+              <span [hidden]='edit'>5 days</span>
+              <span [hidden]='!edit'><input type="text" value="height"></span>
+            </td>
+            <td>
+              <span [hidden]='edit'><i class="material-icons" style="cursor:pointer;" (click)='editfunction()'>edit</i><i class="material-icons">delete</i></span>
+              <span [hidden]='!edit'><i class="material-icons" style="cursor:pointer;" (click)='savefunction()'>save</i><i class="material-icons">delete</i></span>
+            </td>
+            <td>
+              <mat-checkbox color='primary'></mat-checkbox>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="">
+      <p class="headercolor">
+        <mat-checkbox color='primary'></mat-checkbox>&nbsp; Notes</p>
+      <div>
+        <mat-form-field style='width:100%;'>
+          <input matInput #message maxlength="256" placeholder="Message">
+          <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-select placeholder="Choose Language">
+          <mat-option *ngFor="let food of langs" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-steelblue pull-right">Save & Preview</button>
+  </div>
+</div>

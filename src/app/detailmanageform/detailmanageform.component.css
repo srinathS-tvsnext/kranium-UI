@@ -1,0 +1,25 @@
+.paddingfull{
+    padding: 25px;
+}
+
+
+.optionalignment{
+    padding-left: 15px;
+}
+
+
+.optionpadingbtm{
+    padding-bottom: 15px;
+}
+
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}

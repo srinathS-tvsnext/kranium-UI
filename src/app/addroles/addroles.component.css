@@ -1,0 +1,50 @@
+.headercolor{
+    color:steelblue;
+    font-weight: 700;
+    padding:10px;
+}
+
+.checkboxtext{
+    padding: 10px;
+    color: black;
+    font-weight: 400;
+}
+
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}
+
+.btn-steelblue-custom{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+.btn-steelblue-custom:hover{
+    background-color: steelblue;
+    color: white;
+}
+ul li a {
+    display:block;
+   }
+   
+   ul li a:hover, ul li a:focus {
+    color:red;
+   }
+
+.tbheader{
+    color:steelblue;
+}
+.tbheader th{
+    text-align: center;
+}
+.mytable{
+    padding-top: 30px;
+}

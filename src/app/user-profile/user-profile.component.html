@@ -1,0 +1,96 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" data-background-color="steelblue">
+                        <h4 class="title">Profile</h4>
+                        <!-- <p class="category">Complete your profile</p> -->
+                    </div>
+                    <div class="card-content">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <mat-form-field class='example-full-width'>
+                                            <input matInput placeholder="Name" value='Dr.Saravanan'>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <mat-form-field class='example-full-width'>
+                                            <input matInput placeholder="Degree" value='M.B.B.S., B.D.S'>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <mat-form-field class='example-full-width'>
+                                            <input matInput placeholder="Speciality" value='Diabetologist'>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty ">
+                                        <mat-form-field class='example-full-width'>
+                                            <input matInput placeholder="Mobile Number" value='9715602508'>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput #message maxlength="256" placeholder="Address" value='No.154, Naveen Appartments,Meenambakkam, Chennai-600019'>
+                                            <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+                                            <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput #message maxlength="256" placeholder="About Me" value='Your Content Text here......................!'>
+                                            <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+                                            <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <button type="submit" class="btn btn-info pull-right">Update Profile</button> -->
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a href="#pablo">
+                        <img class="img" src="../../assets/img/doc1.jpg" />
+                    </a>
+                    </div>
+
+                    <div class="content">
+                        <h6 class="category text-gray">Diabetologist</h6>
+                        <h4 class="card-title">Dr.Saravanan M.B.B.S., B.D.S</h4>
+                        <p class="card-content">
+                            Your Content Text here......................!
+                        </p>
+                        <!-- <a href="#pablo" class="btn themecustom btn-round">Follow</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="col-md-12">
+  <div class="col-md-12"><strong class="headclr">Duration</strong></div>
+  <div class="col-md-6">
+    <mat-form-field>
+    <mat-select placeholder="Minutes" style="width:100%;" [(ngModel)]="data.dur_minutes" (change)='editminutes(data)' [disabled]="disabledminute">
+      <mat-option *ngFor="let dur of dur_type" [value]="dur.value">
+        {{ dur.viewValue }}
+      </mat-option>
+    </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-6">
+    <mat-form-field style="width:100%;">
+      <input matInput placeholder="Hours" [disabled]="disabledhour" [(ngModel)]="data.dur_hours" (change)='edithour(data)'>
+    </mat-form-field>
+  </div>
+  <div class="col-md-6">
+    <mat-form-field style="width:100%;">
+      <input matInput placeholder="Days" [disabled]="disabledday" [(ngModel)]="data.dur_days" (change)='editday(data)'>
+    </mat-form-field>
+  </div>
+  <button type="button" class="btn btn-steelblue pull-right" (click)="cancel()">Cancel</button>
+  <button type="button" class="btn btn-steelblue pull-right" (click)="editduration(data)">Update</button>
+</div>

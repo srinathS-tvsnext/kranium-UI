@@ -1,0 +1,21 @@
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+    font-size: 10px;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+    font-size: 10px;
+}
+
+.paddingselect{
+    padding-right: 30px;
+}
+
+.headercolor{
+color:steelblue;
+font-weight:600;
+}

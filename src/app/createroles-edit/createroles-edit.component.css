@@ -1,0 +1,17 @@
+.btn-steelblue{
+    color:steelblue;
+    background:white;
+    border:1px solid steelblue
+}
+.btn-steelblue:hover{
+    color:white;
+    background:steelblue;
+    border:1px solid steelblue
+}
+.headerclr{
+    color: steelblue;
+}
+
+.btndiv{
+    z-index: 1;
+}

@@ -1,0 +1,151 @@
+<ul class="timeline" *ngFor="let food of favs; let even = even; let odd = odd">
+    <li *ngIf="even">
+        <div class="timeline-badge op" *ngIf="food.opipstatus ==2">OP</div>
+        <div class="timeline-badge ip" *ngIf="food.opipstatus ==1">IP</div>
+        <div class="timeline-panel timeline-border-ip" *ngIf="food.opipstatus ==1">
+            <div class="timeline-heading col-sm-12" *ngIf="food.opipstatus ==2">
+                <div class=''>
+                    <div class='pull-left'>
+                        <div class="titlesize">{{food.date_custom}}</div>
+                        <div class="titlesize">{{food.Doctor_Name}} </div>
+                    </div>
+                    <!-- ood.PATIENT_ID} -->
+                    <div class='pull-right iconsize'>
+                        <a href="http://172.16.16.200/pdf_ftp.php?enc_id={{food.PATIENT_ID}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a>
+                        <i class="fa fa-file-text" aria-hidden="true" style='cursor:pointer;' (click)="pastencounter_detail(food)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-heading col-sm-12" *ngIf="food.opipstatus ==1">
+                <div class="titlesize pull-left">
+                    <span class='titleclr'>DOA:</span>{{food.Admission_Date}}</div>
+                <div class='pull-right iconsize' style='padding-left: 10px;'>
+                    <i class="fa fa-file-text" aria-hidden="true" style='cursor:pointer;' routerLink='/Homescreen/Patientdetails/Pastencounterdetails'></i>
+                </div>&nbsp;
+                <div class="titlesize pull-right">
+                    <span class='titleclr'>DOD:</span>{{food.Discharge_date}}</div>
+            </div>
+
+            <div class="timeline-body col-sm-12">
+                <p class='titleclr titlesize'>chief Complaints</p>
+                <p class='titlesize'>{{food.cheif_complaints}}</p>
+                <p class='titleclr titlesize'>Diagnosis</p>
+                <p class='titlesize'>{{food.Diagnosis}}</p>
+            </div>
+        </div>
+        <div class="timeline-panel timeline-border-op" *ngIf="food.opipstatus ==2">
+            <div class="timeline-heading col-sm-12" *ngIf="food.opipstatus ==2">
+                <div class=''>
+                    <div class='pull-left'>
+                        <div class="titlesize">{{food.date_custom}}</div>
+                        <div class="titlesize">{{food.Doctor_Name}} </div>
+                    </div>
+                    <!-- ood.PATIENT_ID} -->
+                    <div class='pull-right iconsize'>
+                        <a href="http://172.16.16.200/pdf_ftp.php?enc_id={{food.PATIENT_ID}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a>
+                        <i class="fa fa-file-text" aria-hidden="true" style='cursor:pointer;' (click)="pastencounter_detail(food)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-heading col-sm-12" *ngIf="food.opipstatus ==1">
+                <div class="titlesize pull-left">
+                    <span class='titleclr'>DOA:</span>{{food.Admission_Date}}</div>
+                <div class='pull-right iconsize' style='padding-left: 10px;'>
+                    <i class="fa fa-file-text" aria-hidden="true" style='cursor:pointer;' routerLink='/Homescreen/Patientdetails/Pastencounterdetails'></i>
+                </div>&nbsp;
+                <div class="titlesize pull-right">
+                    <span class='titleclr'>DOD:</span>{{food.Discharge_date}}</div>
+            </div>
+
+            <div class="timeline-body col-sm-12">
+                <p class='titleclr titlesize'>chief Complaints</p>
+                <p class='titlesize'>{{food.cheif_complaints}}</p>
+                <p class='titleclr titlesize'>Diagnosis</p>
+                <p class='titlesize'>{{food.Diagnosis}}</p>
+            </div>
+        </div>
+    </li>
+    <li class="timeline-inverted" *ngIf="odd">
+        <div class="timeline-badge op" *ngIf="food.opipstatus ==2">OP</div>
+        <div class="timeline-badge ip" *ngIf="food.opipstatus ==1">IP</div>
+        <div class="timeline-panel timeline-border-ip-inv" *ngIf="food.opipstatus == 1">
+            <div class="timeline-heading col-sm-12" *ngIf="food.opipstatus == 1">
+                <div class="titlesize pull-left">
+                    <span class='titleclr'>DOA:</span>{{food.Admission_Date}}</div>
+                <div class='pull-right iconsize' style='padding-left: 10px;'>
+                    <i class="fa fa-file-text" aria-hidden="true" style='cursor:pointer;' (click)="pastencounter_detail(food)"></i>
+                </div>&nbsp;
+                <div class="titlesize pull-right">
+                    <span class='titleclr'>DOD:</span>{{food.Discharge_date}}</div>
+            </div>
+            <div class="timeline-heading col-sm-12" *ngIf="food.opipstatus == 2">
+                <div class=''>
+                    <div class='pull-left'>
+                        <div class="titlesize">{{food.date_custom}}</div>
+                        <!-- <div class="titlesize">{{food.Doctor_Name}} </div> -->
+                    </div>
+                    <div class='pull-right iconsize'>
+                        <a href="http://172.16.16.200/pdf_ftp.php?enc_id={{food.PATIENT_ID}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a>
+                        <i class="fa fa-file-text" aria-hidden="true" style='cursor:pointer;' (click)="pastencounter_detail(food)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-body col-sm-12">
+                <div class="titlesize">{{food.Doctor_Name}} </div>
+                <p class='titleclr titlesize'>chief Complaints</p>
+                <p class='titlesize'>{{food.cheif_complaints}}</p>
+                <p class='titleclr titlesize'>Diagnosis</p>
+                <p class='titlesize'>{{food.Diagnosis}}</p>
+            </div>
+        </div>
+
+        <div class="timeline-panel timeline-border-op-inv" *ngIf="food.opipstatus == 2">
+            <div class="timeline-heading col-sm-12" *ngIf="food.opipstatus == 1">
+                <div class="titlesize pull-left">
+                    <span class='titleclr'>DOA:</span>{{food.Admission_Date}}</div>
+                <div class='pull-right iconsize' style='padding-left: 10px;'>
+                    <i class="fa fa-file-text" aria-hidden="true" style='cursor:pointer;' (click)="pastencounter_detail(food)"></i>
+                </div>&nbsp;
+                <div class="titlesize pull-right">
+                    <span class='titleclr'>DOD:</span>{{food.Discharge_date}}</div>
+            </div>
+            <div class="timeline-heading col-sm-12" *ngIf="food.opipstatus == 2">
+                <div class=''>
+                    <div class='pull-left'>
+                        <div class="titlesize">{{food.date_custom}}</div>
+                        <!-- <div class="titlesize">{{food.Doctor_Name}} </div> -->
+                    </div>
+                    <div class='pull-right iconsize'>
+                        <a href="http://172.16.16.200/pdf_ftp.php?enc_id={{food.PATIENT_ID}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a>
+                        <i class="fa fa-file-text" aria-hidden="true" style='cursor:pointer;' (click)="pastencounter_detail(food)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-body col-sm-12">
+                <div class="titlesize">{{food.Doctor_Name}} </div>
+                <p class='titleclr titlesize'>chief Complaints</p>
+                <p class='titlesize'>{{food.cheif_complaints}}</p>
+                <p class='titleclr titlesize'>Diagnosis</p>
+                <p class='titlesize'>{{food.Diagnosis}}</p>
+            </div>
+        </div>
+    </li>
+</ul>
+<ul class="timeline" [hidden]="hidden">
+    <li>
+        <div class="timeline-badge op">OP</div>
+        <div class="timeline-panel">
+            <div class="timeline-heading col-sm-12">
+                <div class=''>
+                    <div class='pull-left'>
+                        <div class="titlesize">{{date_custom}}</div>
+                        <div class="titlesize">{{login}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-body col-sm-12">
+                <p class='titleclr titlesize'>Current Encounter</p>
+            </div>
+        </div>
+    </li>
+</ul>

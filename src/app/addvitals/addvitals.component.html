@@ -1,0 +1,341 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="">
+            <p class="">
+                <strong>VITALS</strong>
+            </p>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table borderless">
+                            <thead class="headercolor">
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>Type</th>
+                                    <th>Unit Value</th>
+                                    <th>Unit Type</th>
+                                    <th>Show on Top</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>Height</td>
+                                    <td>
+                                        <mat-form-field style='padding-top: 10px;'>
+                                            <input matInput placeholder="Unit Value" [(ngModel)]="form.height" (ngModelChange)="bmi_calculator(form)">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                        <mat-select [(ngModel)]="form.height_id">
+                                            <mat-option *ngFor="let food of height" [value]="food.units">
+                                                {{ food.units }}
+                                            </mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-checkbox color='primary' [(ngModel)]="form.height_status"></mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>Weight</td>
+                                    <td>
+                                        <mat-form-field style='padding-top: 10px;'>
+                                            <input matInput placeholder="Unit Value" [(ngModel)]="form.weight" (ngModelChange)="bmi_calculator(form)">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                        <mat-select [(ngModel)]="form.weight_id">
+                                            <mat-option *ngFor="let food of weight" [value]="food.units">
+                                                {{ food.units }}
+                                            </mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-checkbox color='primary' [(ngModel)]="form.weight_status"></mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>Temperature</td>
+                                    <td>
+                                        <mat-form-field style='padding-top: 10px;'>
+                                            <input matInput placeholder="Unit Value" [(ngModel)]="form.temperature">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                        <mat-select [(ngModel)]="form.temperature_id">
+                                            <mat-option *ngFor="let food of temperature" [value]="food.units">
+                                                {{ food.units }}
+                                            </mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-checkbox color='primary' [(ngModel)]="form.temperature_status"></mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>Pulse</td>
+                                    <td>
+                                        <mat-form-field style='padding-top: 10px;'>
+                                            <input matInput placeholder="Unit Value" [(ngModel)]="form.pulse">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                        <mat-select [(ngModel)]="form.pulse_id">
+                                            <mat-option *ngFor="let food of pulse" [value]="food.units">
+                                                {{ food.units }}
+                                            </mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-checkbox color='primary' [(ngModel)]="form.	pulse_status"> </mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>Respiratory Rate</td>
+                                    <td>
+                                        <mat-form-field style='padding-top: 10px;'>
+                                            <input matInput placeholder="Unit Value" [(ngModel)]="form.respiratory">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                        <mat-select [(ngModel)]="form.respirator_id">
+                                            <mat-option *ngFor="let food of pulse" [value]="food.units">
+                                                {{ food.units }}
+                                            </mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-checkbox color='primary' [(ngModel)]="form.respiratory_status"></mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>BP:Systolic/Diastolic</td>
+                                    <td>
+                                        <mat-form-field style='width:25%;padding-top: 10px;'>
+                                            <input matInput placeholder="Unit Value" [(ngModel)]="form.bp_systolic">
+                                        </mat-form-field> / &nbsp;
+                                        <mat-form-field style='width:25%; padding-top: 10px;'>
+                                            <input matInput placeholder="Unit Value" [(ngModel)]="form.bp_diastolic">
+                                        </mat-form-field> &nbsp; mmHg
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                        <mat-select placeholder="Position" [(ngModel)]="form.bp_diastolic_id">
+                                            <mat-option *ngFor="let food of position" [value]="food.units">
+                                                {{ food.units }}
+                                            </mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                                        <mat-form-field>
+                                        <mat-select placeholder="Status" [(ngModel)]="form.bp_systolic_id">
+                                            <mat-option *ngFor="let food of systolic_distolic" [value]="food.units">
+                                                {{ food.units }}
+                                            </mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-checkbox color='primary' [(ngModel)]="form.bp_syaytolic_status"></mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>BMI</td>
+                                    <td>
+                                        <mat-form-field style='padding-top: 10px;'>
+                                            <input matInput placeholder="Unit Value" [(ngModel)]="form.bmi" [disabled]="disabledfun">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <span>{{form.bmi_id}}</span>
+                                    </td>
+                                    <td>
+                                        <mat-checkbox color='primary' [(ngModel)]="form.bmi_status"></mat-checkbox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>BSA</td>
+                                    <td>
+                                        <mat-form-field style='padding-top: 10px;'>
+                                            <input matInput placeholder="Unit Value" [(ngModel)]="form.bsa" [disabled]="disabledfun">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <mat-checkbox color='primary' [(ngModel)]="form.bsa_status"></mat-checkbox>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p class="bolder">Pain Assessment</p>
+                    <!-- <div class='col-md-12'>
+                        <div class=" line multicolor-linear"></div>
+                        <div class="vl"></div>
+                        <div class="vl1"></div>
+                        <div class="vl2"></div>
+                        <div class="vl3"></div>
+                        <div class="vl4"></div>
+                        <div class="vl5"></div>
+                        <div class="vl6"></div>
+                        <div class="vl7"></div>
+                        <div class="vl8"></div>
+                        <div class="vl9"></div>
+                        <div class="vl0"></div>
+                    </div> -->
+                    <div class='col-md-12 col-sm-12 col-xs-12' style='padding-top: 31px;'>
+                        <img src="../../assets/img/painassesment1.png" class="paimg" />
+                        <div class='col-md-2 col-sm-2 col-xs-2 painasses' *ngFor="let imgtag of painscaleimage;let i=index;">
+                            <!-- <img src="{{imgtag.viewValue}}" class='imgsize imgcount{{i}}'/>
+                            <div class='textsiz textcount{{i}}'>{{imgtag.hurt}}</div>
+                            <div class='painrate paincount{{i}}'>{{imgtag.painrate}}</div> -->
+                            <mat-radio-button color="primary" class="pain_radiobtn" (click)="img(imgtag)"></mat-radio-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-right">
+                        <mat-checkbox color='primary' [(ngModel)]="form.allergy_status"></mat-checkbox>
+                    </div>
+                    <p class='bolder'>ALLERGY</p>
+                    <fieldset class="quote-fieldset position_bt_top" *ngFor="let choice of choices; let i=index;">
+                        <div class="table-responsive">
+                            <table class="table table borderless">
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td style='padding-bottom: 35px;'>
+                                        <mat-form-field>
+                                        <mat-select placeholder="Allergy Type" [(ngModel)]="form.choice[i].allergy_type1">
+                                            <mat-option *ngFor="let food of allergy" [value]="food.viewValue">
+                                                {{ food.viewValue }}
+                                            </mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Allergic too" value='' [(ngModel)]="form.choice[i].allergy_type2">
+                                        </mat-form-field>
+                                    </td>
+                                    <td style='padding-bottom: 35px;'>
+                                        <mat-form-field>
+                                        <mat-select placeholder="Severity" [(ngModel)]="form.choice[i].allergy_severity">
+                                            <mat-option *ngFor="let food of Severity" [value]="food.viewValue">
+                                                {{ food.viewValue }}
+                                            </mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <span class='' style='padding-left:40px;font-size:25px; color: steelblue;'>
+                      <i class="fa fa-plus-square" aria-hidden="true" (click)="addnew()"></i>
+                    </span>
+                                        <span class='' style='font-size:25px; color: red;' [hidden]="del">
+                        <i class="fa fa-minus-square" aria-hidden="true"  (click)="removenew(choice)"></i>
+                      </span>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-right">
+                        <mat-checkbox color='primary' [(ngModel)]="form.notes_status"></mat-checkbox>
+                    </div>
+                    <p style="font-weight:600;">NOTES:</p>
+                    <mat-form-field class="example-full-width">
+                        <input matInput #message maxlength="256" [(ngModel)]="form.notes">
+                        <mat-hint align="start">
+                            <strong>Don't disclose personal info</strong>
+                        </mat-hint>
+                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                    </mat-form-field>
+
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p class='bolder'>Active Medication</p>
+                    <fieldset class="quote-fieldset position_bt_top" *ngFor="let choice_med of choices_med; let i=index;">
+                        <div class="table-responsive">
+                            <table class="table table borderless">
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <mat-form-field style='width:45%;'>
+                                            <input matInput list="medicinelist" name="medicinelist"  placeholder="Brand Name" value='Dolo 650' [(ngModel)]="form.choice_med[i].activemedication_brandname" (ngModelChange)="get_medicine_kranium_list(form.choice_med[i])">
+                                        </mat-form-field>
+
+                                        <ul class="searchmodalcustom list-unstyled search-acc-list-ul" *ngIf="form.choice_med[i].dropdown">
+                                            <li class="container-fluid  cursor search-acc-list" *ngFor="let data of medicine_kranium_list" class="padding: 5px;">
+                                                <div class="row search-acc-list">
+                                                    <div class="col-md-12" (click)="data_click_bind(data,form.choice_med[i])"><span> {{data.itemname}}</span></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                        <mat-form-field style='width:45%;'>
+                                            <input matInput placeholder="Generic Name" value='loreum ipsum' [(ngModel)]="form.choice_med[i].activemedication_genericname">
+                                        </mat-form-field>
+                                    </td>
+                                    <td style='padding-bottom: 35px;'>
+                                        <mat-form-field>
+                                        <mat-select placeholder="Frequency" style='width:45%;' [(ngModel)]="form.choice_med[i].activemedication_frequency">
+                                            <mat-option *ngFor="let food of prescr" [value]="food.viewValue">
+                                                {{ food.viewValue }}
+                                            </mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <span class='' style='padding-left:40px;font-size:25px; color: steelblue;'>
+                      <i class="fa fa-plus-square" aria-hidden="true" (click)="addmew_med()"></i>
+                    </span>
+                                        <span class='' style='font-size:25px; color: red;' [hidden]="dels">
+                        <i class="fa fa-minus-square" aria-hidden="true"  (click)="removemew_med(i)"></i>
+                      </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset> 
+                </div>
+                <button type="button" class="btn btn-steelblue pull-right" (click)='save(form)'>Save</button>
+                <!-- <button type="button" class="btn btn-success pull-right" (click)='bmi_calculator()'>BMI</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- {{HeightForAge}} {{BMIForAge}} {{WeightForAge}} -->
+<!-- <div [innerHTML]="HeightForAge"></div>
+<div [innerHTML]="BMIForAge"></div>
+<div [innerHTML]="WeightForAge"></div> -->

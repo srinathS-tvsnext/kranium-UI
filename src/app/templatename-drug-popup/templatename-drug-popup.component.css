@@ -1,0 +1,21 @@
+.btn-steelblue {
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover {
+    background-color: steelblue;
+    color: white;
+}
+
+.btn-red {
+    background-color: transparent;
+    color: red;
+    border: 1px solid red;
+}
+
+.btn-red:hover {
+    background-color: red;
+    color: white;
+}

@@ -1,0 +1,73 @@
+.borderless td, .borderless th {
+    border: none;
+}
+
+.headercolor{
+ color:black;
+ font-weight:bolder;
+}
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}
+.btn-white{
+    border-radius: 50px;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid lightgray;
+    cursor: default;
+    font-size: 10px;
+}
+.btn-white:hover{
+    background-color: white;
+    color:steelblue;
+}
+.badgewhite{
+    background-color: white;
+    color:steelblue;
+    cursor: pointer;
+    font-size:10px;
+    position: relative;
+    left: 18px;
+}
+.badgewhite:hover{
+    background-color: lightgray;
+    color:white;
+    cursor: pointer;
+}
+.borderless th {
+    font-weight:600 !important;  
+}
+
+.bolder{
+    font-weight: 600;
+}
+
+.imgsize{
+    width: 75px;
+    height: 75px;
+}
+
+.textsiz{
+    font-weight: 600;
+    font-size: 10px;
+}
+
+.painrate{
+    font-weight: 600;
+    font-size: 15px;
+    padding-left:32px;
+}
+.emptymsg{
+    text-align: center;
+    padding-top:10px;
+    color: darkgray;
+    font-weight: 600;
+}

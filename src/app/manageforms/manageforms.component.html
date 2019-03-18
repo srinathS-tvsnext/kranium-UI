@@ -1,0 +1,76 @@
+<div class="main-content">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class='col-md-12'>
+                <h4 class='pull-left'>Available Forms</h4>
+                <button type="button" class="btn btn-steelblue pull-right" routerLink='/Homescreen/Addnewmanageform'>Add New</button>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class='col-lg-3 col-md-6 col-sm-6 col-xs-6 form-group'>
+                        <input type="text" placeholder="Choose Doctor Name" auto-complete [(ngModel)]="form.doctor" (ngModelChange)="update_filter(form)" #album="ngModel" name="doctor" [source]="DoctorsName" value-formatter="name" list-formatter="name" [match-formatted]="true"
+                            class="form-control" style="border-radius:0px;width:250px" required/>
+                    </div>
+
+                    <div class='col-lg-3 col-md-6 col-sm-6 col-xs-6 form-group'>
+                        <input type="text" placeholder="Choose Department Name" auto-complete [(ngModel)]="form.dept_id" (ngModelChange)="update_filter(form)" #album="ngModel" name="Department" [source]="Departmentname" value-formatter="name_formal" list-formatter="name_formal"
+                            [match-formatted]="true" class="form-control" style="border-radius:0px;width:250px" max-num-list="10" required />
+                    </div>
+                    <div class='col-lg-3 col-md-6 col-sm-6 col-xs-6 form-group'>
+                        <input type="text" placeholder="Choose Form Name" auto-complete [(ngModel)]="form.form_id" (ngModelChange)="update_filter(form)" #album="ngModel" name="form" [source]="form_name_old" value-formatter="name" list-formatter="name" [match-formatted]="true"
+                            class="form-control" style="border-radius:0px;width:250px" max-num-list="10" required />
+                    </div>
+                    <div class='col-lg-2 col-md-5 col-sm-5 col-xs-5 form-group'>
+                        <input type="text" placeholder="Choose Sub-Menu Name" auto-complete [(ngModel)]="form.sub_menu_id" (ngModelChange)="update_filter(form)" #album="ngModel" name="album_list" [source]="docname" value-formatter="viewValue" list-formatter="viewValue" [match-formatted]="true"
+                            class="form-control" style="border-radius:0px;width:250px" required/>
+
+                    </div>
+                    <div class='col-lg-1 col-md-1 col-sm-1 col-xs-1 form-group'>
+                        <i class="fa fa-trash class_trash" aria-hidden="true" (click)="clear_search()"></i>
+                    </div>
+                </div>
+                <div class="col-sm-6" *ngFor="let opttext of formdata; let i=index;">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class='col-md-12 col-sm-21 col-xs-12'>
+                                <!-- <div class="col-md-2" style="padding: 10PX; "><span class="badge" style="background-color: steelblue;
+                                    color: white;">{{i}}</span></div> -->
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <p class="over_data"><strong>Form Name:</strong> &nbsp;&nbsp;{{opttext.name}}</p>
+                                    <p class="over_data"><strong>Department Name:</strong> &nbsp;&nbsp;{{opttext.dept_name}}</p>
+                                    <p class="over_data" *ngIf="opttext.doctor_name"><strong>Doctor Name:</strong> &nbsp;&nbsp;{{opttext.doctor_name}}</p>
+                                    <p class="over_data" *ngIf="opttext.sub_menu_id=='2'"><strong>History Form</strong> &nbsp;&nbsp;</p>
+                                    <p class="over_data" *ngIf="opttext.sub_menu_id=='1'"><strong>Examination Form</strong> &nbsp;&nbsp;</p>
+                                    <p class="over_data"><strong>Created By:</strong> &nbsp;&nbsp;{{opttext.CB}}</p>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                    <!-- data-toggle="tooltip" data-placement="top" title="View Form!" -->
+                                    <i class="fa fa-file-text" aria-hidden="true" (click)='viewforms(opttext.form_id)' style="font-size: 18px;cursor:pointer;padding: 10PX; color: steelblue;"></i>
+                                    <br>
+                                    <i class="fa fa-pencil-square-o" style="font-size: 18px;padding: 10PX; color: steelblue; cursor:pointer;" aria-hidden="true" (click)='editforms(opttext.form_id)'></i>
+                                    <br>
+                                    <i class="fa fa-clone" style="font-size: 18px;padding: 10PX; color: steelblue; cursor:pointer;" aria-hidden="true" (click)='cloneforms(opttext)'></i>
+                                    <br>
+                                    <i class="fa fa-trash" style="font-size: 18px;padding: 10PX; color: steelblue; cursor:pointer;" aria-hidden="true" (click)='deleteforms(opttext.form_id,opttext.name)'></i>
+                                    <br>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-md-6 col-sm-6 col-xs-6"><strong>Doctor Sequence Number:</strong>&nbsp;&nbsp;
+                                    <mat-form-field style='    width: 40px;'>
+                                        <input type="number" matInput [(ngModel)]="opttext.doc_seq_no" (ngModelChange)="change_seqno(opttext)">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-6"><strong>Department Sequence Number:</strong>&nbsp;&nbsp;
+                                    <mat-form-field style='    width: 40px;'>
+                                        <input type="number" matInput [(ngModel)]="opttext.dep_seq_no" (ngModelChange)="change_seqno(opttext)">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

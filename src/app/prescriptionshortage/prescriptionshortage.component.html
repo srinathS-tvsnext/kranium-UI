@@ -1,0 +1,28 @@
+<div class="">
+    <div class="">
+        <p style='font-weight:600;'>
+            <span style="color:red;"> (Out Of Stock) </span><span class='pull-right' style='cursor:pointer;' (click)="medicineshortagepopupclose()">X</span></p>
+        <!-- <p class=''>Compossition paracetamol</p> -->
+    </div>
+    <mat-dialog-content>
+        <div class="">
+            <p class='' style='font-weight:600;'>Substitutes</p>
+            <div class="" *ngFor="let new_data of medicine_kranium; let i=index;">
+                <p class=''>({{new_data.quantity}}) {{new_data.genericname}} | <span style='font-weight:600;'>{{new_data.itemname}}</span>&nbsp; &nbsp; &nbsp;
+                    <mat-checkbox color='primary' class="pull-right" [(ngModel)]="new_data.checkbox" (click)="changesubstitutes(new_data)"></mat-checkbox>
+                </p>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <button type="button" class="btn btn-steelblue pull-right" (click)="medicineshortage_push(medicine_kranium)">APPLY</button>
+
+    <button type="button" class="btn btn-red pull-right" (click)="medicineshortagepopupclose()">Cancel</button>
+
+</div>
+<!-- <div *ngIf="validation==0">
+    <div class="">
+        <p style='font-weight:600;'>
+            <span class='pull-right' style='cursor:pointer;' (click)="medicineshortagepopupclose()">X</span></p>
+        <p class=''>No Similar Medicines Found</p>
+    </div>
+</div> -->

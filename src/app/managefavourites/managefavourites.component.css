@@ -1,0 +1,470 @@
+/***
+Bootstrap Line Tabs by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+***/
+
+.paddingbtm {
+    padding-bottom: 70px;
+}
+
+.paddinglft {
+    padding-left: 30px;
+}
+
+
+/* Tabs panel */
+
+.tabbable-panel {
+    border: 1px solid #eee;
+    padding: 10px;
+}
+
+
+/* Default mode */
+
+.tabbable-line>.nav-tabs {
+    border: none;
+    margin: 0px;
+}
+
+.tabbable-line>.nav-tabs>li {
+    margin-right: 2px;
+}
+
+.tabbable-line>.nav-tabs>li>a {
+    border: 0;
+    margin-right: 0;
+    color: #737373;
+}
+
+.tabbable-line>.nav-tabs>li>a>i {
+    color: #a6a6a6;
+}
+
+.tabbable-line>.nav-tabs>li.open,
+.tabbable-line>.nav-tabs>li:hover {
+    /* border-bottom: 4px solid #fbcdcf; */
+}
+
+.tabbable-line>.nav-tabs>li.open>a,
+.tabbable-line>.nav-tabs>li:hover>a {
+    border: 0;
+    background: none !important;
+    color: #333333;
+}
+
+.tabbable-line>.nav-tabs>li.open>a>i,
+.tabbable-line>.nav-tabs>li:hover>a>i {
+    color: #a6a6a6;
+}
+
+.tabbable-line>.nav-tabs>li.open .dropdown-menu,
+.tabbable-line>.nav-tabs>li:hover .dropdown-menu {
+    margin-top: 0px;
+}
+
+.tabbable-line>.nav-tabs>li.active {
+    /* border-bottom: 4px solid grey; */
+    position: relative;
+}
+
+.tabbable-line>.nav-tabs>li.active>a {
+    border: 0;
+    color: #333333;
+}
+
+.tabbable-line>.nav-tabs>li.active>a>i {
+    color: #404040;
+}
+
+.tabbable-line>.tab-content {
+    margin-top: -3px;
+    background-color: #fff;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.portlet .tabbable-line>.tab-content {
+    padding-bottom: 0;
+}
+
+
+/* Below tabs mode */
+
+.tabbable-line.tabs-below>.nav-tabs>li {
+    border-top: 4px solid transparent;
+}
+
+.tabbable-line.tabs-below>.nav-tabs>li>a {
+    margin-top: 0;
+}
+
+.tabbable-line.tabs-below>.nav-tabs>li:hover {
+    border-bottom: 0;
+    border-top: 4px solid #fbcdcf;
+}
+
+.tabbable-line.tabs-below>.nav-tabs>li.active {
+    margin-bottom: -2px;
+    border-bottom: 0;
+    border-top: 4px solid grey;
+}
+
+.tabbable-line.tabs-below>.tab-content {
+    margin-top: -10px;
+    border-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.nav-tabs {
+    background-color: steelblue !important;
+}
+
+.outerdiv {
+    border: 1px solid grey;
+    padding: 10px;
+}
+
+.carddiv {
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.contentleft {
+    float: left;
+    height: 100px;
+    padding: 10px;
+}
+
+.contentrgt {
+    float: right;
+    height: 100px;
+    padding: 10px;
+}
+
+.contentleft1 {
+    height: 25px;
+}
+
+.contentleft1 label {
+    color: grey;
+}
+
+.contentleft2 {
+    height: 75px;
+}
+
+.contentleft2 {
+    color: black;
+}
+
+.footerdiv {
+    height: 150px;
+    padding: 25px;
+    margin-bottom: 10px
+}
+
+.headercolor {
+    color: steelblue;
+}
+
+.borderless td,
+.borderless th {
+    border: none;
+}
+
+.tableheadercolor {
+    background-color: white;
+    color: steelblue;
+}
+
+.tableheadercolor th {
+    font-weight: 600;
+}
+
+
+/* TOP HEADR */
+
+.btn-white {
+    background-color: white;
+    color: grey;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 14px 22px 12px 14px;
+    border: 1px solid lightgrey;
+}
+
+.btn-white:hover {
+    color: steelblue;
+}
+
+.headtext {
+    color: black;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tabtext {
+    color: steelblue;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-steelblue {
+    background-color: transparent;
+    color: steelblue;
+    padding: 10px;
+    font-size: 9px;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover {
+    background-color: steelblue;
+    color: white;
+}
+
+.paddingselect {
+    padding-right: 30px;
+}
+
+.textalign {
+    padding: 18px;
+    color: steelblue;
+    font-weight: 600;
+}
+
+.btn-white {
+    border-radius: 50px;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid lightgray;
+    cursor: default;
+    font-size: 10px;
+}
+
+.badgewhite {
+    background-color: white;
+    color: steelblue;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.badgewhite:hover {
+    background-color: lightgray;
+    color: white;
+    cursor: pointer;
+}
+
+.header {
+    font-weight: 600;
+}
+
+.divalignment {
+    padding: 10px;
+}
+
+.headercolor {
+    color: steelblue;
+    font-weight: 700;
+    padding: 10px;
+}
+
+.checkboxtext {
+    padding: 10px;
+    color: black;
+    font-weight: 400;
+}
+
+.paddingrgt {
+    padding-right: 15px;
+}
+
+
+/* .active {
+  border: 1px solid steelblue;
+  color:steelblue;
+} */
+
+.padd {
+    padding-right: 25px;
+}
+
+.btntrnsform {
+    text-transform: capitalize;
+    font-size: 11px;
+}
+
+.gobalsearch {
+    width: 375px !important;
+    left: 50px !important;
+    /*width: 100 !important;*/
+}
+
+.searchbuttondropdown {
+    width: 400px;
+    top: 16px;
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-bottom-color: steelblue;
+}
+
+.searchinputbutton {
+    background-color: transparent;
+    border: none;
+    color: black;
+    top: 3px;
+}
+
+.nopadding {
+    padding-bottom: 0px;
+    padding-top: 2px !important;
+    background-color: #bbbbbb;
+}
+
+div-sep {
+    border: 1px solid grey;
+}
+
+.padding-left-list {
+    padding-left: 35px;
+}
+
+.search-acc-list {
+    padding-top: 7px;
+    padding-left: 10px;
+    padding-right: 0px;
+    color: #35322e;
+    font-size: 13px;
+    width: 100% !important;
+}
+
+.search-acc-list:hover {
+    background-color: rgba(232, 236, 238, 0.52);
+}
+
+.search-acc-list p:last-child {
+    font-size: 12px;
+    color: gray;
+    margin-bottom: -6px;
+}
+
+.search-acc-list p:first-child {
+    font-size: 13px;
+    margin-bottom: 0px;
+    color: black;
+}
+
+.gobal-loader {
+    /*     background-image: url("ring.svg");
+     background-repeat: no-repeat;*/
+    position: relative;
+    padding-left: 329px;
+    top: -33px;
+}
+
+.gobal-highlight {
+    background-color: rgb(245, 143, 32);
+    color: #fff !important;
+    display: inline;
+}
+
+.search-header {
+    color: #24727B;
+    font-size: 11px;
+    padding-left: 8px;
+    padding-bottom: 3px;
+    padding-top: 13px;
+    background-color: #dddddd;
+}
+
+.search-acc-list-ul {
+    margin-left: 13px;
+    margin-right: 19px;
+    max-height: 300px !important;
+    overflow-y: auto;
+    width: 100% !important
+}
+
+.search-acc-list-ul .border-list {
+    border-bottom: 1px solid #e4eaec;
+    padding-bottom: 8px;
+}
+
+.searchinputboxes {
+    background-color: transparent!important;
+    border-top: none!important;
+    border-right: none!important;
+    border-bottom-color: lightslategray!important;
+    border-left: none!important;
+    color: #2e2c2c!important;
+}
+
+.searchmodalcustom {
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    /* top: 75px; */
+    /* left: 215px; */
+    /*height: auto;*/
+    /* width: 500px; */
+    padding: 10px 0px 20px 0px;
+    box-shadow: -2px 2px 9px grey;
+    height: 200px;
+    overflow: scroll;
+}
+
+.searchcontentalign {
+    margin-left: 30px;
+}
+
+.searclosebuttton {
+    z-index: 21;
+    position: absolute;
+    /* background-color: white; */
+    top: 75px;
+    left: 659px;
+    /* height: auto; */
+    /* width: 500px; */
+    padding: 10px 0px 20px 0px;
+    cursor: pointer;
+}
+
+.wordsize{
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    max-width:500px;
+    display:inline-block;
+}
+
+.badge{
+    margin-top: -5px;
+}
+
+.myboxsize{
+    height:160px !important;
+}
+
+.msdiv{
+    display:none;
+}
+.msicondiv{
+    padding-top: 14px;
+}
+
+@media (max-width: 768px) {
+
+    .msicondiv{
+        display:none;
+    }
+    .msdiv{
+        padding-top: 10px;
+        display: block;
+        float: right;
+    }
+    
+}

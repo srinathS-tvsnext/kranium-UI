@@ -1,0 +1,17 @@
+.borderless td, .borderless th {
+    border: none;
+}
+
+.tableheadercolor{
+    background-color:lightblue;
+    font-weight:500;
+}
+
+
+.textheader{
+color:steelblue;
+font-weight:600;    
+}
+.material-icons{
+    cursor: pointer;
+}

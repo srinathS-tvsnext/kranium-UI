@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <p class="headercolor">Add Config
+          <button type="button" class="btn pull-right" style="background:steelblue;font-size:10px;" routerLink='/Homescreen/Master/Masterconfig'>Back</button> 
+        </p>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class='col-md-6 form-group'>
+            <mat-form-field>
+          <mat-select placeholder='Select Location' class="size" [(ngModel)]="config.location">
+            <mat-option *ngFor="let loc of Locations" [value]="loc.viewValue">
+              {{ loc.viewValue }}
+            </mat-option>
+          </mat-select>
+          </mat-form-field>
+        </div>
+        <div class='col-md-6 form-group'>
+          <mat-form-field class="size movepadd">
+            <input matInput placeholder="Insert IP" [(ngModel)]="config.insert_ip">
+          </mat-form-field>
+        </div>
+        <div class='col-md-6 form-group'>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Get IP" [(ngModel)]="config.get_ip">
+          </mat-form-field>
+        </div>
+        <div class='col-md-6 form-group'>
+            <button type="button" class="btn btn-steelblue pull-right" (click)="save_config(config)" >Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

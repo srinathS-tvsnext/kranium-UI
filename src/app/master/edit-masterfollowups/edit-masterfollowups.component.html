@@ -1,0 +1,39 @@
+<div class="col-md-12">
+  <div class="col-md-12"><strong class="headerclr">Update Vitals Units</strong></div>
+  <div class="col-md-12" style="padding:5px;">&nbsp;</div>
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <mat-form-field style="width:100%;">
+        <input matInput placeholder="Department Name" [(ngModel)]="editdata.department" [disabled]="disabled_depart">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field style="width:100%;">
+        <input matInput placeholder="Doctor Name" [(ngModel)]="editdata.doctor" [disabled]="disabled_doctor">
+      </mat-form-field>
+    </div>
+    <div class="col-md-12">&nbsp;</div>
+    <!-- <div class="col-md-6">
+      < mat-form-field style="width:100%;">
+        <input matInput placeholder="Doctor Mobile No." [(ngModel)]="editdata.doctor_mob" [disabled]="disabledtype">
+      </mat-form-field>
+    </div> -->
+    <div class="col-md-6">
+      <mat-form-field style="width:100%;">
+        <input matInput placeholder="Assistant Name" [(ngModel)]="editdata.asst_name">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field style="width:100%;">
+        <input matInput placeholder="Assistant Mobile No" [formControl]="mobileFormControl" [(ngModel)]="editdata.asst_mob">
+        <mat-error *ngIf="mobileFormControl.hasError('required')">
+          Mobile No. is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-12">
+        <button type="button" class="btn btn-steelblue pull-right" (click)="cancel()">Cancel</button>
+      <button type="button" class="btn btn-steelblue pull-right" (click)="update_followups(editdata)">Update</button>
+    </div>
+  </div>
+</div>

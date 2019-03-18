@@ -1,0 +1,71 @@
+<!-- <div class="main-content">
+  <div class="col-md-12"> -->
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <p class="headercolor pull-left">Create Roles
+          </p>
+          <p class="pull-right">
+            <button type="button" class="btn btn-steelblue pull-right" style="z-index:1;font-size:10px;margin-right:10px;" routerLink='/Homescreen/Master/Manageroles'>Back</button>
+          </p>
+          <div class="col-md-12">
+            <div style="padding:15px;" class="col-md-6">
+              <mat-form-field style="width:100%;">
+                <input matInput placeholder="Create Roles" [(ngModel)]="data.crole">
+              </mat-form-field>
+            </div>
+            <div class='col-md-6 form-group'>
+              <span class='addicon'>
+                <!-- <i class="fa fa-plus-square" aria-hidden="true" (click)="createrole(data)"></i> -->
+                <button type="button" class="btn btn-steelblue hdn-btn" style="margin-top:-12px;" (click)="createrole(data)">save</button> 
+              </span>
+              <span class='msbtn'>
+                <button type="button" class="btn btn-steelblue" (click)="createrole(data)">save</button>   
+              </span>
+            </div>
+          </div>
+          <!-- <div class="col-md-12">
+          <span *ngFor="let crole of get_croles">
+            <button type="button" class="btn btn-white">
+              <span class="hidden-xs">{{crole.roles_name}}</span>
+          <span class="badge badgewhite">X</span>
+          </button>
+          </span>
+        </div> -->
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p class="headercolor pull-left">List of Roles</p>
+            <div class="row mytable">
+              <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                <table class="table table-striped table-bordered text-center" cellspacing="0" width="100%">
+                  <thead class="tbheader">
+                    <tr>
+                      <th><strong>SN</strong></th>
+                      <th><strong>Roles Name</strong></th>
+                      <th><strong>Action</strong></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let croles of get_croles;let i = index;">
+                      <td>{{i+1}}</td>
+                      <td>{{croles.roles_name}}</td>
+                      <td>
+                        <span>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="cursor:pointer;" (click)='edit_row(croles)'></i>
+                                <i class="fa fa-trash" aria-hidden="true" style="cursor:pointer;" (click)="deleterole(croles,croles.roles_name)"></i>
+                              </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <!-- </div>
+  </div> -->

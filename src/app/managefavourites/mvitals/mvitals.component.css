@@ -1,0 +1,15 @@
+.borderless td, .borderless th {
+    border: none;
+}
+
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}

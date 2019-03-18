@@ -1,0 +1,68 @@
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}
+.headercolor{
+    color:steelblue;
+    font-weight: 700;
+    padding:10px;
+}
+.addicon{
+    padding-left:40px;
+    font-size:25px;
+    color: steelblue;
+}
+
+.btn-white{
+    border-radius: 50px;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid lightgray;
+    cursor: default;
+    font-size: 10px;
+}
+.btn-white:hover{
+    background-color: white;
+    color:steelblue;
+}
+.badgewhite{
+    background-color: white;
+    color:steelblue;
+    cursor: pointer;
+    font-size:10px;
+    position: relative;
+    left: 18px;
+}
+.badgewhite:hover{
+    background-color: lightgray;
+    color:white;
+    cursor: pointer;
+}
+
+.tbheader{
+    color:steelblue;
+}
+.tbheader th{
+    text-align: center;
+}
+.mytable{
+    padding-top: 30px;
+}
+
+.msbtn{
+    display:none;
+}
+
+@media (max-width: 768px) {
+
+    .fa-plus-square{ display:none; }
+    .hdn-btn{display:none}
+    .msbtn{ display: block; float: right; margin-top: -18px; }
+    
+}

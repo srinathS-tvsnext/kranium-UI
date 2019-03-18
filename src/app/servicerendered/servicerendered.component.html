@@ -1,0 +1,323 @@
+<!-- <div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="panel panel-default">
+                                            <div class="">
+                                                <p class="pull-right">
+                                                    <mat-form-field>
+                                                        <input matInput [matDatepicker]="pickerlist" [(ngModel)]="date">
+                                                        <mat-datepicker-toggle mdSuffix [for]="pickerlist"></mat-datepicker-toggle>
+                                                        <mat-datepicker #pickerlist></mat-datepicker>
+                                                    </mat-form-field>
+                                                </p>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="">
+                                                    <div class="col-md-12">
+                                                        <p class="textheader"> </p>
+                                                        <div class="table-responsive">
+                                                            <table class="table table borderless">
+                                                                <thead class="headercolor" style='background-color:aliceblue;'>
+                                                                    <tr>
+                                                                        <th rowspan="2" style='font-weight: 600;'>Patient Name</th>
+                                                                        <th rowspan="2" style='font-weight: 600;'>UHID No.</th>
+                                                                        <th rowspan="2" style='font-weight: 600;'>Encounter No.</th>
+                                                                        <th style='padding-left:65px;font-weight: 600;' colspan="3" scope="colgroup">Prescription</th>
+                                                                        <th style='padding-left:70px;;font-weight: 600;' colspan="3" scope="colgroup">Services</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="col" style='font-weight: 600;color:grey;'>Raised</th>
+                                                                        <th scope="col" style='font-weight: 600;color:grey;'>Billed</th>
+                                                                        <th scope="col" style='font-weight: 600;color:grey;'>Partially Billed</th>
+                                                                        <th scope="col" style='font-weight: 600;color:grey;'>Raised</th>
+                                                                        <th scope="col" style='font-weight: 600;color:grey;'>Billed</th>
+                                                                        <th scope="col" style='font-weight: 600;color:grey;'>Partially Billed</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr style="background-color: lightblue;">
+                                                                        <td>Mr. P.Amit Kumar</td>
+                                                                        <td>1020001844</td>
+                                                                        <td>201801234000</td>
+                                                                        <td><i class="material-icons">done</i></td>
+                                                                        <td><i class="material-icons closered">close</i></td>
+                                                                        <td><i class="material-icons">done</i></td>
+                                                                        <td><i class="material-icons">done</i></td>
+                                                                        <td><i class="material-icons closered">close</i></td>
+                                                                        <td><i class="material-icons">done</i></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Mr. J.Ganga</td>
+                                                                        <td>200000229</td>
+                                                                        <td>201801234001</td>
+                                                                        <td><i class="material-icons">done</i></td>
+                                                                        <td><i class="material-icons closered">close</i></td>
+                                                                        <td><i class="material-icons">done</i></td>
+                                                                        <td><i class="material-icons ">done</i></td>
+                                                                        <td><i class="material-icons closered">close</i></td>
+                                                                        <td><i class="material-icons">done</i></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <p class="textheader">Prescription - J.Ganga</p>
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table borderless">
+                                                            <thead class="headercolor">
+                                                                <tr>
+                                                                    <th style='font-weight: 600;'>&nbsp;</th>
+                                                                    <th style='font-weight: 600;'>Medication name</th>
+                                                                    <th style='font-weight: 600;'>Preparation</th>
+                                                                    <th style='font-weight: 600;'>Route</th>
+                                                                    <th style='font-weight: 600;'>Duration</th>
+                                                                    <th style='font-weight: 600;'>Raised</th>
+                                                                    <th style='font-weight: 600;'>Billed</th>
+                                                                    <th style='font-weight: 600;'>Partially Billed</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>&nbsp; </td>
+                                                                    <td>Dolo 650mg</td>
+                                                                    <td>Tablet</td>
+                                                                    <td>oral</td>
+                                                                    <td>5 days</td>
+                                                                    <td><i class="material-icons">done</i></td>
+                                                                    <td><i class="material-icons closered">close</i></td>
+                                                                    <td><i class="material-icons">done</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>&nbsp; </td>
+                                                                    <td>Crocine 10mg</td>
+                                                                    <td>Tablet</td>
+                                                                    <td>oral</td>
+                                                                    <td>7 Days</td>
+                                                                    <td><i class="material-icons">done</i></td>
+                                                                    <td><i class="material-icons closered">close</i></td>
+                                                                    <td><i class="material-icons">done</i></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <p class="textheader">Services - J.Ganga</p>
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <div class="table-responsive">
+                                                        <p style='padding-left: 10px;font-weight: 600;'>BIO CHEMISTRY</p>
+                                                        <table class="table table borderless">
+                                                            <thead class="headercolor">
+                                                                <tr>
+                                                                    <th>&nbsp;</th>
+                                                                    <th style='font-weight: 600;'>Test Name</th>
+                                                                    <th style='font-weight: 600;'>Raised</th>
+                                                                    <th style='font-weight: 600;'>Billed</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>&nbsp; </td>
+                                                                    <td>Fever</td>
+                                                                    <td><i class="material-icons closered">close</i></td>
+                                                                    <td><i class="material-icons">done</i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>&nbsp; </td>
+                                                                    <td>Cold</td>
+                                                                    <td><i class="material-icons closered">close</i></td>
+                                                                    <td><i class="material-icons">done</i></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                                        <div class="panel panel-default">
+                                            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                                                <p class="pull-right">
+                                                    <mat-form-field class="rightSpace">
+                                                        <input matInput [matDatepicker]="pickerlist" [(ngModel)]="date" (ngModelChange)="f(date)">
+                                                        <mat-datepicker-toggle matSuffix [for]="pickerlist"></mat-datepicker-toggle>
+                                                        <mat-datepicker #pickerlist></mat-datepicker>
+                                                    </mat-form-field>
+                                                    <span [hidden]="hidden_doc">
+                                                    <mat-form-field>
+                                                    <mat-select placeholder="Select Doctor Name" [(ngModel)]="doctor" (change)="changedoctor_servicerenderd(doctor,date)">
+                                                        <mat-option *ngFor="let doctor of DoctorsName" [value]="doctor">
+                                                            {{ doctor.name }}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                    </mat-form-field>
+                                                    </span>
+                                                </p>
+                                                
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="">
+                                                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                                                        <p class="textheader"> </p>
+                                                        <div class="table-responsive">
+                                                            <table class="table table borderless">
+                                                                <thead class="headercolor" style='background-color:aliceblue;'>
+                                                                    <tr>
+                                                                        <th rowspan="2" style='font-weight: 600;'>Patient Name</th>
+                                                                        <th rowspan="2" style='font-weight: 600;'>UHID No.</th>
+                                                                        <th rowspan="2" style='font-weight: 600;'>Encounter No.</th>
+                                                                        <th style='padding-left:65px;font-weight: 600;' colspan="2" scope="colgroup">Prescription</th>
+                                                                        <th style='padding-left:70px;;font-weight: 600;' colspan="2" scope="colgroup">Services</th>
+                                                                        <th rowspan="2" style='font-weight: 600;'>View</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="col" style='text-align:center;font-weight: 600;color:grey;'>Raised</th>
+                                                                        <th scope="col" style='text-align:center;font-weight: 600;color:grey;'>Billed</th>
+                                                                        <!-- <th scope="col" style='font-weight: 600;color:grey;'>Partially Billed</th> -->
+                                                                        <th scope="col" style='text-align:center;font-weight: 600;color:grey;'>Raised</th>
+                                                                        <th scope="col" style='text-align:center;font-weight: 600;color:grey;'>Billed</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr style="background-color: lightblue;" *ngFor="let data_sev of dropdownList">
+                                                                        <td>{{data_sev.name_first}} {{data_sev.name_last}}</td>
+                                                                        <td>{{data_sev.pid}}</td>
+                                                                        <td>{{data_sev.encounterno}}</td>
+                                                                        <td class="textalign">-</td>
+                                                                        <td class="textalign">-</td>
+                                                                        <!-- <td class="textalign">-</td> -->
+                                                                        <td class="textalign"><i class="material-icons billgreen">done</i></td>
+                                                                        <td class="textalign"><i class="material-icons closered">close</i></td>
+                                                                        <td> <i style="cursor:pointer;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="servicerenderd_detail(data_sev)"></i>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <p class="textheader">Prescription - {{data_service_person.name_first}} {{data_service_person.name_last}}</p>
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table borderless">
+                                                            <thead class="headercolor">
+                                                                <tr>
+                                                                    <th style='font-weight: 600;'>&nbsp;</th>
+                                                                    <th style='font-weight: 600;'>Medication name</th>
+                                                                    <th style='font-weight: 600;'>Preparation</th>
+                                                                    <th style='font-weight: 600;'>Route</th>
+                                                                    <th style='font-weight: 600;'>Duration</th>
+                                                                    <th style='font-weight: 600;'>Raised</th>
+                                                                    <th style='font-weight: 600;'>Billed</th>
+                                                                    <!-- <th style='font-weight: 600;'>Partially Billed</th> -->
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let prescr of dropdownList_services_prescription">
+                                                                    <td>&nbsp; </td>
+                                                                    <td>{{prescr.brand_name}}<br>({{prescr.generic_name}})</td>
+                                                                    <td>Tablet</td>
+                                                                    <td>oral</td>
+                                                                    <td>{{prescr.duration_no}} {{prescr.duration_capt}}</td>
+                                                                    <td><i class="material-icons">done</i></td>
+                                                                    <td><i class="material-icons closered">close</i></td>
+                                                                    <!-- <td><i class="material-icons">done</i></td> -->
+                                                                    <td>-</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <p class="textheader">Services - {{data_service_person.name_first}} {{data_service_person.name_last}}</p>
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <div class="table-responsive">
+                                                        <!-- <p style='padding-left: 10px;font-weight: 600;'>BIO CHEMISTRY</p> -->
+                                                        <table class="table table borderless">
+                                                            <thead class="headercolor">
+                                                                <tr>
+                                                                    <th>&nbsp;</th>
+                                                                    <th style='font-weight: 600;'>Encounter No</th>
+                                                                    <th style='font-weight: 600;'>Department</th>
+                                                                    <th style='font-weight: 600;'>Item code</th>
+                                                                    <th style='font-weight: 600;'>Raised</th>
+                                                                    <th style='font-weight: 600;'>Billed</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!-- <tr *ngFor="let data_serv of dropdownList_services">
+                                                                    <td>&nbsp; </td>
+                                                                    <td>{{data_serv.encounter_nr}}</td>
+                                                                    <td>{{data_serv.DEPT}}</td>
+                                                                    <td>{{data_serv.batch_nr}}</td>
+                                                                    <td><i class="material-icons billgreen">done</i></td>
+                                                                    <td *ngIf="data_serv.bill_status=='Billed'"><i class="material-icons billgreen">done</i></td>
+                                                                    <td *ngIf="data_serv.bill_status==!'Billed'"><i class="material-icons closered">close</i></td>
+                                                                </tr> -->
+                                                                <tr *ngFor="let data_serv of dropdownList_services">
+                                                                    <td>&nbsp; </td>
+                                                                    <td>{{data_serv.encounter_no}}</td>
+                                                                    <td>{{data_serv.deptname}}<br>({{data_serv.item_long_description}})</td>
+                                                                    <td>{{data_serv.item_code}}</td>
+                                                                    <td><i class="material-icons billgreen">done</i></td>
+                                                                    <!-- <td *ngIf="data_serv.bill_status=='Billed'"><i class="material-icons billgreen">done</i></td> -->
+                                                                    <td><i class="material-icons closered">close</i></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

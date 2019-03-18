@@ -1,0 +1,50 @@
+.aligntext{
+    padding-left: 50px;
+}
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+    font-size: 10px;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+    font-size: 10px;
+}
+
+.btn-white{
+    border-radius: 50px;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid lightgray;
+    cursor: default;
+    font-size: 10px;
+}
+.btn-white:hover{
+    background-color: white;
+    color:steelblue;
+}
+.badgewhite{
+    background-color: white;
+    color:steelblue;
+    cursor: pointer;
+    font-size:10px;
+    position: relative;
+    left: 18px;
+}
+.badgewhite:hover{
+    background-color: lightgray;
+    color:white;
+    cursor: pointer;
+}
+.refprint{
+    display:none;
+}
+
+.myboxsize{
+    height:135px !important;
+    overflow: hidden !important;
+}

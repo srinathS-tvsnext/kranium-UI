@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <p class="pull-left headerclr">
+            <strong>Manage Form Title</strong>
+        </p>
+        <p *ngFor="let sub_menu of acess_rights; let i =index;">
+            <span *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Add Form Tittle Master')">
+                <button type="button" class="btn pull-right" style="background:steelblue;font-size:10px;" routerLink='/Homescreen/Master/AddMFTittle'>
+                    <i class="fa fa-plus" style="font-size:12px;" aria-hidden="true"></i> Add Title
+                </button>
+            </span>
+        </p>
+        <div class="row mytable">
+            <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                <table class="table table-striped table-bordered text-center" cellspacing="0" width="100%">
+                    <thead class="tbheader">
+                        <tr>
+                            <th>SL</th>
+                            <th><strong>Title</strong></th>
+                            <th><strong>Action</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tittle of mftittle;let i = index;">
+                            <td>{{i+1}}</td>
+                            <td>{{tittle.history_main_form_name}}</td>
+                            <td>
+                                <i class="fa fa-ban disable-green" aria-hidden="true" style="cursor:pointer;" *ngIf="tittle.Active =='1'" (click)="disable_tittle(tittle)"></i>
+                                <i class="fa fa-ban disable-red" aria-hidden="true" style="cursor:pointer;" *ngIf="tittle.Active =='0'" (click)="enable_tittle(tittle)"></i>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="cursor:pointer;" (click)="edit_row(tittle)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <i class="fa fa-ban disable-green" aria-hidden="true"></i> &nbsp;<span>Enable</span>
+            </div>
+            <div class="col-md-12">
+                <i class="fa fa-ban disable-red" aria-hidden="true"></i> &nbsp;<span>Disable</span>
+            </div>
+        </div>
+    </div>
+</div>

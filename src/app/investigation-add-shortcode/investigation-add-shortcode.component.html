@@ -1,0 +1,66 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <p class="headercolor">Add Short Code
+                    <button type="button" class="btn pull-right" style="background:steelblue;font-size:10px;" routerLink='/Homescreen/Master/Shortcode'>Back</button>
+                </p>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- <div class='col-md-6 form-group'>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Full Name" value="" [(ngModel)]="code.fullname">
+          </mat-form-field>
+        </div> 
+        <div class='col-md-6 form-group'>
+          <mat-form-field style="width:100%;">
+            <input matInput placeholder="Short Code" value="" [(ngModel)]="code.shortcode">
+          </mat-form-field>
+        </div>
+        <div class='col-md-12 form-group'>
+          <button type="button" class="btn btn-steelblue pull-right" (click)="add_shortcode(code)">Save</button>
+        </div> -->
+                <div class='col-md-12 form-group'>
+                    <mat-form-field style='width:50%;'>
+                        <input matInput list="brows" name="brows" placeholder="Search Investigation Item" [(ngModel)]="Investigation_menu" (ngModelChange)="get_medicine_kranium_list_gen(Investigation_menu)">
+                    </mat-form-field>
+                    <span [hidden]="hiddengif">
+                    <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />                                        
+                </span>
+                    <datalist id="brows">
+            <option *ngFor="let state of investigation_kranium_list" value="{{state.investigation_kranium_list}}">
+          </datalist>
+                    <span>
+                        <!-- <i class="fa fa-ban myfasize" aria-hidden="true" (click)="cleardata()"></i> -->
+                        <img src="../../assets/img/clearicon.png" style="cursor:pointer;" (click)="cleardata()">
+                    </span>
+                    <div [hidden]="hidden">
+                        <div class="col-md-12" id="mysearchbox" style="height: 300px;overflow: auto;">
+                            <div class="col-md-4" *ngFor="let sub_view_menu of Investigation_category; let i =index;">
+                                <div class="checkboxtext" style="text-overflow: ellipsis; overflow: hidden;">
+                                    <mat-checkbox color='primary' [(ngModel)]="sub_view_menu.checkbox" (ngModelChange)="create_category_list(sub_view_menu)">{{sub_view_menu.item_long_description}}</mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="">
+            <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group" *ngFor="let category_temperary of categorylist_array">
+                        <button type="button" class="btn btn-white" *ngIf="category_temperary.checkbox">
+                        <span class="hidden-xs">{{category_temperary.item_long_description}}</span>
+            <span class="badge badgewhite" (click)="remove_temp(category_temperary)">X</span>
+            </button>
+            </span>
+          </div> -->
+                </div>
+                <div class='col-md-12 form-group'>
+                    <mat-form-field style="width:50%;">
+                        <input matInput placeholder="Short Code" value="" [(ngModel)]="code.shortcode">
+                    </mat-form-field>
+                </div>
+                <div class='col-md-12 form-group'>
+                    <button type="button" class="btn btn-steelblue pull-right" (click)="add_shortcode(categorylist_array,code)">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

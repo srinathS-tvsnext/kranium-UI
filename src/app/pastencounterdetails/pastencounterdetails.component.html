@@ -1,0 +1,662 @@
+<div class="row">
+  <div class="col-md-12">
+    <p class="bolder">Past Encounters</p>
+    <!-- <div class="" *ngFor="let opo_temp of template"> -->
+    <div class="panel panel-default" style="padding:10px;">
+      <div class="panel-body">
+        <div class="" *ngFor="let patient_profile of patientdata_details">
+          <div class="col-md-6">
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>First Name</div>
+              <div class='col-md-5 contentclr'>{{patient_profile.First_name||'-'}}</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Last Name</div>
+              <div class='col-md-5 contentclr'>-</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Occupation</div>
+              <div class='col-md-5 contentclr'>-</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Qualification</div>
+              <div class='col-md-5 contentclr'>-</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Age</div>
+              <div class='col-md-5 contentclr'>{{patient_profile.age||'-'}}</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Date Of Birth</div>
+              <div class='col-md-5 contentclr'>{{patient_profile.DOB||'-'}}</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Blood Group</div>
+              <div class='col-md-5 contentclr'>{{patient_profile.Bloodgroup||'-'}}</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Religion</div>
+              <div class='col-md-5 contentclr'>-</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Nationality</div>
+              <div class='col-md-5 contentclr'>-</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Address</div>
+              <div class='col-md-5 contentclr'>{{patient_profile.Address||'-'}}</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Town/City</div>
+              <div class='col-md-5 contentclr'>-</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>District</div>
+              <div class='col-md-5 contentclr'>-</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>State</div>
+              <div class='col-md-5 contentclr'>-</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Country</div>
+              <div class='col-md-5 contentclr'>-</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Mobile No.</div>
+              <div class='col-md-5 contentclr'>{{patient_profile.Phone||'-'}}</div>
+            </div>
+            <div class="col-md-12">
+              <div class='col-md-5 headingclr'>Email Id</div>
+              <div class='col-md-5 contentclr'>{{patient_profile.Email||'-'}}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <p class="bolder">Vitals</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table borderless" style='text-align: center'>
+              <thead class="headercolor">
+                <tr>
+                  <th style='text-align: center'>&nbsp;</th>
+                  <th style='text-align: center'>Types</th>
+                  <th style='text-align: center'>Units</th>
+                  <!-- <th style='text-align: center'>&nbsp;</th> -->
+                </tr>
+              </thead>
+              <tbody *ngFor="let value of vitals_data.Formvalue">
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>Height</td>
+                  <td>{{value.height||"-"}} {{value.height_id}}</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>Weight</td>
+                  <td>{{value.weight||"-"}} {{value.weight_id}}</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>Temperature</td>
+                  <td>{{value.temperature||"-"}} {{value.temperature_id}}</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>Pulse</td>
+                  <td>{{value.pulse||"-"}} {{value.pulse_id}}</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>Respiratory Rate</td>
+                  <td>{{value.respiratory||"-"}} </td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>BP</td>
+                  <td>{{value.bp_systolic||"-"}} / {{value.bp_diastolic||"-"}} {{value.bp_systolic_id}} / {{value.bp_diastolic_id}}</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>BMI</td>
+                  <td>{{value.bmi||"-"}}</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>BSA</td>
+                  <td>{{value.bsa||"-"}}</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="panel panel-default">
+        <div class="panel-body">
+          <div class='col-md-12'>
+            <p style="font-weight:600">Preferred Language :
+              <span style="color:steelblue">English</span>
+            </p>
+          </div>
+        </div>
+      </div> -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class="bolder">Pain Assessment</p>
+          <div class='col-md-12'>
+            <div class='col-md-2' *ngFor="let pain of vitals_data.Formvalue">
+              <img src="../../assets/img/{{pain.pain_assesment}}" class='imgsize' />
+              <div class='textsiz'>{{pain.pain_assesment_hurt}}</div>
+              <div class='painrate'>{{pain.pain_assesment_painrate}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class="bolder">NOTES:</p>
+          <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.notes||"-"}} </p>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class='bolder'>Allergy</p>
+          <table class="table table borderless" style="text-align:center;">
+            <thead class="headercolor">
+              <tr>
+                <th style='text-align: center'>Allergy Type</th>
+                <th style='text-align: center'>Allergy 2</th>
+                <th style='text-align: center'>Severity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let notes of vitals_data.allergy">
+                <td>{{notes.allergy_type1||"-"}}</td>
+                <td>{{notes.allergy_type2||"-"}}</td>
+                <td>{{notes.allergy_severity||"-"}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class='bolder'>Active Medication</p>
+          <div class="table-responsive">
+            <table class="table table borderless" style="text-align:center;">
+              <thead class="headercolor">
+                <tr>
+                  <th style='text-align: center'>Brand Name</th>
+                  <th style='text-align: center'>Frequency</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let medi of vitals_data.medication">
+                  <td>{{medi.activemedication_brandname||"-"}}
+                    <br>({{medi.activemedication_genericname||"-"}})</td>
+                  <td>{{medi.activemedication_frequency||"-"}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <p class='bolder'>History</p>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span *ngFor="let history of history_qa">
+            <p>
+              <strong>{{history.question}}</strong>
+            </p>
+            <p>{{history.answer}}</p>
+          </span>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div>
+            <p>
+              <strong>Chief Complaints</strong>
+            </p>
+            <div class="">
+              <span *ngFor="let complaints of history_patient_chief_complaints">
+                <button type="button" class="btn btn-white">
+                  <span class="hidden-xs">{{complaints.chief_complaints}}</span>
+                </button>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- </div> -->
+      <!-- <div class="panel panel-default">
+        <div class="panel-body">
+          <div>
+            <p>
+              <strong>History of Present illness</strong>
+            </p>
+            <button type="button" class="btn btn-white">Fever 4 days <span class="hidden-xs">Appointments</span> <span class="badge badgewhite">X</span></button>
+            <button type="button" class="btn btn-white">cold 4 days <span class="hidden-xs">Appointments</span> <span class="badge badgewhite">X</span></button>
+            <button type="button" class="btn btn-white">cough 3 days <span class="hidden-xs">Appointments</span> <span class="badge badgewhite">X</span></button>
+            <button type="button" class="btn btn-white">Typhoid <span class="hidden-xs">Appointments</span> <span class="badge badgewhite">X</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div>
+            <p>
+              <strong>Past Medical History</strong>
+            </p>
+            <button type="button" class="btn btn-white">Fever 4 days <span class="hidden-xs">Appointments</span> <span class="badge badgewhite">X</span></button>
+            <button type="button" class="btn btn-white">cold 4 days <span class="hidden-xs">Appointments</span> <span class="badge badgewhite">X</span></button>
+            <button type="button" class="btn btn-white">cough 3 days <span class="hidden-xs">Appointments</span> <span class="badge badgewhite">X</span></button>
+            <button type="button" class="btn btn-white">Typhoid <span class="hidden-xs">Appointments</span> <span class="badge badgewhite">X</span></button>
+          </div>
+        </div>
+      </div> -->
+
+
+      <!-- <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <mat-checkbox color='primary'><strong>Milestones</strong></mat-checkbox>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <mat-checkbox color='primary'><strong>Immunizations</strong></mat-checkbox>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <mat-checkbox color='primary'><strong>Nutrition History</strong></mat-checkbox>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <mat-checkbox color='primary'><strong>Family History</strong></mat-checkbox>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <mat-checkbox color='primary'><strong>Social History</strong></mat-checkbox>
+              </p>
+            </div>
+          </div>
+        </div> -->
+      <p class='bolder'>Examination</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span *ngFor="let examination of examination_qa">
+            <p>
+              <strong>{{examination.question}}</strong>
+            </p>
+            <p>{{examination.answer}}</p>
+          </span>
+        </div>
+      </div>
+      <p class='bolder'>Diagnosis</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div>
+            <p>
+              <strong>Consultation Notes</strong>
+            </p>
+            <div class="">
+              <span *ngFor="let notes of consultation_notes">
+                <button type="button" class="btn btn-white">{{notes.consultation_notes}}</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div>
+            <p>
+              <strong>Procedure</strong>
+            </p>
+            <p>List of Procedure Raised</p>
+            <table class=" table">
+              <tbody>
+                <tr>
+                  <td *ngFor="let prescri_pat of diagno_presc_patioent">
+                    <button type="button" class="btn btn-white">
+                      <span class="hidden-xs">{{prescri_pat.item_long_description}}</span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <p class='bolder'>Investigation</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div>
+            <p>
+              <strong>Current Investigation</strong>
+            </p>
+            <span *ngFor="let description of description_list">
+              <button type="button" class="btn btn-white">
+                <span class="hidden-xs">{{description.deptname}}</span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <p class='bolder'>Prescription</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table borderless" style='text-align: center'>
+              <thead class="tableheadercolor">
+                <tr>
+                  <th style='text-align: center'>&nbsp;</th>
+                  <th style='text-align: center'>Medication Name</th>
+                  <th style='text-align: center'>Preparation</th>
+                  <th style='text-align: center'>Route</th>
+                  <th style='text-align: center'>Frequency</th>
+                  <th style='text-align: center'>Duration</th>
+                  <th style='text-align: center'>Medicine Timing</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prescri of pres_data">
+                  <td>&nbsp; </td>
+                  <td>{{prescri.brand_name}}<br>({{prescri.generic_name}}) </td>
+                  <td> - </td>
+                  <td> - </td>
+                  <td>{{prescri.frequency}}</td>
+                  <td>{{prescri.duration_no}} {{prescri.duration_capt}}</td>
+                  <td> - </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <p class='bolder'>Reports</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <strong>Graphical View</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <strong>Table View</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class='bolder'>Follow-up</p> -->
+<!-- <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <mat-checkbox color='primary'><strong>OP Follow-up</strong></mat-checkbox>
+              </p>
+            </div>
+          </div>
+        </div> -->
+<!-- <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <strong>Recommend IP Admission</strong>
+              </p>
+              <p>Recommend : 25/12/2017</p>
+            </div>
+          </div>
+        </div> -->
+<!-- <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <mat-checkbox color='primary'><strong>Surgery / Procedure</strong></mat-checkbox>
+              </p>
+            </div>
+          </div>
+        </div> -->
+<!-- <div class="panel panel-default">
+          <div class="panel-body">
+            <div>
+              <p>
+                <mat-checkbox color='primary'><strong>Cross Consultation</strong></mat-checkbox>
+              </p>
+            </div>
+          </div>
+        </div> -->
+<!-- <div class="panel panel-default">
+          <div class="panel-body">
+            <p class="bolder">NOTES:</p>
+          </div>
+        </div> -->
+
+<!-- <div class="panel panel-default">
+          <div class="panel-body">
+            <button type="button" class="btn btn-steelblue pull-right">Edit</button>
+          </div>
+        </div> -->
+
+
+
+<!--  old op summary  
+           <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="">
+              <div class="col-md-12">
+                <div class='col-md-3 headingclr'>Patient Name</div>
+                <div class='col-md-4 contentclr'>Mr. Kannnan Rao</div>
+              </div>
+              <div class="col-md-12">
+                <div class='col-md-3 headingclr'>UHID No</div>
+                <div class='col-md-4 contentclr'>123456789</div>
+              </div>
+              <div class="col-md-12">
+                <div class='col-md-3 headingclr'>Father / Husband Name</div>
+                <div class='col-md-4 contentclr'>Mr. Roa </div>
+              </div>
+              <div class="col-md-12">
+                <div class='col-md-3 headingclr'>Address</div>
+                <div class='col-md-4 contentclr'>No.16, Chennai Mainroead,Chennai</div>
+              </div>
+              <div class="col-md-12">
+                <div class='col-md-3 headingclr'>Phone</div>
+                <div class='col-md-4 contentclr'>97152364528</div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <div class="">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class="texthighlightcolor"><strong>Cheif Complaints</strong></p>
+          <button type="button" class="btn btn-white" routerLink='Prescription'>Fever 4 days</button>
+          <button type="button" class="btn btn-white" routerLink='Prescription'>cold 4 days</button>
+          <button type="button" class="btn btn-white" routerLink='Prescription'>cough 3 days</button>
+          <button type="button" class="btn btn-white" routerLink='Prescription'>Typhoid</button>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class="texthighlightcolor"><strong>History of Present illness</strong></p>
+          <button type="button" class="btn btn-white" routerLink='Prescription'>Fever 4 days</button>
+          <button type="button" class="btn btn-white" routerLink='Prescription'>cold 4 days</button>
+          <button type="button" class="btn btn-white" routerLink='Prescription'>cough 3 days</button>
+          <button type="button" class="btn btn-white" routerLink='Prescription'>Typhoid</button>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class="texthighlightcolor">Diagnosis</p>
+          <div class="table-responsive">
+            <table class="table table borderless" style='text-align: center'>
+              <thead class="headercolor">
+                <tr>
+                  <th style='text-align: center;    font-weight: 600;'>&nbsp;</th>
+                  <th style='text-align: center;    font-weight: 600;'>Diagnosis</th>
+                  <th style='text-align: center;    font-weight: 600;'>Diagnosis Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>Font Awesome Web Application Icons</td>
+                  <td>Angular4</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <p class="texthighlightcolor">Prescription</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table borderless" style='text-align: center'>
+              <thead class="headercolor">
+                <tr>
+                  <th style='text-align: center;    font-weight: 600;'>&nbsp;</th>
+                  <th style='text-align: center;    font-weight: 600;'>Medication Name</th>
+                  <th style='text-align: center;    font-weight: 600;'>Preparation</th>
+                  <th style='text-align: center;    font-weight: 600;'>Route</th>
+                  <th style='text-align: center;    font-weight: 600;'>Frequency</th>
+                  <th style='text-align: center;    font-weight: 600;'>Duration</th>
+                  <th style='text-align: center;    font-weight: 600;'>Medicine Timing</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>Crocin Tab</td>
+                  <td>Tablet</td>
+                  <td>oral</td>
+                  <td>1 - 0 - 1</td>
+                  <td>5 days</td>
+                  <td>AF</td>
+                </tr>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>Crocin Tab</td>
+                  <td>Tablet</td>
+                  <td>oral</td>
+                  <td>1 - 0 - 1</td>
+                  <td>5 days</td>
+                  <td>AF</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="" style='padding-left: 50px;'>
+            <p class="" style="font-weight:600;">NOTES:</p>
+            <p class="">The course enables you to master front-end web development with Angular 2. It helps you gain in-depth knowledge of
+              concepts such as TypeScript, Bootstrap Grid System, Dependency Injections, SPA (Single Page Application), Directives,
+              Forms, Pipes, Promises, Observables, and understand the testing of Angular 2 class.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <p class="texthighlightcolor">Reports</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table borderless" style='text-align: center'>
+              <thead class="headercolor">
+                <tr>
+                  <th style='text-align: center;    font-weight: 600;'>&nbsp;</th>
+                  <th style='text-align: center;    font-weight: 600;'>Date</th>
+                  <th style='text-align: center;    font-weight: 600;'>Lab Id</th>
+                  <th style='text-align: center;    font-weight: 600;'>Department Name</th>
+                  <th style='text-align: center;    font-weight: 600;'>Test Name</th>
+                  <th style='text-align: center;    font-weight: 600;'>Values</th>
+                  <th style='text-align: center;    font-weight: 600;'>Units</th>
+                  <th style='text-align: center;    font-weight: 600;'>Normal changes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>22/05/2017</td>
+                  <td>123456789</td>
+                  <td>Bio Chemistry</td>
+                  <td>Thyroid,Simulating </td>
+                  <td>4.65</td>
+                  <td>uUML/HG</td>
+                  <td>4.65</td>
+                </tr>
+                <tr>
+                  <td>&nbsp; </td>
+                  <td>22/05/2017</td>
+                  <td>123456789</td>
+                  <td>Bio Chemistry</td>
+                  <td>Thyroid,Simulating </td>
+                  <td>4.65</td>
+                  <td>uUML/HG</td>
+                  <td>4.65</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <button type="button" class="btn btn-steelblue pull-right" routerLink='Opsummary'>Edit</button>
+      <button type="button" class="btn btn-steelblue pull-right" routerLink='Opsummary'>Save & Preview</button>
+    </div> -->

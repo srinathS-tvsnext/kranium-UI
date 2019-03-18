@@ -1,0 +1,39 @@
+.textalign{
+    padding: 18px;
+    color: steelblue;
+    font-weight: 600;
+}
+
+
+.btn-white{
+    background-color: transparent;
+    color: grey;
+    border: 1px solid lightgray;
+    cursor: default;
+}
+
+.badgewhite{
+    background-color: lightgray;
+    color:white;
+    cursor: pointer;
+}
+
+.header{
+    font-weight: 600;
+}
+
+.divalignment{
+    padding: 10px;
+}
+
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}

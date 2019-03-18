@@ -1,0 +1,61 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                                <div class="" style="display:inline-block;" *ngFor="let sub_menu of acess_rights; let i =index;">
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Vitals Master')"> 
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Mastervitals' routerLinkActive="active">Vitals</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Followup Master')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Masterfollowups' routerLinkActive="active">Follow-up</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Config Master')">                      
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Masterconfig' routerLinkActive="active">Config</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Manage Activity Master')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Manageroles' routerLinkActive="active">Manage Activity</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Manage Users Master')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Addroles' routerLinkActive="active">Manage Users</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Change Password Master')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Masterchangepassword' routerLinkActive="active">Change Password</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Master Sync')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Mastercronjob' routerLinkActive="active">Master Sync</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Language Master')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Language' routerLinkActive="active">Language</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Login Image Master')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Loginimage' routerLinkActive="active">Login image</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Short Code Master')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Shortcode' routerLinkActive="active">Short Codes</button>
+                                    </a>
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Form Tittle Master')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='MFTittle' routerLinkActive="active">Form Title</button>
+                                    </a>
+                                    <!-- <button type="button" class="btn btn-white btnaction" routerLink='Manageroles' routerLinkActive="active">Manage Activity</button>
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Addroles' routerLinkActive="active">Manage Users</button>
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Masterchangepassword' routerLinkActive="active">Change Password</button>
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Mastercronjob' routerLinkActive="active">Master Sync</button>
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Language' routerLinkActive="active">Language</button>
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Loginimage' routerLinkActive="active">Login image</button>
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Shortcode' routerLinkActive="active">Short Codes</button>
+                                        <button type="button" class="btn btn-white btnaction" routerLink='MFTittle' routerLinkActive="active">Form Tittle</button> -->
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

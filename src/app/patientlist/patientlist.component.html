@@ -1,0 +1,169 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row" >
+                                <!-- style="padding-right:65px;" -->
+                            <div class="col-md-12 divforpanel">
+                                <div class="text-center selecteddate">
+                                    <mat-icon>
+                                        <span class="iconsize">
+                      <i class="fa fa-chevron-left" aria-hidden="true" (click)='prevdate(datecc)'></i>
+                    </span>
+                                    </mat-icon>
+                                    <span>
+                    <mat-form-field style="width:100px;">
+                      <input matInput [matDatepicker]="pickerlist" [(ngModel)]="datecc" (ngModelChange)="f(datecc)">
+                      <mat-datepicker-toggle matSuffix [for]="pickerlist"></mat-datepicker-toggle>
+                      <mat-datepicker #pickerlist></mat-datepicker>
+                    </mat-form-field>
+                    
+                  </span>
+                                    <mat-icon>
+                                        <span class="iconsize">
+                      <i class="fa fa-chevron-right" aria-hidden="true" (click)='nextdate(datecc)'></i>
+                    </span>
+                                    </mat-icon>
+                                </div>
+                                <!-- <div class="col-md-1 calender" style="padding-top:25px;"> -->
+                                <!-- <span class="">
+                    <mat-datepicker-toggle mdSuffix [for]="pickerlist"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerlist></mat-datepicker>
+                  </span> -->
+                                <!-- </div> -->
+                                <!-- <div class="col-md-2 arrow"> -->
+                                <!-- <md-icon>
+                    <span class="iconsize">
+                      <i class="fa fa-chevron-left fa-3x" style="padding-top:20px;" aria-hidden="true" (click)='prevdate(datecc)'></i>
+                    </span>
+                  </md-icon> -->
+                                <!-- </div>
+                                <div class="col-md-8">
+                                    <div class="rows seven-cols text-center" *ngFor="let indv_datetobind of bodytobind;">
+                                        <div class="col-md-1">{{indv_datetobind.day}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 arrow"> -->
+                                <!-- <md-icon>
+                    <span class="iconsize">
+                      <i class="fa fa-chevron-right fa-3x" style="padding-top:20px;" aria-hidden="true" (click)='nextdate(datecc)'></i>
+                    </span>
+                  </md-icon> -->
+                                <!-- </div> -->
+                                <div class="col-md-12 tabsize">
+                                    <div class="col-md-2 col-sm-2">&nbsp;</div>
+                                    <div class="col-md-8 col-sm-8">
+                                        <div style="font-weight: 600;
+                                        font-family: sans-serif;" class="rows seven-cols text-center" *ngFor="let indv_datetobind of bodytobind;">
+                                            <div class="col-md-1 col-sm-1">{{indv_datetobind.day}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-2">&nbsp;</div>
+                                </div>
+
+                                <div class="col-md-12 tabsize">
+                                    <div class="col-md-2 col-sm-2">&nbsp;</div>
+                                    <div class="col-md-8 col-sm-8">
+                                        <div class="rows seven-cols text-center" *ngFor="let indv_datetobind of bodytobind;">
+                                            <div class="col-md-1 col-sm-1 {{indv_datetobind.active}}" style="cursor:pointer;" (click)='highlighted(indv_datetobind.date)'>{{indv_datetobind.date}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-2">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <span class="pull-right"><i class="fa fa-refresh ref" aria-hidden="true" (click)="refresh()"></i></span>
+                        <span class="pull-right" style="padding-right:20px;" [hidden]="hidden_doc">    
+                            <mat-form-field>
+                            <mat-select placeholder="Select Doctor Name" [(ngModel)]="doctor" (change)="changedoctor_appointment(doctor)">
+                                <mat-option *ngFor="let doctor of DoctorsName" [value]="doctor">
+                                    {{ doctor.name }}
+                                </mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                            
+                        </span>
+                        <button type="button" class="btn btn-steelblue active" (click)="get_awalkin_byday('ALL')">All
+              <span class="badge badgesteelblue" >{{totalcount}}</span>
+            </button>
+                        <button type="button" class="btn btn-red active" (click)="get_awalkin_byday('walkin')">Walk-in
+                    <span class="badge badgered" >{{totalcounts_walk}}</span>
+                  </button>
+                        <button type="button" class="btn btn-succes active" (click)="get_awalkin_byday('appointment')">Appointment
+                        <span class="badge badgesucces" >{{totalcounts_app}}</span>
+                      </button>
+                        <button type="button" class="btn btn-green active" (click)="get_awalkin_byday('done')">Completed
+                            <span class="badge badgegreen" >{{totalcounts_comp}}</span>
+                          </button>
+                        <!-- <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group">
+              <button type="button" class="btn btn-red">
+                <span class="hidden-xs">Appointments</span>
+                <span class="badge badgered">20</span>
+              </button>
+            </span>
+            <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group">
+              <button type="button" class="btn btn-success">
+                <span class="hidden-xs">Completed</span>
+                <span class="badge badgesuccess">20</span>
+              </button>
+            </span> -->
+                        <!-- {{filtered_data}} -->
+                        <div class='table-responsive'>
+                            <table class=" table font-weight-500" style='text-align: center'>
+                                <thead class="headercolor" data-background-color="#AFE1F5">
+                                    <tr>
+                                        <td style='text-align: center'>Time</td>
+                                        <td style='text-align: center'>Patient Name</td>
+                                        <td style='text-align: center'>UHID</td>
+                                        <td style='text-align: center'>Phone No</td>
+                                        <td style='text-align: center'>Gender/Age</td>
+                                        <td style='text-align: center'>Encounter No.</td>
+                                        <td style='text-align: center'>Consultation type</td>
+                                        <td style='text-align: center'>Payment Status</td>
+                                        <td style='text-align: center'>Status</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let indv_socialmention of filtered_data; let i = index">
+                                        <td>{{indv_socialmention.DATETIME.slice(11, 19)}} </td>
+                                        <td>{{indv_socialmention.name}}</td>
+                                        <td *ngIf="indv_socialmention.uhid != '0'">{{indv_socialmention.uhid||'-'}}</td>
+                                        <td *ngIf="indv_socialmention.uhid == '0'">-</td>
+                                        <td>{{indv_socialmention.mobileno}}</td>
+                                        <td style="text-transform: uppercase;">{{indv_socialmention.age}}</td>
+                                        <td *ngIf="indv_socialmention.encounterno != '0'">{{indv_socialmention.encounterno||'-'}}</td>
+                                        <td *ngIf="indv_socialmention.encounterno == '0'">-</td>
+                                        <td *ngIf="indv_socialmention.appt_status=='walkin'">Walk-in</td>
+                                        <td *ngIf="indv_socialmention.appt_status!='walkin'">Appointment</td>
+                                        <td>{{indv_socialmention.paid_status||'Not Paid'}}</td>
+                                        <!-- <td *ngIf="c=='pending'">Waiting
+                      <i class="fa fa-clock-o" style='color:red;' aria-hidden="true"></i>
+                    </td> -->
+                                        <td *ngIf="indv_socialmention.appt_status=='checkedin'" (click)="patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Checked-in</td>
+                                        <td *ngIf="indv_socialmention.appt_status=='pending'">Pending</td>
+                                        <td *ngIf="indv_socialmention.appt_status=='done'">
+                                            <span *ngIf="!indv_socialmention.Previousdate" (click)="patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Completed</span>
+                                            <span *ngIf="indv_socialmention.Previousdate" (click)="old_patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Completed</span>
+                                        </td>
+                                        <!-- <td *ngIf="indv_socialmention.appt_status=='done'" (click)="patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Completed</td> -->
+                                        <td *ngIf="indv_socialmention.appt_status=='Followup'">Follow-up</td>
+                                        <td *ngIf="indv_socialmention.appt_status=='Not_yet'">Not Yet Arrived</td>
+                                        <td *ngIf="indv_socialmention.appt_status=='walkin'" (click)="patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Checked-in</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p class="headerclr">
+      <strong>Add Sessions</strong>
+      <button type="button" class="btn btn-steelblue pull-right" routerLink="/Homescreen/Master/Language">Back</button>
+    </p>
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <mat-form-field style="width:100%;">
+          <input matInput placeholder="Language Name" [(ngModel)]="data.language_name">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <mat-form-field style="width:100%;">
+          <input matInput placeholder="Morning" [(ngModel)]="data.morning">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field style="width:100%;">
+          <input matInput placeholder="Afternoon" [(ngModel)]="data.afternoon">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field style="width:100%;">
+          <input matInput placeholder="Evening" [(ngModel)]="data.evening">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field style="width:100%;">
+          <input matInput placeholder="Night" [(ngModel)]="data.night">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field style="width:100%;">
+          <input matInput placeholder="Before Food" [(ngModel)]="data.bf">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field style="width:100%;">
+          <input matInput placeholder="After Food" [(ngModel)]="data.af">
+        </mat-form-field>
+      </div>
+    </div>
+    <button type="button" class="btn btn-steelblue pull-right" (click)="save_language(data)">Save</button>
+  </div>
+</div>

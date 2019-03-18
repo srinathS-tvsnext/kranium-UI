@@ -1,0 +1,51 @@
+.btn-steelblue {
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover {
+    background-color: steelblue;
+    color: white;
+}
+
+.size {
+    width: 100%;
+}
+
+.addicon {
+    padding-left: 40px;
+    font-size: 25px;
+    color: steelblue;
+}
+
+.tbheader{
+    color:steelblue;
+}
+.tbheader th{
+    text-align: center;
+}
+.headerclr{
+    color:steelblue;
+}
+
+.fa-plus-square{
+    margin-top:10px;
+    margin-left:-10px
+}
+
+.msbtn{
+    display:none;
+}
+
+@media (max-width: 768px) {
+
+    .fa-plus-square{
+        display:none;
+    }
+    .msbtn{
+        display: block;
+        float: right;
+    }
+    
+}

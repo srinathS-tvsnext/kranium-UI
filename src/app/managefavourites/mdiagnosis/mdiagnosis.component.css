@@ -1,0 +1,33 @@
+.headercolor{
+    color:steelblue;
+    /* background-color: #CCEEFB; */
+}
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}
+
+
+.borderless td, .borderless th {
+    border: none;
+}
+
+.tableheader{
+    background-color: lightblue;
+}
+
+.btn-white{
+    cursor: default;
+    background-color: white;
+    color: lightgrey;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 14px 22px 12px 22px;
+    border: 1px solid lightgrey;
+}

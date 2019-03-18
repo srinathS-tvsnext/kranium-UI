@@ -1,0 +1,29 @@
+.tbheader{
+    color:steelblue;
+}
+.tbheader th{
+    text-align: center;
+}
+.headerclr{
+    color:steelblue;
+}
+
+
+.btn-steelblue{
+    background-color: white;
+    border: 1px solid steelblue;
+    color: steelblue;
+}
+.btn-steelblue:hover{
+    background-color: steelblue;
+    border: 1px solid steelblue;
+    color: white;
+}
+.imagemsg{
+    color: brown;
+    word-wrap: break-word;
+    max-width: 25%;
+    display: inline-block;
+}
+
+

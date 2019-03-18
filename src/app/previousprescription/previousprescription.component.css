@@ -1,0 +1,23 @@
+.headercolor{
+    color:steelblue;
+}
+.borderless td, .borderless th {
+    border: none;
+}
+
+.tableheadercolor{
+    background-color:lightblue;
+}
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+    font-size: 10px;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+    font-size: 10px;
+}

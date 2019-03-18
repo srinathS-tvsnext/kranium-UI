@@ -1,0 +1,186 @@
+<div *ngIf="!date_status.Previousdate">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <!-- <p class="pull-right textalign" (click)="investigationlist()" style='cursor:pointer;'>Investigation List &nbsp;
+                        <i class="fa fa-file-text" aria-hidden="true"></i>
+                    </p> -->
+                            <mat-form-field>
+                            <mat-select class="pull-right" placeholder='Select from Favourite' [(ngModel)]="fav_invest.data" (ngModelChange)="edit_investigation_temp(fav_invest.data)">
+                                <mat-option *ngFor="let Inves of Investigation_template" [value]="Inves">
+                                    {{ Inves.template_name}}
+                                </mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div style="padding-top:15px;">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <span [hidden]="editbtn_hdn"><i class="fa fa-pencil-square-o fa-2x pull-right handsymbol" aria-hidden="true" (click)="edit_investigation_data(investigation_data)"></i></span>
+                                    <span [hidden]="cancelbtn_hdn"><i class="fa fa-times fa-2x pull-right handsymbol" aria-hidden="true" (click)="cancel_investigation_data()"></i></span>
+                                    <div class="" [hidden]="button_hdn_data">
+                                        <span *ngFor="let investigate of investigation_data">
+                                            <button type="button" class="btn btn-white">
+                                                <span class="hidden-xs">{{investigate.item_long_description}}</span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-12" [hidden]="checkbox_hdn_data">
+                                        <div class="col-md-4" *ngFor="let investigate of investigation_data">
+                                            <mat-checkbox color='primary' [ngModel]="investigate.checkbox" (click)="delete_investigation_data(investigate)"><span>{{investigate.item_long_description}}</span></mat-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
+                            <div class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
+                                <div *ngIf="sub_view_menu.sub_view_name=='Investigations'">
+                                    <div class="">
+                                        <div class="row">
+                                            <p class="headercolor">Investigation List</p>
+                                            <div class="">
+                                                <div class='col-md-12 form-group'>
+                                                    <div class="col-md-10">
+                                                        <mat-form-field style='width:100%;padding-top:7px;'>
+                                                            <input matInput list="brows" name="brows" placeholder="Search Services" [(ngModel)]="Investigation_menu" (ngModelChange)="get_medicine_kranium_list_gen(Investigation_menu)">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <img src="../../assets/img/clearicon.png" class="clearimg" (click)="clrprocedure()">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <span [hidden]="hiddengif">
+                                                                    <img class="clearimg" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />                                        
+                                                                </span>
+                                                    </div>
+                                                    <datalist id="brows">
+                                                        <option *ngFor="let state of investigation_kranium_list" value="{{state.investigation_kranium_list}}">
+                                                    </datalist>
+                                                </div>
+                                                <!-- <div class="col-md-12" [hidden]="hidden">
+                                                <div class="col-md-12" style="height:250px;overflow: scroll;">
+                                                    <div class="col-md-4" *ngFor="let sub_view_menu of Investigation_category; let i =index;">
+                                                        <div class="checkboxtext" style="width: 95%;white-space: nowrap;text-overflow: ellipsis; overflow: hidden;">
+                                                            <mat-checkbox color='primary' [(ngModel)]="sub_view_menu.checkbox" (ngModelChange)="create_category_list(sub_view_menu)"><span style="color:steelblue;">{{sub_view_menu.item_long_description}}</span></mat-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+                                                <!-- //changesss -->
+                                                <div class="col-md-12" [hidden]="hidden">
+                                                    <div class="col-md-12" id="mysearchbox" style="height:250px;overflow: auto;">
+                                                        <!-- <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Firstname</th>
+                                                                <th>Lastname</th>
+                                                                <th>Email</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>John</td>
+                                                                <td>Doe</td>
+                                                                <td>john@example.com</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Mary</td>
+                                                                <td>Moe</td>
+                                                                <td>mary@example.com</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>July</td>
+                                                                <td>Dooley</td>
+                                                                <td>july@example.com</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table> -->
+
+
+                                                        <div class="col-md-4" *ngFor="let sub_view_menu of Investigation_category; let i =index;">
+                                                            <div class="checkboxtext" style="width: 95%;white-space: nowrap;text-overflow: ellipsis; overflow: hidden;">
+                                                                <mat-checkbox color='primary' [(ngModel)]="sub_view_menu.checkbox" (ngModelChange)="create_category_list(sub_view_menu)"><span style="color:steelblue;">{{sub_view_menu.item_long_description}}</span></mat-checkbox>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- //changes end -->
+                                            </div>
+                                            <div class='col-md-12 form-group'>
+                                                <p class="header" [hidden]="dept_hidden">Department Name</p>
+                                                <div class="">
+                                                    <!-- <p class="header">{{category_tem.deptname}}</p> -->
+                                                    <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group" *ngFor="let category_temperary of categorylist_array">
+                            <button type="button" class="btn btn-white" *ngIf="category_temperary.checkbox">
+                                <span class="hidden-xs wordsize">{{category_temperary.item_long_description}}</span>
+                                                    <span class="badge badgewhite" style="margin-top: -8px;" (click)="remove_temp(category_temperary)">X</span>
+                                                    </button>
+                                                    </span>
+                                                </div>
+                                                <div class="col-md-12" *ngIf="sub_view_menu.view">
+                                                    <div class="">
+                                                        <div class="divalignment" *ngFor="let category_tem of Investigation_template_category">
+                                                            <p class="header">{{category_tem.deptname}}</p>
+                                                            <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group" *ngFor="let category_tem_list of category_tem.question">
+                                <button type="button" class="btn btn-white">
+                                    <span class="hidden-xs">{{category_tem_list.item_long_description}}</span>
+                                                            <span class="badge badgewhite" style="margin-top: -4px;" (click)="remove_old_tempdata_investigation(category_tem_list)">X</span>
+                                                            </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>&nbsp;
+                                                <span *ngIf="datevalidation.nowdate">
+                                                            <span *ngIf="sub_view_menu.add_edit">
+                                                                <button  type="button" class="btn btn-steelblue pull-right" (click)="save_normal_investigation(categorylist_array,Investigation_template_category)">Save</button>
+                                                                <button type="button" class="btn btn-steelblue pull-right" (click)="save_investigation(categorylist_array,Investigation_template_category)">Save_favourites</button>
+                                                            </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="date_status.Previousdate">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
+                        <div class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
+                            <div *ngIf="sub_view_menu.sub_view_name=='Investigations'">
+                                <p class="headercolor">Investigation List</p>
+                                <div class="col-md-12" *ngIf="sub_view_menu.view">
+                                    <div class="divalignment" *ngFor="let category_tem of Investigation_patient">
+                                        <p class="header">{{category_tem.deptname}}</p>
+                                        <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group" *ngFor="let category_tem_list of category_tem.question">
+                                    <button type="button" class="btn btn-white">
+                                        <span class="hidden-xs">{{category_tem_list.item_long_description}}</span>
+                                        <!-- <span class="badge badgewhite" (click)="remove_old_tempdata_investigation(category_tem_list)">X</span> -->
+                                        </button>
+                                        </span>
+                                    </div>
+                                </div>&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Investigation_patient -->

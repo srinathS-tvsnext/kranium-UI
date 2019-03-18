@@ -1,0 +1,33 @@
+.headertextcolor{
+    color:steelblue;
+}
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}
+.badgewhite{
+    background-color: lightgray;
+    color:white;
+    cursor: pointer;
+}
+.btn-white{
+    cursor: default;
+    background-color: white;
+    color: lightgrey;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 14px 22px 12px 22px;
+    border: 1px solid lightgrey;
+}
+
+
+.panelalignment{
+    padding: 15px;
+}

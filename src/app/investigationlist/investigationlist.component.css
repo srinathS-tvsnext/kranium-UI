@@ -1,0 +1,23 @@
+.headercolor{
+    color:steelblue;
+    font-weight: 700;
+    padding:10px;
+}
+
+.checkboxtext{
+    padding: 10px;
+    color: black;
+    font-weight: 400;
+}
+
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}

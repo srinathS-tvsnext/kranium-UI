@@ -1,0 +1,158 @@
+<!-- <div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
+    <div class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
+        <div *ngIf="sub_view_menu.sub_view_name=='Reports Table View'"> -->
+<div class="">
+    <!-- <p class="textheader">25/09/2017</p> -->
+    <div class="table-responsive">
+        <table class="table table borderless" style='text-align: center'>
+            <thead class="tableheadercolor">
+                <tr>
+                    <th style='text-align: center'>&nbsp;</th>
+                    <th style='text-align: center'>UHID</th>
+                    <th style='text-align: center'>Department Name</th>
+                    <th style='text-align: center'>Encounter No</th>
+                    <th style='text-align: center'>Report Date</th>
+                    <th style='text-align: center'>Description</th>
+                    <th style='text-align: center'>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let value_report of report_data_new">
+                    <td>&nbsp; </td>
+                    <td>{{value_report.batch_nr}}</td>
+                    <td>{{value_report.dept_name}}</td>
+                    <td>{{value_report.encounter_nr}}</td>
+                    <td>{{value_report.send_date}}</td>
+                    <td>{{value_report.name}}</td>
+                    <td>
+                        <!-- <a href="http://112.133.217.60/pdf_ftp.php?enc_id={{food.PATIENT_ID}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a> -->
+
+                        <!-- 172.16.16.200 -->
+                        <a href="http://172.16.16.200/ghchis/modules/laboratory/labprint.php?sid=p6f87581mn7u9fqcohtmj5uc17&lang=en&encounter_nr={{value_report.encounter_nr}}&parameterselect=all&job_id={{value_report.batch_nr}}&dept=bio" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a>
+                        <!-- <i class="material-icons" (click)="reportdetview()">remove_red_eye</i> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- </div>
+    </div>
+</div> -->
+<!-- <div class="">
+    <p class="textheader">25/09/2017</p>
+    <div class="table-responsive">
+        <table class="table table borderless" style='text-align: center'>
+            <thead class="tableheadercolor">
+                <tr>
+                    <th style='text-align: center'>&nbsp;</th>
+                    <th style='text-align: center'>Lab Id</th>
+                    <th style='text-align: center'>Department Name</th>
+                    <th style='text-align: center'>Encounter No</th>
+                    <th style='text-align: center'>Test Name</th>
+                    <th style='text-align: center'>Methodology</th>
+                    <th style='text-align: center'>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&nbsp; </td>
+                    <td>1000600254</td>
+                    <td>BioChemistry</td>
+                    <td>2017895425</td>
+                    <td>Thyroid,Simulating</td>
+                    <td>Calculated</td>
+                    <td><i class="material-icons" (click)="reportdetview()">remove_red_eye</i></td>
+                </tr>
+                <tr>
+                    <td>&nbsp; </td>
+                    <td>1000600254</td>
+                    <td>Radiology</td>
+                    <td>2017895425</td>
+                    <td>Fever</td>
+                    <td>Flow Cytometry</td>
+                    <td><i class="material-icons" (click)="reportdetview()">remove_red_eye</i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="">
+    <p class="textheader">25/09/2017</p>
+    <div class="table-responsive">
+        <table class="table table borderless" style='text-align: center'>
+            <thead class="tableheadercolor">
+                <tr>
+                    <th style='text-align: center'>&nbsp;</th>
+                    <th style='text-align: center'>Lab Id</th>
+                    <th style='text-align: center'>Department Name</th>
+                    <th style='text-align: center'>Encounter No</th>
+                    <th style='text-align: center'>Test Name</th>
+                    <th style='text-align: center'>Methodology</th>
+                    <th style='text-align: center'>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&nbsp; </td>
+                    <td>1000600254</td>
+                    <td>BioChemistry</td>
+                    <td>2017895425</td>
+                    <td>Thyroid,Simulating</td>
+                    <td>Calculated</td>
+                    <td><i class="material-icons" (click)="reportdetview()">remove_red_eye</i></td>
+                </tr>
+                <tr>
+                    <td>&nbsp; </td>
+                    <td>1000600254</td>
+                    <td>Radiology</td>
+                    <td>2017895425</td>
+                    <td>Fever</td>
+                    <td>Flow Cytometry</td>
+                    <td><i class="material-icons" (click)="reportdetview()">remove_red_eye</i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+<!-- <div class="">
+    <p class="textheader">25/09/2017</p>
+    <div class="table-responsive">
+        <table class="table table borderless" style='text-align: center'>
+            <thead class="tableheadercolor">
+                <tr>
+                    <th style='text-align: center'>&nbsp;</th>
+                    <th style='text-align: center'>Lab Id</th>
+                    <th style='text-align: center'>UHID NO</th>
+                    <th style='text-align: center'>Department Name</th>
+                    <th style='text-align: center'>Encounter No</th>
+                    <th style='text-align: center'>Test Name</th>
+                    <th style='text-align: center'>Methodology</th>
+                    <th style='text-align: center'>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&nbsp; </td>
+                    <td>1000600254</td>
+                    <td>10006</td>
+                    <td>BioChemistry</td>
+                    <td>2017895425</td>
+                    <td>Thyroid,Simulating</td>
+                    <td>Calculated</td>
+                    <td><i class="material-icons" (click)="reportdetview()">remove_red_eye</i></td>
+                </tr>
+                <tr>
+                    <td>&nbsp; </td>
+                    <td>1000600254</td>
+                    <td>10006</td>
+                    <td>Radiology</td>
+                    <td>2017895425</td>
+                    <td>Fever</td>
+                    <td>Flow Cytometry</td>
+                    <td><i class="material-icons" (click)="reportdetview()">remove_red_eye</i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->

@@ -1,0 +1,99 @@
+.headercolor{
+    color:steelblue;
+    /* background-color: #CCEEFB; */
+}
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}
+
+
+.borderless td, .borderless th {
+    border: none;
+}
+
+.tableheader{
+    background-color: lightblue;
+}
+
+.btn-white{
+    border-radius: 50px;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid lightgray;
+    cursor: default;
+    font-size: 10px;
+}
+.btn-white:hover{
+    background-color: white;
+    color:steelblue;
+}
+.btn-stblue{
+    border-radius: 50px;
+    background-color: white;
+    color: steelblue;
+    border: 1px solid lightgray;
+    cursor: default;
+    font-size: 10px;
+}
+.btn-stblue:hover{
+    background-color: steelblue;
+    color:white;
+}
+.badgewhite{
+    background-color: white;
+    color:steelblue;
+    cursor: pointer;
+    font-size:10px;
+    position: relative;
+    left: 18px;
+}
+.badgewhite:hover{
+    background-color: lightgray;
+    color:white;
+    cursor: pointer;
+}
+.badge-stblue{
+    background-color: steelblue;
+    color:white;
+    cursor: pointer;
+    font-size:10px;
+    position: relative;
+    left: 18px;
+}
+.badge-stblue:hover{
+    background-color: lightgray;
+    color:steelblue;
+    cursor: pointer;
+}
+.size{
+    width:40%;
+}
+.clearbtn{
+    background: white;
+    color:steelblue;
+    border-color: steelblue;
+}
+.clearbtn:hover{
+    background: steelblue;
+    color:white;
+    border-color: steelblue;
+}
+
+.plusbtn{
+    padding-top:29px;
+    font-size:25px; 
+    color: steelblue;
+    cursor: pointer;
+}
+
+.myboxsize{
+    height:135px !important;
+    overflow: hidden !important;
+}

@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="">
+      <p class=""><strong>Follow-up</strong></p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-select placeholder="Select Follow-up" style="width:100%;" [(ngModel)]="food"
+                (selectionChange)='editfunction(food)'>
+                <mat-option *ngFor="let food of options" >
+                  {{ food.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4" style='padding: 6px;'>
+            <mat-form-field style="width:100%;">
+              <input matInput [matDatepicker]="pickers" placeholder="Next Follow-up date" [disabled]="disabledfun">
+              <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+              <mat-datepicker #pickers></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-select placeholder="Select Slots" style="width:100%;" [disabled]="disabledfun">
+                <mat-option *ngFor="let food of slots" [value]="food.value">
+                  {{ food.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <p class="bolder-color">Recommend IP Admission </p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-6" style='padding: 15px;'>
+            <mat-checkbox color='primary' style="width:100%;padding-left:20px;">Immediate</mat-checkbox>
+            <mat-checkbox color='primary' style="width:100%;padding-left:20px;" [checked]="isChecked"
+              (change)="toggle()">Recommend</mat-checkbox>
+            <mat-checkbox color='primary' style="width:100%;padding-left:20px;">Not Recommend</mat-checkbox>
+          </div>
+          <div class="col-md-3">&nbsp;</div>
+          <div class="col-md-3">
+            <mat-form-field style="width:100%;">
+              <input matInput [matDatepicker]="pickeres" placeholder="Date">
+              <mat-datepicker-toggle matSuffix [for]="pickeres"></mat-datepicker-toggle>
+              <mat-datepicker #pickeres></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <p class=""><strong>Surgery / Procedure</strong></p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-select placeholder="Surgery / Procedure" style="width:100%;" [(ngModel)]="Surgery">
+                <mat-option *ngFor="let Surgery of SurgeryType" [value]="Surgery">
+                  {{ Surgery.item_description}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <p class=""><strong>Cross Consultation</strong></p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-select placeholder="Select Department Name" style="width:100%;" [(ngModel)]="Department">
+                <mat-option *ngFor="let Department of Departmentname" [value]="Department">
+                  {{ Department.department}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-select placeholder="Select Doctor Name" style="width:100%;" [(ngModel)]="doctor">
+                <mat-option *ngFor="let doctor of DoctorsName" [value]="doctor">
+                  {{ doctor.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-12">
+            <button type="button" class="btn btn-steelblue pull-right" (click)='user_sms(doctor)'>Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <p class=""><strong>Refer to an External Doctor</strong></p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-6">
+            <p class="">To,</p>
+            <mat-form-field>
+              <input matInput placeholder="Enter Doctor name">
+            </mat-form-field>
+
+            <p class="">Patient Info</p>
+            <div class="aligntext">
+              <p class="">Mahendra singh,<br></p>
+              <p class="">s/o,harbajan singh,<br></p>
+              <p class="">12,northcar street,chennai<br></p>
+              <p class="">Tamilnadu,<br></p>
+              <p class="">India.<br></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div [froalaEditor]>Hello, Globals...!</div> -->
+      <ckeditor value='Hello ...!'>
+      </ckeditor>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <button type="button" class="btn btn-steelblue pull-right">Save</button>
+  </div>
+</div>

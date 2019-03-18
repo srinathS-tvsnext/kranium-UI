@@ -1,0 +1,217 @@
+<!-- <button type="button" class="btn btn-steelblue pull-right btn-md" routerLink='/Homescreen/Patientdetails/Edithistory'>Add New</button>
+<button type="button" class="btn btn-steelblue pull-right btn-md" routerLink='/Homescreen/Patientdetails/Edithistory'>EDIT</button> -->
+<div *ngIf="!date_status.Previousdate">
+    <div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
+        <div class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
+            <div *ngIf="sub_view_menu.sub_view_name=='Chief Complaints'">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="" style="padding-left:15px;">
+                            <p class="headertextcolor">
+                                <strong>Chief Complaints</strong>
+                            </p>
+                            <div class="panel panel-default" style="height: auto;
+                        min-height: 100px;">
+                                <div class="col-md-12 mypadding">
+                                    <div class="col-md-6">
+                                        <!-- < mat-form-field style="width:100%">
+                                        <input matInput list="brow" list="browsers" name="browser" [(ngModel)]="history.chief_complaints" (ngModelChange)="valuechange($event)">
+                                    </mat-form-field>
+                                    <datalist id="browsers">
+              <option style="background-color: aliceblue;color: steelblue; font-size: medium;" *ngFor="let state of autocomp" value="{{state.chief_complaints}}">
+            </datalist> -->
+                                        <mat-form-field style="width:100%">
+                                            <input matInput placeholder="Chief Complaints"
+                                                [(ngModel)]="history.chief_complaints">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <mat-form-field style="width:100%">
+                                            <input matInput placeholder="Count" [formControl]="numberFormControl"
+                                                [(ngModel)]="history.dur_num">
+                                            <mat-error *ngIf="numberFormControl.hasError('pattern')">
+                                                Use Only <strong>Numeric</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <mat-form-field>
+                                            <mat-select [(ngModel)]="history.duration"
+                                                (ngModelChange)="duration_value($event)" placeholder="Duration"
+                                                style="padding-top: 9px;">
+                                                <mat-option *ngFor="let food of daytype" [value]="food.type">
+                                                    {{ food.type }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-2" style="padding-top:20px;" *ngIf="sub_view_menu.add_edit">
+                                        <span *ngIf="datevalidation.nowdate">
+                                            <span class='pull-right' class="plusbtn">
+                                                <i class="fa fa-plus-square" aria-hidden="true"
+                                                    (click)="save_chief_complaints(history)"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="" *ngIf="sub_view_menu.view">
+                                    <span *ngFor="let complaints of history_patient_chief_complaints">
+                                        <button type="button" class="btn btn-white" routerLink='Prescription'>
+                                            <span class="hidden-xs wordsize">{{complaints.chief_complaints}}</span>
+                                            <span class="hidden-xs">{{complaints.duration_count}}</span>
+                                            <span class="hidden-xs">{{complaints.duration}}</span>
+                                            <span class="badge badgewhite xbadge"
+                                                (click)="remove_chiefcomplaints(complaints)">X</span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="sub_view_menu.sub_view_name=='History Forms'">
+                <div class="col-md-12" *ngFor="let opttext of formdatacr; let last=last">
+                    <div class='pull-right' style="margin-top: -15px;" *ngIf="opttext.status">
+                        <mat-form-field>
+                            <mat-select [(ngModel)]="opttext.Fromopt"
+                                (ngModelChange)="view_histroy(opttext.Fromopt,opttext.history_main_form_name_id)"
+                                placeholder="" style="padding-top: 9px;" multiple>
+                                <mat-option *ngFor="let food of opttext.quer" [value]="food.form_id">
+                                    {{ food.name }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <p style="font-weight:700;padding-left:15px;color:steelblue;" *ngIf="opttext.status">
+                        {{opttext.history_main_form_name}}</p>
+                    <!-- formdatacr_history -->
+                    <div *ngFor="let opttext_old of opttext[opttext.history_main_form_name]; let i=index;"
+                        style="padding-left: 15px;">
+                        <div class="panel panel-default" draggable="true" (drag)="drag_div($event,i)"
+                            (drop)="drop_div($event,i,opttext[opttext.history_main_form_name])"
+                            (dragover)="dragover($event)">
+                            <div class="panel-body">
+                                <mat-panel-title class="headercolor">
+                                    <strong>{{opttext_old.name}} </strong>
+                                </mat-panel-title>
+                                <div *ngFor="let opttextnew of opttext_old.question">
+                                    <p>{{opttextnew.name}}</p>
+                                    <p *ngIf="opttextnew.options_type=='1' ">
+                                        <mat-form-field class='flex-50' style='width:100%; padding-top:10px;'>
+                                            <input matInput placeholder="Enter the Answer "
+                                                [(ngModel)]="opttextnew.answer ">
+                                        </mat-form-field>
+                                    </p>
+                                    <p *ngIf="opttextnew.options_type=='2' ">
+                                        <mat-form-field class='flex-50' style='width:100%; padding-top:10px;'>
+                                            <input matInput placeholder="Enter the Answer "
+                                                [(ngModel)]="opttextnew.answer ">
+                                        </mat-form-field>
+                                    </p>
+                                    <p *ngIf="opttextnew.options_type=='3' ">
+                                        <mat-radio-group class="example-radio-group" [(ngModel)]="opttextnew.answer">
+                                            <mat-radio-button color='primary' class="example-radio-button"
+                                                *ngFor="let optionval of opttextnew.question_option; let i=index "
+                                                [value]="optionval.options">
+                                                {{optionval.options}} &nbsp;&nbsp;
+                                            </mat-radio-button>
+                                        </mat-radio-group>
+                                        <!-- <span *ngFor="let optionval of opttextnew.question_option; let i=index ">
+                      <mat-radio-button color='primary' name="{{opttextnew.question_id}} " class="example-radio-button ">
+                        {{optionval.options}}
+                      </mat-radio-button> 
+                    </span> -->
+                                    </p>
+                                    <!-- <p *ngIf="opttextnew.options_type=='4' ">
+                                    <span *ngFor="let optionval of opttextnew.question_option; let i=index ">
+                      <mat-checkbox class="example-margin " color='primary' value=" " name="{{opttextnew.question_id}} " [(ngModel)]="optionval.answer ">
+                        {{optionval.options}}
+                      </mat-checkbox> -->
+
+                                    <!-- </span>
+                                </p> -->
+                                    <p *ngIf="opttextnew.options_type=='4' ">
+                                        <span *ngFor="let optionval of opttextnew.question_option; let i=index ">
+                                            <mat-checkbox class="example-margin " color='primary' value=" "
+                                                name="{{opttextnew.question_id}} " [(ngModel)]="optionval.answer ">
+                                                {{optionval.options}}
+                                            </mat-checkbox> &nbsp;&nbsp;
+                                        </span>
+                                    </p>
+                                    <p *ngIf="opttextnew.options_type=='5' ">
+                                        <mat-form-field>
+                                            <mat-select placeholder='Choose Department Name' class='flex-50'
+                                                [(ngModel)]="opttextnew.answer ">
+                                                <mat-option *ngFor="let optionval of opttextnew.question_option "
+                                                    [value]="optionval.options ">
+                                                    {{ optionval.options }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="last ">
+                        <span *ngIf="datevalidation.nowdate">
+                            <span *ngIf="sub_view_menu.add_edit ">
+                                <button type="button " class="btn btn-steelblue pull-right btn-md "
+                                    (click)="save(formdatacr)">{{btn_sav}}</button>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="date_status.Previousdate">
+    <div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
+        <div class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
+            <div *ngIf="sub_view_menu.sub_view_name=='Chief Complaints'">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="">
+                            <p class="headertextcolor">
+                                <strong>Chief Complaints</strong>
+                            </p>
+                            <div class="panel panel-default" style="height: auto;
+                            min-height: 100px;">
+                                <div class="" *ngIf="sub_view_menu.view">
+                                    <span *ngFor="let complaints of history_patient_chief_complaints">
+                                        <button style="padding: 12px;
+                font-size: 9px;" type="button" class="btn btn-white"
+                                            routerLink='Prescription'>{{complaints.chief_complaints}}
+                                            <span class="hidden-xs">{{complaints.duration_count}}</span>
+                                            <span class="hidden-xs">{{complaints.duration}}</span>
+                                            <!-- <span class="badge badgewhite" (click)="remove_chiefcomplaints(complaints)">X</span> -->
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="sub_view_menu.sub_view_name=='History Forms'">
+                <div class="col-md-12">
+                    <p class="headertextcolor">
+                        <strong>History </strong>
+                    </p>
+                    <div *ngFor="let opttext_old of history_answer; let i=index;" style="padding-left: 15px;">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <mat-panel-title class="headercolor ">
+                                    <strong>{{opttext_old.question}} </strong>
+                                    <p>{{opttext_old.answer}}</p>
+                                </mat-panel-title>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

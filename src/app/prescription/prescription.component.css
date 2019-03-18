@@ -1,0 +1,191 @@
+.btn-steelblue {
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+    font-size: 10px;
+}
+
+.btn-steelblue:hover {
+    background-color: steelblue;
+    color: white;
+    font-size: 10px;
+}
+
+.paddingselect {
+    padding-right: 30px;
+}
+
+.headercolor {
+    color: steelblue;
+    font-weight: 600;
+}
+
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+
+/* 
+    Created on : Feb 15, 2017, 11:05:01 AM
+    Author     : manickaraj.s
+*/
+
+.gobalsearch {
+    width: 375px !important;
+    left: 50px !important;
+    /*width: 100 !important;*/
+}
+
+.searchbuttondropdown {
+    width: 400px;
+    top: 16px;
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-bottom-color: steelblue;
+}
+
+.searchinputbutton {
+    background-color: transparent;
+    border: none;
+    color: black;
+    top: 3px;
+}
+
+.nopadding {
+    padding-bottom: 0px;
+    padding-top: 2px !important;
+    background-color: #bbbbbb;
+}
+
+div-sep {
+    border: 1px solid grey;
+}
+
+.padding-left-list {
+    padding-left: 35px;
+}
+
+.search-acc-list {
+    padding-top: 7px;
+    padding-left: 10px;
+    padding-right: 0px;
+    color: #35322e;
+    font-size: 13px;
+    width: 100% !important;
+}
+
+.search-acc-list:hover {
+    background-color: rgba(232, 236, 238, 0.52);
+}
+
+.search-acc-list p:last-child {
+    font-size: 12px;
+    color: gray;
+    margin-bottom: -6px;
+}
+
+.search-acc-list p:first-child {
+    font-size: 13px;
+    margin-bottom: 0px;
+    color: black;
+}
+
+.gobal-loader {
+    /*     background-image: url("ring.svg");
+     background-repeat: no-repeat;*/
+    position: relative;
+    padding-left: 329px;
+    top: -33px;
+}
+
+.gobal-highlight {
+    background-color: rgb(245, 143, 32);
+    color: #fff !important;
+    display: inline;
+}
+
+.search-header {
+    color: #24727B;
+    font-size: 11px;
+    padding-left: 8px;
+    padding-bottom: 3px;
+    padding-top: 13px;
+    background-color: #dddddd;
+}
+
+.search-acc-list-ul {
+    margin-left: 13px;
+    margin-right: 19px;
+    max-height: 300px !important;
+    overflow-y: auto;
+    width: 100% !important
+}
+
+.search-acc-list-ul .border-list {
+    border-bottom: 1px solid #e4eaec;
+    padding-bottom: 8px;
+}
+
+.searchinputboxes {
+    background-color: transparent!important;
+    border-top: none!important;
+    border-right: none!important;
+    border-bottom-color: lightslategray!important;
+    border-left: none!important;
+    color: #2e2c2c!important;
+}
+
+.searchmodalcustom {
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    /* top: 75px; */
+    /* left: 215px; */
+    /*height: auto;*/
+    /* width: 500px; */
+    padding: 10px 0px 20px 0px;
+    box-shadow: -2px 2px 9px grey;
+    height: 200px;
+    overflow: scroll;
+}
+
+.searchcontentalign {
+    margin-left: 30px;
+}
+
+.searclosebuttton {
+    z-index: 21;
+    position: absolute;
+    /* background-color: white; */
+    top: 75px;
+    left: 659px;
+    /* height: auto; */
+    /* width: 500px; */
+    padding: 10px 0px 20px 0px;
+    cursor: pointer;
+}
+
+.clearicon {
+    cursor: pointer;
+    padding-top: 25px;
+}
+
+.wordbreak{
+    word-wrap: break-word;
+    width: 40%;
+    display:inline-block;
+}
+
+@media (max-width: 1024px) {
+    
+    .medication-fields{ float: right; }
+        
+}
+.setwdh {
+    display: block;
+}
+

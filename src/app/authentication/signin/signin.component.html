@@ -1,0 +1,120 @@
+<!-- <section class="login-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 login-sec">
+        <h2 class="text-center"><img [src]="imgurl" width='300px'></h2>
+        <form>
+          <div class="form-group">
+            <mat-select class="size" placeholder='Select Hospital' style='font-size: 12px;' [(ngModel)]="imgurl" name="selecthospital"
+              [disabled]="true">
+              <mat-option *ngFor="let food of foods" [value]="food.value" style='font-size: 12px;'>
+                {{ food.viewValue }}
+              </mat-option>
+            </mat-select>
+          </div>
+
+          <div class="form-group">
+            < mat-form-field class="size">
+              <input type="text" [formControl]="emailFormControl" mdInput placeholder="Enter the Username" [(ngModel)]="data.user">
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Username is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            < mat-form-field class="size">
+              <input type="password" [formControl]="passwordFormControl" mdInput placeholder="Enter the Password" [(ngModel)]="data.password">
+              <mat-error *ngIf="passwordFormControl.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-check">
+            <button type="submit" class="btn btn-login pull-right" (click)='login(data)'>Login</button>
+          </div>
+          <div class="forgotp">
+            <span style="cursor:pointer;" routerLink='/Forgot'>Forgot Password?</span>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-8 banner-sec">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="../globaluat/assets/img/img1.jpg" alt="Global1" class='imgsize'>
+            </div>
+
+            <div class="item">
+              <img src="../globaluat/assets/img/img2.jpg" alt="Global2" class='imgsize'>
+            </div>
+
+            <div class="item">
+              <img src="../globaluat/assets/img/img3.jpg" alt="Global3" class='imgsize'>
+            </div>
+          </div>
+
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span><i class="fa fa-chevron-left glyphicon-chevron-left" aria-hidden="true"></i></span>
+                  </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span><i class="fa fa-chevron-right glyphicon-chevron-right" aria-hidden="true"></i></span>
+                  </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- changed sign in page html  -->
+<div *ngFor="let image of image_name" class="Fullscreen">
+  <img *ngIf="image.active =='0'" src="../../../assets/img/login_bg/{{image.file_name}}" class="imgsiz">
+  <img *ngIf="image.active =='1'" src="../../../assets/img/login_bg/{{image.file_name}}" class="imgsiz">
+    <div class="login-page">
+        <div class="form">
+            <h2 class="text-center"><img [src]="imgurl" width='300px'></h2>
+            <form class="login-form">
+                <div class="form-group">
+                    <mat-form-field>
+                    <mat-select class="size" placeholder='Select Hospital' style='font-size: 12px;' [(ngModel)]="imgurl" name="selecthospital" [disabled]="true">
+                        <mat-option *ngFor="let food of foods" [value]="food.value" style='font-size: 12px;'>
+                            {{ food.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field class="size">
+
+                        <input type="text" [formControl]="emailFormControl" matInput placeholder="Enter the Username" [(ngModel)]="data.user">
+                        <!-- <i class="fa fa-user pull-right" aria-hidden="true" matSuffix></i> -->
+                        <mat-icon mdSuffix>person</mat-icon>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            User Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field class="size">
+                        <!-- <i class="fa fa-key pull-right" aria-hidden="true"></i> -->
+                        <input type="password" [formControl]="passwordFormControl" matInput placeholder="Enter the Password" [(ngModel)]="data.password">
+                        <mat-icon mdSuffix>lock</mat-icon>
+                        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-check">
+                    <button type="submit" class="btn btn-login pull-right" (click)='login(data)'><span>Login</span></button>
+                </div>
+                <div class="forgotp">
+                    <span style="cursor:pointer;" routerLink='/Forgot'>Forgot Password?</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

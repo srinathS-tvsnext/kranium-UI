@@ -1,0 +1,74 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div style="padding:30px;">
+                    <span (click)="userfile.click()" class="cursor-pointer" title="Upload Image">
+                        <button type="button" class="btn btn-steelblue">
+                            <i class="fa fa-upload" aria-hidden="true"></i>&emsp; Upload Image
+                        </button>
+                    </span>
+                    <input #userfile type="file" placeholder="Upload file..." (change)="image_upload(userfile.files)" style="display:none">
+                    <div><small class="imagemsg">(Image dimensions should be minimum 1200 X 700 to maximum 1366 X 768)</small></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <p class="headerclr"><strong>Default Login Background Image</strong></p>
+        <div class="row mytable">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <table class="table table-striped table-bordered text-center" cellspacing="0" width="100%">
+                    <thead class="tbheader">
+                        <tr>
+                            <th>#</th>
+                            <th>#</th>
+                            <th><strong>Image</strong></th>
+                            <th><strong>Action</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let fimage of first_image">
+                            <td><i class="fa fa-hand-o-right" aria-hidden="true"></i></td>
+                            <td><mat-checkbox color='primary' [(ngModel)]="fimage.checkbox" (click)="change_bg(fimage)" (ngModelChange)="change_checkbox(fimage)"></mat-checkbox></td>
+                            <td><img src="../globaluat/assets/img/login_bg/thumb/{{fimage.thumb_file_name}}"></td>
+                            <td>
+                                <i class="fa fa-trash" aria-hidden="true" style="cursor:pointer;" (click)="delete_image(fimage)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> -->
+
+        <p class="headerclr"><strong>Login Background Image</strong></p>
+        <div class="row mytable">
+            <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                <table class="table table-striped table-bordered text-center" cellspacing="0" width="100%">
+                    <thead class="tbheader">
+                        <tr>
+                            <th><strong>SN</strong></th>
+                            <th><strong>Select</strong></th>
+                            <th><strong>Image</strong></th>
+                            <th><strong>Action</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let image of image_name;let i = index;">
+                            <td>{{i+1}}</td>
+                            <!-- <mat-radio-button value="1" (click)="change_bg(image)"></mat-radio-button> -->
+                            <td>
+                                <!-- (ngModelChange)="change_checkbox(image)" -->
+                                <mat-checkbox color='primary' [(ngModel)]="image.checkbox" (click)="change_bg(image)"></mat-checkbox>
+                            </td>
+                            <td><img src="../../assets/img/login_bg/thumb/{{image.thumb_file_name}}"></td>
+                            <td>
+                                <i class="fa fa-trash" aria-hidden="true" style="cursor:pointer;" (click)="delete_image(image)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

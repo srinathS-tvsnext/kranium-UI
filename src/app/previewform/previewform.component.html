@@ -1,0 +1,52 @@
+
+<div class="main-content" style="width:600px;">
+  <div class="panel panel-default">
+      <div class="panel-body" *ngFor="let opttext of formdatacr">
+          <div class=''>
+              <span class="pull-left" style='font-weight: 600;'>{{opttext.name}} ({{opttext.dept_name}})</span>
+          </div>
+          <div class="row paddingfull">
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                  <div *ngFor="let opttextnew of opttext.question;let i = index">
+
+                      <p>{{i+1}}. {{opttextnew.name}}</p>
+                      <p *ngIf="opttextnew.options_type=='1'">
+                          <mat-form-field class='flex-50' style='width:100%; padding-top:10px;'>
+                              <input matInput placeholder="Enter the Answer" [(ngModel)]="opttextnew.answer">
+                          </mat-form-field>
+                      </p>
+                      <p *ngIf="opttextnew.options_type=='2'">
+                          <mat-form-field class='flex-50' style='width:100%; padding-top:10px;'>
+                              <input matInput placeholder="Enter the Answer" [(ngModel)]="opttextnew.answer">
+                          </mat-form-field>
+                      </p>
+                      <p *ngIf="opttextnew.options_type=='3'">
+                          <span *ngFor="let optionval of opttextnew.question_option">
+                <mat-radio-button class="example-radio-button" [value]="optionval.options + optionval.question_id">
+                  {{optionval.options}} &nbsp;&nbsp;
+                </mat-radio-button>
+              </span>
+                      </p>
+                      <p *ngIf="opttextnew.options_type=='4'">
+                          <span *ngFor="let optionval of opttextnew.question_option">
+                <mat-checkbox class="example-margin" [(ngModel)]="optionval.opnions">{{optionval.options}} &nbsp;&nbsp;</mat-checkbox>
+              </span>
+                      </p>
+                      <p *ngIf="opttextnew.options_type=='5'">
+                            <mat-form-field>
+                          <mat-select placeholder='Choose' class='flex-50'>
+                              <mat-option *ngFor="let optionval of opttextnew.question_option" [value]="optionval.options">
+                                  {{ optionval.options }}
+                              </mat-option>
+                          </mat-select>
+                          </mat-form-field>
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class='pull-right optionalignment'>
+    <button type="button" class="btn btn-steelblue" (click)="cancel()">Cancel</button>
+  </div>
+</div>

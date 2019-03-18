@@ -1,0 +1,24 @@
+.userprofile {
+    float: none;
+    margin: 0 auto;
+    width: 38%;
+    max-height: 95px;
+    border-radius: 100px;
+}
+
+.themecustom {
+    background-color: steelblue;
+    color: white;
+    box-shadow: 0 10px 20px -10px #4169E1;
+    padding-bottom: 10px;
+}
+
+.profile-usertitle-name {
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.profile-usertitle-job {
+    font-weight: 600;
+    font-size: 10px;
+}

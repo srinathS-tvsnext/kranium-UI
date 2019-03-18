@@ -1,0 +1,60 @@
+.btn-white{
+    background-color: white;
+    color: grey;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 14px 22px 12px 18px;
+    border: 1px solid lightgrey;
+}
+.btn-white:hover{
+    color: steelblue;
+}
+.headtext{
+    color: grey;
+    font-size: 13px;
+    font-weight: 600;
+}
+.valuetext{
+    color:steelblue;
+    font-size: 13px;
+    font-weight: 730;
+}
+
+.headtext_status{
+    color: steelblue;
+    font-size: 13px;
+    font-weight: 600;
+}
+.tabtext_status{
+    color: gray;
+    font-size: 13px;
+    font-weight: 600;
+    /* style:none; */
+}
+
+.tabtext{
+    color: steelblue;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-steelblue{
+    background-color: transparent;
+    color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.btn-steelblue:hover{
+    background-color: steelblue;
+    color: white;
+}
+
+.active {
+    border: 1px solid steelblue;
+    color:steelblue;
+}
+
+
+.btnaction{
+    text-transform: none !important;
+}

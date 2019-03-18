@@ -1,0 +1,110 @@
+<div class="main-content">
+
+    <fieldset class="quote-fieldset position_bt_top" *ngFor="let choice of formdatacr">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class='col-md-6 form-group'>
+                            <mat-form-field class='flex-50' style='padding-top:10px;'>
+                                <input matInput placeholder="Form Name" [(ngModel)]="choice.f_name">
+                            </mat-form-field>
+                        </div>
+
+                        <div class='col-md-6 form-group'>
+                         <mat-form-field>
+                            <mat-select placeholder='Choose Department Name' class='flex-50' [(ngModel)]="choice.dept_name">
+                                <mat-option *ngFor="let Department of Departmentname" [value]="Department.name_formal">
+                                    {{ Department.name_formal}}
+                                </mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class='col-md-6 form-group'>
+                                <mat-form-field>
+                            <mat-select placeholder='Choose Doctor Name' class='flex-50' [(ngModel)]="choice.doctor_name">
+                                <mat-option *ngFor="let doctor of DoctorsName" [value]="doctor.name">
+                                    {{ doctor.name }}
+                                </mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class='col-md-6 form-group'>
+                            <mat-form-field>
+                            <mat-select placeholder='Choose Sub-Menu Name' class='flex-50' [(ngModel)]="choice.sub_menu_id">
+                                <mat-option *ngFor="let food of docname" [value]="food.value">
+                                    {{ food.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class='col-md-6 form-group' *ngIf="choice.sub_menu_id=='2'">
+                            <mat-form-field>
+                            <mat-select placeholder='Choose History Menu Name' class='flex-50' [(ngModel)]="choice.history_main_form_name">
+                                <mat-option *ngFor="let food_his of historymaninName" [value]="food_his.history_main_form_name">
+                                    {{ food_his.history_main_form_name }}
+                                </mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class='col-md-6 form-group' *ngIf="choice.doctor_id">
+                            <mat-form-field class='flex-50' style='padding-top:10px;'>
+                                <input type="number" matInput placeholder="Doctor Sequence Number" [(ngModel)]="choice.doc_seq_no">
+                            </mat-form-field>
+                        </div>
+                        <div class='col-md-6 form-group' *ngIf="choice.dept_name">
+                            <mat-form-field class='flex-50' style='padding-top:10px;'>
+                                <input type="number" matInput placeholder="Department Sequence Number" [(ngModel)]="choice.dep_seq_no">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body" *ngFor="let choices of choice.question">
+                <div class='col-md-12'>
+                    <mat-form-field class='flex-50' style='width:100%; padding-top:10px;'>
+                        <input matInput placeholder="Enter the Question" [(ngModel)]="choices.name">
+                    </mat-form-field>
+                </div>
+                <div class='col-md-12'>
+                    <div class='col-md-6'>
+                        <mat-form-field>
+                        <mat-select placeholder='Choose Answer Type' class='flex-50' [(ngModel)]="choices.options_type" (change)='answertypeval(choices.options_type,choices)'>
+                            <mat-option *ngFor="let options_type of testfield" [value]="options_type.value">
+                                {{ options_type.viewValue }}
+                            </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class='col-md-3'>
+                        <span [hidden]='!choices.character_lengths'>
+                  <mat-form-field style='padding-top:10px; width:50%;'>
+                    <input type='number' matInput placeholder="Character Length" [(ngModel)]="choices.character_length">
+                  </mat-form-field>
+                </span>
+                        <span [hidden]="!choices.options_counts">
+                  <mat-form-field style='padding-top:10px; width:50%;'>
+                    <input type='text' matInput placeholder="Option Count" [(ngModel)]="choices.options_count" (ngModelChange)="valuechange(choices)">
+                  </mat-form-field>
+                </span>
+                    </div>
+                </div>
+                <div *ngFor="let opttext of choices.question_option">
+                    <div class="col-md-2">
+                        <mat-form-field style='padding-top:10px; width:80%;'>
+                            <input type="text" matInput placeholder="Enter the option" [(ngModel)]="opttext.options">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <button type="button" class="btn btn-steelblue pull-right form-group" (click)='clone_save(formdatacr)'>Clone</button>
+    <button type="button" class="btn btn-steelblue pull-right form-group" routerLink='/Homescreen/Manageforms' style="margin-right: 10px;">Cancel</button>
+</div>

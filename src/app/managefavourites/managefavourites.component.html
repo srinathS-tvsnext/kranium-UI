@@ -1,0 +1,1390 @@
+<div class="main-content">
+    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+        <div class="tabbable-panel">
+            <div class="tabbable-line">
+                <ul class="nav nav-tabs ">
+                    <li class="active col-md-2">
+                        <a href="#tab_default_3" data-toggle="tab">
+                            Drug </a>
+                    </li>
+                    <li class="col-md-3">
+                        <a href="#tab_default_1" data-toggle="tab">
+                            Prescription </a>
+                    </li>
+
+                    <li class="col-md-3">
+                        <a href="#tab_default_4" data-toggle="tab">
+                            Investigation / Packages </a>
+                    </li>
+                    <li class="col-md-2">
+                        <a href="#tab_default_2" data-toggle="tab">
+                            OP Summary </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="tab_default_1">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="col-md-1 pull-right">
+                                    <select class="form-control" [(ngModel)]="itemsperpages_pres"
+                                        (ngModelChange)="setPageSizeOptions_pesc(itemsperpages_pres)">
+                                        <option *ngFor="let itemsperpage of pageSizeOptions_pres">{{itemsperpage}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="table-responsive col-md-12">
+                                    <table class="table table-striped table-bordered text-center" cellspacing="0"
+                                        width="100%">
+                                        <thead class="tableheadercolor">
+                                            <tr>
+                                                <th style='text-align: center'>SN</th>
+                                                <th style='text-align: center'>Template Name</th>
+                                                <th style='text-align: center'>Date Added</th>
+                                                <th style='text-align: center'>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let pres_data of template_pres_data; let i = index">
+                                                <td>{{i+1}}</td>
+
+                                                <td>{{pres_data.template_name}}</td>
+                                                <td>{{pres_data.CD}}</td>
+                                                <td>
+                                                    <i class="fa fa-pencil" aria-hidden="true"
+                                                        (click)="edittemp_pres(pres_data)"></i>&nbsp;
+                                                    <i class="fa fa-trash" aria-hidden="true"
+                                                        (click)="clickMethod_presc(pres_data,pres_data.template_name)"></i>
+                                                    <!-- <i class="fa fa-ban" aria-hidden="true" (click)="cancel_tempprescription_master()"></i> -->
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                        (click)="edit_presc_panel(pres_data)"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="pull-right">
+                                        <!-- <pagination-controls (pageChange)="p_pres = $event" id="second"></pagination-controls> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="">
+                                    <p class="headercolor">Medication</p>
+                                    <div class="row">
+                                        <div class="col-md-12" style="padding-bottom:20px;">
+                                            <div class="col-md-6">
+                                                <mat-form-field style='width:100%;'>
+                                                    <input matInput list="browssss" name="browssss"
+                                                        placeholder="Search Brand / Generic Name"
+                                                        [(ngModel)]="med.brand_gen_name"
+                                                        (ngModelChange)="get_medicine_kranium_list1(med.brand_gen_name)">
+                                                </mat-form-field>
+                                                <!-- <span [hidden]="hiddengif">
+                                                        <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />                                        
+                                                    </span> -->
+                                                <!-- <datalist id="browssss">
+                              <option *ngFor="let state of medicine_kranium_list1" value="{{state.itemname}}">
+                            </datalist> -->
+                                                <ul id="browssss"
+                                                    class="searchmodalcustom list-unstyled search-acc-list-ul"
+                                                    *ngIf="dropdown_hide">
+                                                    <li class="container-fluid  cursor search-acc-list"
+                                                        *ngFor="let data of medicine_kranium_list1"
+                                                        class="padding: 5px;">
+                                                        <div class="row search-acc-list">
+                                                            <div class="col-md-12"
+                                                                (click)="data_click_bind(data.itemname)"><span>
+                                                                    {{data.itemname}}</span><br><span
+                                                                    style="color:grey;">({{data.genericname}})</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">&nbsp;</div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="col-lg-2 col-md-6">
+                                                <!-- < mat-form-field style='width:100%;padding-top:7px;'>
+                                                    <input matInput placeholder="Brand Name" [(ngModel)]="med.brand_name">
+                                                </mat-form-field> -->
+                                                <mat-form-field>
+                                                    <mat-select placeholder="Brand Name" style='width:100%;'
+                                                        [(ngModel)]="med.brand_name">
+                                                        <mat-option *ngFor="let food of barand_gen_name"
+                                                            [value]="food.itemname">
+                                                            {{ food.itemname }}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                                <!-- <span [hidden]="hiddengif">
+                                                    <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />                                        
+                                                </span>
+                                                <datalist id="browssss">
+                          <option *ngFor="let state of medicine_kranium_list" value="{{state.itemname}}">
+                        </datalist> -->
+                                            </div>
+                                            <div class="col-lg-2 col-md-6">
+                                                <mat-form-field style='width:100%;padding-top:7px;'>
+                                                    <input matInput placeholder="Generic Name"
+                                                        [(ngModel)]="med.generic_name"
+                                                        (ngModelChange)="genericby_brandname(med.generic_name)">
+                                                </mat-form-field>
+                                                <!-- <datalist id="browssa">
+                          <option *ngFor="let state of medicine_kranium_list" value="{{state.genericname}}">
+                        </datalist> -->
+                                            </div>
+                                            <div class="col-lg-2 col-md-6">
+                                                <mat-form-field>
+                                                    <mat-select placeholder="Frequency" style='width:100%;'
+                                                        [(ngModel)]="med.frequency">
+                                                        <mat-option *ngFor="let food of prescr"
+                                                            [value]="food.viewValue">
+                                                            {{ food.viewValue }}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-lg-2 col-md-6">
+                                                <mat-form-field style='width:100%;padding-top:6px;'>
+                                                    <input matInput placeholder="Duration" value='2'
+                                                        [(ngModel)]="med.duration_no">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-lg-2 col-md-6">
+                                                <mat-form-field>
+                                                    <mat-select placeholder="Days" style='width:100%;padding-top:13px;'
+                                                        [(ngModel)]="med.duration_capt">
+                                                        <mat-option *ngFor="let food of day" [value]="food.viewValue">
+                                                            {{ food.viewValue }}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-lg-2 col-md-6 msicondiv">
+                                                <!-- <button type="button" class="btn btn-steelblue" (click)="add_medicine(med)">{{btn_pres}}</button>
+                                                <button type="button" class="btn btn-steelblue" (click)="cancel_pres()">Cancel</button> -->
+                                                <span *ngIf="btn_pres=='Add'"> <i class="fa fa-plus-square"
+                                                        aria-hidden="true"
+                                                        style="cursor:pointer; color:steelblue;font-size: 25px;"
+                                                        (click)="add_medicine(med)"></i></span>
+                                                <span *ngIf="btn_pres=='Update'"> <i class="fa fa-pencil-square-o"
+                                                        aria-hidden="true"
+                                                        style="cursor:pointer; color:steelblue;font-size: 25px;"
+                                                        (click)="add_medicine(med)"></i></span>
+                                                <i class="fa fa-window-close" aria-hidden="true"
+                                                    style="cursor:pointer; color:tomato;font-size: 25px;"
+                                                    (click)="cancel_pres()"> </i>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 msdiv">
+                                            <span *ngIf="btn_pres=='Add'"><button type="button"
+                                                    class="btn btn-steelblue"
+                                                    (click)="add_medicine(med)">Save</button></span>
+                                            <span *ngIf="btn_pres=='Update'"> <button type="button"
+                                                    class="btn btn-steelblue"
+                                                    (click)="add_medicine(med)">Update</button></span>
+                                            <button type="button" class="btn btn-steelblue"
+                                                (click)="cancel_drug()">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table borderless" style='text-align: center'>
+                                            <thead class="tableheadercolor">
+                                                <tr>
+                                                    <th style='text-align: center'>&nbsp;</th>
+                                                    <th style='text-align: center'>Medication Name</th>
+                                                    <th style='text-align: center'>Frequency</th>
+                                                    <th style='text-align: center'>Duration</th>
+                                                    <th style='text-align: center'>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let temp_pres of template_pres_med_data">
+                                                    <td>&nbsp; </td>
+                                                    <td>{{temp_pres.brand_name}}
+                                                        <br><span
+                                                            style="font-size:11px;">({{temp_pres.generic_name}})</span>
+                                                    </td>
+                                                    <td>{{temp_pres.frequency}}</td>
+                                                    <td>{{temp_pres.duration_no}} {{temp_pres.duration_capt}}</td>
+                                                    <td>
+                                                        <span>
+                                                            <i class="material-icons"
+                                                                style="cursor:pointer; color:steelblue;"
+                                                                (click)='editmedicine_pres(temp_pres)'>edit</i>
+                                                            <i class="material-icons"
+                                                                style="cursor:pointer; color:tomato;"
+                                                                (click)='deletemedicine_pres(temp_pres)'>delete</i>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <span *ngIf="!sav_presc_temp">
+                                        <button type="button" class="btn btn-steelblue pull-right"
+                                            (click)="clear_prestemp_name()" style='cursor:pointer;'>Cancel</button>
+                                    </span>
+                                    <span *ngIf="sav_presc_temp">
+                                        <button type="button" class="btn btn-steelblue pull-right"
+                                            (click)="template_name()" style='cursor:pointer;'>Save</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane active" id="tab_default_3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="col-md-1 pull-right">
+                                    <select class="form-control" [(ngModel)]="itemsperpages_drug"
+                                        (ngModelChange)="setPageSizeOptions(itemsperpages_drug)">
+                                        <option *ngFor="let itemsperpage of pageSizeOptions_drug">{{itemsperpage}}
+                                        </option>
+                                    </select>
+                                </div>
+
+
+                                <div class="table-responsive col-md-12">
+                                    <table class="table table-striped table-bordered text-center" cellspacing="0"
+                                        width="100%">
+                                        <thead class="tableheadercolor">
+                                            <tr>
+                                                <th style='text-align: center'>SN</th>
+                                                <th style='text-align: center'>Template Name</th>
+                                                <th style='text-align: center'>Date Added</th>
+                                                <th style='text-align: center'>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let drug_temp_d of template_drug_data ;let i = index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{drug_temp_d.template_name}}</td>
+                                                <td>{{drug_temp_d.CD}}</td>
+                                                <td>
+                                                    <i class="fa fa-pencil" aria-hidden="true"
+                                                        (click)="edittemp_drug(drug_temp_d)"></i>&nbsp;
+                                                    <i class="fa fa-trash" aria-hidden="true"
+                                                        (click)="clickMethod_drug(drug_temp_d,drug_temp_d.template_name)"></i>
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                        (click)="edit_drug_panel(drug_temp_d)"></i>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="pull-right">
+                                        <!-- <pagination-controls (pageChange)="p_drug = $event" id="first"></pagination-controls> -->
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="">
+                                    <p class="headercolor">Medication</p>
+                                    <div class="row">
+                                        <div class="col-md-12" style="padding-bottom:20px;">
+                                            <div class="col-md-6">
+                                                <mat-form-field style='width:100%;padding-top:7px;'>
+                                                    <input matInput list="browsbra" name="browsbra"
+                                                        placeholder="Search Brand/Generic Name"
+                                                        [(ngModel)]="med_drug.brand_genric_name"
+                                                        (ngModelChange)="get_medicine_kranium_list(med_drug.brand_genric_name)">
+                                                </mat-form-field>
+                                                <!-- <span [hidden]="hiddengif">
+                                                        <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />                                        
+                                                    </span> -->
+                                                <!-- <datalist id="browsbra">
+                              <option *ngFor="let state of medicine_kranium_list" value="{{state.itemname}}">
+                            </datalist> -->
+                                                <ul id="browsbra"
+                                                    class="searchmodalcustom list-unstyled search-acc-list-ul"
+                                                    *ngIf="dropdown_hide">
+                                                    <li class="container-fluid  cursor search-acc-list"
+                                                        *ngFor="let data of medicine_kranium_list"
+                                                        class="padding: 5px;">
+                                                        <div class="row search-acc-list">
+                                                            <div class="col-md-12"
+                                                                (click)="data_click_bind_prec(data.itemname)"><span>
+                                                                    {{data.itemname}}</span><br><span
+                                                                    style="color:grey;">({{data.genericname}})</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">&nbsp;</div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="col-lg-2 col-md-6">
+                                                <!-- < mat-form-field style='width:100%;padding-top:7px;'>
+                                                    <input matInput placeholder="Brand Name" [(ngModel)]="med_drug.brand_name">
+                                                </mat-form-field> -->
+                                                <mat-form-field>
+                                                    <mat-select placeholder="Brand Name" style='width:100%;'
+                                                        [(ngModel)]="med_drug.brand_name">
+                                                        <mat-option *ngFor="let food of barand_gen_name"
+                                                            [value]="food.itemname">
+                                                            {{ food.itemname }}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                                <!-- <span [hidden]="hiddengif">
+                                                    <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />                                        
+                                                </span>
+                                                <datalist id="browsbrand">
+                          <option *ngFor="let state of medicine_kranium_list" value="{{state.itemname}}">
+                        </datalist> -->
+                                                <!-- medicine_kranium_list -->
+                                            </div>
+                                            <div class="col-lg-2 col-md-6">
+                                                <mat-form-field style='width:100%;padding-top:7px;'>
+                                                    <input matInput placeholder="Generic Name"
+                                                        [(ngModel)]="med_drug.generic_name"
+                                                        (ngModelChange)="genericby_brandname(med_drug.generic_name)">
+                                                </mat-form-field>
+                                                <!-- <datalist id="brows">
+                          <option *ngFor="let state of medicine_kranium_list" value="{{state.genericname}}">
+                        </datalist> -->
+                                            </div>
+                                            <div class="col-lg-2 col-md-6">
+                                                <mat-form-field>
+                                                    <mat-select placeholder="Frequency" style='width:100%;'
+                                                        [(ngModel)]="med_drug.frequency">
+                                                        <mat-option *ngFor="let food of prescr"
+                                                            [value]="food.viewValue">
+                                                            {{ food.viewValue }}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-lg-2 col-md-6">
+                                                <mat-form-field style='width:100%;padding-top:6px;'>
+                                                    <input matInput placeholder="Duration"
+                                                        [(ngModel)]="med_drug.duration_no">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-lg-2 col-md-6">
+                                                <mat-form-field>
+                                                    <mat-select placeholder="Days" style='width:100%;padding-top:13px;'
+                                                        [(ngModel)]="med_drug.duration_capt">
+                                                        <mat-option *ngFor="let food of day" [value]="food.viewValue">
+                                                            {{ food.viewValue }}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-lg-2 col-md-6 msicondiv">
+                                                <!-- <button type="button" class="btn btn-steelblue" (click)="add_medicine_drug(med_drug)">{{btn}}</button>
+                                                <button type="button" class="btn btn-steelblue" (click)="cancel_drug()">cancel</button> -->
+                                                <span *ngIf="btn=='Add'"> <i class="fa fa-plus-square"
+                                                        aria-hidden="true"
+                                                        style="cursor:pointer; color:steelblue;font-size: 25px;"
+                                                        (click)="add_medicine_drug(med_drug)"></i></span>
+                                                <span *ngIf="btn=='Update'"> <i class="fa fa-pencil-square-o"
+                                                        aria-hidden="true"
+                                                        style="cursor:pointer; color:steelblue;font-size: 25px;"
+                                                        (click)="add_medicine_drug(med_drug)"></i></span>
+                                                <i class="fa fa-window-close" aria-hidden="true"
+                                                    style="cursor:pointer; color:tomato;font-size: 25px;"
+                                                    (click)="cancel_drug()"> </i>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 msdiv">
+                                            <span *ngIf="btn=='Add'"><button type="button" class="btn btn-steelblue"
+                                                    (click)="add_medicine_drug(med_drug)">Save</button></span>
+                                            <span *ngIf="btn=='Update'"> <button type="button" class="btn btn-steelblue"
+                                                    (click)="add_medicine_drug(med_drug)">Update</button></span>
+                                            <button type="button" class="btn btn-steelblue"
+                                                (click)="cancel_drug()">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table borderless" style='text-align: center'>
+                                        <thead class="tableheadercolor">
+                                            <tr>
+                                                <th style='text-align: center'>&nbsp;</th>
+                                                <th style='text-align: center'>Medication Name</th>
+                                                <th style='text-align: center'>Frequency</th>
+                                                <th style='text-align: center'>Duration</th>
+                                                <th style='text-align: center'>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let drug_data of formdata_drug">
+                                                <td>&nbsp; </td>
+                                                <td>{{drug_data.brand_name}}
+                                                    <br><span style="font-size:11px;">({{drug_data.generic_name}})</span></td>
+                                                <td>{{drug_data. frequency}}</td>
+                                                <td>{{drug_data.duration_no}} {{drug_data.duration_capt}}</td>
+                                                <td>
+                                                    <span>
+                            <i class="material-icons" style="cursor:pointer;">edit</i>
+                            <i class="material-icons">delete</i>
+                          </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <div class="tab-pane" id="tab_default_4">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="col-md-1 pull-right">
+                                    <select class="form-control" [(ngModel)]="itemsperpages_inv"
+                                        (ngModelChange)="setPageSizeOptions_inv(itemsperpages_inv)">
+                                        <option *ngFor="let itemsperpage of pageSizeOptions_inv">{{itemsperpage}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="table-responsive col-md-12">
+                                    <table class="table table-striped table-bordered text-center" cellspacing="0"
+                                        width="100%">
+                                        <thead class="tableheadercolor">
+                                            <tr>
+                                                <th style='text-align: center'>SN</th>
+                                                <th style='text-align: center'>Template Name</th>
+                                                <th style='text-align: center'>Date Added</th>
+                                                <th style='text-align: center'>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let invest_temp of Investigation_template ;let i = index">
+                                                <td>{{i+1}}</td>
+
+                                                <td>{{invest_temp.template_name}}</td>
+                                                <td>20/05/2017</td>
+                                                <td>
+                                                    <i class="fa fa-pencil" aria-hidden="true"
+                                                        (click)="edit_investigation_temp(invest_temp)"></i>&nbsp;
+                                                    <i class="fa fa-trash" aria-hidden="true"
+                                                        (click)="clickMethod_inves(invest_temp,invest_temp.template_name)"></i>
+                                                    <!-- removeall() -->
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                        (click)="edit_inv_panel(invest_temp)"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="pull-right">
+                                        <!-- <pagination-controls (pageChange)="p_inv = $event" id="third"></pagination-controls> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <p class="headercolor">Investigation List</p>
+                                    <!-- <div class="">
+                                        <div class='col-md-12 form-group'>
+                                            <mat-select placeholder="Investigation List" class="size" [(ngModel)]="Investigation_menu" (ngModelChange)="get_Investigation_category_list(Investigation_menu)">
+                                                <mat-option *ngFor="let Investigation_menu of Investigation" [value]="Investigation_menu">
+                                                    {{ Investigation_menu.name_formal}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div> -->
+                                    <div class="">
+                                        <div class='col-md-12 form-group'>
+                                            <mat-form-field style='width:100%;padding-top:7px;'>
+                                                <input matInput list="brows" name="brows" placeholder="Search Services"
+                                                    [(ngModel)]="Investigation_menu"
+                                                    (ngModelChange)="get_medicine_kranium_cat_list_gen(Investigation_menu)">
+                                            </mat-form-field>
+                                            <span [hidden]="hiddengif">
+                                                <img
+                                                    src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                            </span>
+                                            <datalist id="brows">
+                                                <option *ngFor="let state of investigation_kranium_list"
+                                                    value="{{state.investigation_kranium_list}}">
+                                            </datalist>
+                                        </div>
+                                        <div class="col-md-12" [hidden]="hidden">
+                                            <div class="col-md-12" id="mysearchbox"
+                                                style="height:250px;overflow: auto;">
+                                                <div class="col-md-4"
+                                                    *ngFor="let sub_view_menu of Investigation_category; let i =index;">
+                                                    <div class="checkboxtext"
+                                                        style="width: 95%;white-space: nowrap;text-overflow: ellipsis; overflow: hidden;">
+                                                        <mat-checkbox color='primary'
+                                                            [(ngModel)]="sub_view_menu.checkbox"
+                                                            (ngModelChange)="create_category_list(sub_view_menu)"><span
+                                                                style="color:steelblue;">{{sub_view_menu.item_long_description}}</span>
+                                                        </mat-checkbox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-12 form-group'>
+                                        <!-- <div [hidden]="hidden">
+                                            <mat-expansion-panel>
+                                                 <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        {{ invest_caterogyname}}
+                                                    </mat-panel-title>
+                                                </mat-expansion-panel-header>
+                                                <div class="col-md-12" style="height: 300px;
+                        overflow: scroll;">
+                                                    <div class="col-md-4" *ngFor="let sub_view_menu of Investigation_category; let i =index;">
+                                                        <div class="checkboxtext" style="text-overflow: ellipsis; overflow: hidden;">
+                                                            <mat-checkbox color='primary' [(ngModel)]="sub_view_menu.checkbox" (ngModelChange)="create_category_list(sub_view_menu)">{{sub_view_menu.item_long_description}}</mat-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div> </mat-expansion-panel>
+                                        </div> -->
+                                        <div class="">
+                                            <!-- <p class="header">{{category_tem.deptname}}</p> -->
+                                            <span class="btn-group btn-group-md" id="withBtnGroup"
+                                                aria-label="Page Header Actions" role="group"
+                                                *ngFor="let category_temperary of categorylist_array">
+                                                <button type="button" class="btn btn-white"
+                                                    *ngIf="category_temperary.checkbox">
+                                                    <span
+                                                        class="hidden-xs wordsize">{{category_temperary.item_long_description}}</span>
+                                                    <span class="badge badgewhite xword"
+                                                        (click)="remove_temp(category_temperary)">X</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                        <div class="">
+                                            <!-- {{Investigation_template_category}} -->
+                                            <!-- <p class="header">Department Name</p> -->
+                                            <div class="divalignment"
+                                                *ngFor="let category_tem of Investigation_template_category">
+                                                <p class="header">{{category_tem.deptname}}</p>
+                                                <span class="btn-group btn-group-md" id="withBtnGroup"
+                                                    aria-label="Page Header Actions" role="group"
+                                                    *ngFor="let category_tem_list of category_tem.question">
+                                                    <button type="button" class="btn btn-white">
+                                                        <span
+                                                            class="hidden-xs">{{category_tem_list.item_long_description}}</span>
+                                                        <span class="badge badgewhite"
+                                                            (click)="remove_old_tempdata_investigation(category_tem_list)">X</span>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span *ngIf="investi_btn=='Add'">
+                                                <button type="button" class="btn btn-steelblue pull-right"
+                                                    (click)='save_investigation(sub_view_menu)'>{{investi_btn}}</button>
+                                            </span>
+                                            <span *ngIf="investi_btn=='Update'">
+                                                <button type="button" class="btn btn-steelblue pull-right"
+                                                    (click)='update_investigation(Investigation_template_category)'>{{investi_btn}}</button>
+                                            </span>
+                                            <!-- <button type="button" class="btn btn-warning pull-right" (click)='save(form)'>Cancel</button> -->
+                                        </div>
+                                        <!-- </md-accordion> -->
+                                    </div>
+                                    <!-- <div class="padd">
+                    <button type="button" class="btn btn-steelblue pull-right">Add</button>
+                  </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_default_2">
+                        <div class="paddingbtm padd">
+                            <a href="#tab_default_13" data-toggle="tab">
+                                <button type="button" class="btn btn-steelblue pull-right" (click)="addnew_opsumm()">Add
+                                    New</button>
+                            </a>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="col-md-1 pull-right">
+                                    <select class="form-control" [(ngModel)]="itemsperpages"
+                                        (ngModelChange)="setPageSizeOptions_op(itemsperpages)">
+                                        <option *ngFor="let itemsperpage of pageSizeOptions">{{itemsperpage}}</option>
+                                    </select>
+                                </div>
+                                <div class="table-responsive col-md-12">
+                                    <table class="table table-striped table-bordered text-center" cellspacing="0"
+                                        width="100%">
+                                        <thead class="tableheadercolor">
+                                            <tr>
+                                                <th style='text-align: center'>SN</th>
+                                                <th style='text-align: center'>Template Name</th>
+                                                <th style='text-align: center'>Date Added</th>
+                                                <th style='text-align: center'>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- *ngFor="let category_tem of Investigation_template_category" -->
+                                            <tr *ngFor="let opsum_temp_name of opsummary_template_list let i = index">
+                                                <td>{{i+1}}</td>
+
+                                                <td>{{opsum_temp_name.template_name}}</td>
+                                                <td>{{opsum_temp_name.CD}}</td>
+                                                <td>
+                                                    <a href="#tab_default_13" data-toggle="tab">
+                                                        <i class="fa fa-pencil" aria-hidden="true"
+                                                            (click)="edit_opsummary(opsum_temp_name)"></i>
+                                                    </a>&nbsp;
+                                                    <i class="fa fa-trash" aria-hidden="true"
+                                                        (click)="clickMethod_opsum(opsum_temp_name,opsum_temp_name.template_name)"></i>
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                        (click)="edit_op_panel(opsum_temp_name)"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="pull-right">
+                                        <!-- <pagination-controls (pageChange)="p = $event" id="four"></pagination-controls> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_default_13">
+                        <div class="row" style='padding:10px;'>
+                            <div class="col-md-12">
+                                <p style="font-weight:600;color:steelblue;">{{tittle}} -Profile</p>
+                                <div class="">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="table-responsive">
+                                                <table class="table table borderless" style='text-align: center'>
+                                                    <!-- <thead class="headercolor">
+                                      <tr> 
+                                        <th style='text-align: center;font-weight:600;'>Types</th>
+                                        <th style='text-align: center;font-weight:600;'>&nbsp;</th>
+                                        <th style='text-align: center;font-weight:600;'>&nbsp;</th>
+                                        <th style='text-align: center;font-weight:600;'>&nbsp;</th>
+                                      </tr>
+                                    </thead> -->
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="firstname"
+                                                                        [(ngModel)]="opsummar_fav.firstname">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>First Name</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="lastname"
+                                                                        [(ngModel)]="opsummar_fav.lastname">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Last Name</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="fathertname"
+                                                                        [(ngModel)]="opsummar_fav.fathertname">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Father / Husband Name</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Occupation"
+                                                                        [(ngModel)]="opsummar_fav.Occupation">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Occupation</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Qualification"
+                                                                        [(ngModel)]="opsummar_fav.Qualification">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Qualification</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Privilege"
+                                                                        [(ngModel)]="opsummar_fav.Privilege">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Privilege Card No</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Age"
+                                                                        [(ngModel)]="opsummar_fav.Age"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Age</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="DOB"
+                                                                        [(ngModel)]="opsummar_fav.DOB"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Date Of Birth</td>
+
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Blood"
+                                                                        [(ngModel)]="opsummar_fav.Blood"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Blood Group</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Civil"
+                                                                        [(ngModel)]="opsummar_fav.Civil"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Civil Status</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Address"
+                                                                        [(ngModel)]="opsummar_fav.Address">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Address</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Town"
+                                                                        [(ngModel)]="opsummar_fav.Town"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Town / City</td>
+
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="District"
+                                                                        [(ngModel)]="opsummar_fav.District">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>District</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="State"
+                                                                        [(ngModel)]="opsummar_fav.State"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>State</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Country"
+                                                                        [(ngModel)]="opsummar_fav.Country">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Country</td>
+
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Billing"
+                                                                        [(ngModel)]="opsummar_fav.Billing">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Billing Type</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Insurance"
+                                                                        [(ngModel)]="opsummar_fav.Insurance">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Insurance / Employee Id</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Corporate"
+                                                                        [(ngModel)]="opsummar_fav.Corporate">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Insurance / Corporate</td>
+
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Phone"
+                                                                        [(ngModel)]="opsummar_fav.Phone"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Phone No.</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Mobile"
+                                                                        [(ngModel)]="opsummar_fav.Mobile">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Mobile No.</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Email"
+                                                                        [(ngModel)]="opsummar_fav.Email"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Email Id</td>
+
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Status"
+                                                                        [(ngModel)]="opsummar_fav.Status">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Status</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Religion"
+                                                                        [(ngModel)]="opsummar_fav.Religion">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Religion</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Nationality"
+                                                                        [(ngModel)]="opsummar_fav.Nationality">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Nationality</td>
+
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Refferance"
+                                                                        [(ngModel)]="opsummar_fav.Refferance">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Reference Information</td>
+
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+
+                                            <a href="#tab_default_2" data-toggle="tab">
+                                                <button class="btn btn-steelblue pull-right">cancel</button>
+                                            </a>
+                                            <a href="#tab_default_5" data-toggle="tab">
+                                                <button class="btn btn-steelblue pull-right">Next</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="tab-pane" id="tab_default_5">
+                        <div class="row" style='padding:10px;'>
+                            <div class="col-md-12">
+                                <p style="font-weight:600;color:steelblue;">{{tittle}}- Vitals</p>
+                                <div class="">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="table-responsive">
+                                                <table class="table table borderless" style='text-align: center'>
+                                                    <!-- <thead class="headercolor">
+                                  <tr> 
+                                    <th style='text-align: center;font-weight:600;'>Types</th>
+                                    <th style='text-align: center;font-weight:600;'>&nbsp;</th>
+                                    <th style='text-align: center;font-weight:600;'>&nbsp;</th>
+                                    <th style='text-align: center;font-weight:600;'>&nbsp;</th>
+                                  </tr>
+                                </thead> -->
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Height"
+                                                                        [(ngModel)]="opsummar_fav.Height">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Height</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Weight"
+                                                                        [(ngModel)]="opsummar_fav.Weight">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Weight</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Temperature"
+                                                                        [(ngModel)]="opsummar_fav.Temperature">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Temperature</td>
+
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Pulse"
+                                                                        [(ngModel)]="opsummar_fav.Pulse"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Pulse</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="Respiratory"
+                                                                        [(ngModel)]="opsummar_fav.Respiratory">
+                                                                    </mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>Respiratory Rate</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="BP"
+                                                                        [(ngModel)]="opsummar_fav.BP"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>BP</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="BMI"
+                                                                        [(ngModel)]="opsummar_fav.BMI"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>BMI</td>
+                                                            <td>
+                                                                <span class="pull-right">
+                                                                    <mat-checkbox color='primary' value="BSA"
+                                                                        [(ngModel)]="opsummar_fav.BSA"></mat-checkbox>
+                                                                </span>
+                                                            </td>
+                                                            <td>BSA</td>
+
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                            <td>&nbsp;</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class='col-md-12'>
+                                                <mat-checkbox color='primary' value="Preferred_Language"
+                                                    [(ngModel)]="opsummar_fav.Preferred_Language"></mat-checkbox>
+                                                <span style="padding-left:10px;font-weight:600">Preferred
+                                                    Language</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class='col-md-12'>
+                                                <mat-checkbox color='primary' value="Pain_Assessment"
+                                                    [(ngModel)]="opsummar_fav.Pain_Assessment"></mat-checkbox>
+                                                <span style="padding-left:10px;font-weight:600">Pain Assessment</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class='col-md-12'>
+                                                <mat-checkbox color='primary' value="Notes"
+                                                    [(ngModel)]="opsummar_fav.Notes"></mat-checkbox>
+                                                <span style="padding-left:10px;font-weight:600">Notes</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class='col-md-12'>
+                                                <mat-checkbox color='primary' value="Allergy"
+                                                    [(ngModel)]="opsummar_fav.Allergy"></mat-checkbox>
+                                                <span style="padding-left:10px;font-weight:600">Allergy</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class='col-md-12'>
+                                                <mat-checkbox color='primary' value="Active_Medication"
+                                                    [(ngModel)]="opsummar_fav.Active_Medication"></mat-checkbox>
+                                                <span style="padding-left:10px;font-weight:600">Active Medication</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <a href="#tab_default_13" data-toggle="tab">
+                                                <button class="btn btn-steelblue pull-right">Back</button>
+                                            </a>
+                                            <a href="#tab_default_6" data-toggle="tab">
+                                                <button class="btn btn-steelblue pull-right">Next</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_default_6">
+                        <!-- <div class="col-md-12">
+                            <button type="button" class="btn btn-steelblue pull-right" routerLink='/Homescreen/Patientdetails/Edithistory'>EDIT</button>
+                        </div> -->
+                        <div class="row" style='padding:10px;'>
+                            <div class="col-md-12">
+                                <p style="font-weight:600;color:steelblue;">{{tittle}}- History</p>
+                                <div class="">
+                                    <div class="panel panel-default" style='padding-left: 10px;'>
+                                        <div class="panel-body">
+                                            <p class="headertextcolor">
+                                                <mat-checkbox color='primary'
+                                                    [(ngModel)]="opsummar_fav.History_Questions_Answers"></mat-checkbox>
+                                                &nbsp;
+                                                <strong>History Questions_Answers</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#tab_default_5" data-toggle="tab">
+                                    <button class="btn btn-steelblue pull-right">Back</button>
+                                </a>
+                                <a href="#tab_default_7" data-toggle="tab">
+                                    <button class="btn btn-steelblue pull-right">Next</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_default_7">
+                        <div class="row" style="padding:10px;">
+                            <div class="col-md-12">
+                                <p style="font-weight:600;color:steelblue;">{{tittle}}- Examination</p>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary'
+                                                [(ngModel)]="opsummar_fav.Examination_Questions_Answers"></mat-checkbox>
+                                            &nbsp;
+                                            <strong>Examination Questions_Answers</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <div class="col-md-12">
+                                            <a href="#tab_default_6" data-toggle="tab">
+                                                <button class="btn btn-steelblue pull-right">Back</button>
+                                            </a>
+                                            <a href="#tab_default_8" data-toggle="tab">
+                                                <button type="button" class="btn btn-steelblue pull-right">Next</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_default_8">
+                        <div class="row" style="padding:10px;">
+                            <div class="col-md-12">
+                                <p style="font-weight:600;color:steelblue;">{{tittle}}- Diagnosis</p>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Consultation_Notes"
+                                                [(ngModel)]="opsummar_fav.Consultation_Notes"></mat-checkbox>&nbsp;
+                                            <strong>Consultation Notes</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Diagnosis"
+                                                [(ngModel)]="opsummar_fav.ICD_description"></mat-checkbox>&nbsp;
+                                            <strong>Icd Codes</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Procedure"
+                                                [(ngModel)]="opsummar_fav.Procedure"></mat-checkbox>&nbsp;
+                                            <strong>Procedure</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <div class="col-md-12">
+                                            <a href="#tab_default_7" data-toggle="tab">
+                                                <button class="btn btn-steelblue pull-right">Back</button>
+                                            </a>
+                                            <a href="#tab_default_9" data-toggle="tab">
+                                                <button type="button" class="btn btn-steelblue pull-right">Next</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_default_9">
+                        <div class="row" style="padding:10px;">
+                            <div class="col-md-12">
+                                <p style="font-weight:600;color:steelblue;">{{tittle}}- Investigation</p>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Current_Investigation"
+                                                [(ngModel)]="opsummar_fav.Current_Investigation"></mat-checkbox>&nbsp;
+                                            <strong>Current Investigation</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <div class="col-md-12">
+                                            <a href="#tab_default_8" data-toggle="tab">
+                                                <button class="btn btn-steelblue pull-right">Back</button>
+                                            </a>
+                                            <a href="#tab_default_10" data-toggle="tab">
+                                                <button type="button" class="btn btn-steelblue pull-right">Next</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_default_10">
+                        <div class="row" style="padding:10px;">
+                            <div class="col-md-12">
+                                <p style="font-weight:600;color:steelblue;">{{tittle}}- Prescription</p>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Current_Prescription"
+                                                [(ngModel)]="opsummar_fav.Current_Prescription"></mat-checkbox>&nbsp;
+                                            <strong>Current Prescription</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Diet_Advice"
+                                                [(ngModel)]="opsummar_fav.Diet_Advice"></mat-checkbox>&nbsp;
+                                            <strong>Diet Advice</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <div class="col-md-12">
+                                            <a href="#tab_default_9" data-toggle="tab">
+                                                <button class="btn btn-steelblue pull-right">Back</button>
+                                            </a>
+                                            <a href="#tab_default_11" data-toggle="tab">
+                                                <button type="button" class="btn btn-steelblue pull-right">Next</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tab_default_11">
+                        <div class="row" style="padding:10px;">
+                            <div class="col-md-12">
+                                <p style="font-weight:600;color:steelblue;">{{tittle}}- Reports</p>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Table_View"
+                                                [(ngModel)]="opsummar_fav.Table_View"></mat-checkbox>&nbsp;
+                                            <strong>Current Report Table View</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Graphical_View"
+                                                [(ngModel)]="opsummar_fav.Graphical_View"></mat-checkbox>&nbsp;
+                                            <strong>Current Report Graphical View</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <div class="col-md-12">
+                                            <a href="#tab_default_10" data-toggle="tab">
+                                                <button class="btn btn-steelblue pull-right">Back</button>
+                                            </a>
+                                            <a href="#tab_default_12" data-toggle="tab">
+                                                <button type="button" class="btn btn-steelblue pull-right">Next</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_default_12">
+                        <div class="row" style="padding:10px;">
+                            <div class="col-md-12">
+                                <p style="font-weight:600;color:steelblue;">{{tittle}}- Follow-up</p>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="OP_Follow_up"
+                                                [(ngModel)]="opsummar_fav.OP_Follow_up"></mat-checkbox>&nbsp;
+                                            <strong>OP Follow-up</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Recommend_IP_Admission"
+                                                [(ngModel)]="opsummar_fav.Recommend_IP_Admission"></mat-checkbox>&nbsp;
+                                            <strong>Recommend IP Admission</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Surgery_Procedure"
+                                                [(ngModel)]="opsummar_fav.Surgery_Procedure"></mat-checkbox>&nbsp;
+                                            <strong>Surgery / Procedure</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="Cross_Consultation"
+                                                [(ngModel)]="opsummar_fav.Cross_Consultation"></mat-checkbox>&nbsp;
+                                            <strong>Cross Consultation</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <p>
+                                            <mat-checkbox color='primary' value="NOTES_followup"
+                                                [(ngModel)]="opsummar_fav.NOTES_followup"></mat-checkbox>&nbsp;
+                                            <strong>NOTES</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default" style='padding-left: 10px;'>
+                                    <div class="panel-body">
+                                        <div class="col-md-12">
+                                            <a href="#tab_default_2" data-toggle="tab">
+                                                <button type="button" class="btn btn-steelblue pull-right"
+                                                    (click)="save_opsummary(opsummar_fav)">Save as Favourite</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

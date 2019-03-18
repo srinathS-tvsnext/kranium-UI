@@ -1,0 +1,33 @@
+.textheader {
+    color: steelblue;
+    font-weight: 600;
+}
+
+.text {
+    font-weight: 500;
+}
+
+.headercolor {
+    color: black !important;
+    font-weight: 900 !important;
+}
+
+.closered {
+    color: red;
+}
+
+.borderless td,
+.borderless th {
+    border: none;
+}
+
+.textalign {
+    text-align: center;
+}
+
+.billgreen {
+    color: green;
+}
+.rightSpace{
+    margin-right:20px;
+}

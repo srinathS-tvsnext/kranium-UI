@@ -1,0 +1,83 @@
+<!-- <div class="form-gap"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-12">
+            <i class="fa fa-home fa-2x pull-right" style="cursor:pointer;" routerLink='/Signin'></i>
+          </div>
+          <div class="text-center">
+            <h3><i class="fa fa-mobile fa-4x"></i></h3>
+            <h2 class="text-center">Verify OTP?</h2>
+            <h5>Enter the OTP Number</h5>
+            <div class="panel-body">
+
+              <form id="register-form" role="form" autocomplete="off" class="form" method="post">
+
+                <div class="form-group">
+                  <div class="">
+                    < mat-form-field class="size">
+                      <input matInput [formControl]="emailFormControl" placeholder="OTP Number"  [(ngModel)]="data.otp">
+
+                      <mat-error *ngIf="emailFormControl.hasError('required')">
+                        OTP is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                    <input style='background-color: steelblue;' name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Resend OTP"
+                    type="submit">
+                  <input style='background-color: steelblue;' name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Submit"
+                    type="submit" (click)='get_current_otp(data)'> 
+                </div>
+
+                <input type="hidden" class="hide" name="token" id="token" value="">
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<div *ngFor="let image of image_name" class="Fullscreen">
+  <img *ngIf="image.active =='0'" src="../../../assets/img/login_bg/default_image/{{image.file_name}}" class="imgsiz">
+  <img *ngIf="image.active =='1'" src="../../../assets/img/login_bg/{{image.file_name}}" class="imgsiz">
+  <div class="login-page">
+    <div class="form">
+      <div style="padding-bottom:20px;">
+        <i class="fa fa-home fa-2x pull-right" style="cursor:pointer;" routerLink='/Signin'></i>
+      </div>
+      <h3><i class="fa fa-mobile fa-4x"></i></h3>
+      <div>&nbsp;</div>
+      <strong class="heading">Verify OTP?</strong>
+      <p class="subheading">Enter the OTP Number</p>
+      <form class="login-form">
+        <div class="form-group">
+          <mat-form-field class="size">
+            <input matInput [formControl]="numberFormControl" placeholder="OTP Number" [(ngModel)]="data.otp">
+
+            <mat-error *ngIf="numberFormControl.hasError('required')">
+              OTP is <strong>required</strong>
+            </mat-error>
+            <!-- <mat-error *ngIf="numberFormControl.hasError('pattern')">
+              <strong>Used only numbers</strong>
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="form-check">
+          <button type="submit" class="btn btn-login pull-right" (click)="get_current_otp(data)"><span>Submit</span></button>
+            <button type="submit" class="btn btn-login pull-right" (click)="otp()"><span>Re-Send OTP</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
