@@ -1,11 +1,11 @@
 <div class="logo">
-    <a href="https://www.gleneaglesglobalhospitals.com" class="simple-text">
+    <a  class="simple-text">
         <div class="logo-img">
-            <img src="../../../assets/img/logo.png" />
+            <img src="../../../assets/img/kranium_logo.png" height="75px"/>
         </div>
     </a>
 </div>
-<div class="sidebar-wrapper collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+<div class="tpcontent sidebar-wrapper collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
     <!-- <form class="navbar-form navbar-right" role="search" *ngIf="isMobileMenu()">
         <div class="form-group form-black is-empty">
             <input type="text" class="form-control" placeholder="Search">
@@ -91,24 +91,24 @@
                     <p>Services Rendered</p>
                 </a>
             </li>
-            <li routerLinkActive="active" class="" *ngFor="let sub_menu2 of acess_rights">
+            <!-- <li routerLinkActive="active" class="" *ngFor="let sub_menu2 of acess_rights">
                 <a routerLink="/Homescreen/Managefavourites" *ngIf="sub_menu2.view && (sub_menu2.sub_menu_name=='Manage Favourites')">
                     <i class="material-icons">important_devices</i>
                     <p>Manage Favourites</p>
                 </a>
-            </li>
+            </li> -->
             <li routerLinkActive="active" class="" *ngFor="let sub_menu3 of acess_rights">
                 <a routerLink="/Homescreen/Manageforms" *ngIf="sub_menu3.view && (sub_menu3.sub_menu_name=='Manage Forms')">
                     <i class="material-icons">featured_play_list</i>
                     <p>Manage Forms</p>
                 </a>
             </li>
-            <li routerLinkActive="active" class="">
+            <!-- <li routerLinkActive="active" class="">
                 <a routerLink="/Homescreen/Master">
                     <i class="material-icons">perm_data_setting</i>
                     <p>Settings</p>
                 </a>
-            </li>
+            </li> -->
             <!-- <li routerLinkActive="active" class="" *ngFor="let sub_menu4 of acess_rights">
                 <a routerLink="/Homescreen/Master" *ngIf="sub_menu4.view && (sub_menu4.sub_menu_name=='Settings')">
                             <i class="material-icons">perm_data_setting</i>

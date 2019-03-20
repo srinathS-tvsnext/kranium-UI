@@ -14,7 +14,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 })
 
 export class SigninComponent implements OnInit {
-  data = {}; imgurl = '../../assets/img/logo.jpg'; image_name;
+  data = {}; imgurl = '../../assets/img/kranium_logo.png'; image_name;
   user_access_rights;
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
 
@@ -96,12 +96,12 @@ export class SigninComponent implements OnInit {
   ]);
 
   foods = [
-    { value: '../../assets/img/logo.jpg', viewValue: 'Chennai Perumbakkam' },
-    { value: '../../assets/img/logo.jpg', viewValue: 'Bangalore Kengeri' },
-    { value: '../../assets/img/logo.jpg', viewValue: 'Bangalore Richmond Road' },
-    { value: '../../assets/img/logo.jpg', viewValue: 'Hyderabad Lakdi-ka-pool' },
-    { value: '../../assets/img/logo.jpg', viewValue: 'Hyderabad LB Nagar' },
-    { value: '../../assets/img/logo3.png', viewValue: 'Mumbai Parel' },
+    { value: '../../assets/img/kranium_logo.png', viewValue: 'Chennai Perumbakkam' },
+    { value: '../../assets/img/kranium_logo.png', viewValue: 'Bangalore Kengeri' },
+    { value: '../../assets/img/kranium_logo.png', viewValue: 'Bangalore Richmond Road' },
+    { value: '../../assets/img/kranium_logo.png', viewValue: 'Hyderabad Lakdi-ka-pool' },
+    { value: '../../assets/img/kranium_logo.png', viewValue: 'Hyderabad LB Nagar' },
+    { value: '../../assets/img/kranium_logo.png', viewValue: 'Mumbai Parel' },
   ];
 
 

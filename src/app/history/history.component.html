@@ -34,11 +34,11 @@
                                             </mat-error>
                                         </mat-form-field>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <mat-form-field>
                                             <mat-select [(ngModel)]="history.duration"
                                                 (ngModelChange)="duration_value($event)" placeholder="Duration"
-                                                style="padding-top: 9px;">
+                                                >
                                                 <mat-option *ngFor="let food of daytype" [value]="food.type">
                                                     {{ food.type }}
                                                 </mat-option>
@@ -76,7 +76,7 @@
                         <mat-form-field>
                             <mat-select [(ngModel)]="opttext.Fromopt"
                                 (ngModelChange)="view_histroy(opttext.Fromopt,opttext.history_main_form_name_id)"
-                                placeholder="" style="padding-top: 9px;" multiple>
+                                placeholder="" multiple>
                                 <mat-option *ngFor="let food of opttext.quer" [value]="food.form_id">
                                     {{ food.name }}
                                 </mat-option>

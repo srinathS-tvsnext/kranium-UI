@@ -76,9 +76,9 @@
   <img *ngIf="image.active =='1'" src="../../../assets/img/login_bg/{{image.file_name}}" class="imgsiz">
     <div class="login-page">
         <div class="form">
-            <h2 class="text-center"><img [src]="imgurl" width='300px'></h2>
+            <h2 class="text-center"><img [src]="imgurl" width='300px' height='100px'></h2>
             <form class="login-form">
-                <div class="form-group">
+                <div class="">
                     <mat-form-field>
                     <mat-select class="size" placeholder='Select Hospital' style='font-size: 12px;' [(ngModel)]="imgurl" name="selecthospital" [disabled]="true">
                         <mat-option *ngFor="let food of foods" [value]="food.value" style='font-size: 12px;'>
@@ -92,7 +92,7 @@
 
                         <input type="text" [formControl]="emailFormControl" matInput placeholder="Enter the Username" [(ngModel)]="data.user">
                         <!-- <i class="fa fa-user pull-right" aria-hidden="true" matSuffix></i> -->
-                        <mat-icon mdSuffix>person</mat-icon>
+                        <mat-icon matSuffix>person</mat-icon>
                         <mat-error *ngIf="emailFormControl.hasError('required')">
                             User Name is <strong>required</strong>
                         </mat-error>
@@ -102,7 +102,7 @@
                     <mat-form-field class="size">
                         <!-- <i class="fa fa-key pull-right" aria-hidden="true"></i> -->
                         <input type="password" [formControl]="passwordFormControl" matInput placeholder="Enter the Password" [(ngModel)]="data.password">
-                        <mat-icon mdSuffix>lock</mat-icon>
+                        <mat-icon matSuffix>lock</mat-icon>
                         <mat-error *ngIf="passwordFormControl.hasError('required')">
                             Password is <strong>required</strong>
                         </mat-error>

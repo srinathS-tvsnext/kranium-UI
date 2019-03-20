@@ -14,8 +14,8 @@
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                     <div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
-                                        <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Past Encounters')">
-                                            <button type="button" class="btn btn-white pull-right" routerLink='Past_Encounters' routerLinkActive="active">Past Encounters</button>
+                                        <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='OP Summary')">
+                                            <button type="button" class="btn btn-white pull-right" routerLink='Opsummary' routerLinkActive="active">OP Summary</button>    
                                         </a>
                                     </div>
                                 </div>
@@ -69,6 +69,9 @@
                             </div>
                             <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
                                 <div class="" style="display:inline-block;" *ngFor="let sub_menu of acess_rights; let i =index;">
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Past Encounters')">
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Past_Encounters' routerLinkActive="active">Past Encounters</button>
+                                    </a>
                                     <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Vitals')">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Vitals' routerLinkActive="active">Vitals</button>
                                     </a>
@@ -90,12 +93,10 @@
                                     <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Reports')">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Reports' routerLinkActive="active">Reports</button>
                                     </a>
-                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Follow-up')">
+                                    <!-- <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Follow-up')">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Followups' routerLinkActive="active">Follow-up</button>
-                                    </a>
-                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='OP Summary')">
-                                        <button type="button" class="btn btn-white btnaction" routerLink='Opsummary' routerLinkActive="active">OP Summary</button>    
-                                    </a>  
+                                    </a> -->
+                                      
                                 </div> 
                             </div>
                         </div>

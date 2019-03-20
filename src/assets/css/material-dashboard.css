@@ -571,7 +571,7 @@ h2.title {
   right: 10%;
   height: 1px;
   width: 80%;
-  background-color: rgba(180, 180, 180, 0.3);
+  background-color: rgba(180, 180, 180, 0.0);
 }
 .sidebar .logo p,
 .off-canvas-sidebar .logo p {

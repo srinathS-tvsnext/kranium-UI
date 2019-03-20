@@ -89,7 +89,7 @@ export class InpatientlistComponent implements OnInit {
       this.cur_date_format = year + "-" + month + "-" + datae;;
 
       this.login_name = JSON.parse(sessionStorage.getItem('logindata'));
-      this.consodated_arraay = { 'logindata': this.login_name, date: consilated_date };
+      this.consodated_arraay = { 'logindata': this.login_name, date: '' };
 
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_appointments', this.consodated_arraay).subscribe(resdata => {
         debugger;

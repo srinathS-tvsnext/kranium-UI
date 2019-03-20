@@ -616,7 +616,7 @@ export class PrescriptionComponent implements OnInit {
   add_save_favourite_pres(data_fav) {
     console.log(data_fav);
     debugger;
-    if (data_fav != "") {
+    if (data_fav !== "") {
       for (var i in data_fav) {
         if (data_fav[i].fav) {
 
