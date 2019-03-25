@@ -318,7 +318,7 @@ export class PatientlistComponent implements OnInit {
             this.GlobalService.disableloader();
             this.pat_profile = resdata['ResponseObject'];
             sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
-            this.router.navigate(['/Homescreen/Patientdetails/Past_Encounters/']);
+            this.router.navigate(['/Homescreen/Patientdetails/Past_Encounters/'],{queryParams:{prepage:'inpatient'}});
           } else {
             this.GlobalService.disableloader();
             this.pat_profile = [];
@@ -395,7 +395,7 @@ export class PatientlistComponent implements OnInit {
             this.GlobalService.disableloader();
             this.pat_profile = resdata['ResponseObject'];
             sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
-            this.router.navigate(['/Homescreen/Patientdetails/Past_Encounters/']);
+            this.router.navigate(['/Homescreen/Patientdetails/Past_Encounters/'],{queryParams:{prepage:'inpatient'}});
           } else {
             this.GlobalService.disableloader();
             this.pat_profile = [];
@@ -410,5 +410,14 @@ export class PatientlistComponent implements OnInit {
     // } else {
     //   this.openSnackBar("Not allowed,Your Status is Pending", "Close");
     // }
+  }
+  clickOnPatient(patientDetail){
+    this.GlobalService.savePatientType('outPatientList');
+    if(patientDetail.appt_status=== 'checkedin' || patientDetail.appt_status=== 'walkin'){
+      this.patientlist_detail(patientDetail);
+    }
+    if( patientDetail.appt_status=== 'done'){
+      patientDetail.Previousdate ? this.old_patientlist_detail(patientDetail) : this.patientlist_detail(patientDetail);
+    }
   }
 }

@@ -13,7 +13,8 @@ import { CommonModule } from '@angular/common';
 @Injectable()
 export class GlobalService {
   location: Location;
-  patient = new Subject();
+  patientListName = new Subject();
+  viewPatientListPage = false;
   // baseurl="http://10.91.19.198:8080/global_uat";
   // baseurl = "http://14.141.212.155:8080/globaluat";
   // baseurl = "http://172.16.150.200/globaluat";
@@ -55,7 +56,12 @@ export class GlobalService {
     debugger;
     this.Loader.next(true);
   }
-
+  savePatientType(msg:string){
+    this.patientListName.next(msg)
+  }
+  getPatientType(): Observable<any> {
+    return this.patientListName.asObservable();
+  }
   getLoaderStatus(): Observable<any> {
     return this.Loader.asObservable();
   }

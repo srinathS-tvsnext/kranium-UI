@@ -228,7 +228,7 @@
                             <table class="table table borderless">
                                 <tr>
                                     <td>&nbsp;</td>
-                                    <td style='padding-bottom: 35px;'>
+                                    <td>
                                         <mat-form-field>
                                         <mat-select placeholder="Allergy Type" [(ngModel)]="form.choice[i].allergy_type1">
                                             <mat-option *ngFor="let food of allergy" [value]="food.viewValue">
@@ -242,7 +242,7 @@
                                             <input matInput placeholder="Allergic too" value='' [(ngModel)]="form.choice[i].allergy_type2">
                                         </mat-form-field>
                                     </td>
-                                    <td style='padding-bottom: 35px;'>
+                                    <td>
                                         <mat-form-field>
                                         <mat-select placeholder="Severity" [(ngModel)]="form.choice[i].allergy_severity">
                                             <mat-option *ngFor="let food of Severity" [value]="food.viewValue">
@@ -303,13 +303,13 @@
                                             </li>
                                         </ul>
 
-                                        <mat-form-field style='width:45%;'>
+                                        <mat-form-field style='width:45%;left:5%'>
                                             <input matInput placeholder="Generic Name" value='loreum ipsum' [(ngModel)]="form.choice_med[i].activemedication_genericname">
                                         </mat-form-field>
                                     </td>
-                                    <td style='padding-bottom: 35px;'>
+                                    <td >
                                         <mat-form-field>
-                                        <mat-select placeholder="Frequency" style='width:45%;' [(ngModel)]="form.choice_med[i].activemedication_frequency">
+                                        <mat-select placeholder="Frequency" [(ngModel)]="form.choice_med[i].activemedication_frequency">
                                             <mat-option *ngFor="let food of prescr" [value]="food.viewValue">
                                                 {{ food.viewValue }}
                                             </mat-option>

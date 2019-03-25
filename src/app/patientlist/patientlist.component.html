@@ -131,7 +131,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let indv_socialmention of filtered_data; let i = index">
+                                    <tr *ngFor="let indv_socialmention of filtered_data; let i = index" (click)="clickOnPatient(indv_socialmention)"
+                                    [class.pointer]="indv_socialmention.appt_status=='walkin' || indv_socialmention.appt_status=='checkedin' || indv_socialmention.appt_status=='done'">
                                         <td>{{indv_socialmention.DATETIME.slice(11, 19)}} </td>
                                         <td>{{indv_socialmention.name}}</td>
                                         <td *ngIf="indv_socialmention.uhid != '0'">{{indv_socialmention.uhid||'-'}}</td>
@@ -146,16 +147,16 @@
                                         <!-- <td *ngIf="c=='pending'">Waiting
                       <i class="fa fa-clock-o" style='color:red;' aria-hidden="true"></i>
                     </td> -->
-                                        <td *ngIf="indv_socialmention.appt_status=='checkedin'" (click)="patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Checked-in</td>
+                                        <td *ngIf="indv_socialmention.appt_status=='checkedin'">Checked-in</td>
                                         <td *ngIf="indv_socialmention.appt_status=='pending'">Pending</td>
                                         <td *ngIf="indv_socialmention.appt_status=='done'">
-                                            <span *ngIf="!indv_socialmention.Previousdate" (click)="patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Completed</span>
-                                            <span *ngIf="indv_socialmention.Previousdate" (click)="old_patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Completed</span>
+                                            <span *ngIf="!indv_socialmention.Previousdate">Completed</span>
+                                            <span *ngIf="indv_socialmention.Previousdate" >Completed</span>
                                         </td>
                                         <!-- <td *ngIf="indv_socialmention.appt_status=='done'" (click)="patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Completed</td> -->
                                         <td *ngIf="indv_socialmention.appt_status=='Followup'">Follow-up</td>
                                         <td *ngIf="indv_socialmention.appt_status=='Not_yet'">Not Yet Arrived</td>
-                                        <td *ngIf="indv_socialmention.appt_status=='walkin'" (click)="patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Checked-in</td>
+                                        <td *ngIf="indv_socialmention.appt_status=='walkin'">Checked-in</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -72,23 +72,23 @@
                                     <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Past Encounters')">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Past_Encounters' routerLinkActive="active">Past Encounters</button>
                                     </a>
-                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Vitals')">
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Vitals') && !GlobalService.viewPatientListPage">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Vitals' routerLinkActive="active">Vitals</button>
                                     </a>
-                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='History')">
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='History') && !GlobalService.viewPatientListPage">
                                         <button type="button" class="btn btn-white btnaction" routerLink='History' routerLinkActive="active">History</button>                                        
                                     </a>
-                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Examination')">
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Examination') && !GlobalService.viewPatientListPage">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Examination' routerLinkActive="active">Examination</button>
                                     </a>
-                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Diagnosis')">
+                                    <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Diagnosis') && !GlobalService.viewPatientListPage">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Diagnosis' routerLinkActive="active">Diagnosis</button>
                                     </a>
                                     <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Investigation')">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Investigation' routerLinkActive="active">Investigation</button>
                                     </a>
                                     <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Prescription')">
-                                        <button type="button" class="btn btn-white btnaction" routerLink='Prescription' routerLinkActive="active">Prescription</button>
+                                        <button type="button" class="btn btn-white btnaction" routerLink='Prescription' routerLinkActive="active">Medication</button>
                                     </a>
                                     <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Reports')">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Reports' routerLinkActive="active">Reports</button>

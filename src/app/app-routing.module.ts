@@ -92,6 +92,7 @@ const routes: Routes = [
   { path: 'Otp', component: OtpComponent, data: { Key: 'Otp' } },
   { path: 'Password', component: PasswordComponent, data: { Key: 'Password' } },
   { path: 'Signup', component: SignupComponent, data: { Key: 'Signup' } },
+  //{ path: '**', redirectTo: 'Homescreen/Patientlist' },
   {
     path: 'Homescreen', component: HomescreenComponent, data: { Key: 'Appointment' }, resolve: {
       users: GlobalResolver
@@ -160,7 +161,7 @@ const routes: Routes = [
             { path: 'Examination', component: ExaminationComponent, data: { Key: 'Examination' } },
             { path: 'Diagnosis', component: DiagnosisComponent, data: { Key: 'Diagnosis' } },
             { path: 'Investigation', component: InvestigationComponent, data: { Key: 'Investigation' } },
-            { path: 'Prescription', component: PrescriptionComponent, data: { Key: 'Prescription' } },
+            { path: 'Prescription', component: PrescriptionComponent, data: { Key: 'Medication' } },
             { path: 'Followups', component: FollowupsComponent, data: { Key: 'Follow-up' } },
             { path: 'Reports', component: ReportsComponent, data: { Key: 'Reports' } },
             { path: 'Opsummary', component: OpsummaryComponent, data: { Key: 'Op-Summary' } },

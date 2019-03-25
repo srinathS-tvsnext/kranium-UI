@@ -12,7 +12,7 @@
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select class="pull-right paddingselect" placeholder="Favourite prescription" (change)="edittemp_pres(med)" [(ngModel)]="med">
+                                    <mat-select class="pull-right " placeholder="Favourite prescription" (change)="edittemp_pres(med)" [(ngModel)]="med">
                                         <mat-option *ngFor="let foods of template_pres_data" [value]="foods">
                                             {{ foods.template_name }}
                                         </mat-option>
@@ -21,7 +21,7 @@
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
-                                    <mat-select class="pull-right paddingselect" placeholder="Favourite Drug" (change)="edittemp_drug(med_drug)" [(ngModel)]="med_drug">
+                                    <mat-select class="pull-right " placeholder="Favourite Drug" (change)="edittemp_drug(med_drug)" [(ngModel)]="med_drug">
                                         <mat-option *ngFor="let food of template_drug_data" [value]="food">
                                             {{ food.template_name }}
                                         </mat-option>

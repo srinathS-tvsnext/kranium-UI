@@ -89,7 +89,7 @@ export class InpatientlistComponent implements OnInit {
       this.cur_date_format = year + "-" + month + "-" + datae;;
 
       this.login_name = JSON.parse(sessionStorage.getItem('logindata'));
-      this.consodated_arraay = { 'logindata': this.login_name, date: '' };
+      this.consodated_arraay = { 'logindata': this.login_name, date: consilated_date };
 
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_appointments', this.consodated_arraay).subscribe(resdata => {
         debugger;
@@ -217,9 +217,9 @@ export class InpatientlistComponent implements OnInit {
     console.log(patien_data.appt_status);
     sessionStorage.setItem('datestatus', JSON.stringify(patien_data));
     // get_patientprofile
-    if (patien_data.appt_status == 'checkedin' || patien_data.appt_status == 'done' || patien_data.appt_status == 'walkin') {
+  //  if (patien_data.appt_status == 'checkedin' || patien_data.appt_status == 'done' || patien_data.appt_status == 'walkin') {
       debugger;
-      if (patien_data.paid_status == 'paid') {
+    //  if (patien_data.paid_status == 'paid') {
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_patientprofile', patien_data).subscribe(resdata => {
           debugger;
           console.log(resdata);
@@ -236,14 +236,14 @@ export class InpatientlistComponent implements OnInit {
           // routerLink='/Homescreen/Patientlist'
           // routerLink='/Homescreen/Patientdetails/Past_Encounters/'
         })
-      } else {
-        this.GlobalService.disableloader();
-        this.openSnackBar("Payment status is Notpaid", "Close");
-      }
-    } else {
-      this.GlobalService.disableloader();
-      this.openSnackBar("Not allowed,Your Status is Pending", "Close");
-    }
+    //   } else {
+    //     this.GlobalService.disableloader();
+    //     this.openSnackBar("Payment status is Notpaid", "Close");
+    //   }
+    // } else {
+    //   this.GlobalService.disableloader();
+    //   this.openSnackBar("Not allowed,Your Status is Pending", "Close");
+    // }
   }
 
   refresh() {
@@ -251,5 +251,45 @@ export class InpatientlistComponent implements OnInit {
     this.datecc = new Date();
     this.f(this.datecc);
   }
-  
+  old_patientlist_detail(patien_data) {
+    debugger;
+    console.log(patien_data);
+    console.log(patien_data.appt_status);
+    // get_patientprofile
+    sessionStorage.setItem('datestatus', JSON.stringify(patien_data));
+    //if (patien_data.appt_status == 'checkedin' || patien_data.appt_status == 'done' || patien_data.appt_status == 'walkin') {
+      debugger;
+     // if (patien_data.paid_status == 'paid') {
+        this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_pastencounterdetail', patien_data).subscribe(resdata => {
+          debugger;
+          console.log(resdata);
+          if (resdata['IsSuccess']) {
+            this.GlobalService.disableloader();
+            this.pat_profile = resdata['ResponseObject'];
+            sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
+            this.router.navigate(['/Homescreen/Patientdetails/Past_Encounters/']);
+          } else {
+            this.GlobalService.disableloader();
+            this.pat_profile = [];
+            this.openSnackBar("No Patient Found", "Close");
+          }
+          // routerLink='/Homescreen/Patientlist'
+          // routerLink='/Homescreen/Patientdetails/Past_Encounters/'
+        })
+      // } else {
+      //   this.openSnackBar("Payment status is Notpaid", "Close");
+      // }
+    // } else {
+    //   this.openSnackBar("Not allowed,Your Status is Pending", "Close");
+    // }
+  }
+  clickOnPatient(patientDetail){
+    this.GlobalService.savePatientType('inPatientList');
+    if(patientDetail.appt_status=== 'checkedin' || patientDetail.appt_status=== 'walkin'){
+      this.patientlist_detail(patientDetail);
+    }
+    if( patientDetail.appt_status=== 'done'){
+      patientDetail.Previousdate ? this.old_patientlist_detail(patientDetail) : this.patientlist_detail(patientDetail);
+    }
+  }
 }

@@ -22,6 +22,9 @@ export class AppComponent {
   ngOnInit(){
     
    this.globalService.get_access_rights_activity();
+    if(sessionStorage.getItem('user_access_rights')) {
+      this.route.navigate(['Homescreen/Patientlist'])
+    }
   }
 
   isMaps(path) {
