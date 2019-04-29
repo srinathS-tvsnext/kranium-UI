@@ -44,6 +44,7 @@ export class SigninComponent implements OnInit {
           this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_access_rights_activity', resdata['ResponseObject']).subscribe(resnewdata => {
             if (resnewdata['IsSuccess']) {
               console.log(resnewdata['ResponseObject']);
+              debugger;
               sessionStorage.setItem('user_access_rights', resnewdata['ResponseObject'][0].access_rights);
               // this.user_access_rights = JSON.parse(resnewdata['ResponseObject'][0].access_rights);
               // console.log(this.user_access_rights);

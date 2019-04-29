@@ -318,7 +318,7 @@ export class PatientlistComponent implements OnInit {
             this.GlobalService.disableloader();
             this.pat_profile = resdata['ResponseObject'];
             sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
-            this.router.navigate(['/Homescreen/Patientdetails/Past_Encounters/'],{queryParams:{prepage:'inpatient'}});
+            this.router.navigate(['/Homescreen/Patientdetails/Opsummary/']);
           } else {
             this.GlobalService.disableloader();
             this.pat_profile = [];
@@ -395,7 +395,7 @@ export class PatientlistComponent implements OnInit {
             this.GlobalService.disableloader();
             this.pat_profile = resdata['ResponseObject'];
             sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
-            this.router.navigate(['/Homescreen/Patientdetails/Past_Encounters/'],{queryParams:{prepage:'inpatient'}});
+            this.router.navigate(['/Homescreen/Patientdetails/Opsummary']);
           } else {
             this.GlobalService.disableloader();
             this.pat_profile = [];

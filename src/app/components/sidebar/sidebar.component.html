@@ -76,7 +76,7 @@
             <li routerLinkActive="active" class="">
                 <a routerLink="/Homescreen/Patientlist">
                     <i class="material-icons">view_list</i>
-                    <p>Patient List</p>
+                    <p>Outpatient List</p>
                 </a>
             </li>
             <li routerLinkActive="active" class="">
@@ -91,24 +91,24 @@
                     <p>Services Rendered</p>
                 </a>
             </li>
-            <!-- <li routerLinkActive="active" class="" *ngFor="let sub_menu2 of acess_rights">
+            <li routerLinkActive="active" class="" *ngFor="let sub_menu2 of acess_rights">
                 <a routerLink="/Homescreen/Managefavourites" *ngIf="sub_menu2.view && (sub_menu2.sub_menu_name=='Manage Favourites')">
                     <i class="material-icons">important_devices</i>
                     <p>Manage Favourites</p>
                 </a>
-            </li> -->
+            </li>
             <li routerLinkActive="active" class="" *ngFor="let sub_menu3 of acess_rights">
                 <a routerLink="/Homescreen/Manageforms" *ngIf="sub_menu3.view && (sub_menu3.sub_menu_name=='Manage Forms')">
                     <i class="material-icons">featured_play_list</i>
                     <p>Manage Forms</p>
                 </a>
             </li>
-            <!-- <li routerLinkActive="active" class="">
+            <li routerLinkActive="active" class="">
                 <a routerLink="/Homescreen/Master">
                     <i class="material-icons">perm_data_setting</i>
                     <p>Settings</p>
                 </a>
-            </li> -->
+            </li>
             <!-- <li routerLinkActive="active" class="" *ngFor="let sub_menu4 of acess_rights">
                 <a routerLink="/Homescreen/Master" *ngIf="sub_menu4.view && (sub_menu4.sub_menu_name=='Settings')">
                             <i class="material-icons">perm_data_setting</i>

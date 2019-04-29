@@ -19,7 +19,7 @@ import { ComponentsModule } from './components/components.module';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -186,7 +186,7 @@ import { InpatientlistComponent } from './inpatientlist/inpatientlist.component'
     FormsModule, ReactiveFormsModule,
     HttpModule,NguiAutoCompleteModule,
     ComponentsModule, NgSelectModule,
-    CKEditorModule, MatTooltipModule,
+    CKEditorModule, MatTooltipModule, NgMultiSelectDropDownModule,
     MatButtonModule, MatCheckboxModule, MatSelectModule, MatInputModule, MultiselectDropdownModule,
     MatIconModule, MatToolbarModule, MatTableModule, MatPaginatorModule, MatExpansionModule, MatDialogModule, MatDatepickerModule,
     BrowserAnimationsModule, MatRadioModule, MatAutocompleteModule, MatSlideToggleModule,

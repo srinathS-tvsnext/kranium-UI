@@ -2,8 +2,10 @@
     <p class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
         <span *ngIf="sub_view_menu.sub_view_name=='vitals'">
             <span *ngIf="datevalidation.nowdate">
-        <button  *ngIf="sub_view_menu.add_edit && addvital_btn" class="btn btn-steelblue" id="addvital_btn" style="float:right;" routerLink='/Homescreen/Patientdetails/Addvitals'>Add Vitals</button>
-<button *ngIf="sub_view_menu.add_edit && editvital_btn" class="btn btn-steelblue" id="editvital_btn" style="float:right;"  (click)="edit_vitals(vitals_data)">Edit Vitals</button>
+                    <!-- *ngIf="sub_view_menu.add_edit && addvital_btn" -->
+        <button  class="btn btn-steelblue" id="addvital_btn" style="float:right;" routerLink='/Homescreen/Patientdetails/Addvitals'>Add Vitals</button>
+        <!-- *ngIf="sub_view_menu.add_edit && editvital_btn" -->
+<!-- <button  class="btn btn-steelblue" id="editvital_btn" style="float:right;"  (click)="edit_vitals(vitals_data)">Edit Vitals</button> -->
 </span>
 
         <!-- //(click)="edit_vitals(vitals_data)" -->
@@ -18,69 +20,30 @@
                                 <table class="table table borderless" style='text-align: center'>
                                     <thead class="headercolor">
                                         <tr>
-                                            <th style='text-align: center'>&nbsp;</th>
-                                            <th style='text-align: center'>Types</th>
-                                            <th style='text-align: center'>Units</th>
-                                            <th style='text-align: center'>&nbsp;</th>
+                                            <th style='text-align: center'>Date/Time</th>
+                                            <th style='text-align: center'>Height</th>
+                                            <th style='text-align: center'>Weight</th>
+                                            <th style='text-align: center'>Temperature</th>
+                                            <th style='text-align: center'>Pulse</th>
+                                            <th style='text-align: center'>Respiratory Rate</th>
+                                            <th style='text-align: center'>BP</th>
+                                            <th style='text-align: center'>BMI</th>
+                                            <th style='text-align: center'>BSA</th>
                                         </tr>
                                     </thead>
                                     <tbody *ngFor="let value of vitals_data.Formvalue">
                                         <tr>
-                                            <td>&nbsp; </td>
-                                            <td>Height</td>
+                                            <td>Date</td>
                                             <td>{{value.height||"-"}} {{value.height_id}}</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp; </td>
-                                            <td>Weight</td>
                                             <td>{{value.weight||"-"}} {{value.weight_id}}</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp; </td>
-                                            <td>Temperature</td>
                                             <td>{{value.temperature||"-"}} {{value.temperature_id}}</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp; </td>
-                                            <td>Pulse</td>
                                             <td>{{value.pulse||"-"}} {{value.pulse_id}}</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>&nbsp; </td>
-                                            <td>Respiratory Rate</td>
                                             <td>{{value.respiratory||"-"}} {{value.respirator_id}} </td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp; </td>
-                                            <td>BP</td>
                                             <td>{{value.bp_systolic||"-"}} / {{value.bp_diastolic||"-"}}  {{value.bp_diastolic_id}} / {{value.bp_systolic_id}}</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp; </td>
-                                            <td>BMI</td>
                                             <td>{{value.bmi||"-"}}</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp; </td>
-                                            <td>BSA</td>
                                             <td>{{value.bsa||"-"}}</td>
-                                            <td>&nbsp;</td>
                                         </tr>
                                     </tbody>
-                                    <!-- {{vitals_data.Formvalue.length}} -->
-                                    <!-- <tbody *ngIf="vitals_data.Formvalue.length==0">
-                                <tr>
-                                    No data Found
-                                </tr>
-                            </tbody> -->
 
                                 </table>
                             </div>
@@ -149,13 +112,14 @@
                                     <thead class="headercolor">
                                         <tr>
                                             <th style='text-align: center'>Brand Name</th>
+                                            <th style='text-align: center'>Generic Name</th>
                                             <th style='text-align: center'>Frequency</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let medi of vitals_data.medication">
-                                            <td>{{medi.activemedication_brandname||"-"}}
-                                                <br>({{medi.activemedication_genericname||"-"}})</td>
+                                            <td>{{medi.activemedication_brandname||"-"}} </td>
+                                            <td>{{medi.activemedication_genericname||"-"}}</td>
                                             <td>{{medi.activemedication_frequency||"-"}}</td>
                                         </tr>
                                         <!-- <tr *ngIf="vitals_data.medication.length==0">

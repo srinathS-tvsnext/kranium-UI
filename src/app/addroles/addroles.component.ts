@@ -17,6 +17,9 @@ export class AddrolesComponent implements OnInit {
   myOptions: IMultiSelectOption[];
   formusers_drop; add_roles; new_array; userId; edit_data;
   login_details;disable_rolename;
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
   constructor(private http: Http, private GlobalService: GlobalService, public snackBar: MatSnackBar, private router: Router) { }
 
   openSnackBar(message: string, action: string) {
@@ -36,7 +39,32 @@ export class AddrolesComponent implements OnInit {
     this.get_Roles();
     this.get_viewroles();
     this.disable_rolename=false;
-
+    this.dropdownList = [
+      // { item_id: 1, item_text: 'Mumbai' },
+      // { item_id: 2, item_text: 'Bangaluru' },
+      // { item_id: 3, item_text: 'Pune' },
+      // { item_id: 4, item_text: 'Navsari' },
+      // { item_id: 5, item_text: 'New Delhi' },
+      {name: "Admin", login_id: "admin", personell_nr: "0", STATUS: "ENABLE"},
+    
+      {name: "Sarannya Mathew", login_id: "107423", personell_nr: "0", STATUS: "ENABLE"},
+      
+      {name: "Venkatesh Sreedevi", login_id: "107424", personell_nr: "0", STATUS: "ENABLE"}
+     
+    ];
+    this.selectedItems = [
+      { item_id: 3, item_text: 'Pune' },
+      { item_id: 4, item_text: 'Navsari' }
+    ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'login_id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 5,
+      allowSearchFilter: true
+    };
   }
   private value: any = {};
   private _disabledV: string = '0';
@@ -90,6 +118,13 @@ export class AddrolesComponent implements OnInit {
     })
   }
 
+  onItemSelect(data) {
+
+  }
+
+  onSelectAll(data){
+
+  }
   save_addroles(data) {
     console.log(data);
     data.nr = this.login_details[0]['nr'];

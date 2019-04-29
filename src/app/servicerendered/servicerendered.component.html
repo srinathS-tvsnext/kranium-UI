@@ -280,7 +280,7 @@
                                                                     <th>&nbsp;</th>
                                                                     <th style='font-weight: 600;'>Encounter No</th>
                                                                     <th style='font-weight: 600;'>Department</th>
-                                                                    <th style='font-weight: 600;'>Item code</th>
+                                                                    <th style='font-weight: 600;'>Lab Name</th>
                                                                     <th style='font-weight: 600;'>Raised</th>
                                                                     <th style='font-weight: 600;'>Billed</th>
 
@@ -299,8 +299,8 @@
                                                                 <tr *ngFor="let data_serv of dropdownList_services">
                                                                     <td>&nbsp; </td>
                                                                     <td>{{data_serv.encounter_no}}</td>
-                                                                    <td>{{data_serv.deptname}}<br>({{data_serv.item_long_description}})</td>
-                                                                    <td>{{data_serv.item_code}}</td>
+                                                                    <td>{{data_serv.deptname}}</td>
+                                                                    <td>{{data_serv.item_long_description}}</td>
                                                                     <td><i class="material-icons billgreen">done</i></td>
                                                                     <!-- <td *ngIf="data_serv.bill_status=='Billed'"><i class="material-icons billgreen">done</i></td> -->
                                                                     <td><i class="material-icons closered">close</i></td>

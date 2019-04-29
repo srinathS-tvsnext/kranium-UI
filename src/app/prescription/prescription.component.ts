@@ -27,7 +27,7 @@ export class PrescriptionComponent implements OnInit {
   dialogRef_drug; template_pres_med_data; contenctdata; hide; showGreeting; exampleDatas; items;
   brandname; pres_data; acess_rights; tmp; logindata_details;
   language_list; language_mrg; language_aftn; language_eve; language_nigt; language_bf; language_af;
-  datevalidation; pres_doct; hide_editbtn; dietadvice; language; notes;
+  datevalidation; pres_doct; hide_editbtn; dietadvice; language; notes; minDt = new Date();
   ngOnInit() {
 
     this.date_status = JSON.parse(sessionStorage.getItem('datestatus'));
@@ -493,10 +493,13 @@ export class PrescriptionComponent implements OnInit {
     return a + b;
   }
 
+  validDate(){
+    this.med
+  }
   add_medicine_temperary(data) {
     debugger;
     this.hide_editbtn = false;
-    if ((data.brand_name && data.generic_name && data.frequency && data.timing && data.duration_no && data.duration_capt) == undefined) {
+    if ((data.brand_name && data.generic_name && data.frequency && data.timing && data.duration_no && data.duration_capt && data.startDate && data.notes) == undefined) {
       this.openSnackBar("Please Enter all the details", "Close");
     } else {
       debugger;
@@ -566,6 +569,8 @@ export class PrescriptionComponent implements OnInit {
                   this.template_pres_med_data[i].generic_name = data.generic_name;
                   this.template_pres_med_data[i].quantity = data.quantity;
                   this.template_pres_med_data[i].quantitystatus = data.quantitystatus;
+                  this.template_pres_med_data[i].notes = data.notes;
+
                 }
               }
               this.btn = "Add";
@@ -591,6 +596,7 @@ export class PrescriptionComponent implements OnInit {
                 this.template_pres_med_data[i].generic_name = data.generic_name;
                 this.template_pres_med_data[i].quantity = data.quantity;
                 this.template_pres_med_data[i].quantitystatus = data.quantitystatus;
+                this.template_pres_med_data[i].notes = data.notes;
               }
             }
             this.med = {};
@@ -671,7 +677,7 @@ export class PrescriptionComponent implements OnInit {
           data[j].encounter_no = this.patientdata_details[i].EncounterNo;
           data[j].diet_advice = data.diet_advice;
           data[j].language = data.language;
-          data[j].notes = data.notes;
+        //  data[j].notes = data.notes;
           data[j].CB = this.logindata_details[0].User_name;
           data[j].cretaedby = this.logindata_details[0].nr;
         }

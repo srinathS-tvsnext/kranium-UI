@@ -94,44 +94,41 @@
                           <table class=" table font-weight-500" style='text-align: center'>
                               <thead class="headercolor" data-background-color="#AFE1F5">
                                   <tr>
-                                      <td style='text-align: center'>Time</td>
+                                      <td style='text-align: center'>DOA</td>
                                       <td style='text-align: center'>Patient Name</td>
-                                      <td style='text-align: center'>UHID</td>
-                                      <td style='text-align: center'>Phone No</td>
+                                      <td style='text-align: center'>UHID</td>                                      
                                       <td style='text-align: center'>Gender/Age</td>
-                                      <td style='text-align: center'>Encounter No.</td>
-                                      <td style='text-align: center'>Consultation type</td>
-                                      <td style='text-align: center'>Payment Status</td>
+                                      <td style='text-align: center'>Encounter No.</td>                                      
+                                      <td style='text-align: center'><span>Floor No</span>/<span>Room No</span></td>
+                                      <td style='text-align: center'>Paying Type</td>
                                       <td style='text-align: center'>Status</td>
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr *ngFor="let indv_socialmention of filtered_data; let i = index" (click)="clickOnPatient(indv_socialmention)"
-                                  [class.pointer]="indv_socialmention.appt_status=='walkin' || indv_socialmention.appt_status=='checkedin' || indv_socialmention.appt_status=='done'">
-                                      <td>{{indv_socialmention.DATETIME.slice(11, 19)}} </td>
-                                      <td>{{indv_socialmention.name}}</td>
-                                      <td *ngIf="indv_socialmention.uhid != '0'">{{indv_socialmention.uhid||'-'}}</td>
-                                      <td *ngIf="indv_socialmention.uhid == '0'">-</td>
-                                      <td>{{indv_socialmention.mobileno}}</td>
-                                      <td style="text-transform: uppercase;">{{indv_socialmention.age}}</td>
+                                  <tr *ngFor="let indv_socialmention of filtered_data; let i = index" (click)="clickOnPatient(indv_socialmention)" class="pointer">
+                                      <td>{{indv_socialmention.DateofAdmission.slice(0, 10)}} </td>
+                                      <td>{{indv_socialmention.PatientName}}</td>
+                                      <td *ngIf="indv_socialmention.UhID != '0'">{{indv_socialmention.UhID||'-'}}</td>
+                                      <td *ngIf="indv_socialmention.UhID == '0'">-</td>
+                                      <td style="text-transform: uppercase;">{{indv_socialmention.Gender}}/{{indv_socialmention.age}}</td>
                                       <td *ngIf="indv_socialmention.encounterno != '0'">{{indv_socialmention.encounterno||'-'}}</td>
                                       <td *ngIf="indv_socialmention.encounterno == '0'">-</td>
-                                      <td *ngIf="indv_socialmention.appt_status=='walkin'">Walk-in</td>
-                                      <td *ngIf="indv_socialmention.appt_status!='walkin'">Appointment</td>
-                                      <td>{{indv_socialmention.paid_status||'Not Paid'}}</td>
+                                      <td>{{indv_socialmention.floorno}}/{{indv_socialmention.roomno}}</td>
+                                      <td>{{indv_socialmention.PayingType}}</td>                                      
+                                      <td>{{indv_socialmention.appt_status}}</td>
                                       <!-- <td *ngIf="c=='pending'">Waiting
                     <i class="fa fa-clock-o" style='color:red;' aria-hidden="true"></i>
                   </td> -->
-                                      <td *ngIf="indv_socialmention.appt_status=='checkedin'">Checked-in</td>
+                                      <!-- <td *ngIf="indv_socialmention.appt_status=='checkedin'">Checked-in</td>
                                       <td *ngIf="indv_socialmention.appt_status=='pending'">Pending</td>
                                       <td *ngIf="indv_socialmention.appt_status=='done'">
                                           <span *ngIf="!indv_socialmention.Previousdate">Completed</span>
                                           <span *ngIf="indv_socialmention.Previousdate" >Completed</span>
-                                      </td>
+                                      </td> -->
                                       <!-- <td *ngIf="indv_socialmention.appt_status=='done'" (click)="patientlist_detail(indv_socialmention)" style='cursor:pointer;'>Completed</td> -->
-                                      <td *ngIf="indv_socialmention.appt_status=='Followup'">Follow-up</td>
+                                      <!-- <td *ngIf="indv_socialmention.appt_status=='Followup'">Follow-up</td>
                                       <td *ngIf="indv_socialmention.appt_status=='Not_yet'">Not Yet Arrived</td>
-                                      <td *ngIf="indv_socialmention.appt_status=='walkin'">Checked-in</td>
+                                      <td *ngIf="indv_socialmention.appt_status=='walkin'">Checked-in</td> -->
                                   </tr>
                               </tbody>
                           </table>

@@ -25,7 +25,7 @@
                                 </span>
                                 <span *ngIf="opo_temp.firstname">
                   <div class='col-md-5 headingclr'>First Name</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.First_name||'-'}}</div>
+                  <div class='col-md-5 contentclr'>{{patient_profile.first_name||'-'}}</div>
                 </span>
                             </div>
                             <div class="col-md-12">
@@ -608,16 +608,15 @@
 </div>
 <div class="panel panel-default">
     <div class="panel-body">
-        <span [hidden]=hidden_edit>
+        <!-- <span [hidden]=hidden_edit>
         <button type="button"  class="btn btn-infos active pull-right" (click)="edit_opsummary(opo_temp)">Edit </button>
-        <!-- <button type="button" [hidden]=hideen class="btn btn-success pull-right" (click)="add_opsummary_patient(opo_temp)">Add opsummary</button> -->
       </span>
         <span [hidden]=hidden_update>
           <button type="button"  class="btn btn-green active pull-right" (click)="update_opsummary(opo_temp)">Update </button>
       </span>
         <span [hidden]=hidden_cancel>
                     <button type="button" class="btn btn-red active pull-right" (click)="cancel_opsummary()">Cancel</button>
-      </span>
+      </span> -->
         <span [hidden]=hidden_print>
           <button type="button"  class="btn btn-steelblue active pull-right" (click)="printPreview()">Print Preview</button>
          </span>

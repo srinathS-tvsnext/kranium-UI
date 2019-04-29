@@ -244,6 +244,7 @@ export class AddvitalsComponent implements OnInit {
     this.GlobalService.enableloader();
     // add_viatls_showtop
     debugger;
+    if(confirm("Are you sure want to save")){
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addvitals', save_newdata).subscribe(resdata => {
       debugger;
       console.log(resdata);
@@ -257,6 +258,7 @@ export class AddvitalsComponent implements OnInit {
         this.openSnackBar("Error! Please Retry", "Close");
       }
     })
+    }
   }
 
   vital_details() {

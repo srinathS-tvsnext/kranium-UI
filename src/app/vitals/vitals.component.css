@@ -2,11 +2,12 @@
     border: none;
 }
 
-.headercolor{
- color:black;
- font-weight:bolder;
-}
 
+.headercolor {
+    color: steelblue;
+    font-weight: 600;
+    background-color: #CCEEFB;
+}
 .btn-steelblue{
     background-color: transparent;
     color: steelblue;

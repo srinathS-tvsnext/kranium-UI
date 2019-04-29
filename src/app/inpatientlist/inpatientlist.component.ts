@@ -89,9 +89,9 @@ export class InpatientlistComponent implements OnInit {
       this.cur_date_format = year + "-" + month + "-" + datae;;
 
       this.login_name = JSON.parse(sessionStorage.getItem('logindata'));
-      this.consodated_arraay = { 'logindata': this.login_name, date: consilated_date };
+      this.consodated_arraay = { 'logindata': this.login_name };
 
-      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_appointments', this.consodated_arraay).subscribe(resdata => {
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_appointments_ip', this.consodated_arraay).subscribe(resdata => {
         debugger;
         console.log(resdata);
         if (resdata['IsSuccess']) {
@@ -227,7 +227,7 @@ export class InpatientlistComponent implements OnInit {
             this.GlobalService.disableloader();
             this.pat_profile = resdata['ResponseObject'];
             sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
-            this.router.navigate(['/Homescreen/Patientdetails/Past_Encounters/']);
+            this.router.navigate(['/Homescreen/Patientdetails/Opsummary/']);
           } else {
             this.GlobalService.disableloader();
             this.pat_profile = [];
@@ -267,7 +267,7 @@ export class InpatientlistComponent implements OnInit {
             this.GlobalService.disableloader();
             this.pat_profile = resdata['ResponseObject'];
             sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
-            this.router.navigate(['/Homescreen/Patientdetails/Past_Encounters/']);
+            this.router.navigate(['/Homescreen/Patientdetails/Opsummary/']);
           } else {
             this.GlobalService.disableloader();
             this.pat_profile = [];
@@ -285,11 +285,11 @@ export class InpatientlistComponent implements OnInit {
   }
   clickOnPatient(patientDetail){
     this.GlobalService.savePatientType('inPatientList');
-    if(patientDetail.appt_status=== 'checkedin' || patientDetail.appt_status=== 'walkin'){
+    //if(patientDetail.appt_status=== 'checkedin' || patientDetail.appt_status=== 'walkin'){
       this.patientlist_detail(patientDetail);
-    }
-    if( patientDetail.appt_status=== 'done'){
-      patientDetail.Previousdate ? this.old_patientlist_detail(patientDetail) : this.patientlist_detail(patientDetail);
-    }
+    //}
+    // if( patientDetail.appt_status=== 'done'){
+    //   patientDetail.Previousdate ? this.old_patientlist_detail(patientDetail) : this.patientlist_detail(patientDetail);
+    // }
   }
 }

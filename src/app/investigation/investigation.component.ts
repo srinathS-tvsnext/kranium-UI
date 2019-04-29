@@ -415,7 +415,7 @@ export class InvestigationComponent implements OnInit {
   }
   edit_investigation_data(active_data){
     console.log(active_data);
-    console.log("yogesh");
+    
     this.checkbox_hdn_data = false;
     this.button_hdn_data = true;
     this.editbtn_hdn = true;

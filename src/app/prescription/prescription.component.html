@@ -1,4 +1,4 @@
-<div *ngIf="!date_status.Previousdate">
+<div *ngIf="date_status.appt_status !== 'done' || date_status.appt_status == 'ACTIVE'">
     <div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
         <div class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
             <div>
@@ -8,7 +8,7 @@
                             <!-- <button type="button" class="btn btn-steelblue pull-right" (click)="investigationlistpopupclose()">Clear Chart</button> -->
                             <div>
                                 <div class="col-md-3">
-                            <button type="button" class="btn btn-steelblue" routerLink='/Homescreen/Patientdetails/Previousprescription'>Previous Prescription</button>
+                            <button type="button" class="btn btn-steelblue" routerLink='/Homescreen/Patientdetails/Previousprescription'>Prescription History</button>
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field>
@@ -167,17 +167,31 @@
                                         </mat-select>
                                         </mat-form-field>
                                     </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="col-lg-3 col-md-6">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="startDt" [min]="minDt" placeholder="Start date" [(ngModel)]="med.startDate" (ngModelChange)="validDate()">
+                                            <mat-datepicker-toggle matSuffix [for]="startDt"></mat-datepicker-toggle>
+                                            <mat-datepicker #startDt></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                            <mat-form-field class="setwdh">
+                                                <input matInput placeholder="Dossage" value='' [(ngModel)]="med.dosage">
+                                            </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                            <mat-form-field class="setwdh">
+                                                <input matInput placeholder="Note" value='' [(ngModel)]="med.notes">
+                                            </mat-form-field>
+                                    </div>
                                     <div class="col-lg-1 col-md-12" style="padding: 15px;" *ngIf="sub_view_menu.add_edit">
-                                        <!-- <span *ngIf="sub_view_menu.add_edit" class='pull-right' style='padding-left:40px;font-size:25px; color: steelblue;'>
-                                                            <i class="fa fa-plus-square" aria-hidden="true" (click)="save_consultation_notes(diagno_consultationnotes)"></i>
-                                                          </span> -->
                                         <span class="medication-fields" *ngIf="datevalidation.nowdate">
                                                     <span *ngIf="btn=='Add'"> <i class="fa fa-plus-square" aria-hidden="true" style="cursor:pointer; color:steelblue;font-size: 25px;" (click)="add_medicine_temperary(med)"></i></span>
                                         <span *ngIf="btn=='Update'"> <i class="fa fa-pencil-square-o" aria-hidden="true" style="cursor:pointer; color:steelblue;font-size: 25px;" (click)="add_medicine_temperary(med)"></i></span>
                                         <i class="fa fa-window-close" aria-hidden="true" style="cursor:pointer; color:tomato;font-size: 25px;" (click)="cancel_pres()"> </i>
                                         </span>
-                                        <!-- <button type="button" class="btn btn-steelblue" (click)="add_medicine(med)">{{btn_pres}}</button>
-                        <button type="button" class="btn btn-steelblue" (click)="cancel_pres()">Cancel</button> -->
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +258,7 @@
                                         <td *ngIf="tem_data.quantitystatus" style="color:red;width:30%">
                                             <span class="wordbreak">{{tem_data.brand_name}}</span>
                                             <br><span style="font-size:11px;">({{tem_data.generic_name}})</span>
-                                            <i class="material-icons" style="font-size:16px;" (click)="GET_similar_medicines(tem_data)">info</i>
+                                            <i class="material-icons" style="font-size:16px;cursor: pointer" (click)="GET_similar_medicines(tem_data)">info</i>
                                         </td>
 
                                         <td *ngIf="!tem_data.quantitystatus">{{tem_data.brand_name}}
@@ -271,7 +285,7 @@
                             </table>
                         </div>
                         <div class="">
-                            <p class="headercolor">Notes</p>
+                            <!-- <p class="headercolor">Notes</p>
                             <div>
                                 <mat-form-field style='width:100%;'>
                                     <input matInput #message maxlength="256" [(ngModel)]="template_pres_med_data.notes">
@@ -280,7 +294,7 @@
                                     </mat-hint>
                                     <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
                                 </mat-form-field>
-                            </div>
+                            </div> -->
                             <div>
                                     <mat-form-field>
                                 <mat-select placeholder="Choose Language" [(ngModel)]="template_pres_med_data.language" (ngModelChange)="change_language(template_pres_med_data.language)">
@@ -377,7 +391,7 @@
 </div>
 
 
-<div *ngIf="date_status.Previousdate">
+<div *ngIf="date_status.appt_status === 'done'">
     <div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
         <div class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
             <div>
@@ -388,19 +402,25 @@
                                 <thead class="headercolor" data-background-color="#AFE1F5">
                                     <tr>
                                         <td>Medication</td>
+                                        <td>Start Date</td>
                                         <td>Frequency</td>
+                                        <td>Dossage</td>
                                         <td>Route</td>
                                         <td>Preparation</td>
                                         <td>Duration</td>
+                                        <td>Notes</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let indv_socialmention of pres_data; let i = index">
-                                        <td style="width: 40%;">{{indv_socialmention.brand_name}}<br>({{indv_socialmention.generic_name}}) </td>
+                                        <td style="width: 25%;">{{indv_socialmention.brand_name}}<br>({{indv_socialmention.generic_name}}) </td>
+                                        <td>{{indv_socialmention.CD.slice(0,10)}}</td>
                                         <td>{{indv_socialmention.frequency}}</td>
+                                        <td>{{indv_socialmention.dosage}}</td>
                                         <td>-</td>
                                         <td>-</td>
                                         <td>{{indv_socialmention.duration_no}} {{indv_socialmention.duration_capt}}</td>
+                                        <td>{{indv_socialmention.notes}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -409,12 +429,12 @@
                 </div>
                 <div class="panel panel-default" *ngIf="sub_view_menu.sub_view_name=='Notes'">
                     <div class="panel-body">
-                        <div class="">
+                        <!-- <div class="">
                             <p class="headercolor">Language</p>
                             <div>
                                 {{language}}
                             </div>
-                        </div>
+                        </div> -->
                         <div class="">
                             <p class="headercolor">Notes</p>
                             <div>

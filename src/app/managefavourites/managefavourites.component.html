@@ -49,13 +49,13 @@
 
                                                 <td>{{pres_data.template_name}}</td>
                                                 <td>{{pres_data.CD}}</td>
-                                                <td>
-                                                    <i class="fa fa-pencil" aria-hidden="true"
+                                                <td >
+                                                    <i class="fa fa-pencil" style="cursor: pointer" aria-hidden="true"
                                                         (click)="edittemp_pres(pres_data)"></i>&nbsp;
-                                                    <i class="fa fa-trash" aria-hidden="true"
-                                                        (click)="clickMethod_presc(pres_data,pres_data.template_name)"></i>
+                                                    <i class="fa fa-trash" style="cursor: pointer" aria-hidden="true"
+                                                        (click)="clickMethod_presc(pres_data,pres_data.template_name)"></i>&nbsp;
                                                     <!-- <i class="fa fa-ban" aria-hidden="true" (click)="cancel_tempprescription_master()"></i> -->
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                    <i class="fa fa-pencil-square-o" style="cursor: pointer"   aria-hidden="true"
                                                         (click)="edit_presc_panel(pres_data)"></i>
                                                 </td>
                                             </tr>
@@ -105,79 +105,68 @@
                                             <div class="col-md-6">&nbsp;</div>
                                         </div>
                                         <div class="col-lg-12 col-md-12">
-                                            <div class="col-lg-2 col-md-6">
-                                                <!-- < mat-form-field style='width:100%;padding-top:7px;'>
-                                                    <input matInput placeholder="Brand Name" [(ngModel)]="med.brand_name">
-                                                </mat-form-field> -->
-                                                <mat-form-field>
-                                                    <mat-select placeholder="Brand Name" style='width:100%;'
-                                                        [(ngModel)]="med.brand_name">
-                                                        <mat-option *ngFor="let food of barand_gen_name"
-                                                            [value]="food.itemname">
-                                                            {{ food.itemname }}
-                                                        </mat-option>
-                                                    </mat-select>
-                                                </mat-form-field>
-                                                <!-- <span [hidden]="hiddengif">
-                                                    <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />                                        
-                                                </span>
-                                                <datalist id="browssss">
-                          <option *ngFor="let state of medicine_kranium_list" value="{{state.itemname}}">
-                        </datalist> -->
-                                            </div>
-                                            <div class="col-lg-2 col-md-6">
-                                                <mat-form-field style='width:100%;padding-top:7px;'>
-                                                    <input matInput placeholder="Generic Name"
-                                                        [(ngModel)]="med.generic_name"
-                                                        (ngModelChange)="genericby_brandname(med.generic_name)">
-                                                </mat-form-field>
-                                                <!-- <datalist id="browssa">
-                          <option *ngFor="let state of medicine_kranium_list" value="{{state.genericname}}">
-                        </datalist> -->
-                                            </div>
-                                            <div class="col-lg-2 col-md-6">
-                                                <mat-form-field>
-                                                    <mat-select placeholder="Frequency" style='width:100%;'
-                                                        [(ngModel)]="med.frequency">
-                                                        <mat-option *ngFor="let food of prescr"
-                                                            [value]="food.viewValue">
-                                                            {{ food.viewValue }}
-                                                        </mat-option>
-                                                    </mat-select>
-                                                </mat-form-field>
-                                            </div>
-                                            <div class="col-lg-2 col-md-6">
-                                                <mat-form-field style='width:100%;padding-top:6px;'>
-                                                    <input matInput placeholder="Duration" value='2'
-                                                        [(ngModel)]="med.duration_no">
-                                                </mat-form-field>
-                                            </div>
-                                            <div class="col-lg-2 col-md-6">
-                                                <mat-form-field>
-                                                    <mat-select placeholder="Days" style='width:100%;padding-top:13px;'
-                                                        [(ngModel)]="med.duration_capt">
-                                                        <mat-option *ngFor="let food of day" [value]="food.viewValue">
-                                                            {{ food.viewValue }}
-                                                        </mat-option>
-                                                    </mat-select>
-                                                </mat-form-field>
-                                            </div>
-                                            <div class="col-lg-2 col-md-6 msicondiv">
-                                                <!-- <button type="button" class="btn btn-steelblue" (click)="add_medicine(med)">{{btn_pres}}</button>
-                                                <button type="button" class="btn btn-steelblue" (click)="cancel_pres()">Cancel</button> -->
-                                                <span *ngIf="btn_pres=='Add'"> <i class="fa fa-plus-square"
-                                                        aria-hidden="true"
-                                                        style="cursor:pointer; color:steelblue;font-size: 25px;"
-                                                        (click)="add_medicine(med)"></i></span>
-                                                <span *ngIf="btn_pres=='Update'"> <i class="fa fa-pencil-square-o"
-                                                        aria-hidden="true"
-                                                        style="cursor:pointer; color:steelblue;font-size: 25px;"
-                                                        (click)="add_medicine(med)"></i></span>
-                                                <i class="fa fa-window-close" aria-hidden="true"
-                                                    style="cursor:pointer; color:tomato;font-size: 25px;"
-                                                    (click)="cancel_pres()"> </i>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field width="100%">
+                                                        <mat-select placeholder="Brand Name"
+                                                            [(ngModel)]="med.brand_name">
+                                                            <mat-option *ngFor="let food of barand_gen_name"
+                                                                [value]="food.itemname">
+                                                                {{ food.itemname }}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
 
-                                            </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field width="100%">
+                                                        <input matInput placeholder="Generic Name"
+                                                            [(ngModel)]="med.generic_name"
+                                                            (ngModelChange)="genericby_brandname(med.generic_name)">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field width="100%">
+                                                        <mat-select placeholder="Frequency" [(ngModel)]="med.frequency">
+                                                            <mat-option *ngFor="let food of prescr"
+                                                                [value]="food.viewValue">
+                                                                {{ food.viewValue }}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field width="100%">
+                                                        <input matInput placeholder="Duration" value='2'
+                                                            [(ngModel)]="med.duration_no">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field width="100%">
+                                                        <mat-select placeholder="Days" [(ngModel)]="med.duration_capt">
+                                                            <mat-option *ngFor="let food of day"
+                                                                [value]="food.viewValue">
+                                                                {{ food.viewValue }}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6 msicondiv">
+                                                    <!-- <button type="button" class="btn btn-steelblue" (click)="add_medicine(med)">{{btn_pres}}</button>
+                                                <button type="button" class="btn btn-steelblue" (click)="cancel_pres()">Cancel</button> -->
+                                                    <span *ngIf="btn_pres=='Add'"> <i class="fa fa-plus-square"
+                                                            aria-hidden="true"
+                                                            style="cursor:pointer; color:steelblue;font-size: 25px;"
+                                                            (click)="add_medicine(med)"></i></span>
+                                                    <span *ngIf="btn_pres=='Update'"> <i class="fa fa-pencil-square-o"
+                                                            aria-hidden="true"
+                                                            style="cursor:pointer; color:steelblue;font-size: 25px;"
+                                                            (click)="add_medicine(med)"></i></span>
+                                                    <i class="fa fa-window-close" aria-hidden="true"
+                                                        style="cursor:pointer; color:tomato;font-size: 25px;"
+                                                        (click)="cancel_pres()"> </i>
+
+                                                </div>
+                                            
                                         </div>
                                         <div class="col-md-12 msdiv">
                                             <span *ngIf="btn_pres=='Add'"><button type="button"
@@ -270,11 +259,11 @@
                                                 <td>{{drug_temp_d.template_name}}</td>
                                                 <td>{{drug_temp_d.CD}}</td>
                                                 <td>
-                                                    <i class="fa fa-pencil" aria-hidden="true"
+                                                    <i class="fa fa-pencil" style="cursor: pointer" aria-hidden="true"
                                                         (click)="edittemp_drug(drug_temp_d)"></i>&nbsp;
-                                                    <i class="fa fa-trash" aria-hidden="true"
-                                                        (click)="clickMethod_drug(drug_temp_d,drug_temp_d.template_name)"></i>
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                    <i class="fa fa-trash" style="cursor: pointer" aria-hidden="true"
+                                                        (click)="clickMethod_drug(drug_temp_d,drug_temp_d.template_name)"></i>&nbsp;
+                                                    <i class="fa fa-pencil-square-o" style="cursor: pointer" aria-hidden="true"
                                                         (click)="edit_drug_panel(drug_temp_d)"></i>
 
                                                 </td>
@@ -348,7 +337,7 @@
                                                 <!-- medicine_kranium_list -->
                                             </div>
                                             <div class="col-lg-2 col-md-6">
-                                                <mat-form-field style='width:100%;padding-top:7px;'>
+                                                <mat-form-field style='width:100%'>
                                                     <input matInput placeholder="Generic Name"
                                                         [(ngModel)]="med_drug.generic_name"
                                                         (ngModelChange)="genericby_brandname(med_drug.generic_name)">
@@ -369,14 +358,14 @@
                                                 </mat-form-field>
                                             </div>
                                             <div class="col-lg-2 col-md-6">
-                                                <mat-form-field style='width:100%;padding-top:6px;'>
+                                                <mat-form-field style='width:100%'>
                                                     <input matInput placeholder="Duration"
                                                         [(ngModel)]="med_drug.duration_no">
                                                 </mat-form-field>
                                             </div>
                                             <div class="col-lg-2 col-md-6">
                                                 <mat-form-field>
-                                                    <mat-select placeholder="Days" style='width:100%;padding-top:13px;'
+                                                    <mat-select placeholder="Days" style='width:100%'
                                                         [(ngModel)]="med_drug.duration_capt">
                                                         <mat-option *ngFor="let food of day" [value]="food.viewValue">
                                                             {{ food.viewValue }}
@@ -476,12 +465,12 @@
                                                 <td>{{invest_temp.template_name}}</td>
                                                 <td>20/05/2017</td>
                                                 <td>
-                                                    <i class="fa fa-pencil" aria-hidden="true"
+                                                    <i class="fa fa-pencil" style="cursor: pointer" aria-hidden="true"
                                                         (click)="edit_investigation_temp(invest_temp)"></i>&nbsp;
-                                                    <i class="fa fa-trash" aria-hidden="true"
-                                                        (click)="clickMethod_inves(invest_temp,invest_temp.template_name)"></i>
+                                                    <i class="fa fa-trash" style="cursor: pointer" aria-hidden="true"
+                                                        (click)="clickMethod_inves(invest_temp,invest_temp.template_name)"></i>&nbsp;
                                                     <!-- removeall() -->
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                    <i class="fa fa-pencil-square-o" style="cursor: pointer" aria-hidden="true"
                                                         (click)="edit_inv_panel(invest_temp)"></i>
                                                 </td>
                                             </tr>
@@ -508,7 +497,7 @@
                                     </div> -->
                                     <div class="">
                                         <div class='col-md-12 form-group'>
-                                            <mat-form-field style='width:100%;padding-top:7px;'>
+                                            <mat-form-field style='width:100%'>
                                                 <input matInput list="brows" name="brows" placeholder="Search Services"
                                                     [(ngModel)]="Investigation_menu"
                                                     (ngModelChange)="get_medicine_kranium_cat_list_gen(Investigation_menu)">
@@ -644,12 +633,12 @@
                                                 <td>{{opsum_temp_name.CD}}</td>
                                                 <td>
                                                     <a href="#tab_default_13" data-toggle="tab">
-                                                        <i class="fa fa-pencil" aria-hidden="true"
+                                                        <i class="fa fa-pencil" style="cursor: pointer" aria-hidden="true"
                                                             (click)="edit_opsummary(opsum_temp_name)"></i>
                                                     </a>&nbsp;
-                                                    <i class="fa fa-trash" aria-hidden="true"
-                                                        (click)="clickMethod_opsum(opsum_temp_name,opsum_temp_name.template_name)"></i>
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"
+                                                    <i class="fa fa-trash" style="cursor: pointer" aria-hidden="true"
+                                                        (click)="clickMethod_opsum(opsum_temp_name,opsum_temp_name.template_name)"></i>&nbsp;
+                                                    <i class="fa fa-pencil-square-o" style="cursor: pointer" aria-hidden="true"
                                                         (click)="edit_op_panel(opsum_temp_name)"></i>
                                                 </td>
                                             </tr>

@@ -22,6 +22,7 @@ export class DiagnosisComponent implements OnInit {
   Investigation_category; newarraysss; hidden; categorylist_array; hiddengif; hiddengif1;
   hide; Investigation_menu; datevalidation;
   save_icdcode;
+  showIcd = true;
   constructor(private http: HttpClient, private router: Router, public dialog: MatDialog, public snackBar: MatSnackBar, private GlobalService: GlobalService) {
     // this.options = fb.group({
     //   hideRequired: false,
@@ -135,9 +136,9 @@ export class DiagnosisComponent implements OnInit {
 
 
   //geticdcodes
-  get_icdcodes(data): Observable<any> {
+  get_icdcodes(data) {
     debugger;
-    this.hiddengif1 = false;
+    this.hiddengif1 = true;
     // if (data.length < 2)
     // return [];
     // if (data.length > 2) {
@@ -149,39 +150,58 @@ export class DiagnosisComponent implements OnInit {
     // return this["autoComplete"].http.post('http://172.16.150.200/globaluat/api/index.php/v1/get/Masters/geticdcodes', this.search)
 
     // return this["autoComplete"].http.post('http://localhost/global/api/index.php/v1/get/Masters/geticdcodes', this.search)
-    return this["autoComplete"].http.post('http://14.141.212.155:8080/globaluat/api/index.php/v1/get/Masters/geticdcodes', this.search)
-    // return this["autoComplete"].http.post('http://10.91.19.198:8080/global_uat/api/index.php/v1/get/Masters/geticdcodes', this.search)
-
-    // .subscribe(resdata => {
-
-    //   console.log(resdata);
-    //   if (resdata['IsSuccess']) {
-    //     this.hiddengif1 = true;
-    //     // this.GlobalService.disableloader();
-    //     debugger;
-    //     this.icd_code_data = resdata['ResponseObject'];
-    //     this.showGreeting = true;
-    //     // for (let k = 0; k < this.icd_code_data.length; k++) {
-    //     //   this.exampleDatas.push({
-    //     //     "id": this.icd_code_data[k].ICD_10_Code.toString(),
-    //     //     "text": this.icd_code_data[k].DESCRIPTION
-    //     //     // "code": this.icd_code_data[k].ICD_10_Code
-    //     //   });
-    //     // }
-    //     // setTimeout(() => {    //<<<---    using ()=> syntax
-    //     //   this.items = this.exampleDatas;
-    //     // }, 2000);
-
-    //   } else {
-    //     this.icd_code_data = [];
-    //     // this.GlobalService.disableloader();
-    //     this.hiddengif1 = true;
-    //   }
-    //   // routerLink='/Homescreen/Patientlist'
+    //return this["autoComplete"].this.http.post('http://14.141.212.155:8080/globaluat/api/index.php/v1/get/Masters/geticdcodes', this.search)
+    // this.http.post('http://10.91.19.198:8080/global_uat/api/index.php/v1/get/Masters/geticdcodes', this.search).subscribe(res =>{
+    
     // })
-    // }
-  }
+    // return this["autoComplete"].http.post('http://localhost/global/api/index.php/v1/get/Masters/geticdcodes', this.search)
 
+    // return this["autoComplete"].http.post('http://10.91.19.198:8080/global_uat/api/index.php/v1/get/Masters/geticdcodes', this.search);
+        //return this["autoComplete"].http.post('http://localhost/global/api/index.php/v1/get/Masters/geticdcodes', this.search)
+      
+          // this.http.post('http://localhost/global/api/index.php/v1/get/Masters/geticdcodes', this.search).subscribe(res=>{
+          //   return this['autoComplete'] = res
+          // })
+    if(data.length > 3){      
+      this.hiddengif1 = false;
+    this.http.post('http://localhost/global/api/index.php/v1/get/Masters/geticdcodes', this.search)
+     .subscribe(resdata => {
+
+       console.log(resdata);
+       if (resdata['IsSuccess']) {
+         this.hiddengif1 = true;
+         // this.GlobalService.disableloader();
+         debugger;
+         this.icd_code_data = resdata['ResponseObject'];
+         this.showGreeting = true;
+         // for (let k = 0; k < this.icd_code_data.length; k++) {
+         //   this.exampleDatas.push({
+         //     "id": this.icd_code_data[k].ICD_10_Code.toString(),
+         //     "text": this.icd_code_data[k].DESCRIPTION
+         //     // "code": this.icd_code_data[k].ICD_10_Code
+         //   });
+         // }
+         // setTimeout(() => {    //<<<---    using ()=> syntax
+         //   this.items = this.exampleDatas;
+         // }, 2000);
+
+       } else {
+         this.icd_code_data = [];
+         // this.GlobalService.disableloader();
+         this.hiddengif1 = true;
+       }
+       // routerLink='/Homescreen/Patientlist'
+     })
+     }
+     
+  }
+  changeIcdStatus(){
+    if(this.diagno_consultationnotes.data_res.value === 'Final'){
+      this.showIcd = true;
+    } else{
+      this.showIcd = false;
+    }
+  }
   get_icc_test() {
     // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/geticdcodes').subscribe(resdata => {
     //   console.log(resdata);
@@ -318,7 +338,7 @@ export class DiagnosisComponent implements OnInit {
   check_icd_code(data_notes_icdnew){
     for (var j = 0; j < this.diagno_icd_patioent.length; j++) {
       if (this.diagno_icd_patioent[j].ICD_10_Code == data_notes_icdnew.state.ICD_10_Code) {
-        this.openSnackBar("This ICD Descriptions is Already Added , Please Add Onother One", "Close");
+        this.openSnackBar("This  is Already Added , Please Add Onother One", "Close");
         return false;
       } 
     }

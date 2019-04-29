@@ -12,8 +12,8 @@
                                     </textarea>
                                 </div>
                                 <div class="col-md-1">
-                                    <mat-icon mdSuffix style="padding-top:80px;">mic</mat-icon>
-                                    <!-- <span *ngIf="datevalidation.nowdate">
+                                    <!-- <mat-icon mdSuffix style="padding-top:80px;">mic</mat-icon>
+                                     <span *ngIf="datevalidation.nowdate">
                                     <span *ngIf="sub_view_menu.add_edit" class='pull-right' class="plusbtn">
                                         <i class="fa fa-plus-square" aria-hidden="true" (click)="save_consultation_notes(diagno_consultationnotes)"></i>
                                     </span>
@@ -47,7 +47,7 @@
                                 <p style="font-weight:600">ICD Descriptions</p>
                                 <div class="">
                                     <div class="col-md-6" style="width:50%">
-                                        <div class='col-md-12 form-group'>
+                                        <div class='col-md-12 form-group' style="margin-top: 15px;left: -29px;">
 
                                             <!-- <input type="text" placeholder="Search Album" auto-complete [(ngModel)]="diagno_consultationnotes.state" #album="ngModel" name="album_list" [source]="icd_code_data" value-formatter="DESCRIPTION" (ngModelChange)="get_icdcodes(diagno_consultationnotes.state)"
                                             list-formatter="DESCRIPTION" [match-formatted]="true" class="form-control" style="border-radius:0px;width:250px" required/> -->
@@ -57,13 +57,23 @@
                                             placeholder="ICD Codes / Description">
                                         </ng-select> -->
 
-                                            <div class='col-md-3 form-group' style="margin-top:0px;">
+                                            <!-- <div class='col-md-3 form-group' style="margin-top:0px;">
                                                 <input type="text" placeholder="Search ICD Codes" auto-complete [(ngModel)]="diagno_consultationnotes.state" #album="ngModel" name="doctor"  class="form-control"
                                                     style="border-radius:0px;width:360px" path-to-data="_body" required/>
+                                            </div> -->
+                                            <div *ngIf ="!showIcd">
+                                                <mat-form-field style='width:100%'>
+                                                    <input matInput  placeholder="Provisional Notes" [(ngModel)]="diagno_consultationnotes.state" >
+                                                </mat-form-field>    
                                             </div>
-                                            <!-- < mat-form-field style='width:100%;padding-top:7px;'>
-                                            <input matInput list="brows" name="brows" placeholder="procedure services" [(ngModel)]="diagno_consultationnotes.state" (ngModelChange)="get_icdcodes(diagno_consultationnotes.state)">
-                                        </mat-form-field>
+                                            <div *ngIf ="showIcd">
+                                            <mat-form-field style='width:100%'>
+                                                <input matInput list="brows" name="brows" placeholder="Search ICD Codes" [(ngModel)]="diagno_consultationnotes.state" (ngModelChange)="get_icdcodes(diagno_consultationnotes.state)">
+                                            </mat-form-field> 
+                                            <datalist id="brows"> <option *ngFor="let state of icd_code_data" value="{{state.ICD_10_Code}}">{{state.DESCRIPTION}}</datalist>
+                                            </div>
+                                        </div>
+                                        <!--
                                         <div class="col-md-12" style="overflow: scroll;">
                                             <div>
                                                 <ul>
@@ -71,17 +81,12 @@
                                                 </ul>
                                             </div>
                                         </div> -->
-
-                                            <!-- <datalist id="brows">
-                      <option *ngFor="let state of icd_code_data" value="{{state.DESCRIPTION}}">
-                    </datalist> -->
-                                        </div>
                                         <span [hidden]="hiddengif1">
                                         <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />                                        
                                     </span>
                                     </div>
                                     <div class="col-md-6" style="padding-top:35px;">
-                                        <mat-radio-group [(ngModel)]="diagno_consultationnotes.data_res">
+                                        <mat-radio-group [(ngModel)]="diagno_consultationnotes.data_res" (ngModelChange)="changeIcdStatus()">
                                             <mat-radio-button color='primary' [value]="'Final'">
                                                 <label style="padding-left:5px;">Final</label>
                                             </mat-radio-button>
@@ -258,7 +263,7 @@
                             <div class="panel-body">
                                 <p style="font-weight:600">Consultation Notes</p>
                                 <div class="col-md-12">
-                                    <p>{{diagno_consultationnotes.consultation_notes}}</p>]
+                                    <p>{{diagno_consultationnotes.consultation_notes}}</p>
                                     <!-- <textarea class="form-control" style="width:100%;resize:none;" rows="5" cols="50" [(ngModel)]="diagno_consultationnotes.consultation_notes">
                                         </textarea> -->
                                 </div>

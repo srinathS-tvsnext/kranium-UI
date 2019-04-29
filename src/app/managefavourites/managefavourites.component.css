@@ -466,5 +466,7 @@ div-sep {
         display: block;
         float: right;
     }
-    
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: rgba(255, 255, 255, 0.4)!important;
 }

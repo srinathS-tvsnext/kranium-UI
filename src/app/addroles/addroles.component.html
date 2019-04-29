@@ -14,11 +14,19 @@
                     <!-- <ss-multiselect-dropdown [options]="formusers_drop" [texts]="myTexts" [settings]="mySettings" [(ngModel)]="add_roles.userId"
                       style="width:100%;"></ss-multiselect-dropdown> -->
                     <!-- <div class='col-md-6 form-group'> -->
-                    <ng-select [disabled]="disable_rolename" *ngIf="showGreeting" [multiple]="true"  [items]="items" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)" (removed)="removed($event)" (typed)="typed($event)" (deselected)="onDeselected($event)"
-                        [(ngModel)]="add_roles.userId" placeholder="Select Users">
-                    </ng-select>
+                            <!-- <ng-select [disabled]="disable_rolename" *ngIf="showGreeting" [multiple]="true"  [items]="items" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)" (removed)="removed($event)" (typed)="typed($event)" (deselected)="onDeselected($event)"
+                                [(ngModel)]="add_roles.userId" placeholder="Select Users">
+                            </ng-select> -->
                     <!-- </div> -->
-
+                    <ng-multiselect-dropdown
+                    [placeholder]="'Select Users'"
+                    [data]="dropdownList"
+                    [(ngModel)]="add_roles.userId"
+                    [settings]="dropdownSettings"
+                    (onSelect)="onItemSelect($event)"
+                    (onSelectAll)="onSelectAll($event)"
+                  >
+                  </ng-multiselect-dropdown>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6">
                     <mat-form-field>
@@ -88,7 +96,7 @@
                             <td>
                                 <span>
                                     <i class="fa fa-pencil-square-o" aria-hidden="true" style="cursor:pointer;" (click)="get_editviewrole(viewrole)"></i>
-                                    <i class="fa fa-trash" aria-hidden="true" style="cursor:pointer;" (click)="delete_role(viewrole,viewrole.user_name)"></i>
+                                    <i class="fa fa-trash" aria-hidden="true" style="cursor:pointer;margin-left: 5px" (click)="delete_role(viewrole,viewrole.user_name)"></i>
                                 </span>
                             </td>
                         </tr>
