@@ -358,7 +358,8 @@ export class HistoryComponent implements OnInit {
   }
   remove_chiefcomplaints(rem_chiefcomplnts) {
     this.GlobalService.enableloader();
-    rem_chiefcomplnts.nr = this.login_details[0]['nr'];
+    // rem_chiefcomplnts.nr = this.login_details[0]['nr'];
+    rem_chiefcomplnts.EncounterNo = this.date_status.encounterno
     console.log(rem_chiefcomplnts);
     debugger;
     // delete_history_chief_complaint

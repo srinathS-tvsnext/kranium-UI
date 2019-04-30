@@ -25,7 +25,7 @@
                                                 [(ngModel)]="history.chief_complaints">
                                         </mat-form-field>
                                     </div>
-                                    <div class="col-md-1">
+                                    <!-- <div class="col-md-1">
                                         <mat-form-field style="width:100%">
                                             <input matInput placeholder="Count" [formControl]="numberFormControl"
                                                 [(ngModel)]="history.dur_num">
@@ -33,8 +33,8 @@
                                                 Use Only <strong>Numeric</strong>
                                             </mat-error>
                                         </mat-form-field>
-                                    </div>
-                                    <div class="col-md-3">
+                                    </div> -->
+                                    <!-- <div class="col-md-3">
                                         <mat-form-field>
                                             <mat-select [(ngModel)]="history.duration"
                                                 (ngModelChange)="duration_value($event)" placeholder="Duration"
@@ -44,7 +44,7 @@
                                                 </mat-option>
                                             </mat-select>
                                         </mat-form-field>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-2" style="padding-top:20px;" *ngIf="sub_view_menu.add_edit">
                                         <span *ngIf="datevalidation.nowdate">
                                             <span class='pull-right' class="plusbtn">
@@ -57,9 +57,9 @@
                                 <div class="" *ngIf="sub_view_menu.view">
                                     <span *ngFor="let complaints of history_patient_chief_complaints">
                                         <button type="button" class="btn btn-white" routerLink='Prescription'>
-                                            <span class="hidden-xs wordsize">{{complaints.chief_complaints}}</span>
-                                            <span class="hidden-xs">{{complaints.duration_count}}</span>
-                                            <span class="hidden-xs">{{complaints.duration}}</span>
+                                            <span class="hidden-xs wordsize">{{complaints.notes}}</span>
+                                            <!-- <span class="hidden-xs">{{complaints.duration_count}}</span>
+                                            <span class="hidden-xs">{{complaints.duration}}</span> -->
                                             <span class="badge badgewhite xbadge"
                                                 (click)="remove_chiefcomplaints(complaints)">X</span>
                                         </button>
@@ -183,9 +183,9 @@
                                     <span *ngFor="let complaints of history_patient_chief_complaints">
                                         <button style="padding: 12px;
                 font-size: 9px;" type="button" class="btn btn-white"
-                                            routerLink='Prescription'>{{complaints.chief_complaints}}
-                                            <span class="hidden-xs">{{complaints.duration_count}}</span>
-                                            <span class="hidden-xs">{{complaints.duration}}</span>
+                                            routerLink='Prescription'>{{complaints.notes}}
+                                            <!-- <span class="hidden-xs">{{complaints.duration_count}}</span>
+                                            <span class="hidden-xs">{{complaints.duration}}</span> -->
                                             <!-- <span class="badge badgewhite" (click)="remove_chiefcomplaints(complaints)">X</span> -->
                                         </button>
                                     </span>
