@@ -8,7 +8,8 @@
                             <div class="panel-body">
                                 <p style="font-weight:600">Consultation Notes</p>
                                 <div class="col-md-11">
-                                    <textarea class="form-control" style="width:100%;resize:none;" rows="5" cols="50" [(ngModel)]="diagno_consultationnotes.consultation_notes">
+                                    <textarea class="form-control" style="width:100%;resize:none;" rows="5" cols="50"
+                                        [(ngModel)]="diagno_consultationnotes.consultation_notes">
                                     </textarea>
                                 </div>
                                 <div class="col-md-1">
@@ -22,7 +23,8 @@
                                 <div class="col-md-12">
                                     <span *ngIf="datevalidation.nowdate">
                                         <span *ngIf="sub_view_menu.add_edit" class="plusbtn">
-                                            <button type="button" class="btn btn-steelblue pull-right" (click)="save_consultation_notes(diagno_consultationnotes)">Save</button>
+                                            <button type="button" class="btn btn-steelblue pull-right"
+                                                (click)="save_consultation_notes(diagno_consultationnotes)">Save</button>
                                         </span>
                                     </span>
                                 </div>
@@ -61,16 +63,23 @@
                                                 <input type="text" placeholder="Search ICD Codes" auto-complete [(ngModel)]="diagno_consultationnotes.state" #album="ngModel" name="doctor"  class="form-control"
                                                     style="border-radius:0px;width:360px" path-to-data="_body" required/>
                                             </div> -->
-                                            <div *ngIf ="!showIcd">
+                                            <div *ngIf="!showIcd">
                                                 <mat-form-field style='width:100%'>
-                                                    <input matInput  placeholder="Provisional Notes" [(ngModel)]="diagno_consultationnotes.state" >
-                                                </mat-form-field>    
+                                                    <input matInput placeholder="Provisional Notes"
+                                                        [(ngModel)]="diagno_consultationnotes.state">
+                                                </mat-form-field>
                                             </div>
-                                            <div *ngIf ="showIcd">
-                                            <mat-form-field style='width:100%'>
-                                                <input matInput list="brows" name="brows" placeholder="Search ICD Codes" [(ngModel)]="diagno_consultationnotes.state" (ngModelChange)="get_icdcodes(diagno_consultationnotes.state)">
-                                            </mat-form-field> 
-                                            <datalist id="brows"> <option *ngFor="let state of icd_code_data" value="{{state.ICD_10_Code}}">{{state.DESCRIPTION}}</datalist>
+                                            <div *ngIf="showIcd">
+                                                <mat-form-field style='width:100%'>
+                                                    <input matInput list="brows" name="brows"
+                                                        placeholder="Search ICD Codes"
+                                                        [(ngModel)]="diagno_consultationnotes.state"
+                                                        (ngModelChange)="get_icdcodes(diagno_consultationnotes.state)">
+                                                </mat-form-field>
+                                                <datalist id="brows">
+                                                    <option *ngFor="let state of icd_code_data"
+                                                        value="{{state.ICD_10_Code}}">{{state.DESCRIPTION}}
+                                                </datalist>
                                             </div>
                                         </div>
                                         <!--
@@ -82,37 +91,43 @@
                                             </div>
                                         </div> -->
                                         <span [hidden]="hiddengif1">
-                                        <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />                                        
-                                    </span>
+                                            <img
+                                                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                        </span>
                                     </div>
                                     <div class="col-md-6" style="padding-top:35px;">
-                                        <mat-radio-group [(ngModel)]="diagno_consultationnotes.data_res" (ngModelChange)="changeIcdStatus()">
+                                        <mat-radio-group [(ngModel)]="diagno_consultationnotes.data_res"
+                                            (ngModelChange)="changeIcdStatus()">
                                             <mat-radio-button color='primary' [value]="'Final'">
                                                 <label style="padding-left:5px;">Final</label>
                                             </mat-radio-button>
-                                            <mat-radio-button color='primary' [value]="'Provisional'" style="padding-left:10px;">
+                                            <mat-radio-button color='primary' [value]="'Provisional'"
+                                                style="padding-left:10px;">
                                                 <label style="padding-left:5px;">Provisional</label>
                                             </mat-radio-button>
                                         </mat-radio-group>
                                         <span *ngIf="datevalidation.nowdate">
-                                        <span *ngIf="sub_view_menu.add_edit" class='' style='cursor: pointer;padding-left:40px;font-size:25px; color: steelblue;'>
-                                            <i class="fa fa-plus-square" aria-hidden="true" (click)="unique_check_icd_code(diagno_consultationnotes)"></i>
-                                        </span>
+                                            <span *ngIf="sub_view_menu.add_edit" class=''
+                                                style='cursor: pointer;padding-left:40px;font-size:25px; color: steelblue;'>
+                                                <i class="fa fa-plus-square" aria-hidden="true"
+                                                    (click)="unique_check_icd_code(diagno_consultationnotes)"></i>
+                                            </span>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="col-md-12" *ngIf="sub_view_menu.view">
                                     <span *ngFor="let ics_pat of diagno_icd_patioent">
-                                <button type="button" class="btn btn-white" *ngIf="ics_pat.desitination=='Final'">
-                                    <!-- {{ics_pat.ICD_10_Code}} -->
-                                    <span class="hidden-xs">{{ics_pat.DESCRIPTION}} &nbsp; ({{ics_pat.ICD_10_Code}}) (F)</span>
-                                    <span class="badge badgewhite" (click)="delete_icd_code(ics_pat)">X</span>
-                                    </button>
-                                    <button type="button" class="btn btn-white" *ngIf="ics_pat.desitination=='Provisional'">
-                                        <!-- {{ics_pat.ICD_10_Code}} -->
-                                        <span class="hidden-xs">{{ics_pat.DESCRIPTION}} &nbsp; ({{ics_pat.ICD_10_Code}}) (P)</span>
-                                        <span class="badge badgewhite" (click)="delete_icd_code(ics_pat)">X</span>
-                                    </button>
+                                        <button type="button" class="btn btn-white">
+                                            <span class="hidden-xs">{{ics_pat.Diagnosiscode}} &nbsp;
+                                                ({{ics_pat.Description}}) (F)</span>
+                                            <span class="badge badgewhite" (click)="delete_icd_code(ics_pat,'final')">X</span>
+                                        </button>
+                                    </span>
+                                    <span *ngFor="let provitional of diagno_icd_patioent_provitional">
+                                        <button type="button" class="btn btn-white">
+                                            <span class="hidden-xs">{{provitional.notes}} (P)</span>
+                                            <span class="badge badgewhite" (click)="delete_icd_code(provitional,'provitional')">X</span>
+                                        </button>
                                     </span>
                                 </div>
                             </div>
@@ -136,16 +151,21 @@
                                     </mat-option>
                                 </mat-select> -->
                                     <mat-form-field style='width:45%;padding-top:7px;'>
-                                        <input matInput list="brows" name="brows" placeholder="Search Procedure" [(ngModel)]="Investigation_menu" (ngModelChange)="get_medicine_kranium_list_gen(Investigation_menu)">
+                                        <input matInput list="brows" name="brows" placeholder="Search Procedure"
+                                            [(ngModel)]="Investigation_menu"
+                                            (ngModelChange)="get_medicine_kranium_list_gen(Investigation_menu)">
                                     </mat-form-field>
                                     <!-- <button type="button" class="clearbtn" (click)="clrprocedure()">Clear</button> -->
-                                    <img src="../../assets/img/clearicon.png" style="cursor:pointer;" (click)="clrprocedure()">
+                                    <img src="../../assets/img/clearicon.png" style="cursor:pointer;"
+                                        (click)="clrprocedure()">
                                     <span [hidden]="hiddengif">
-                                    <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />                                        
-                                </span>
+                                        <img
+                                            src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                    </span>
                                     <datalist id="brows">
-                                    <option *ngFor="let state of investigation_kranium_list" value="{{state.investigation_kranium_list}}">
-                                </datalist>
+                                        <option *ngFor="let state of investigation_kranium_list"
+                                            value="{{state.investigation_kranium_list}}">
+                                    </datalist>
 
                                     <!-- <mat-select placeholder="Procedure List" class="size" [(ngModel)]="diagnosis_procedure.procedure">
                                     <mat-option *ngFor="let procedure of Investigation_category" [value]="procedure">
@@ -156,27 +176,39 @@
                                     <i class="fa fa-plus-square" aria-hidden="true"></i>
                                 </span> -->
                                     <div [hidden]="hidden">
-                                        <div class="col-md-12" id="mysearchbox" style="height: 250px; overflow: scroll;">
-                                            <div class="col-md-4" *ngFor="let sub_view_menu of Investigation_category; let i =index;">
-                                                <div class="checkboxtext" style="text-overflow: ellipsis; overflow: hidden;">
-                                                    <mat-checkbox color='primary' [(ngModel)]="sub_view_menu.checkbox" (ngModelChange)="create_category_list(sub_view_menu)">{{sub_view_menu.item_long_description}}</mat-checkbox>
+                                        <div class="col-md-12" id="mysearchbox"
+                                            style="height: 250px; overflow: scroll;">
+                                            <div class="col-md-4"
+                                                *ngFor="let sub_view_menu of Investigation_category; let i =index;">
+                                                <div class="checkboxtext"
+                                                    style="text-overflow: ellipsis; overflow: hidden;">
+                                                    <mat-checkbox color='primary' [(ngModel)]="sub_view_menu.checkbox"
+                                                        (ngModelChange)="create_category_list(sub_view_menu)">
+                                                        {{sub_view_menu.item_long_description}}</mat-checkbox>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <!-- <p class="header">{{category_tem.deptname}}</p> -->
-                                        <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group" *ngFor="let category_temperary of categorylist_array">
-                                        <button type="button" class="btn btn-white" *ngIf="category_temperary.checkbox">
-                                        <span class="hidden-xs">{{category_temperary.item_long_description}}</span>
-                                        <span class="badge badgewhite" (click)="remove_temp(category_temperary)">X</span>
-                                        </button>
+                                        <span class="btn-group btn-group-md" id="withBtnGroup"
+                                            aria-label="Page Header Actions" role="group"
+                                            *ngFor="let category_temperary of categorylist_array">
+                                            <button type="button" class="btn btn-white"
+                                                *ngIf="category_temperary.checkbox">
+                                                <span
+                                                    class="hidden-xs">{{category_temperary.item_long_description}}</span>
+                                                <span class="badge badgewhite"
+                                                    (click)="remove_temp(category_temperary)">X</span>
+                                            </button>
                                         </span>
                                     </div>
                                     <div class="col-md-12">
                                         <span *ngIf="datevalidation.nowdate">
-                                        <button type="button" class="btn btn-steelblue pull-right" *ngIf="sub_view_menu.add_edit" (click)="save_cprocedure_diagnosis1(categorylist_array)">Save</button>
-                                    </span>
+                                            <button type="button" class="btn btn-steelblue pull-right"
+                                                *ngIf="sub_view_menu.add_edit"
+                                                (click)="save_cprocedure_diagnosis1(categorylist_array)">Save</button>
+                                        </span>
                                     </div>
                                 </div>
                                 <table class=" table" *ngIf="sub_view_menu.view">
@@ -196,23 +228,27 @@
                                         <tr *ngFor="let prescri_pat of diagno_presc_patioent">
                                             <td>
                                                 <button type="button" class="btn btn-white">
-                  <span class="hidden-xs">{{prescri_pat.item_long_description}}</span>
-                </button>
+                                                    <span class="hidden-xs">{{prescri_pat.item_long_description}}</span>
+                                                </button>
                                                 <!-- </button><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> -->
                                                 <!-- <span class="hidden-xs"  (click)="get_procedure_payment_status(prescri_pat)">{{prescri_pat.item_long_description}}</span> -->
                                             </td>
-                                            <td *ngIf="prescri_pat.status==1" (click)="get_procedure_payment_status(prescri_pat)">Billed
+                                            <td *ngIf="prescri_pat.status==1"
+                                                (click)="get_procedure_payment_status(prescri_pat)">Billed
                                                 <!-- <i [hidden]="spinner" class="fa fa-refresh" aria-hidden="true" (click)="get_procedure_payment_status(prescri_pat)"></i> -->
                                                 <i class="fa fa-refresh" aria-hidden="true"></i>
                                             </td>
 
-                                            <td *ngIf="prescri_pat.status!=1" (click)="get_procedure_payment_status(prescri_pat)">Not Billed
+                                            <td *ngIf="prescri_pat.status!=1"
+                                                (click)="get_procedure_payment_status(prescri_pat)">Not Billed
                                                 <!--  fa-spin <i [hidden]="spinner" class="fa fa-refresh" aria-hidden="true" (click)="get_procedure_payment_status(prescri_pat)"></i> -->
                                                 <i class="fa fa-refresh " aria-hidden="true"></i>
                                             </td>
 
-                                            <td *ngIf="prescri_pat.status==1" style="cursor:pointer;color:steelblue;" (click)="onOpen(prescri_pat)">Add Notes</td>
-                                            <td *ngIf="prescri_pat.status!=1" style="cursor:pointer;color:steelblue;">-</td>
+                                            <td *ngIf="prescri_pat.status==1" style="cursor:pointer;color:steelblue;"
+                                                (click)="onOpen(prescri_pat)">Add Notes</td>
+                                            <td *ngIf="prescri_pat.status!=1" style="cursor:pointer;color:steelblue;">-
+                                            </td>
                                             <td>&nbsp;</td>
                                         </tr>
                                     </tbody>
@@ -221,8 +257,8 @@
                                     <!-- [hidden]="IsHidden" -->
                                     <div class="col-md-10">
                                         <span class="pull-right" style="cursor:pointer;">
-              <i class="fa fa-times fa-2x" aria-hidden="true" (click)="onClose()"></i>
-            </span>
+                                            <i class="fa fa-times fa-2x" aria-hidden="true" (click)="onClose()"></i>
+                                        </span>
                                         <!-- <ckeditor value='Hello Globals-...!'>
                                     </ckeditor> -->
                                         <!-- <mat-form-field style=" width: 100%;">
@@ -237,7 +273,10 @@
                                     </div>
                                     <div class="col-md-2">
                                         <span *ngIf="datevalidation.nowdate">
-                                        <span class="pull-right" style="cursor:pointer; color:steelblue; font-size: 20px;" (click)="save_procedure_notes(data_nn)"><i class="fa fa-plus-square" aria-hidden="true"></i></span>
+                                            <span class="pull-right"
+                                                style="cursor:pointer; color:steelblue; font-size: 20px;"
+                                                (click)="save_procedure_notes(data_nn)"><i class="fa fa-plus-square"
+                                                    aria-hidden="true"></i></span>
                                         </span>
                                     </div>
                                     <!-- (ngModelChange)="save_procedure_notes(editorContent)" -->
@@ -281,14 +320,18 @@
                                 <div class="col-md-12" *ngIf="sub_view_menu.view">
                                     <p *ngFor="let ics_pat of diagno_icd_patioent">
                                         <strong>{{ics_pat.desitination}} - </strong>
-                                        <button type="button" class="btn btn-white" *ngIf="ics_pat.desitination=='Final'">
-                                        <!-- {{ics_pat.ICD_10_Code}} -->
-                                        <span class="hidden-xs">{{ics_pat.DESCRIPTION}} &nbsp; ({{ics_pat.ICD_10_Code}})</span>
-                                    <!-- <span class="badge badgewhite" (click)="delete_icd_code(ics_pat)">X</span> -->
-                                    </button>
-                                        <button type="button" class="btn btn-white" *ngIf="ics_pat.desitination=='Provisional'">
+                                        <button type="button" class="btn btn-white"
+                                            *ngIf="ics_pat.desitination=='Final'">
                                             <!-- {{ics_pat.ICD_10_Code}} -->
-                                            <span class="hidden-xs">{{ics_pat.DESCRIPTION}} &nbsp; ({{ics_pat.ICD_10_Code}})</span>
+                                            <span class="hidden-xs">{{ics_pat.DESCRIPTION}} &nbsp;
+                                                ({{ics_pat.ICD_10_Code}})</span>
+                                            <!-- <span class="badge badgewhite" (click)="delete_icd_code(ics_pat)">X</span> -->
+                                        </button>
+                                        <button type="button" class="btn btn-white"
+                                            *ngIf="ics_pat.desitination=='Provisional'">
+                                            <!-- {{ics_pat.ICD_10_Code}} -->
+                                            <span class="hidden-xs">{{ics_pat.DESCRIPTION}} &nbsp;
+                                                ({{ics_pat.ICD_10_Code}})</span>
                                             <!-- <span class="badge badge-stblue" (click)="delete_icd_code(ics_pat)">X</span> -->
                                         </button>
                                     </p>
@@ -316,8 +359,8 @@
                                         <tr *ngFor="let prescri_pat of diagno_presc_patioent">
                                             <td>
                                                 <button type="button" class="btn btn-white">
-                      <span class="hidden-xs">{{prescri_pat.item_long_description}}</span>
-                    </button>
+                                                    <span class="hidden-xs">{{prescri_pat.item_long_description}}</span>
+                                                </button>
                                             </td>
                                         </tr>
                                     </tbody>

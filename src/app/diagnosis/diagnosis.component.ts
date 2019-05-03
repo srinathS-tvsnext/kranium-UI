@@ -17,7 +17,7 @@ export class DiagnosisComponent implements OnInit {
   data_nn; date_status;
   IsHidden; icd_code_data; search; diagno_consultationnotes; patientdata_details; save_newdata; procedure_category;
   diagnosis_procedure; payment_status; data_status; consultation_notes; diagno_icd_patioent; diagno_presc_patioent;
-  showGreeting; exampleDatas; items; spinner; login_details; acess_rights; notes_data;
+  showGreeting; exampleDatas; items; spinner; login_details; acess_rights; notes_data; diagno_icd_patioent_provitional
 
   Investigation_category; newarraysss; hidden; categorylist_array; hiddengif; hiddengif1;
   hide; Investigation_menu; datevalidation;
@@ -125,7 +125,7 @@ export class DiagnosisComponent implements OnInit {
         this.GlobalService.disableloader();
         debugger;
         this.consultation_notes = resdata['ResponseObject'];
-        this.diagno_consultationnotes.consultation_notes = resdata['ResponseObject'][0].consultation_notes;
+        this.diagno_consultationnotes.consultation_notes = resdata['ResponseObject'][0].notes;
       } else {
         this.consultation_notes = [];
         this.GlobalService.disableloader();
@@ -196,7 +196,8 @@ export class DiagnosisComponent implements OnInit {
      
   }
   changeIcdStatus(){
-    if(this.diagno_consultationnotes.data_res.value === 'Final'){
+    this.diagno_consultationnotes.state = '';
+    if(this.diagno_consultationnotes.data_res === 'Final'){
       this.showIcd = true;
     } else{
       this.showIcd = false;
@@ -337,7 +338,7 @@ export class DiagnosisComponent implements OnInit {
 
   check_icd_code(data_notes_icdnew){
     for (var j = 0; j < this.diagno_icd_patioent.length; j++) {
-      if (this.diagno_icd_patioent[j].ICD_10_Code == data_notes_icdnew.state.ICD_10_Code) {
+      if (this.diagno_icd_patioent[j].Diagnosiscode == data_notes_icdnew.state) {
         this.openSnackBar("This  is Already Added , Please Add Onother One", "Close");
         return false;
       } 
@@ -358,21 +359,37 @@ export class DiagnosisComponent implements OnInit {
       }
       data_notes_icdnew.nr = this.login_details[0]['nr'];
       console.log(data_notes_icdnew);
-      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/add_history_icd_codes', data_notes_icdnew).subscribe(resdata => {
-        debugger;
-        console.log(resdata);
-        if (resdata['IsSuccess']) {
-          this.GlobalService.disableloader();
-          this.openSnackBar("Save Successully", "Close");
-          // this.diagno_consultationnotes.state = {};
-          this.get_icd_codes_patient(this.patientdata_details);
-        } else {
-          this.GlobalService.disableloader();
-          this.openSnackBar("Error? not added", "Close");
-        }
-      })
+      if(data_notes_icdnew.data_res == 'Final'){
+        this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/add_history_icd_codes', data_notes_icdnew).subscribe(resdata => {
+          debugger;
+          console.log(resdata);
+          if (resdata['IsSuccess']) {
+            this.GlobalService.disableloader();
+            this.openSnackBar("Save Successully", "Close");
+            // this.diagno_consultationnotes.state = {};
+            this.get_icd_codes_patient(this.patientdata_details);
+          } else {
+            this.GlobalService.disableloader();
+            this.openSnackBar("Error? not added", "Close");
+          }
+        })
+      } else{
+        this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/add_history_icd_codes_provitional', data_notes_icdnew).subscribe(resdata => {
+          debugger;
+          if (resdata['IsSuccess']) {
+            this.GlobalService.disableloader();
+            this.openSnackBar("Save Successully", "Close");
+            // this.diagno_consultationnotes.state = {};
+            this.get_icd_codes_patient(this.patientdata_details);
+          } else {
+            this.GlobalService.disableloader();
+            this.openSnackBar("Error? not added", "Close");
+          }
+        })
+      }
+      
   }
-  get_icd_codes_patient(data_icd) {
+  get_icd_codes_patient(data_icd, callback = null) {
     if (this.patientdata_details) {
       for (var i = 0; i < this.patientdata_details.length; i++) {
         data_icd.uhid_no = this.patientdata_details[i].UHIDNO;
@@ -393,15 +410,32 @@ export class DiagnosisComponent implements OnInit {
         this.diagno_icd_patioent = [];
         // this.openSnackBar("Error? not added", "Close");
       }
-      // routerLink='/Homescreen/Patientlist'
-    })
+    });
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/get_history_icd_provitionalCode', data_icd).subscribe(resdata => {
+      debugger;
+      console.log(resdata);
+      if (resdata['IsSuccess']) {
+        this.GlobalService.disableloader();
+        debugger;
+        // this.openSnackBar("Save Successully", "Close");
+        this.diagno_icd_patioent_provitional = resdata['ResponseObject'];
+      } else {
+        this.GlobalService.disableloader();
+        this.diagno_icd_patioent_provitional = [];
+        // this.openSnackBar("Error? not added", "Close");
+      }
+    });
+    
+    
+
   }
 
-  delete_icd_code(delete_icd_data) {
+  delete_icd_code(delete_icd_data,icdtype) {
     this.GlobalService.enableloader();
-    delete_icd_data.nr = this.login_details[0]['nr'];
+    delete_icd_data.encounterno = this.date_status.encounterno;
     console.log(delete_icd_data);
     debugger;
+    if(icdtype === 'final') {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/delete_history_icd_codes', delete_icd_data).subscribe(resdata => {
       if (resdata['IsSuccess']) {
         this.get_icd_codes_patient(this.patientdata_details);
@@ -411,7 +445,19 @@ export class DiagnosisComponent implements OnInit {
         this.GlobalService.disableloader();
         this.openSnackBar("Error! Please Retry", "Close");
       }
-    })
+    }) 
+  } else {
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/delete_history_provitional_codes', delete_icd_data).subscribe(resdata => {
+      if (resdata['IsSuccess']) {
+        this.get_icd_codes_patient(this.patientdata_details);
+        this.GlobalService.disableloader();
+        this.openSnackBar("Deleted Succesfully", "Close");
+      } else {
+        this.GlobalService.disableloader();
+        this.openSnackBar("Error! Please Retry", "Close");
+      }
+    }) 
+  }
   }
 
   get_procedure_diag_patient(data_icd) {

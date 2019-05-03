@@ -133,8 +133,8 @@
                                 </p> -->
                                     <p *ngIf="opttextnew.options_type=='4' ">
                                         <span *ngFor="let optionval of opttextnew.question_option; let i=index ">
-                                            <mat-checkbox class="example-margin " color='primary' value=" "
-                                                name="{{opttextnew.question_id}} " [(ngModel)]="optionval.answer ">
+                                            <mat-checkbox class="example-margin " color='primary' value="optionval.options"
+                                                name="{{opttextnew.question_id}} " [(ngModel)]="optionval.answer" [checked]="optionval.answer === 'YES'?true:false">
                                                 {{optionval.options}}
                                             </mat-checkbox> &nbsp;&nbsp;
                                         </span>
