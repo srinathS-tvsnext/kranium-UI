@@ -31,13 +31,38 @@ export class VitalsComponent implements OnInit {
     if (patientdata_details) {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitaldetail', patientdata_details).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          this.vitals_data = resdata['ResponseObject'];
+       //  this.vitals_data.Formvalue = resdata['ResponseObject'];
           console.log(this.vitals_data);
           this.addvital_btn = false;
           this.editvital_btn = true;
           this.GlobalService.disableloader();
-
-          this.GlobalService.showontop.next(this.vitals_data);
+          this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getallergydetail', patientdata_details).subscribe(resdata => {
+            if (resdata['IsSuccess']) {
+              this.vitals_data.allergy = resdata['ResponseObject'];
+              for(let i=0;i<this.vitals_data.allergy.length;i++){
+                if(this.vitals_data.allergy[i].notes != ''){
+                  this.vitals_data.allergy[i].notes = JSON.parse(this.vitals_data.allergy[i].notes);
+                }
+              }
+              this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
+                if (resdata['IsSuccess']) {
+                  this.vitals_data.medication = resdata['ResponseObject'];
+                  for(let i=0;i<this.vitals_data.medication.length;i++){
+                    
+                      this.vitals_data.medication[i] = JSON.parse(this.vitals_data.medication[i].value);
+                    
+                  }
+                  // this.vitals_data.medication.forEach((value, index)=> {
+                    // medication.forEach(value => {
+                      // this.vitals_data.medication.value = JSON.parse(value.value);
+                    // });
+                    
+                  // });
+                  this.GlobalService.showontop.next(this.vitals_data);
+                }
+              })
+            }
+          })          
 
         } else {
           this.vitals_data = "";

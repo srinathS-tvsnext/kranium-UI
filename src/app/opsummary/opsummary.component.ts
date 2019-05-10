@@ -20,7 +20,7 @@ export class OpsummaryComponent implements OnInit {
   examination_qa;
   history_qa;
   history_patient_chief_complaints; template; opp_template; diagno_icd_patioent;
-  hideen; consolidated_data; hidden_edit; hidden_update; hidden_cancel; hidden_print;
+  hideen; consolidated_data; hidden_edit; hidden_update; hidden_cancel; hidden_print;diagno_icd_patioent_provitional
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService) { }
 
   ngOnInit() {
@@ -84,16 +84,20 @@ export class OpsummaryComponent implements OnInit {
 
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/get_history_icd_codes', data_icd).subscribe(resdata => {
       debugger;
-      console.log(resdata);
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        debugger;
-        // this.openSnackBar("Save Successully", "Close");
         this.diagno_icd_patioent = resdata['ResponseObject'];
       } else {
         this.GlobalService.disableloader();
-        // this.openSnackBar("Error? not added", "Close");
       }
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/get_history_icd_provitionalCode', data_icd).subscribe(resdatas => {
+      if (resdatas['IsSuccess']) {
+          this.GlobalService.disableloader();       
+          this.diagno_icd_patioent_provitional = resdatas['ResponseObject'];
+        } else {
+          this.GlobalService.disableloader();          
+        }
+      });
       // routerLink='/Homescreen/Patientlist'
     })
   }
@@ -131,9 +135,26 @@ export class OpsummaryComponent implements OnInit {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitaldetail', patientdata_details).subscribe(resdata => {
         if (resdata['IsSuccess']) {
           this.GlobalService.disableloader();
-          this.vitals_data = resdata['ResponseObject'];
-        } else {
-          this.GlobalService.disableloader();
+          this.vitals_data.Formvalue = resdata['ResponseObject'];
+          this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getallergydetail', patientdata_details).subscribe(resdata => {
+            if (resdata['IsSuccess']) {
+              this.vitals_data.allergy = resdata['ResponseObject'];
+              for(let i=0;i<this.vitals_data.allergy.length;i++){
+                if(this.vitals_data.allergy[i].notes != ''){
+                  this.vitals_data.allergy[i].notes = JSON.parse(this.vitals_data.allergy[i].notes);
+                }
+              }
+              this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
+                if (resdata['IsSuccess']) {
+                  this.vitals_data.medication = resdata['ResponseObject'];
+                  for(let i=0;i<this.vitals_data.medication.length;i++){
+                      this.vitals_data.medication[i] = JSON.parse(this.vitals_data.medication[i].value);
+                  }
+
+                }
+              })
+            }
+        })
         }
       })
     }
@@ -222,8 +243,8 @@ export class OpsummaryComponent implements OnInit {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/get_history_qa', patientdata_details).subscribe(resdata => {
       if (resdata['IsSuccess']) {
         debugger;
-        console.log();
-        this.history_qa = resdata['ResponseObject'];
+        this.history_qa = resdata['ResponseObject'][0].tvs_nxt_form;
+        this.history_qa = JSON.parse(this.history_qa);
         console.log(this.history_qa);
       }
     })

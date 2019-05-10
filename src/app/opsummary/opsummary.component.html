@@ -1,305 +1,307 @@
 <div class="row" *ngIf="!date_status.Previousdate">
-    <div class="col-md-12">
-        <mat-form-field>
-        <mat-select class="pull-right paddingselect" placeholder="Select Template" [(ngModel)]="opp_template" (ngModelChange)="template_change(opp_template)">
-            <mat-option *ngFor="let opsummary_template of opsummary_template_list" [value]="opsummary_template">
-                {{ opsummary_template.template_name }}
-            </mat-option>
-        </mat-select>
-        </mat-form-field>
-    </div>
+  <div class="col-md-12">
+    <mat-form-field>
+      <mat-select class="pull-right paddingselect" placeholder="Select Template" [(ngModel)]="opp_template"
+        (ngModelChange)="template_change(opp_template)">
+        <mat-option *ngFor="let opsummary_template of opsummary_template_list" [value]="opsummary_template">
+          {{ opsummary_template.template_name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </div>
 <div class="row" id="printSectionId">
-    <div class="col-md-12">
-        <p class="bolder profile">Patient Profile</p>
-        <div class="" *ngFor="let opo_temp of template">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="" *ngFor="let patient_profile of patientdata_details">
-                        <div class="col-md-6">
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+  <div class="col-md-12">
+    <p class="bolder profile">Patient Profile</p>
+    <div class="" *ngFor="let opo_temp of template">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="" *ngFor="let patient_profile of patientdata_details">
+            <div class="col-md-6">
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.firstname">
                     <span *ngIf="!opo_temp.firstname">Firstname</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.firstname">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.firstname">
                   <div class='col-md-5 headingclr'>First Name</div>
                   <div class='col-md-5 contentclr'>{{patient_profile.first_name||'-'}}</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.lastname">
                     <span *ngIf="!opo_temp.lastname">lastname</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.lastname">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.lastname">
                   <div class='col-md-5 headingclr'>Last Name</div>
                   <div class='col-md-5 contentclr'>-</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Occupation">
                     <span *ngIf="!opo_temp.Occupation">Occupation</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Occupation">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Occupation">
                   <div class='col-md-5 headingclr'>Occupation</div>
                   <div class='col-md-5 contentclr'>-</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left " [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left " [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Qualification">
                     <span *ngIf="!opo_temp.Qualification">Qualification</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Qualification">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Qualification">
                   <div class='col-md-5 headingclr'>Qualification</div>
                   <div class='col-md-5 contentclr'>-</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Age">
                     <span *ngIf="!opo_temp.Age">Age</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Age">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Age">
                   <div class='col-md-5 headingclr'>Age</div>
                   <div class='col-md-5 contentclr'>{{patient_profile.age||'-'}}</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.DOB">
                     <span *ngIf="!opo_temp.DOB">DOB</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.DOB">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.DOB">
                   <div class='col-md-5 headingclr'>Date Of Birth</div>
                   <div class='col-md-5 contentclr'>{{patient_profile.DOB||'-'}}</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Blood">
                     <span *ngIf="!opo_temp.Blood">Blood</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Blood">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Blood">
                   <div class='col-md-5 headingclr'>Blood Group</div>
                   <div class='col-md-5 contentclr'>{{patient_profile.Bloodgroup||'-'}}</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Religion">
                     <span *ngIf="!opo_temp.Religion">Religion</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Religion">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Religion">
                   <div class='col-md-5 headingclr'>Religion</div>
                   <div class='col-md-5 contentclr'>-</div>
                 </span>
-                            </div>
+              </div>
 
-                        </div>
-                        <div class="col-md-6">
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+            </div>
+            <div class="col-md-6">
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Nationality">
                     <span *ngIf="!opo_temp.Nationality">Nationality</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Nationality">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Nationality">
                   <div class='col-md-5 headingclr'>Nationality</div>
                   <div class='col-md-5 contentclr'>-</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Address">
                     <span *ngIf="!opo_temp.Address">Address</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Address">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Address">
                   <div class='col-md-5 headingclr'>Address</div>
                   <div class='col-md-5 contentclr'>{{patient_profile.Address||'-'}}</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Town">
                     <span *ngIf="!opo_temp.Town">Town</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Town">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Town">
                   <div class='col-md-5 headingclr'>Town/City</div>
                   <div class='col-md-5 contentclr'>-</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.District">
                     <span *ngIf="!opo_temp.District">District</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.District">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.District">
                   <div class='col-md-5 headingclr'>District</div>
                   <div class='col-md-5 contentclr'>-</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.State">
                     <span *ngIf="!opo_temp.State">State</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.State">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.State">
                   <div class='col-md-5 headingclr'>State</div>
                   <div class='col-md-5 contentclr'>-</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Country">
                     <span *ngIf="!opo_temp.Country">Country</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Country">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Country">
                   <div class='col-md-5 headingclr'>Country</div>
                   <div class='col-md-5 contentclr'>-</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Phone">
                     <span *ngIf="!opo_temp.Phone">Phone</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Phone">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Phone">
                   <div class='col-md-5 headingclr'>Mobile No.</div>
                   <div class='col-md-5 contentclr'>{{patient_profile.Phone||'-'}}</div>
                 </span>
-                            </div>
-                            <div class="col-md-12">
-                                <span class="pull-left" [hidden]=hideen>
+              </div>
+              <div class="col-md-12">
+                <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Email">
                     <span *ngIf="!opo_temp.Email">Email</span>
-                                </mat-checkbox>
-                                </span>
-                                <span *ngIf="opo_temp.Email">
+                  </mat-checkbox>
+                </span>
+                <span *ngIf="opo_temp.Email">
                   <div class='col-md-5 headingclr'>Email Id</div>
                   <div class='col-md-5 contentclr'>{{patient_profile.Email||'-'}}</div>
                 </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-            <p class='bolder'>Vitals</p>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table borderless tb" style='text-align: center'>
-                            <thead class="headercolor">
-                                <tr>
-                                    <th style='text-align: center' [hidden]=hideen>&nbsp;</th>
-                                    <th style='text-align: center'>Types</th>
-                                    <th style='text-align: center'>Units</th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let value of vitals_data.Formvalue">
-                                <tr>
-                                    <td [hidden]=hideen>
-                                        <mat-checkbox color='primary' [(ngModel)]="opo_temp.Height">
-                                            <span *ngIf="!opo_temp.Height">Height</span>
-                                        </mat-checkbox>
-                                    </td>
-                                    <td *ngIf="opo_temp.Height">Height</td>
-                                    <td *ngIf="opo_temp.Height">{{value.height||"-"}} {{value.height_id}}</td>
-                                    <!-- <td>&nbsp;</td> -->
-                                </tr>
-                                <tr>
-                                    <td [hidden]=hideen>
-                                        <mat-checkbox color='primary' [(ngModel)]="opo_temp.Weight">
-                                            <span *ngIf="!opo_temp.Weight">Weight</span>
-                                        </mat-checkbox>
-                                    </td>
-                                    <td *ngIf="opo_temp.Weight">Weight</td>
-                                    <td *ngIf="opo_temp.Weight">{{value.weight||"-"}} {{value.weight_id}}</td>
-                                    <!-- <td>&nbsp;</td> -->
-                                </tr>
-                                <tr>
-                                    <td [hidden]=hideen>
-                                        <mat-checkbox color='primary' [(ngModel)]="opo_temp.Temperature">
-                                            <span *ngIf="!opo_temp.Temperature">Temperature</span>
-                                        </mat-checkbox>
-                                    </td>
-                                    <td *ngIf="opo_temp.Temperature">Temperature</td>
-                                    <td *ngIf="opo_temp.Temperature">{{value.temperature||"-"}} {{value.temperature_id}}</td>
-                                    <!-- <td>&nbsp;</td> -->
-                                </tr>
-                                <tr>
-                                    <td [hidden]=hideen>
-                                        <mat-checkbox color='primary' [(ngModel)]="opo_temp.Pulse">
-                                            <span *ngIf="!opo_temp.Pulse">Pulse</span>
-                                        </mat-checkbox>
-                                    </td>
-                                    <td *ngIf="opo_temp.Pulse">Pulse</td>
-                                    <td *ngIf="opo_temp.Pulse">{{value.pulse||"-"}} {{value.pulse_id}}</td>
-                                    <!-- <td>&nbsp;</td> -->
-                                </tr>
-                                <tr>
-                                    <td [hidden]=hideen>
-                                        <mat-checkbox color='primary' [(ngModel)]="opo_temp.Respiratory">
-                                            <span *ngIf="!opo_temp.Respiratory">Respiratory</span>
-                                        </mat-checkbox>
-                                    </td>
-                                    <td *ngIf="opo_temp.Respiratory">Respiratory Rate</td>
-                                    <td *ngIf="opo_temp.Respiratory">{{value.respiratory||"-"}} </td>
-                                    <!-- <td>&nbsp;</td> -->
-                                </tr>
-                                <tr>
-                                    <td [hidden]=hideen>
-                                        <mat-checkbox color='primary' [(ngModel)]="opo_temp.BP">
-                                            <span *ngIf="!opo_temp.BP">BP</span>
-                                        </mat-checkbox>
-                                    </td>
-                                    <td *ngIf="opo_temp.BP">BP</td>
-                                    <td *ngIf="opo_temp.BP">{{value.bp_systolic||"-"}} / {{value.bp_diastolic||"-"}} {{value.bp_systolic_id}} / {{value.bp_diastolic_id}}</td>
-                                    <!-- <td>&nbsp;</td> -->
-                                </tr>
-                                <tr>
-                                    <td [hidden]=hideen>
-                                        <mat-checkbox color='primary' [(ngModel)]="opo_temp.BMI">
-                                            <span *ngIf="!opo_temp.BMI">BMI</span>
-                                        </mat-checkbox>
-                                    </td>
-                                    <td *ngIf="opo_temp.BMI">BMI</td>
-                                    <td *ngIf="opo_temp.BMI">{{value.bmi||"-"}}</td>
-                                    <!-- <td>&nbsp;</td> -->
-                                </tr>
-                                <tr>
-                                    <td [hidden]=hideen>
-                                        <mat-checkbox color='primary' [(ngModel)]="opo_temp.BSA">
-                                            <span *ngIf="!opo_temp.BSA">BSA</span>
-                                        </mat-checkbox>
-                                    </td>
-                                    <td *ngIf="opo_temp.BSA">BSA</td>
-                                    <td *ngIf="opo_temp.BSA">{{value.bsa||"-"}}</td>
-                                    <!-- <td>&nbsp;</td> -->
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class='col-md-12'>&nbsp;</div>
-            <!-- <div class='col-md-12'>
+          </div>
+        </div>
+      </div>
+      <p class='bolder'>Vitals</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table borderless tb" style='text-align: center'>
+              <thead class="headercolor">
+                <tr>
+                  <th style='text-align: center' [hidden]=hideen>&nbsp;</th>
+                  <th style='text-align: center'>Types</th>
+                  <th style='text-align: center'>Units</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let value of vitals_data.Formvalue">
+                <tr>
+                  <td [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Height">
+                      <span *ngIf="!opo_temp.Height">Height</span>
+                    </mat-checkbox>
+                  </td>
+                  <td *ngIf="opo_temp.Height">Height</td>
+                  <td *ngIf="opo_temp.Height">{{value.height||"-"}} {{value.height_id}}</td>
+                  <!-- <td>&nbsp;</td> -->
+                </tr>
+                <tr>
+                  <td [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Weight">
+                      <span *ngIf="!opo_temp.Weight">Weight</span>
+                    </mat-checkbox>
+                  </td>
+                  <td *ngIf="opo_temp.Weight">Weight</td>
+                  <td *ngIf="opo_temp.Weight">{{value.weight||"-"}} {{value.weight_id}}</td>
+                  <!-- <td>&nbsp;</td> -->
+                </tr>
+                <tr>
+                  <td [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Temperature">
+                      <span *ngIf="!opo_temp.Temperature">Temperature</span>
+                    </mat-checkbox>
+                  </td>
+                  <td *ngIf="opo_temp.Temperature">Temperature</td>
+                  <td *ngIf="opo_temp.Temperature">{{value.temperature||"-"}} {{value.temperature_id}}</td>
+                  <!-- <td>&nbsp;</td> -->
+                </tr>
+                <tr>
+                  <td [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Pulse">
+                      <span *ngIf="!opo_temp.Pulse">Pulse</span>
+                    </mat-checkbox>
+                  </td>
+                  <td *ngIf="opo_temp.Pulse">Pulse</td>
+                  <td *ngIf="opo_temp.Pulse">{{value.pulse||"-"}} {{value.pulse_id}}</td>
+                  <!-- <td>&nbsp;</td> -->
+                </tr>
+                <tr>
+                  <td [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Respiratory">
+                      <span *ngIf="!opo_temp.Respiratory">Respiratory</span>
+                    </mat-checkbox>
+                  </td>
+                  <td *ngIf="opo_temp.Respiratory">Respiratory Rate</td>
+                  <td *ngIf="opo_temp.Respiratory">{{value.respiratory||"-"}} </td>
+                  <!-- <td>&nbsp;</td> -->
+                </tr>
+                <tr>
+                  <td [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.BP">
+                      <span *ngIf="!opo_temp.BP">BP</span>
+                    </mat-checkbox>
+                  </td>
+                  <td *ngIf="opo_temp.BP">BP</td>
+                  <td *ngIf="opo_temp.BP">{{value.bp_systolic||"-"}} / {{value.bp_diastolic||"-"}}
+                    {{value.bp_systolic_id}} / {{value.bp_diastolic_id}}</td>
+                  <!-- <td>&nbsp;</td> -->
+                </tr>
+                <tr>
+                  <td [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.BMI">
+                      <span *ngIf="!opo_temp.BMI">BMI</span>
+                    </mat-checkbox>
+                  </td>
+                  <td *ngIf="opo_temp.BMI">BMI</td>
+                  <td *ngIf="opo_temp.BMI">{{value.bmi||"-"}}</td>
+                  <!-- <td>&nbsp;</td> -->
+                </tr>
+                <tr>
+                  <td [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.BSA">
+                      <span *ngIf="!opo_temp.BSA">BSA</span>
+                    </mat-checkbox>
+                  </td>
+                  <td *ngIf="opo_temp.BSA">BSA</td>
+                  <td *ngIf="opo_temp.BSA">{{value.bsa||"-"}}</td>
+                  <!-- <td>&nbsp;</td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class='col-md-12'>&nbsp;</div>
+      <!-- <div class='col-md-12'>
                 <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Preferred_Language">
             <span *ngIf="!opo_temp.Preferred_Language">Preferred Language</span>
@@ -317,13 +319,13 @@
     </div>
     </span>
 </div> -->
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Pain_Assessment">
             <span *ngIf="!opo_temp.Pain_Assessment">Pain Assessment</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.Pain_Assessment">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.Pain_Assessment">
           <div class="panel panel-default">
             <div class="panel-body">
               <p class="bolder">Pain Assessment</p>
@@ -338,29 +340,30 @@
             </div>
           </div>
         </span>
-</div>
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+      </div>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Notes">
             <span *ngIf="!opo_temp.Notes">Notes</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.Notes">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.Notes">
           <div class="panel panel-default">
             <div class="panel-body">
               <p class="bolder">NOTES:</p>
-              <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.notes||"-"}} </p>
+              <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.notes||"-"}}
+              </p>
             </div>
           </div>
         </span>
-</div>
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+      </div>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Allergy">
             <span *ngIf="!opo_temp.Allergy">Allergy</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.Allergy">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.Allergy">
           <div class="panel panel-default">
             <div class="panel-body">
               <p class='bolder'>Allergy</p>
@@ -368,29 +371,29 @@
                 <thead class="headercolor">
                   <tr>
                     <th style='text-align: center'>Allergy Type</th>
-                    <th style='text-align: center'>Allergy 2</th>
+                    <th style='text-align: center'>Allergy Too</th>
                     <th style='text-align: center'>Severity</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr *ngFor="let notes of vitals_data.allergy">
-                    <td>{{notes.allergy_type1||"-"}}</td>
-                    <td>{{notes.allergy_type2||"-"}}</td>
-                    <td>{{notes.allergy_severity||"-"}}</td>
+                <tbody *ngFor="let allergy of vitals_data.allergy">
+                    <tr *ngFor = "let notes of allergy.notes">
+                      <td>{{notes.allergy_type1||"-"}}</td>
+                      <td>{{notes.allergy_type2||"-"}}</td>
+                      <td>{{notes.allergy_severity||"-"}}</td>                  
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </span>
-</div>
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+      </div>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Active_Medication">
             <span *ngIf="!opo_temp.Active_Medication">Active_Medication</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.Active_Medication">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.Active_Medication">
           <div class="panel panel-default">
             <div class="panel-body">
               <p class='bolder'>Active Medication</p>
@@ -402,8 +405,8 @@
                       <th style='text-align: center'>Frequency</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr *ngFor="let medi of vitals_data.medication">
+                  <tbody *ngFor="let data of vitals_data.medication">
+                    <tr  *ngFor ="let medi of data">
                       <td>{{medi.activemedication_brandname||"-"}}
                         <br>({{medi.activemedication_genericname||"-"}})</td>
                       <td>{{medi.activemedication_frequency||"-"}}</td>
@@ -414,48 +417,49 @@
             </div>
           </div>
         </span>
-</div>
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+      </div>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.History_Questions_Answers">
             <span *ngIf="!opo_temp.History_Questions_Answers">History</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.History_Questions_Answers">
-        <p class='bolder'>History</p>
-        <div class="panel panel-default">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.History_Questions_Answers">
+          <p class='bolder'>History</p>
+          <div class="panel panel-default">
             <div class="panel-body">
-                <p class='bolder'>Chief Complaints</p>
-                <div>
-                    <div class="">
-                        <span *ngFor="let complaints of history_patient_chief_complaints">
-                            <button type="button" class="btn btn-white">
-                              <span class="hidden-xs">{{complaints.chief_complaints}} {{complaints.duration_count}} {{complaints.duration}}</span>
-    </button>
-    </span>
-</div>
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <span *ngFor="let history of history_qa">
+              <p class='bolder'>Chief Complaints</p>
+              <div>
+                <div class="">
+                  <span *ngFor="let complaints of history_patient_chief_complaints">
+                    <button type="button" class="btn btn-white">
+                      <span class="hidden-xs">{{complaints.notes}} {{complaints.duration_count}}
+                        {{complaints.duration}}</span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <span *ngFor="let history of history_qa">
                 <p>
                   <strong>{{history.question}}</strong>
                 </p>
                 <p>{{history.answer}}</p>
               </span>
-    </div>
-</div>
-</span>
-</div>
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Examination_Questions_Answers">
             <span *ngIf="!opo_temp.Examination_Questions_Answers">Examination</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.Examination_Questions_Answers">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.Examination_Questions_Answers">
           <p class='bolder'>Examination</p>
           <div class="panel panel-default">
             <div class="panel-body">
@@ -465,17 +469,17 @@
                 </p>
                 <p>{{examination.answer}}</p>
               </span>
-</div>
-</div>
-</span>
-</div>
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Consultation_Notes">
             <span *ngIf="!opo_temp.Consultation_Notes">Consultation_Notes</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.Consultation_Notes">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.Consultation_Notes">
           <p class='bolder'>Consultation Notes</p>
           <div class="panel panel-default">
             <!-- <p class='bolder'>Diagnosis</p> -->
@@ -483,21 +487,21 @@
               <div>
                 <div class="">
                   <span *ngFor="let notes of consultation_notes">
-                    <button type="button" class="btn btn-white">{{notes.consultation_notes}}</button>
+                    <button type="button" class="btn btn-white">{{notes.notes}}</button>
                   </span>
-</div>
-</div>
-</div>
-</div>
-</span>
-</div>
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+                </div>
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.ICD_description">
             <span *ngIf="!opo_temp.ICD_description">ICD description</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.ICD_description">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.ICD_description">
           <p class='bolder'>ICD Codes</p>
           <div class="panel panel-default">
             <!-- <p class='bolder'>Diagnosis</p> -->
@@ -505,47 +509,51 @@
               <div>
                 <div class="">
                   <span *ngFor="let ics_pat of diagno_icd_patioent">
-                    <button type="button" class="btn btn-white">{{ics_pat.ICD_10_Code}}
-                      <span class="hidden-xs">{{ics_pat.DESCRIPTION}}</span>
-    </button>
-    </span>
-</div>
-</div>
-</div>
-</div>
-</span>
-</div>
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+                    <button type="button" class="btn btn-white">{{ics_pat.Diagnosiscode}}
+                      <span class="hidden-xs">{{ics_pat.Description}}</span>
+                    </button>
+                  </span>
+                  <span *ngFor="let ics_prov of diagno_icd_patioent_provitional">
+                    <button type="button" class="btn btn-white">{{ics_prov.notes}}
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Procedure">
             <span *ngIf="!opo_temp.Procedure">Procedure</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.Procedure">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.Procedure">
           <p class='bolder'>Procedure</p>
           <div class="panel panel-default">
             <div class="panel-body">
               <div class="row">
                 <p>&nbsp; List of Procedure Raised</p>
-                  <div class="col-md-12">
-                    <div class="col-md-6" *ngFor="let prescri_pat of diagno_presc_patioent">  
-                        <button type="button" class="btn btn-white btncntr">
-                          <span class="hidden-xs">{{prescri_pat.item_long_description}}</span>
-    </button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</span>
-</div>
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+                <div class="col-md-12">
+                  <div class="col-md-6" *ngFor="let prescri_pat of diagno_presc_patioent">
+                    <button type="button" class="btn btn-white btncntr">
+                      <span class="hidden-xs">{{prescri_pat.item_long_description}}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Current_Investigation">
             <span *ngIf="!opo_temp.Current_Investigation">Current_Investigation</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.Current_Investigation">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.Current_Investigation">
           <p class='bolder'>Current Investigation</p>
           <div class="panel panel-default">
             <!-- <p class='bolder'>Investigation</p> -->
@@ -553,25 +561,26 @@
               <div>
                 <div class="divalignment" *ngFor="let category_tem of Investigation_template_category">
                   <p class="header">{{category_tem.deptname}}</p>
-                  <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group" *ngFor="let category_tem_list of category_tem.question">
+                  <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group"
+                    *ngFor="let category_tem_list of category_tem.question">
                     <button type="button" class="btn btn-white">
                       <span class="hidden-xs">{{category_tem_list.item_long_description}}</span>
-    <!-- <span class="badge badgewhite" (click)="remove_old_tempdata_investigation(category_tem_list)">X</span> -->
-    </button>
-    </span>
-</div>
-</div>
-</div>
-</div>
-</span>
-</div>
-<div class='col-md-12'>
-    <span class="pull-left" [hidden]=hideen>
+                      <!-- <span class="badge badgewhite" (click)="remove_old_tempdata_investigation(category_tem_list)">X</span> -->
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class='col-md-12'>
+        <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Current_Prescription">
             <span *ngIf="!opo_temp.Current_Prescription">Current_Prescription</span>
-    </mat-checkbox>
-    </span>
-    <span *ngIf="opo_temp.Current_Prescription">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="opo_temp.Current_Prescription">
           <p class='bolder'>Current Prescription</p>
           <div class="panel panel-default">
             <!-- <p class='bolder'>Prescription</p> -->
@@ -605,10 +614,10 @@
             </div>
           </div>
         </span>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <!-- <span [hidden]=hidden_edit>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <!-- <span [hidden]=hidden_edit>
         <button type="button"  class="btn btn-infos active pull-right" (click)="edit_opsummary(opo_temp)">Edit </button>
       </span>
         <span [hidden]=hidden_update>
@@ -617,15 +626,16 @@
         <span [hidden]=hidden_cancel>
                     <button type="button" class="btn btn-red active pull-right" (click)="cancel_opsummary()">Cancel</button>
       </span> -->
-        <span [hidden]=hidden_print>
-          <button type="button"  class="btn btn-steelblue active pull-right" (click)="printPreview()">Print Preview</button>
-         </span>
+          <span [hidden]=hidden_print>
+            <button type="button" class="btn btn-steelblue active pull-right" (click)="printPreview()">Print
+              Preview</button>
+          </span>
+        </div>
+      </div>
     </div>
-</div>
-</div>
 
 
-<!-- <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
           <p class='bolder'>Reports</p>
           <div class="panel-body">
             <div>

@@ -2,7 +2,9 @@
     border: none;
 }
 
-
+table {
+    border-collapse: unset;
+    }
 .headercolor {
     color: steelblue;
     font-weight: 600;

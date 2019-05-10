@@ -34,7 +34,7 @@ export class AddvitalsComponent implements OnInit {
   socialmentions; form; painscaleimage; style; choice; choices; choices_med; choice_med; vital_details_session;
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
   lengthss; count; length; counts; vitals_data_new; patientdata_details; units_drop;
-  height; weight; temperature; pulse; systolic_distolic; respiration; bmi; bsa;
+  height; weight; temperature; pulse; systolic_distolic; respiration; bmi; bsa;logindata
   // patientdata
 
   openSnackBar(message: string, action: string) {
@@ -47,6 +47,7 @@ export class AddvitalsComponent implements OnInit {
     // this.bmi_calculator(this.patientdata_details);
     this.del = true;
     this.dels = true;
+    this.logindata = JSON.parse(sessionStorage.getItem('logindata'));
     this.patientdata_details = JSON.parse(sessionStorage.getItem('patientdata'));
     // this.vitals_data_new=[];
     this.style = "style=''";
@@ -244,11 +245,17 @@ export class AddvitalsComponent implements OnInit {
     this.GlobalService.enableloader();
     // add_viatls_showtop
     debugger;
+    save_newdata.Create_ID = this.logindata[0].nr
     if(confirm("Are you sure want to save")){
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addvitals', save_newdata).subscribe(resdata => {
       debugger;
       console.log(resdata);
       if (resdata['IsSuccess']) {
+        this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addallergy', save_newdata).subscribe(resdata => {
+          this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addactmedication', save_newdata).subscribe(resdata => {
+
+          })
+        })
         this.GlobalService.disableloader();
         this.openSnackBar("Save Successully", "Close");
         this.router.navigate(['/Homescreen/Patientdetails/Vitals']);

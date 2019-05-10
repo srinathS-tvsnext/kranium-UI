@@ -421,7 +421,7 @@ export class DiagnosisComponent implements OnInit {
         this.diagno_icd_patioent_provitional = resdata['ResponseObject'];
       } else {
         this.GlobalService.disableloader();
-        this.diagno_icd_patioent_provitional = [];
+        // this.diagno_icd_patioent_provitional = [];
         // this.openSnackBar("Error? not added", "Close");
       }
     });

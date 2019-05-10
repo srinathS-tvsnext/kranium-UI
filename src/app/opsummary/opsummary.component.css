@@ -139,3 +139,6 @@
 .btncntr{
     text-align: center;
 }
+table {
+border-collapse: unset;
+}

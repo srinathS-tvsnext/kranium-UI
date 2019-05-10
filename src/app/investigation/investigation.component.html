@@ -135,7 +135,7 @@
                                                         </div>
                                                     </div>
                                                 </div>&nbsp;
-                                                <span *ngIf="datevalidation.nowdate">
+                                                <span *ngIf="!datevalidation.Previousdate">
                                                             <span *ngIf="sub_view_menu.add_edit">
                                                                 <button  type="button" class="btn btn-steelblue pull-right" (click)="save_normal_investigation(categorylist_array,Investigation_template_category)">Save</button>
                                                                 <button type="button" class="btn btn-steelblue pull-right" (click)="save_investigation(categorylist_array,Investigation_template_category)">Save_favourites</button>

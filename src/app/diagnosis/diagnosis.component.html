@@ -318,23 +318,36 @@
                             <div class="panel-body">
                                 <p style="font-weight:600">ICD Descriptions</p>
                                 <div class="col-md-12" *ngIf="sub_view_menu.view">
-                                    <p *ngFor="let ics_pat of diagno_icd_patioent">
+                                    <!-- <p *ngFor="let ics_pat of diagno_icd_patioent">
                                         <strong>{{ics_pat.desitination}} - </strong>
                                         <button type="button" class="btn btn-white"
                                             *ngIf="ics_pat.desitination=='Final'">
-                                            <!-- {{ics_pat.ICD_10_Code}} -->
+                                        
                                             <span class="hidden-xs">{{ics_pat.DESCRIPTION}} &nbsp;
                                                 ({{ics_pat.ICD_10_Code}})</span>
-                                            <!-- <span class="badge badgewhite" (click)="delete_icd_code(ics_pat)">X</span> -->
+                                        
                                         </button>
                                         <button type="button" class="btn btn-white"
                                             *ngIf="ics_pat.desitination=='Provisional'">
-                                            <!-- {{ics_pat.ICD_10_Code}} -->
+                                        
                                             <span class="hidden-xs">{{ics_pat.DESCRIPTION}} &nbsp;
                                                 ({{ics_pat.ICD_10_Code}})</span>
-                                            <!-- <span class="badge badge-stblue" (click)="delete_icd_code(ics_pat)">X</span> -->
+                                        
                                         </button>
-                                    </p>
+                                    </p> -->
+                                    <span *ngFor="let ics_pat of diagno_icd_patioent">
+                                        <button type="button" class="btn btn-white">
+                                            <span class="hidden-xs">{{ics_pat.Diagnosiscode}} &nbsp;
+                                                ({{ics_pat.Description}}) (F)</span>
+                                            
+                                        </button>
+                                    </span>
+                                    <span *ngFor="let provitional of diagno_icd_patioent_provitional">
+                                        <button type="button" class="btn btn-white">
+                                            <span class="hidden-xs">{{provitional.notes}} (P)</span>
+                                            
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
                         </div>

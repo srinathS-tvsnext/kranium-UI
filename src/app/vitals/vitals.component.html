@@ -34,14 +34,14 @@
                                     <tbody *ngFor="let value of vitals_data.Formvalue">
                                         <tr>
                                             <td>Date</td>
-                                            <td>{{value.height||"-"}} {{value.height_id}}</td>
-                                            <td>{{value.weight||"-"}} {{value.weight_id}}</td>
-                                            <td>{{value.temperature||"-"}} {{value.temperature_id}}</td>
-                                            <td>{{value.pulse||"-"}} {{value.pulse_id}}</td>
-                                            <td>{{value.respiratory||"-"}} {{value.respirator_id}} </td>
-                                            <td>{{value.bp_systolic||"-"}} / {{value.bp_diastolic||"-"}}  {{value.bp_diastolic_id}} / {{value.bp_systolic_id}}</td>
-                                            <td>{{value.bmi||"-"}}</td>
-                                            <td>{{value.bsa||"-"}}</td>
+                                            <td *ngIf="value.name === 'Height'">{{value.value||"-"}} {{'cm'}}</td>
+                                            <td *ngIf="value.name === 'Weight'">{{value.value||"-"}} {{'cm'}}</td>
+                                            <td *ngIf="value.name === 'Temp'">{{value.value||"-"}} {{'cm'}}</td>
+                                            <td *ngIf="value.name === 'Pulse'">{{value.value||"-"}} {{'cm'}}</td>
+                                            <td *ngIf="value.name === 'Respiration'">{{value.value||"-"}} {{'cm'}} </td>
+                                            <td> <span *ngIf="value.name === 'Systolic'">{{value.value||"-"}}</span>/<span *ngIf="value.name === 'Diastolic'">{{value.value||"-"}}</span>  {{'cm'}} / {{'cm'}}</td>
+                                            <td *ngIf="value.name === 'Bmi'">{{value.value||"-"}}</td>
+                                            <td >{{"-"}}</td>
                                         </tr>
                                     </tbody>
 
@@ -90,12 +90,15 @@
                                         <th style='text-align: center'>Severity</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr *ngFor="let notes of vitals_data.allergy">
-                                        <td>{{notes.allergy_type1||"-"}}</td>
-                                        <td>{{notes.allergy_type2||"-"}}</td>
-                                        <td>{{notes.allergy_severity||"-"}}</td>
-                                    </tr>
+                                <tbody *ngFor="let allergy of vitals_data.allergy">
+                                    
+                                        <tr *ngFor = "let notes of allergy.notes">
+                                            <td>{{notes.allergy_type1||"-"}}</td>
+                                            <td>{{notes.allergy_type2||"-"}}</td>
+                                            <td>{{notes.allergy_severity||"-"}}</td>
+                                        </tr> 
+                                        
+                                    
                                     <!-- <tr *ngIf="vitals_data.allergy.length==0">
                                 <td>No data Found</td>
                             </tr> -->
@@ -116,8 +119,8 @@
                                             <th style='text-align: center'>Frequency</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr *ngFor="let medi of vitals_data.medication">
+                                    <tbody *ngFor="let data of vitals_data.medication">
+                                        <tr *ngFor ="let medi of data">
                                             <td>{{medi.activemedication_brandname||"-"}} </td>
                                             <td>{{medi.activemedication_genericname||"-"}}</td>
                                             <td>{{medi.activemedication_frequency||"-"}}</td>
