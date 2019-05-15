@@ -6,7 +6,7 @@
                     <div style="float: right;
               padding-right: 28px;">
                         <mat-form-field>
-                        <mat-select placeholder='Choose Form Name' class='flex-50' [(ngModel)]="form_id" (change)="view(form_id)" multiple>
+                        <mat-select placeholder='Choose Form Name' class='flex-50' [(ngModel)]="form_id" (ngModelChange)="view(form_id)" multiple>
                             <mat-option *ngFor="let optionval of formdatacr_drop" [value]="optionval.form_id">
                                 {{ optionval.name }}
                             </mat-option>

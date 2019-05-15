@@ -29,7 +29,7 @@ export class ExaminationComponent implements OnInit {
     this.optionval = {};
     this.form_id = ["2"];
     this.get_examination_qa(this.patientdata_details);
-    this.view(this.form_id);
+    // this.view(this.form_id);
 
   }
 
@@ -63,7 +63,10 @@ export class ExaminationComponent implements OnInit {
       if (resdata['IsSuccess']) {
         debugger;
         console.log();
-        this.examination_qa = resdata['ResponseObject'];
+        this.examination_qa = JSON.parse(resdata['ResponseObject'][0].tvs_nxt_form_exam)
+        this.examination_qa.forEach(data => {
+          this.form_id.push(data.form_id)
+        });
         console.log(this.examination_qa);
         if (this.examination_qa.length == 0) {
           this.btn_sav = "save";
@@ -71,7 +74,9 @@ export class ExaminationComponent implements OnInit {
           this.btn_sav = "Update";
         }
       }
+      this.view(this.form_id);
     })
+    
   }
   view(data) {
     debugger;
@@ -131,7 +136,7 @@ export class ExaminationComponent implements OnInit {
   }
   save(data) {
     debugger;
-    if (this.btn_sav == "Save") {
+    // if (this.btn_sav == "Save") {
       console.log(data);
       var testarray = [];
       for (var i = 0; i < this.patientdata_details.length; i++) {
@@ -170,48 +175,48 @@ export class ExaminationComponent implements OnInit {
         }
         // routerLink='/Homescreen/Patientlist'
       })
-    } else {
-      // this.btn_sav = "Update";
-      console.log(data);
-      var testarray = [];
-      for (var i = 0; i < this.patientdata_details.length; i++) {
-        data.forEach(formObj => {
-          formObj['question'].forEach(questionObj => {
-            if (questionObj['options_type'] == '1' || questionObj['options_type'] == '2' || questionObj['options_type'] == '5' || questionObj['options_type'] == '3') {
-              console.log("question", questionObj['name']);
-              console.log("answer", questionObj['answer']);
-              testarray.push({ 'encounter_no': this.patientdata_details[i].EncounterNo, 'question': questionObj['name'], 'answer': questionObj['answer'], 'form_id': questionObj['form_id'], 'question_id': questionObj['question_id'], 'add_examination_patient_id': questionObj['add_examination_patient_id'] });
-            } else {
-              console.log("question", questionObj['name']);
-              questionObj['question_option'].forEach(optionObj => {
-                if (optionObj['answer']) {
-                  console.log("Answer", optionObj['options']);
-                  testarray.push({ 'encounter_no': this.patientdata_details[i].EncounterNo, 'question': questionObj['name'], 'answer': optionObj['answer'], 'form_id': questionObj['form_id'], 'question_id': questionObj['question_id'], 'add_examination_patient_id': questionObj['add_examination_patient_id'] });
-                }
-              });
-            }
-          });
-        });
-      }
-      // this.array = { 'data': data };
-      this.GlobalService.enableloader();
-      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/update_patient_examination', testarray).subscribe(resdata => {
-        debugger;
-        console.log(resdata);
-        if (resdata['IsSuccess']) {
-          debugger;
-          this.btn_sav = "Update";
-          this.GlobalService.disableloader();
-          this.openSnackBar("Updated Successfully", "Close");
-        } else {
-          this.btn_sav = "Update";
-          this.GlobalService.disableloader();
-          this.openSnackBar("!Error,Please Retry", "Close");
-        }
-        // routerLink='/Homescreen/Patientlist'
-      })
-      // update_patient_examination
-    }
+    // } else {
+    //   // this.btn_sav = "Update";
+    //   console.log(data);
+    //   var testarray = [];
+    //   for (var i = 0; i < this.patientdata_details.length; i++) {
+    //     data.forEach(formObj => {
+    //       formObj['question'].forEach(questionObj => {
+    //         if (questionObj['options_type'] == '1' || questionObj['options_type'] == '2' || questionObj['options_type'] == '5' || questionObj['options_type'] == '3') {
+    //           console.log("question", questionObj['name']);
+    //           console.log("answer", questionObj['answer']);
+    //           testarray.push({ 'encounter_no': this.patientdata_details[i].EncounterNo, 'question': questionObj['name'], 'answer': questionObj['answer'], 'form_id': questionObj['form_id'], 'question_id': questionObj['question_id'], 'add_examination_patient_id': questionObj['add_examination_patient_id'] });
+    //         } else {
+    //           console.log("question", questionObj['name']);
+    //           questionObj['question_option'].forEach(optionObj => {
+    //             if (optionObj['answer']) {
+    //               console.log("Answer", optionObj['options']);
+    //               testarray.push({ 'encounter_no': this.patientdata_details[i].EncounterNo, 'question': questionObj['name'], 'answer': optionObj['answer'], 'form_id': questionObj['form_id'], 'question_id': questionObj['question_id'], 'add_examination_patient_id': questionObj['add_examination_patient_id'] });
+    //             }
+    //           });
+    //         }
+    //       });
+    //     });
+    //   }
+    //   // this.array = { 'data': data };
+    //   this.GlobalService.enableloader();
+    //   this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/update_patient_examination', testarray).subscribe(resdata => {
+    //     debugger;
+    //     console.log(resdata);
+    //     if (resdata['IsSuccess']) {
+    //       debugger;
+    //       this.btn_sav = "Update";
+    //       this.GlobalService.disableloader();
+    //       this.openSnackBar("Updated Successfully", "Close");
+    //     } else {
+    //       this.btn_sav = "Update";
+    //       this.GlobalService.disableloader();
+    //       this.openSnackBar("!Error,Please Retry", "Close");
+    //     }
+    //     // routerLink='/Homescreen/Patientlist'
+    //   })
+    //   // update_patient_examination
+    // }
 
   }
 
