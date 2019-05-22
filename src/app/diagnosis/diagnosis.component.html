@@ -24,7 +24,7 @@
                                     <span *ngIf="datevalidation.nowdate">
                                         <span *ngIf="sub_view_menu.add_edit" class="plusbtn">
                                             <button type="button" class="btn btn-steelblue pull-right"
-                                                (click)="save_consultation_notes(diagno_consultationnotes)">Save</button>
+                                                (click)="save_consultation_notes(diagno_consultationnotes)">{{btnName}}</button>
                                         </span>
                                     </span>
                                 </div>
@@ -228,28 +228,22 @@
                                         <tr *ngFor="let prescri_pat of diagno_presc_patioent">
                                             <td>
                                                 <button type="button" class="btn btn-white">
-                                                    <span class="hidden-xs">{{prescri_pat.item_long_description}}</span>
+                                                    <span class="hidden-xs">{{prescri_pat.item_description}}</span>
                                                 </button>
-                                                <!-- </button><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> -->
-                                                <!-- <span class="hidden-xs"  (click)="get_procedure_payment_status(prescri_pat)">{{prescri_pat.item_long_description}}</span> -->
                                             </td>
-                                            <td *ngIf="prescri_pat.status==1"
-                                                (click)="get_procedure_payment_status(prescri_pat)">Billed
-                                                <!-- <i [hidden]="spinner" class="fa fa-refresh" aria-hidden="true" (click)="get_procedure_payment_status(prescri_pat)"></i> -->
-                                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                                            <td>
+                                                <span (click)="get_procedure_payment_status(prescri_pat)">{{prescri_pat.paid_status}}</span>                                                
                                             </td>
 
-                                            <td *ngIf="prescri_pat.status!=1"
+                                            <!-- <td *ngIf="prescri_pat.status!=1"
                                                 (click)="get_procedure_payment_status(prescri_pat)">Not Billed
-                                                <!--  fa-spin <i [hidden]="spinner" class="fa fa-refresh" aria-hidden="true" (click)="get_procedure_payment_status(prescri_pat)"></i> -->
                                                 <i class="fa fa-refresh " aria-hidden="true"></i>
-                                            </td>
-
+                                            </td> 
                                             <td *ngIf="prescri_pat.status==1" style="cursor:pointer;color:steelblue;"
                                                 (click)="onOpen(prescri_pat)">Add Notes</td>
                                             <td *ngIf="prescri_pat.status!=1" style="cursor:pointer;color:steelblue;">-
-                                            </td>
-                                            <td>&nbsp;</td>
+                                            </td> -->
+                                            <!-- <td>&nbsp;</td> -->
                                         </tr>
                                     </tbody>
                                 </table>

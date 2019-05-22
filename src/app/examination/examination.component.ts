@@ -64,9 +64,14 @@ export class ExaminationComponent implements OnInit {
         debugger;
         console.log();
         this.examination_qa = JSON.parse(resdata['ResponseObject'][0].tvs_nxt_form_exam)
-        this.examination_qa.forEach(data => {
-          this.form_id.push(data.form_id)
-        });
+        if(this.examination_qa != null){
+          this.examination_qa.forEach(data => {
+            this.form_id.push(data.form_id)
+          });
+        } else{
+          this.examination_qa = [];
+        }
+        
         console.log(this.examination_qa);
         if (this.examination_qa.length == 0) {
           this.btn_sav = "save";

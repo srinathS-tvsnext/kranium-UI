@@ -24,13 +24,13 @@
                                     <div class="" [hidden]="button_hdn_data">
                                         <span *ngFor="let investigate of investigation_data">
                                             <button type="button" class="btn btn-white">
-                                                <span class="hidden-xs">{{investigate.item_long_description}}</span>
+                                                <span class="hidden-xs">{{investigate.item_description}}</span>
                                             </button>
                                         </span>
                                     </div>
                                     <div class="col-md-12" [hidden]="checkbox_hdn_data">
                                         <div class="col-md-4" *ngFor="let investigate of investigation_data">
-                                            <mat-checkbox color='primary' [ngModel]="investigate.checkbox" (click)="delete_investigation_data(investigate)"><span>{{investigate.item_long_description}}</span></mat-checkbox>
+                                            <mat-checkbox color='primary' [ngModel]="investigate.checkbox" (click)="delete_investigation_data(investigate)"><span>{{investigate.item_description}}</span></mat-checkbox>
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                                                             <p class="header">{{category_tem.deptname}}</p>
                                                             <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group" *ngFor="let category_tem_list of category_tem.question">
                                 <button type="button" class="btn btn-white">
-                                    <span class="hidden-xs">{{category_tem_list.item_long_description}}</span>
+                                    <span class="hidden-xs">{{category_tem_list.item_description}}</span>
                                                             <span class="badge badgewhite" style="margin-top: -4px;" (click)="remove_old_tempdata_investigation(category_tem_list)">X</span>
                                                             </button>
                                                             </span>
@@ -168,7 +168,7 @@
                                         <p class="header">{{category_tem.deptname}}</p>
                                         <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group" *ngFor="let category_tem_list of category_tem.question">
                                     <button type="button" class="btn btn-white">
-                                        <span class="hidden-xs">{{category_tem_list.item_long_description}}</span>
+                                        <span class="hidden-xs">{{category_tem_list.item_description}}</span>
                                         <!-- <span class="badge badgewhite" (click)="remove_old_tempdata_investigation(category_tem_list)">X</span> -->
                                         </button>
                                         </span>

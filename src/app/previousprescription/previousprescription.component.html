@@ -3,8 +3,8 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <p class="" style="font-weight: 600;color:steelblue;">Prescription</p>
-                <div class="col-md-12" *ngFor="let prescri_mail of pres_data">
-                    <p style="font-weight: 600;">{{prescri_mail.cretaedby}} - {{prescri_mail.CD}} </p>
+                <div class="col-md-12" *ngFor="let prescris_mail of pres_data">
+                    <!-- <p style="font-weight: 600;">{{prescri_mail.cretaedby}} - {{prescri_mail.CD}} </p> -->
                     <div class="table-responsive">
                         <table class="table table borderless" style='text-align: center'>
                             <thead class="tableheadercolor">
@@ -15,23 +15,25 @@
                                     <th style='text-align: center'>Route</th>
                                     <th style='text-align: center'>Frequency</th>
                                     <th style='text-align: center'>Duration</th>
-                                    <th style='text-align: center'>Medicine Timing</th>
+                                    <!-- <th style='text-align: center'>Medicine Timing</th> -->
+                                    <th style='text-align: center'>Start Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let prescri of prescri_mail.question_option">
+                                <tr *ngFor="let prescri of pres_data">
                                     <td>&nbsp; </td>
-                                    <td>{{prescri.brand_name}}<br>{{prescri.generic_name}}</td>
+                                    <td>{{prescri.Medicine_Name}}</td>
                                         <td> - </td>
                                         <td> - </td>
-                                        <td>{{prescri.frequency}}</td>
-                                        <td>{{prescri.duration_no}} {{prescri.duration_capt}}</td>
-                                        <td> {{prescri.timing}} </td>
+                                        <td>{{prescri.Frequency}}</td>
+                                        <td>{{prescri.Duration}} {{prescri.Medicine_Timing}}</td>
+                                        <!-- <td> {{prescri.timing}} </td> -->
+                                        <td>{{prescri.StartDate}}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <button type="button" class="btn btn-steelblue pull-right" (click)="repaetr_presc(prescri_mail.question_option)">Repeat this Prescription</button>
+                    <button type="button" class="btn btn-steelblue pull-right" (click)="repaetr_presc()">Repeat this Prescription</button>
                 </div>
             </div>
         </div>

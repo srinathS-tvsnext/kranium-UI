@@ -22,7 +22,7 @@ export class DiagnosisComponent implements OnInit {
   Investigation_category; newarraysss; hidden; categorylist_array; hiddengif; hiddengif1;
   hide; Investigation_menu; datevalidation;
   save_icdcode;
-  showIcd = true;
+  showIcd = true;btnName;
   constructor(private http: HttpClient, private router: Router, public dialog: MatDialog, public snackBar: MatSnackBar, private GlobalService: GlobalService) {
     // this.options = fb.group({
     //   hideRequired: false,
@@ -61,6 +61,7 @@ export class DiagnosisComponent implements OnInit {
     this.icd_code_data = [];
     // this.icd_code_data = [{ "DESCRIPTION": "Cholera", "ICD_10_Code": "A00.-" },{ "DESCRIPTION": "fever", "ICD_10_Code": "A040.-" }]
     this.hide = false;
+    this.btnName = 'Save';
     // console.log(this.GlobalService.user_access_rights);
     // this.acess_rights = this.GlobalService.user_access_rights;
     this.acess_rights = JSON.parse(sessionStorage.getItem('user_access_rights'));
@@ -130,7 +131,11 @@ export class DiagnosisComponent implements OnInit {
         this.consultation_notes = [];
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
+      if(this.consultation_notes.length == 0){
+        this.btnName = 'Save';
+      } else{
+        this.btnName = 'Update';
+      }
     })
   }
 
@@ -294,6 +299,7 @@ export class DiagnosisComponent implements OnInit {
 
     data_notes.nr = this.login_details[0]['nr'];
     var newarray = { "chief_complaints": data_notes.consultation_notes, "uhid_no": data_notes.uhid_no, "encounter_no": data_notes.encounter_no, "nr": data_notes.nr };
+    if(this.btnName == 'Save') {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/add_history_consultation_notes', newarray).subscribe(resdata => {
       debugger;
       console.log(resdata);
@@ -310,6 +316,24 @@ export class DiagnosisComponent implements OnInit {
       }
       // routerLink='/Homescreen/Patientlist'
     })
+    } else {
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/update_history_consultation_notes', newarray).subscribe(resdata => {
+        debugger;
+        console.log(resdata);
+        if (resdata['IsSuccess']) {
+          this.GlobalService.disableloader();
+          debugger;
+          this.openSnackBar("Save Successully", "Close");
+          this.diagno_consultationnotes.consultation_notes = {};
+          this.get_history_consultation_notes(this.patientdata_details);
+          // this.icd_code_data = resdata['ResponseObject'];
+        } else {
+          this.GlobalService.disableloader();
+          this.openSnackBar("Error? not added", "Close");
+        }
+        // routerLink='/Homescreen/Patientlist'
+      })
+    }
   }
 
   delete_notes(notes) {
@@ -421,7 +445,7 @@ export class DiagnosisComponent implements OnInit {
         this.diagno_icd_patioent_provitional = resdata['ResponseObject'];
       } else {
         this.GlobalService.disableloader();
-        // this.diagno_icd_patioent_provitional = [];
+        this.diagno_icd_patioent_provitional = [];
         // this.openSnackBar("Error? not added", "Close");
       }
     });
