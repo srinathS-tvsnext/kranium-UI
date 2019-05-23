@@ -74,13 +74,14 @@ export class HistoryComponent implements OnInit {
   viewfor() {
     this.GlobalService.enableloader();
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_formsorg_mageform').subscribe(resdata => {
-      
+      debugger;
       console.log(resdata);
       if (resdata) {
         this.GlobalService.disableloader();
-        
+        debugger;
         this.formdatacr = resdata;
         for (var i = 0; i < this.formdatacr.length; i++) {
+          debugger;
           if (this.formdatacr[i].quer) {
             // this.formdatacr[i].quer = this.formdatacr[i].quer[0].form_id;
             this.view_histroy([this.formdatacr[i].quer[0].form_id], this.formdatacr[i].history_main_form_name_id);
@@ -107,8 +108,7 @@ export class HistoryComponent implements OnInit {
       if (resdata['IsSuccess']) {
         debugger;
         console.log();
-        this.history_answer = resdata['ResponseObject'][0].tvs_nxt_form;
-        this.history_answer = JSON.parse(this.history_answer);
+        this.history_answer = resdata['ResponseObject'];
         console.log(this.history_answer);
 
         if (this.history_answer.length == 0) {
@@ -121,15 +121,15 @@ export class HistoryComponent implements OnInit {
   }
   view_histroy(data, his_id) {
     if (data.length != 0) {
-     
+      debugger;
       this.GlobalService.enableloader();
       this.array = { 'data': data };
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/getformdetailview_exam', this.array).subscribe(resdata => {
-        
+        debugger;
         console.log(resdata);
         if (resdata) {
           this.GlobalService.disableloader();
-        
+          debugger;
           this.ffresdata = resdata;
           if (this.history_answer) {
             for (var p = 0; p < this.ffresdata.length; p++) {
@@ -279,7 +279,7 @@ export class HistoryComponent implements OnInit {
                   console.log("question", questionObj['name']);
                   questionObj['question_option'].forEach(optionObj => {
                     if (optionObj['answer']) {
-                      console.log("Answer", optionObj['options'],optionObj['answer']);
+                      console.log("Answer", optionObj['options']);
                       testarray.push({ 'encounter_no': this.patientdata_details[i].EncounterNo, 'question': questionObj['name'], 'answer': optionObj['options'], 'form_id': questionObj['form_id'], 'question_id': questionObj['question_id'], 'add_history_dynamicform_id': questionObj['add_history_dynamicform_id'] });
                     }
                   });
@@ -360,8 +360,8 @@ export class HistoryComponent implements OnInit {
   }
   remove_chiefcomplaints(rem_chiefcomplnts) {
     this.GlobalService.enableloader();
-    // rem_chiefcomplnts.nr = this.login_details[0]['nr'];
-    rem_chiefcomplnts.EncounterNo = this.date_status.encounterno
+    rem_chiefcomplnts.nr = this.login_details[0]['nr'];
+    rem_chiefcomplnts.encounter_no = this.datevalidation.encounterno;
     console.log(rem_chiefcomplnts);
     debugger;
     // delete_history_chief_complaint
@@ -370,7 +370,6 @@ export class HistoryComponent implements OnInit {
         this.get_chief_complaints_patient_details(this.patientdata_details);
         this.GlobalService.disableloader();
         this.openSnackBar("Deleted Succesfully", "Close");
-        this.get_chief_complaints_patient_details(this.patientdata_details);
       } else {
         this.GlobalService.disableloader();
         this.openSnackBar("Error! Please Retry", "Close");

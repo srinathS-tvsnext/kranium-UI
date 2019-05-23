@@ -258,7 +258,7 @@ export class AddvitalsComponent implements OnInit {
         })
         this.GlobalService.disableloader();
         this.openSnackBar("Save Successully", "Close");
-        this.router.navigate(['/Homescreen/Patientdetails/Vitals']);
+        // this.router.navigate(['/Homescreen/Patientdetails/Vitals']);
         // this.vital_details();
       } else {
         this.GlobalService.disableloader();

@@ -119,11 +119,11 @@
                                             <th style='text-align: center'>Frequency</th>
                                         </tr>
                                     </thead>
-                                    <tbody *ngFor="let data of vitals_data.medication">
-                                        <tr *ngFor ="let medi of data">
-                                            <td>{{medi.activemedication_brandname||"-"}} </td>
-                                            <td>{{medi.activemedication_genericname||"-"}}</td>
-                                            <td>{{medi.activemedication_frequency||"-"}}</td>
+                                    <tbody *ngFor="let mdata of vitals_data.medication">
+                                        <tr>
+                                            <td>{{mdata.activemedication_brandname||"-"}} </td>
+                                            <td>{{mdata.activemedication_genericname||"-"}}</td>
+                                            <td>{{mdata.activemedication_frequency||"-"}}</td>
                                         </tr>
                                         <!-- <tr *ngIf="vitals_data.medication.length==0">
                                     <td>No data Found</td>

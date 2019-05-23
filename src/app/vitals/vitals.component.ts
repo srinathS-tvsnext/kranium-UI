@@ -46,12 +46,13 @@ export class VitalsComponent implements OnInit {
               }
               this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
                 if (resdata['IsSuccess']) {
-                  this.vitals_data.medication = resdata['ResponseObject'];
-                  for(let i=0;i<this.vitals_data.medication.length;i++){
+                  this.vitals_data.medication = resdata['ResponseObject'][0].tvs_nxt_form_trimed;
+                  this.vitals_data.medication = JSON.parse(this.vitals_data.medication)
+                  // for(let i=0;i<this.vitals_data.medication.length;i++){
                     
-                      this.vitals_data.medication[i] = JSON.parse(this.vitals_data.medication[i].value);
+                  //     this.vitals_data.medication[i] = JSON.parse(this.vitals_data.medication[i].value);
                     
-                  }
+                  // }
                   // this.vitals_data.medication.forEach((value, index)=> {
                     // medication.forEach(value => {
                       // this.vitals_data.medication.value = JSON.parse(value.value);

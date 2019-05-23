@@ -86,7 +86,9 @@ export class PastencountersComponent implements OnInit {
             var month = monthNames[date.getMonth()];
             var year = date.getFullYear();
             this.favs[i].date_custom = day + '-' + month + '-' + year;
-
+            // if(typeof(this.favs[i].cheif_complaints) != 'string'){
+            this.favs[i].cheif_complaints = JSON.parse(this.favs[i].cheif_complaints)[0].allergy_type2
+            // }
           }
         }
       } else {

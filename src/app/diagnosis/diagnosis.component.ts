@@ -615,6 +615,9 @@ export class DiagnosisComponent implements OnInit {
             var myboxclass = document.getElementById("mysearchbox").classList;
             myboxclass.remove("myboxsize");
           }
+          this.active_checkbox(this.Investigation_category);
+
+
           // this.GlobalService.disableloader();
         } else {
           this.hiddengif = false;
@@ -632,6 +635,19 @@ export class DiagnosisComponent implements OnInit {
   }
   //End of procedure search
 
+ //Add check box true in proc list 
+  active_checkbox(diagnosisData){
+
+    for(var i =  0; i < diagnosisData.length; i++){
+      for(var j = 0; j < this.diagno_presc_patioent.length; j++){
+        if (diagnosisData[i].item_code == this.diagno_presc_patioent[j].item_code) {
+          debugger;
+          diagnosisData[i].checkbox = true;
+        }
+      }
+    }
+
+  }
 
   create_category_list(vreate_categorylist) {
     var index = -1;
@@ -661,9 +677,15 @@ export class DiagnosisComponent implements OnInit {
             //   vreate_categorylist.checkbox=false;
             //   this.categorylist_array.splice(-1);
             // }
-          } else { }
+          } else { 
+          }
+
         }
         //End of distinct check
+      } else {
+       // this.categorylist_array = [];
+            // delete the unchecked data
+          //  this.categorylist_array.push(vreate_categorylist);
       }
       // this.categorylist_array = [];
 
@@ -727,7 +749,7 @@ export class DiagnosisComponent implements OnInit {
         debugger;
         this.hidden = true;
         this.openSnackBar("Save Successully", "Close");
-        this.diagno_consultationnotes = {};
+        // this.diagno_consultationnotes = {};
         this.categorylist_array = [];
         this.get_procedure_diag_patient(this.patientdata_details);
       } else {

@@ -37,9 +37,9 @@ export class PreviousprescriptionComponent implements OnInit {
     })
   }
 
-  repaetr_presc() {
+  repaetr_presc(presData) {
     debugger;
-    sessionStorage.setItem("previous_prescription", JSON.stringify(this.pres_data));
+    sessionStorage.setItem("previous_prescription", JSON.stringify(presData));
     // routerLink='/Homescreen/Patientdetails/Prescription'
     this.router.navigate(['/Homescreen/Patientdetails/Prescription']);
   }
