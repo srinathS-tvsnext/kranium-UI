@@ -31,7 +31,11 @@ export class VitalsComponent implements OnInit {
     if (patientdata_details) {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitaldetail', patientdata_details).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-       //  this.vitals_data.Formvalue = resdata['ResponseObject'];
+        //   let arr =[];
+        // this.vitals_data.Formvalue = resdata['ResponseObject'];
+        //   for(let j=0;j<this.vitals_data.Formvalue.length;j++){
+            
+        //   }
           console.log(this.vitals_data);
           this.addvital_btn = false;
           this.editvital_btn = true;

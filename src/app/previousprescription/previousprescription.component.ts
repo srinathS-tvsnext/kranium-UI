@@ -29,6 +29,9 @@ export class PreviousprescriptionComponent implements OnInit {
         this.GlobalService.disableloader();
         debugger;
         this.pres_data = resdata['ResponseObject'];
+        // this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_patient_prescriptionDiet', data).subscribe(resdata => {
+        //   this.pres_data.diet_advice = resdata['ResponseObject'];
+        // })
         // sessionStorage.setItem("previous_prescription", JSON.stringify(this.pres_data));
       } else {
         this.GlobalService.disableloader();
@@ -39,6 +42,7 @@ export class PreviousprescriptionComponent implements OnInit {
 
   repaetr_presc(presData) {
     debugger;
+    presData = [presData];
     sessionStorage.setItem("previous_prescription", JSON.stringify(presData));
     // routerLink='/Homescreen/Patientdetails/Prescription'
     this.router.navigate(['/Homescreen/Patientdetails/Prescription']);

@@ -257,12 +257,12 @@
                                     <tr *ngFor="let tem_data of template_pres_med_data; let i=index;">
                                         <td *ngIf="tem_data.quantitystatus" style="color:red;width:30%">
                                             <span class="wordbreak">{{tem_data.brand_name}}</span>
-                                            <br><span style="font-size:11px;">({{tem_data.generic_name}})</span>
+                                            <!-- <br><span style="font-size:11px;">({{tem_data.generic_name}})</span> -->
                                             <i class="material-icons" style="font-size:16px;cursor: pointer" (click)="GET_similar_medicines(tem_data)">info</i>
                                         </td>
 
                                         <td *ngIf="!tem_data.quantitystatus">{{tem_data.brand_name}}
-                                            <br><span style="font-size:11px;">({{tem_data.generic_name}})</span>
+                                            <!-- <br><span style="font-size:11px;">({{tem_data.generic_name}})</span> -->
                                         </td>
                                         <td>{{tem_data.quantity}}</td>
                                         <td> - </td>

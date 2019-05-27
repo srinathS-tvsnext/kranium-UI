@@ -178,10 +178,10 @@
               <div class="col-md-12">
                 <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Phone">
-                    <span *ngIf="!opo_temp.Phone">Phone</span>
+                    <span *ngIf="!opo_temp.Mobile">Phone</span>
                   </mat-checkbox>
                 </span>
-                <span *ngIf="opo_temp.Phone">
+                <span *ngIf="opo_temp.Mobile">
                   <div class='col-md-5 headingclr'>Mobile No.</div>
                   <div class='col-md-5 contentclr'>{{patient_profile.Phone||'-'}}</div>
                 </span>
@@ -538,7 +538,7 @@
                 <div class="col-md-12">
                   <div class="col-md-6" *ngFor="let prescri_pat of diagno_presc_patioent">
                     <button type="button" class="btn btn-white btncntr">
-                      <span class="hidden-xs">{{prescri_pat.item_long_description}}</span>
+                      <span class="hidden-xs">{{prescri_pat.item_description}}</span>
                     </button>
                   </div>
                 </div>
@@ -547,7 +547,7 @@
           </div>
         </span>
       </div>
-      <div class='col-md-12'>
+      <!-- <div class='col-md-12'>
         <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Current_Investigation">
             <span *ngIf="!opo_temp.Current_Investigation">Current_Investigation</span>
@@ -555,25 +555,25 @@
         </span>
         <span *ngIf="opo_temp.Current_Investigation">
           <p class='bolder'>Current Investigation</p>
-          <div class="panel panel-default">
+          <div class="panel panel-default"> -->
             <!-- <p class='bolder'>Investigation</p> -->
-            <div class="panel-body">
+            <!-- <div class="panel-body">
               <div>
                 <div class="divalignment" *ngFor="let category_tem of Investigation_template_category">
                   <p class="header">{{category_tem.deptname}}</p>
                   <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group"
                     *ngFor="let category_tem_list of category_tem.question">
                     <button type="button" class="btn btn-white">
-                      <span class="hidden-xs">{{category_tem_list.item_long_description}}</span>
+                      <span class="hidden-xs">{{category_tem_list.item_long_description}}</span> -->
                       <!-- <span class="badge badgewhite" (click)="remove_old_tempdata_investigation(category_tem_list)">X</span> -->
-                    </button>
+                    <!-- </button>
                   </span>
                 </div>
               </div>
             </div>
           </div>
         </span>
-      </div>
+      </div> -->
       <div class='col-md-12'>
         <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Current_Prescription">
@@ -601,11 +601,13 @@
                   <tbody>
                     <tr *ngFor="let prescri of pres_data">
                       <td>&nbsp; </td>
-                      <td>{{prescri.brand_name}}<br>({{prescri.generic_name}})</td>
+                      <td>{{prescri.Medicine_Name}} 
+                        <!-- <br>({{prescri.generic_name}}) -->
+                      </td>
                       <td> - </td>
                       <td> - </td>
-                      <td>{{prescri.frequency}}</td>
-                      <td>{{prescri.duration_no}} {{prescri.duration_capt}}</td>
+                      <td>{{prescri.Frequency}}</td>
+                      <td>{{prescri.Duration}} {{prescri.Medicine_Timing}}</td>
                       <td> - </td>
                     </tr>
                   </tbody>

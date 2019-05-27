@@ -360,7 +360,7 @@ export class HistoryComponent implements OnInit {
   }
   remove_chiefcomplaints(rem_chiefcomplnts) {
     this.GlobalService.enableloader();
-    rem_chiefcomplnts.nr = this.login_details[0]['nr'];
+    rem_chiefcomplnts.nr = rem_chiefcomplnts.nr;
     rem_chiefcomplnts.encounter_no = this.datevalidation.encounterno;
     console.log(rem_chiefcomplnts);
     debugger;
