@@ -33,7 +33,7 @@ export class EditvitalsComponent implements OnInit {
   //END VARIABLE DECLARATION
   socialmentions; form; painscaleimage; style; choice; choices; choices_med; choice_med; vital_details_session;
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
-  lengthss; count; length; counts; vitals_data_new; patientdata_details; units_drop; acess_rights;
+  lengthss; count; length; counts; vitals_data_new; patientdata_details; units_drop; acess_rights;editForm
   height; weight; temperature; pulse; systolic_distolic; respiration; bmi; bsa; vitals_data; vitals_details_edit;
   // patientdata
 
@@ -51,7 +51,16 @@ export class EditvitalsComponent implements OnInit {
     this.del = true;
     this.dels = true;
     this.vitals_data = JSON.parse(sessionStorage.getItem('vitals_details_edit'));
-    
+
+    this.style = "style=''";
+    this.editForm = {};
+    this.editForm.height_id = "CM";
+    this.editForm.weight_id = "Kg";
+    // this.form.temperature_id = "Celcius";
+    this.editForm.temperature_id = 'Fahrenheit';
+    this.editForm.pulse_id = "Rate/Min";
+    this.editForm.RR_id = "Rate/Min";
+    this.editForm.respirator_id = "Rate/Min";
 
     if (this.vitals_data.medication.length == 0) {
       this.vitals_data.medication = [{}];
@@ -75,15 +84,16 @@ export class EditvitalsComponent implements OnInit {
       this.del = true;
     }
     this.patientdata_details = JSON.parse(sessionStorage.getItem('patientdata'));
-    this.style = "style=''";
-    this.form = {};
+    
+
     this.painscaleimage = [
-      { value: '01.png', viewValue: '../../assets/img/01.png', hurt: 'NO HURT', painrate: '0' },
-      { value: '02.png', viewValue: '../../assets/img/02.png', hurt: 'HURTS LITTLE BIT', painrate: '1-2' },
-      { value: '03.png', viewValue: '../../assets/img/03.png', hurt: 'HURTS LITTLE MORE', painrate: '3-4' },
-      { value: '04.png', viewValue: '../../assets/img/04.png', hurt: 'HURTS EVEN MORE', painrate: '4-6' },
-      { value: '05.png', viewValue: '../../assets/img/05.png', hurt: 'HURTS WHOLE LOT', painrate: '6-8' },
-      { value: '06.png', viewValue: '../../assets/img/06.png', hurt: 'WORST PAIN', painrate: '9-10' }
+      { value: 'sm1.png', viewValue: '../../assets/img/sm1.png', hurt: 'NO HURT', painrate: '0' },
+      { value: 'sm2.png', viewValue: '../../assets/img/sm2.png', hurt: 'HURTS LITTLE BIT', painrate: '1-2' },
+      { value: 'sm3.png', viewValue: '../../assets/img/sm3.png', hurt: 'HURTS LITTLE MORE', painrate: '3-4' },
+      { value: 'sm4.png', viewValue: '../../assets/img/sm4.png', hurt: 'HURTS EVEN MORE', painrate: '5-6' },
+      { value: 'sm5.png', viewValue: '../../assets/img/sm5.png', hurt: 'HURTS WHOLE LOT', painrate: '7-8' },
+      { value: 'sm6.png', viewValue: '../../assets/img/sm6.png', hurt: 'WORST PAIN', painrate: '9-10' }
+      
     ];
     this.get_vital_units();
     this.height = []; this.weight = []; this.temperature = []; this.pulse = []; this.systolic_distolic = []; this.respiration = []; this.bmi = []; this.bsa = [];
@@ -268,12 +278,12 @@ export class EditvitalsComponent implements OnInit {
 
     if (this.patientdata_details) {
       for (var i = 0; i < this.patientdata_details.length; i++) {
-        update_data.uhid_no = this.patientdata_details[i].UHIDNO;
-        update_data.pastencounter_no = this.patientdata_details[i].EncounterNo;
+        update_data.Formvalue[0].uhid_no = this.patientdata_details[i].UHIDNO;
+        update_data.Formvalue[0].pastencounter_no = this.patientdata_details[i].EncounterNo;
       }
     }
     this.GlobalService.enableloader();
-    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/edit_vital', update_data).subscribe(resdata => {
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/edit_vital', update_data.Formvalue[0]).subscribe(resdata => {
       debugger;
       console.log(resdata);
       if (resdata['IsSuccess']) {
@@ -336,7 +346,7 @@ export class EditvitalsComponent implements OnInit {
 
 
   //  BMI CAMCULATION
-  bmi_calculator(save_newdata) {
+  bmi_calculator(save_newdata,editForm) {
     debugger;
 
 
@@ -1545,35 +1555,35 @@ export class EditvitalsComponent implements OnInit {
 
       //weight calculation
 
-      if (save_newdata.weight_id == "Kg") {
-        this.wt_kg = Number(save_newdata.weight);
+      if (editForm.weight_id == "Kg") {
+        this.wt_kg = Number(save_newdata.Weight);
       } else {
         this.wt_kg = Number('0');
       }
 
-      if (save_newdata.weight_id == "Pounds") {
-        this.wt_lb = Number(save_newdata.weight);
+      if (editForm.weight_id == "Pounds") {
+        this.wt_lb = Number(save_newdata.Weight);
         this.wt_kg = this.roundNumber((this.wt_lb * 0.45359237), 1);
       } else {
         this.wt_lb = Number('0');
       }
 
       // height calculation
-      if (save_newdata.height_id == "CM") {
-        this.ht_cm = Number(save_newdata.height);
+      if (editForm.height_id == "CM") {
+        this.ht_cm = Number(save_newdata.Height);
       } else {
         this.ht_cm = Number('0');
       }
 
-      if (save_newdata.height_id == "Inches") {
-        this.ht_in = Number(save_newdata.height);
+      if (editForm.height_id == "Inches") {
+        this.ht_in = Number(save_newdata.Height);
       }
       else {
         this.ht_in = Number('0');
       }
 
-      if (save_newdata.height_id == "Feet") {
-        this.ht_ft = Number(save_newdata.height);
+      if (editForm.height_id == "Feet") {
+        this.ht_ft = Number(save_newdata.Height);
       } else {
         this.ht_ft = Number('0');
       }
@@ -1711,7 +1721,7 @@ export class EditvitalsComponent implements OnInit {
         // document.getElementById('BMIForAge').innerHTML 
         this.BMIForAge = '<br><h3>Body Mass Index:</h3><p><b>The Body Mass Index for the person whose data has been entered is: <font color=red>' + this.bmi + ' kg/m2</font> and it is falls into the category of <font color=red>' + this.bmi_interpretation + '</font></b>.</p><p><b>Please contact a medical doctor for further advice, if required</b></p><p>Note: The body mass index (BMI) is a heuristic proxy for human body fat based on an individuals weight and height. BMI does not actually measure the percentage of body fat.</p><p>The table below describes the various categories and BMI Ranges associated with them.</p><table><tr><td><b>Category</b></td><td><b>BMI Range (kg/m2)</b></td></tr><tr><td>Severely Underweight</td><td>Less Than 16.0</td></tr><tr><td>Underweight</td><td>From 16.0 To 18.5</td></tr><tr><td>Normal</td><td>From 18.5 to 25.0</td></tr><tr><td>Overweight</td><td>From 25.0 to 30.0</td></tr><tr><td>Obese Class I</td><td>From 30.0 to 35.0</td></tr><tr><td>Obese Class II</td><td>From 35.0 to 40.0</td></tr><tr><td>Obese Class III</td><td>Greater Than 40.0</td></tr></table><p></p><p>The <b>NORMAL</b> range for BMI can be achieved by ' + this.alter_maintain + ' your weight to be this range: <font color=red><b>' + this.weight_normal_range + '</b></font>';
 
-        this.vitals_data.Formvalue[0].bmi = this.bmi;
+        this.vitals_data.Formvalue[0].Bmi = this.bmi;
         this.vitals_data.Formvalue[0].bmi_id = this.bmi_interpretation;
         console.log(this.vitals_data.Formvalue[0].bmi);
         console.log(this.vitals_data.Formvalue[0].bmi_id);

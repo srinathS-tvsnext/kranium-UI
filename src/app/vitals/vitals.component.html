@@ -2,11 +2,9 @@
     <p class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
         <span *ngIf="sub_view_menu.sub_view_name=='vitals'">
             <span *ngIf="datevalidation.nowdate">
-                    <!-- *ngIf="sub_view_menu.add_edit && addvital_btn" -->
-        <button  class="btn btn-steelblue" id="addvital_btn" style="float:right;" routerLink='/Homescreen/Patientdetails/Addvitals'>Add Vitals</button>
-        <!-- *ngIf="sub_view_menu.add_edit && editvital_btn" -->
-<!-- <button  class="btn btn-steelblue" id="editvital_btn" style="float:right;"  (click)="edit_vitals(vitals_data)">Edit Vitals</button> -->
-</span>
+                <button  *ngIf="sub_view_menu.add_edit && addvital_btn" class="btn btn-steelblue" id="addvital_btn" style="float:right;" routerLink='/Homescreen/Patientdetails/Addvitals'>Add Vitals</button>
+        <button *ngIf="sub_view_menu.add_edit && editvital_btn" class="btn btn-steelblue" id="editvital_btn" style="float:right;"  (click)="edit_vitals(vitals_data)">Edit Vitals</button>
+        </span>
 
         <!-- //(click)="edit_vitals(vitals_data)" -->
 
@@ -20,7 +18,7 @@
                                 <table class="table table borderless" style='text-align: center'>
                                     <thead class="headercolor">
                                         <tr>
-                                            <th style='text-align: center'>Date/Time</th>
+                                            <!-- <th style='text-align: center'>Date/Time</th> -->
                                             <th style='text-align: center'>Height</th>
                                             <th style='text-align: center'>Weight</th>
                                             <th style='text-align: center'>Temperature</th>
@@ -28,20 +26,20 @@
                                             <th style='text-align: center'>Respiratory Rate</th>
                                             <th style='text-align: center'>BP</th>
                                             <th style='text-align: center'>BMI</th>
-                                            <th style='text-align: center'>BSA</th>
+                                            <!-- <th style='text-align: center'>BSA</th> -->
                                         </tr>
                                     </thead>
                                     <tbody *ngFor="let value of vitals_data.Formvalue">
                                         <tr>
-                                            <td>Date</td>
-                                            <td *ngIf="value.name === 'Height'">{{value.value||"-"}} {{'cm'}}</td>
-                                            <td *ngIf="value.name === 'Weight'">{{value.value||"-"}} {{'cm'}}</td>
-                                            <td *ngIf="value.name === 'Temp'">{{value.value||"-"}} {{'cm'}}</td>
-                                            <td *ngIf="value.name === 'Pulse'">{{value.value||"-"}} {{'cm'}}</td>
-                                            <td *ngIf="value.name === 'Respiration'">{{value.value||"-"}} {{'cm'}} </td>
-                                            <td> <span *ngIf="value.name === 'Systolic'">{{value.value||"-"}}</span>/<span *ngIf="value.name === 'Diastolic'">{{value.value||"-"}}</span>  {{'cm'}} / {{'cm'}}</td>
-                                            <td *ngIf="value.name === 'Bmi'">{{value.value||"-"}}</td>
-                                            <td >{{"-"}}</td>
+                                            <!-- <td>Date</td> -->
+                                            <td>{{value.Height||"-"}} {{'cm'}}</td>
+                                            <td>{{value.Weight||"-"}} {{'cm'}}</td>
+                                            <td>{{value.Temp||"-"}} {{'cm'}}</td>
+                                            <td>{{value.Pulse||"-"}} {{'cm'}}</td>
+                                            <td>{{value.Resp||"-"}} {{'cm'}} </td>
+                                            <td> <span *ngIf="value.Systolic">{{value.Systolic ||"-"}}</span>/<span *ngIf="value.Diastolic">{{value.Diastolic||"-"}}</span>  {{'mm'}} / {{'Hg'}}</td>
+                                            <td>{{value.Bmi||"-"}}</td>
+                                            <!-- <td >{{"-"}}</td> -->
                                         </tr>
                                     </tbody>
 
@@ -61,8 +59,8 @@
                             <p class="bolder">Pain Assessment:</p>
                             <div class='col-md-12'>
                                 <div class='col-md-2' *ngFor="let pain of vitals_data.Formvalue">
-                                    <img src="../../assets/img/{{pain.pain_assesment}}" class='imgsize' />
-                                    <div class='textsiz'>{{pain.pain_assesment_hurt}}</div>
+                                    <img src="../../assets/img/{{pain.Pain}}" class='imgsize' />
+                                    <div class='textsiz'>{{pain.Painhurt}}</div>
                                     <div class='painrate'>{{pain.pain_assesment_painrate}}</div>
                                 </div>
                                 <!-- <div class='col-md-2' *ngIf="vitals_data.Formvalue.length==0">
@@ -74,7 +72,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <p class="bolder">NOTES:</p>
-                            <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.notes||"-"}}</p>
+                            <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.GeneralExamination||"-"}}</p>
                             <!-- <p class="" *ngIf="vitals_data.Formvalue.length==0"> &nbsp; &nbsp; &nbsp; &nbsp; No notes Found</p> -->
 
                         </div>

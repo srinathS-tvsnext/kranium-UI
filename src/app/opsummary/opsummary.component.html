@@ -208,93 +208,28 @@
             <table class="table table borderless tb" style='text-align: center'>
               <thead class="headercolor">
                 <tr>
-                  <th style='text-align: center' [hidden]=hideen>&nbsp;</th>
-                  <th style='text-align: center'>Types</th>
-                  <th style='text-align: center'>Units</th>
+                    <!-- <th style='text-align: center'>Date/Time</th> -->
+                    <th style='text-align: center'>Height</th>
+                    <th style='text-align: center'>Weight</th>
+                    <th style='text-align: center'>Temperature</th>
+                    <th style='text-align: center'>Pulse</th>
+                    <th style='text-align: center'>Respiratory Rate</th>
+                    <th style='text-align: center'>BP</th>
+                    <th style='text-align: center'>BMI</th>
                 </tr>
               </thead>
               <tbody *ngFor="let value of vitals_data.Formvalue">
-                <tr>
-                  <td [hidden]=hideen>
-                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Height">
-                      <span *ngIf="!opo_temp.Height">Height</span>
-                    </mat-checkbox>
-                  </td>
-                  <td *ngIf="opo_temp.Height">Height</td>
-                  <td *ngIf="opo_temp.Height">{{value.height||"-"}} {{value.height_id}}</td>
-                  <!-- <td>&nbsp;</td> -->
-                </tr>
-                <tr>
-                  <td [hidden]=hideen>
-                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Weight">
-                      <span *ngIf="!opo_temp.Weight">Weight</span>
-                    </mat-checkbox>
-                  </td>
-                  <td *ngIf="opo_temp.Weight">Weight</td>
-                  <td *ngIf="opo_temp.Weight">{{value.weight||"-"}} {{value.weight_id}}</td>
-                  <!-- <td>&nbsp;</td> -->
-                </tr>
-                <tr>
-                  <td [hidden]=hideen>
-                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Temperature">
-                      <span *ngIf="!opo_temp.Temperature">Temperature</span>
-                    </mat-checkbox>
-                  </td>
-                  <td *ngIf="opo_temp.Temperature">Temperature</td>
-                  <td *ngIf="opo_temp.Temperature">{{value.temperature||"-"}} {{value.temperature_id}}</td>
-                  <!-- <td>&nbsp;</td> -->
-                </tr>
-                <tr>
-                  <td [hidden]=hideen>
-                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Pulse">
-                      <span *ngIf="!opo_temp.Pulse">Pulse</span>
-                    </mat-checkbox>
-                  </td>
-                  <td *ngIf="opo_temp.Pulse">Pulse</td>
-                  <td *ngIf="opo_temp.Pulse">{{value.pulse||"-"}} {{value.pulse_id}}</td>
-                  <!-- <td>&nbsp;</td> -->
-                </tr>
-                <tr>
-                  <td [hidden]=hideen>
-                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Respiratory">
-                      <span *ngIf="!opo_temp.Respiratory">Respiratory</span>
-                    </mat-checkbox>
-                  </td>
-                  <td *ngIf="opo_temp.Respiratory">Respiratory Rate</td>
-                  <td *ngIf="opo_temp.Respiratory">{{value.respiratory||"-"}} </td>
-                  <!-- <td>&nbsp;</td> -->
-                </tr>
-                <tr>
-                  <td [hidden]=hideen>
-                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.BP">
-                      <span *ngIf="!opo_temp.BP">BP</span>
-                    </mat-checkbox>
-                  </td>
-                  <td *ngIf="opo_temp.BP">BP</td>
-                  <td *ngIf="opo_temp.BP">{{value.bp_systolic||"-"}} / {{value.bp_diastolic||"-"}}
-                    {{value.bp_systolic_id}} / {{value.bp_diastolic_id}}</td>
-                  <!-- <td>&nbsp;</td> -->
-                </tr>
-                <tr>
-                  <td [hidden]=hideen>
-                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.BMI">
-                      <span *ngIf="!opo_temp.BMI">BMI</span>
-                    </mat-checkbox>
-                  </td>
-                  <td *ngIf="opo_temp.BMI">BMI</td>
-                  <td *ngIf="opo_temp.BMI">{{value.bmi||"-"}}</td>
-                  <!-- <td>&nbsp;</td> -->
-                </tr>
-                <tr>
-                  <td [hidden]=hideen>
-                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.BSA">
-                      <span *ngIf="!opo_temp.BSA">BSA</span>
-                    </mat-checkbox>
-                  </td>
-                  <td *ngIf="opo_temp.BSA">BSA</td>
-                  <td *ngIf="opo_temp.BSA">{{value.bsa||"-"}}</td>
-                  <!-- <td>&nbsp;</td> -->
-                </tr>
+                  <tr>
+                      <!-- <td>Date</td> -->
+                      <td>{{value.Height||"-"}} {{'cm'}}</td>
+                      <td>{{value.Weight||"-"}} {{'cm'}}</td>
+                      <td>{{value.Temp||"-"}} {{'cm'}}</td>
+                      <td>{{value.Pulse||"-"}} {{'cm'}}</td>
+                      <td>{{value.Resp||"-"}} {{'cm'}} </td>
+                      <td> <span *ngIf="value.Systolic">{{value.Systolic ||"-"}}</span>/<span *ngIf="value.Diastolic">{{value.Diastolic||"-"}}</span>  {{'mm'}} / {{'Hg'}}</td>
+                      <td>{{value.Bmi||"-"}}</td>
+                      <!-- <td >{{"-"}}</td> -->
+                  </tr>
               </tbody>
             </table>
           </div>
@@ -320,20 +255,20 @@
     </span>
 </div> -->
       <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
+        <!-- <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Pain_Assessment">
             <span *ngIf="!opo_temp.Pain_Assessment">Pain Assessment</span>
           </mat-checkbox>
-        </span>
+        </span> -->
         <span *ngIf="opo_temp.Pain_Assessment">
           <div class="panel panel-default">
             <div class="panel-body">
               <p class="bolder">Pain Assessment</p>
               <div class='col-md-12'>
                 <div class='col-md-2' *ngFor="let pain of vitals_data.Formvalue">
-                  <img src="../../assets/img/{{pain.pain_assesment}}" class='imgsize' />
+                  <img src="../../assets/img/{{pain.Pain}}" class='imgsize' />
                   <!-- <img src="../globaluat/assets/img/sm3.png" class='imgsize' /> -->
-                  <div class='textsiz'>{{pain.pain_assesment_hurt}}</div>
+                  <div class='textsiz'>{{pain.Painhurt}}</div>
                   <div class='painrate'>{{pain.pain_assesment_painrate}}</div>
                 </div>
               </div>
@@ -351,7 +286,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <p class="bolder">NOTES:</p>
-              <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.notes||"-"}}
+              <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.GeneralExamination||"-"}}
               </p>
             </div>
           </div>
@@ -377,10 +312,10 @@
                 </thead>
                 <tbody *ngFor="let allergy of vitals_data.allergy">
                     <tr *ngFor = "let notes of allergy.notes">
-                      <td>{{notes.allergy_type1||"-"}}</td>
-                      <td>{{notes.allergy_type2||"-"}}</td>
-                      <td>{{notes.allergy_severity||"-"}}</td>                  
-                  </tr>
+                        <td>{{notes.allergy_type1||"-"}}</td>
+                        <td>{{notes.allergy_type2||"-"}}</td>
+                        <td>{{notes.allergy_severity||"-"}}</td>
+                    </tr> 
                 </tbody>
               </table>
             </div>
@@ -405,8 +340,8 @@
                       <th style='text-align: center'>Frequency</th>
                     </tr>
                   </thead>
-                  <tbody *ngFor="let data of vitals_data.medication">
-                    <tr  *ngFor ="let medi of data">
+                  <tbody *ngFor="let medi of vitals_data.medication">
+                    <tr>
                       <td>{{medi.activemedication_brandname||"-"}}
                         <br>({{medi.activemedication_genericname||"-"}})</td>
                       <td>{{medi.activemedication_frequency||"-"}}</td>

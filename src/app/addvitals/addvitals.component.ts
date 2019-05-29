@@ -64,12 +64,12 @@ export class AddvitalsComponent implements OnInit {
     this.choices_med = [{ ids: 1, activemedication_brandname: '', activemedication_genericname: '', activemedication_frequency: '', length: false, counts: false }];
     this.choices = [{ id: 1, allergy_type1: '', allergy_type2: '', allergy_severity: '', lengthss: false, count: false }];
     this.painscaleimage = [
-      { value: '01.png', viewValue: '../../assets/img/01.png', hurt: 'NO HURT', painrate: '0' },
-      { value: '02.png', viewValue: '../../assets/img/02.png', hurt: 'HURTS LITTLE BIT', painrate: '1-2' },
-      { value: '03.png', viewValue: '../../assets/img/03.png', hurt: 'HURTS LITTLE MORE', painrate: '3-4' },
-      { value: '04.png', viewValue: '../../assets/img/04.png', hurt: 'HURTS EVEN MORE', painrate: '5-6' },
-      { value: '05.png', viewValue: '../../assets/img/05.png', hurt: 'HURTS WHOLE LOT', painrate: '7-8' },
-      { value: '06.png', viewValue: '../../assets/img/06.png', hurt: 'WORST PAIN', painrate: '9-10' }
+      { value: 'sm1.png', viewValue: '../../assets/img/01.png', hurt: 'NO HURT', painrate: '0' },
+      { value: 'sm2.png', viewValue: '../../assets/img/02.png', hurt: 'HURTS LITTLE BIT', painrate: '1-2' },
+      { value: 'sm3.png', viewValue: '../../assets/img/03.png', hurt: 'HURTS LITTLE MORE', painrate: '3-4' },
+      { value: 'sm4.png', viewValue: '../../assets/img/04.png', hurt: 'HURTS EVEN MORE', painrate: '5-6' },
+      { value: 'sm5.png', viewValue: '../../assets/img/05.png', hurt: 'HURTS WHOLE LOT', painrate: '7-8' },
+      { value: 'sm6.png', viewValue: '../../assets/img/06.png', hurt: 'WORST PAIN', painrate: '9-10' }
     ];
     // this.vital_details();
     this.get_vital_units();
@@ -258,7 +258,7 @@ export class AddvitalsComponent implements OnInit {
         })
         this.GlobalService.disableloader();
         this.openSnackBar("Save Successully", "Close");
-        // this.router.navigate(['/Homescreen/Patientdetails/Vitals']);
+        this.router.navigate(['/Homescreen/Patientdetails/Vitals']);
         // this.vital_details();
       } else {
         this.GlobalService.disableloader();

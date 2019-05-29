@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Http, Headers } from '@angular/http';
 import { GlobalService } from '../global.service';
+import { map } from 'rxjs-compat/operator/map';
 
 @Component({
   selector: 'app-vitals',
@@ -28,17 +29,34 @@ export class VitalsComponent implements OnInit {
   get_vital_patient(patientdata_details) {
     this.GlobalService.enableloader();
     debugger;
+    let count = 0;
+    let chklength = 0;
     if (patientdata_details) {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitaldetail', patientdata_details).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-        //   let arr =[];
-        // this.vitals_data.Formvalue = resdata['ResponseObject'];
-        //   for(let j=0;j<this.vitals_data.Formvalue.length;j++){
-            
-        //   }
-          console.log(this.vitals_data);
-          this.addvital_btn = false;
-          this.editvital_btn = true;
+          let resData = [{}];
+        this.vitals_data.Formvalue = resdata['ResponseObject'];
+          for(let j=0;j<this.vitals_data.Formvalue.length;j++){
+            chklength++;
+            if(chklength == 13){
+              resData.push({});
+              chklength = 0;
+              count++;
+            }
+                         
+            resData[count][this.vitals_data.Formvalue[j].name] = this.vitals_data.Formvalue[j].value;
+          }
+          this.vitals_data.Formvalue = resData;
+          
+          // this.addvital_btn = false;
+          // this.editvital_btn = true;
+          if(this.GlobalService.viewPatientListPage === false && this.vitals_data.Formvalue.length >0) {
+            this.addvital_btn = false;
+            this.editvital_btn = true;
+          } else {
+                this.addvital_btn = true;
+                this.editvital_btn = false;
+          }
           this.GlobalService.disableloader();
           this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getallergydetail', patientdata_details).subscribe(resdata => {
             if (resdata['IsSuccess']) {
@@ -52,17 +70,6 @@ export class VitalsComponent implements OnInit {
                 if (resdata['IsSuccess']) {
                   this.vitals_data.medication = resdata['ResponseObject'][0].tvs_nxt_form_trimed;
                   this.vitals_data.medication = JSON.parse(this.vitals_data.medication)
-                  // for(let i=0;i<this.vitals_data.medication.length;i++){
-                    
-                  //     this.vitals_data.medication[i] = JSON.parse(this.vitals_data.medication[i].value);
-                    
-                  // }
-                  // this.vitals_data.medication.forEach((value, index)=> {
-                    // medication.forEach(value => {
-                      // this.vitals_data.medication.value = JSON.parse(value.value);
-                    // });
-                    
-                  // });
                   this.GlobalService.showontop.next(this.vitals_data);
                 }
               })

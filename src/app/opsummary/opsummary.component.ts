@@ -131,11 +131,25 @@ export class OpsummaryComponent implements OnInit {
   get_vital_patient(patientdata_details) {
     this.GlobalService.enableloader();
     debugger;
+    let count = 0;
+    let chklength = 0;
     if (patientdata_details) {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitaldetail', patientdata_details).subscribe(resdata => {
         if (resdata['IsSuccess']) {
           this.GlobalService.disableloader();
+          let resData = [{}];
           this.vitals_data.Formvalue = resdata['ResponseObject'];
+          for(let j=0;j<this.vitals_data.Formvalue.length;j++){
+            chklength++;
+            if(chklength == 13){
+              resData.push({});
+              chklength = 0;
+              count++;
+            }   
+            resData[count][this.vitals_data.Formvalue[j].name] = this.vitals_data.Formvalue[j].value;
+          }
+          this.vitals_data.Formvalue = resData;
+          
           this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getallergydetail', patientdata_details).subscribe(resdata => {
             if (resdata['IsSuccess']) {
               this.vitals_data.allergy = resdata['ResponseObject'];
@@ -146,11 +160,8 @@ export class OpsummaryComponent implements OnInit {
               }
               this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
                 if (resdata['IsSuccess']) {
-                  this.vitals_data.medication = resdata['ResponseObject'];
-                  for(let i=0;i<this.vitals_data.medication.length;i++){
-                      this.vitals_data.medication[i] = JSON.parse(this.vitals_data.medication[i].value);
-                  }
-
+                  this.vitals_data.medication = resdata['ResponseObject'][0].tvs_nxt_form_trimed;
+                  this.vitals_data.medication = JSON.parse(this.vitals_data.medication)
                 }
               })
             }
@@ -231,7 +242,7 @@ export class OpsummaryComponent implements OnInit {
       if (resdata['IsSuccess']) {
         debugger;
         console.log();
-        this.examination_qa = resdata['ResponseObject'];
+        this.examination_qa = JSON.parse(resdata['ResponseObject'][0].tvs_nxt_form_exam);
         console.log(this.examination_qa);
       }
     })
@@ -243,8 +254,8 @@ export class OpsummaryComponent implements OnInit {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/get_history_qa', patientdata_details).subscribe(resdata => {
       if (resdata['IsSuccess']) {
         debugger;
-        this.history_qa = resdata['ResponseObject'][0].tvs_nxt_form;
-        this.history_qa = JSON.parse(this.history_qa);
+        this.history_qa = resdata['ResponseObject'];
+        //this.history_qa = JSON.parse(this.history_qa);
         console.log(this.history_qa);
       }
     })

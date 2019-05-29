@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="">
             <p class="">
-                <strong>VITALS</strong>
+                <strong>VITALS</strong> 
             </p>
             <div *ngFor="let form of vitals_data.Formvalue;">
                 <div class="panel panel-default">
@@ -21,15 +21,15 @@
                                 <tbody>
                                     <tr>
                                         <td>&nbsp;</td>
-                                        <td>Height</td>
+                                        <td>Height </td>
                                         <td>
                                             <mat-form-field style='padding-top: 10px;'>
-                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.height" (ngModelChange)="bmi_calculator(form)">
+                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.Height" (ngModelChange)="bmi_calculator(form,editForm)">
                                             </mat-form-field>
                                         </td>
                                         <td>
                                             <mat-form-field>
-                                            <mat-select [(ngModel)]="form.height_id">
+                                            <mat-select [(ngModel)]="editForm.height_id">
                                                 <mat-option *ngFor="let food of height" [value]="food.units">
                                                     {{ food.units }}
                                                 </mat-option>
@@ -45,12 +45,12 @@
                                         <td>Weight</td>
                                         <td>
                                             <mat-form-field style='padding-top: 10px;'>
-                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.weight" (ngModelChange)="bmi_calculator(form)">
+                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.Weight" (ngModelChange)="bmi_calculator(form,editForm)">
                                             </mat-form-field>
                                         </td>
                                         <td>
                                                 <mat-form-field>
-                                            <mat-select [(ngModel)]="form.weight_id">
+                                            <mat-select [(ngModel)]="editForm.weight_id">
                                                 <mat-option *ngFor="let food of weight" [value]="food.units">
                                                     {{ food.units }}
                                                 </mat-option>
@@ -66,12 +66,12 @@
                                         <td>Temperature</td>
                                         <td>
                                             <mat-form-field style='padding-top: 10px;'>
-                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.temperature">
+                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.Temp">
                                             </mat-form-field>
                                         </td>
                                         <td>
                                                 <mat-form-field>
-                                            <mat-select [(ngModel)]="form.temperature_id">
+                                            <mat-select [(ngModel)]="editForm.temperature_id">
                                                 <mat-option *ngFor="let food of temperature" [value]="food.units">
                                                     {{ food.units }}
                                                 </mat-option>
@@ -87,12 +87,12 @@
                                         <td>Pulse</td>
                                         <td>
                                             <mat-form-field style='padding-top: 10px;'>
-                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.pulse">
+                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.Pulse">
                                             </mat-form-field>
                                         </td>
                                         <td>
                                                 <mat-form-field>
-                                            <mat-select [(ngModel)]="form.pulse_id">
+                                            <mat-select [(ngModel)]="editForm.pulse_id">
                                                 <mat-option *ngFor="let food of pulse" [value]="food.units">
                                                     {{ food.units }}
                                                 </mat-option>
@@ -100,7 +100,7 @@
                                             </mat-form-field>
                                         </td>
                                         <td>
-                                            <mat-checkbox color='primary' [(ngModel)]="form.	pulse_status"> </mat-checkbox>
+                                            <mat-checkbox color='primary' [(ngModel)]="form.pulse_status"> </mat-checkbox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -108,12 +108,12 @@
                                         <td>Respiratory Rate</td>
                                         <td>
                                             <mat-form-field style='padding-top: 10px;'>
-                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.respiratory">
+                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.Resp">
                                             </mat-form-field>
                                         </td>
                                         <td>
                                                 <mat-form-field>
-                                            <mat-select [(ngModel)]="form.respirator_id">
+                                            <mat-select [(ngModel)]="editForm.respirator_id">
                                                 <mat-option *ngFor="let food of pulse" [value]="food.units">
                                                     {{ food.units }}
                                                 </mat-option>
@@ -129,10 +129,10 @@
                                         <td>BP:Systolic/Diastolic</td>
                                         <td>
                                             <mat-form-field style='width:25%;padding-top: 10px;'>
-                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.bp_systolic">
+                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.Systolic">
                                             </mat-form-field> / &nbsp;
                                             <mat-form-field style='width:25%; padding-top: 10px;'>
-                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.bp_diastolic">
+                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.Diastolic">
                                             </mat-form-field> &nbsp; mmHg
                                         </td>
                                         <td>
@@ -160,7 +160,7 @@
                                         <td>BMI</td>
                                         <td>
                                             <mat-form-field style='padding-top: 10px;'>
-                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.bmi" [disabled]="disabledfun">
+                                                <input matInput placeholder="Unit Value" [(ngModel)]="form.Bmi" [disabled]="disabledfun">
                                             </mat-form-field>
                                         </td>
                                         <td>
@@ -170,7 +170,7 @@
                                             <mat-checkbox color='primary' [(ngModel)]="form.bmi_status"></mat-checkbox>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>&nbsp;</td>
                                         <td>BSA</td>
                                         <td>
@@ -184,7 +184,7 @@
                                         <td>
                                             <mat-checkbox color='primary' [(ngModel)]="form.bsa_status"></mat-checkbox>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -209,12 +209,12 @@
                         </div> -->
                         <div class='col-md-12 col-sm-12 col-xs-12' style='padding-top: 31px;'>
                             <img src="../../assets/img/painassesment1.png" class="paimg" />
-                            <mat-radio-group [(ngModel)]="form.pain_assesment_painrate">
+                            <mat-radio-group [(ngModel)]="form.Painrate">
                             <div class='col-md-2 col-sm-2 col-xs-2 painasses' *ngFor="let imgtag of painscaleimage">
                                 <!-- <img src="{{imgtag.viewValue}}" class='imgsize' (click)="img(imgtag)" />
                                 <div class='textsiz'>{{imgtag.hurt}}</div>
                                 <div class='painrate'>{{imgtag.painrate}}</div> -->
-                                <mat-radio-button color="primary" class="pain_radiobtn" value="{{imgtag.painrate}}" (click)="img(imgtag)"></mat-radio-button>
+                                <mat-radio-button color="primary" class="pain_radiobtn" value="{{imgtag.painrate}}"   (click)="img(imgtag)"></mat-radio-button>
                             </div>
                         </mat-radio-group>
                         </div>
@@ -222,12 +222,12 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-body" *ngFor="let form of vitals_data.Formvalue;">
-                    <div class="pull-right">
+                <div class="panel-body" *ngFor="let editallergy of vitals_data.allergy;">
+                    <!-- <div class="pull-right">
                         <mat-checkbox color='primary' [(ngModel)]="form.allergy_status"></mat-checkbox>
-                    </div>
+                    </div> -->
                     <p class='bolder'>ALLERGY</p>
-                    <fieldset class="quote-fieldset position_bt_top" *ngFor="let choice_frm of vitals_data.allergy; let i=index;">
+                    <fieldset class="quote-fieldset position_bt_top" *ngFor="let choice_frm of editallergy.notes; let i=index;">
                         <!-- {{choice_frm.allergy_type1}} -->
                         <!-- *ngFor="let choice of choices; let i=index;" -->
                         <div class="table-responsive">
@@ -274,12 +274,12 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-body" *ngFor="let form of vitals_data.Formvalue;">
-                    <div class="pull-right">
+                    <!-- <div class="pull-right">
                         <mat-checkbox color='primary' [(ngModel)]="form.notes_status"></mat-checkbox>
-                    </div>
+                    </div> -->
                     <p style="font-weight:600;">NOTES:</p>
                     <mat-form-field class="example-full-width">
-                        <input matInput #message maxlength="256" [(ngModel)]="form.notes">
+                        <input matInput #message maxlength="256" [(ngModel)]="form.GeneralExamination">
                         <mat-hint align="start">
                             <strong>Don't disclose personal info</strong>
                         </mat-hint>
