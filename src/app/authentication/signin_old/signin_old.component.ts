@@ -6,14 +6,14 @@ import { GlobalService } from '../../global.service';
 import { MatSnackBar } from '@angular/material';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-// const PASSWD = /^[A-Za-z]\w{6,12}*$/;
+
 @Component({
   selector: 'app-signin_old',
   templateUrl: './signin_old.component.html',
   styleUrls: ['./signin_old.component.css']
 })
 
-export class SigninComponent implements OnInit {
+export class SigninComponentOld implements OnInit {
   data = {};
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
   

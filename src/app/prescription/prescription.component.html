@@ -401,26 +401,22 @@
                             <table class=" table font-weight-500" style='text-align: center'>
                                 <thead class="headercolor" data-background-color="#AFE1F5">
                                     <tr>
-                                        <td>Medication</td>
-                                        <td>Start Date</td>
-                                        <td>Frequency</td>
-                                        <td>Dossage</td>
-                                        <td>Route</td>
+                                        <td>Medication Name</td>
                                         <td>Preparation</td>
+                                        <td>Route</td>
+                                        <td>Frequency</td>
                                         <td>Duration</td>
-                                        <td>Notes</td>
+                                        <td>Start Date</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let indv_socialmention of pres_data; let i = index">
-                                        <td style="width: 25%;">{{indv_socialmention.brand_name}}<br>({{indv_socialmention.generic_name}}) </td>
-                                        <td>{{indv_socialmention.CD.slice(0,10)}}</td>
-                                        <td>{{indv_socialmention.frequency}}</td>
-                                        <td>{{indv_socialmention.dosage}}</td>
+                                        <td style="width: 25%;">{{indv_socialmention.Medicine_Name}} </td>
                                         <td>-</td>
                                         <td>-</td>
-                                        <td>{{indv_socialmention.duration_no}} {{indv_socialmention.duration_capt}}</td>
-                                        <td>{{indv_socialmention.notes}}</td>
+                                        <td>{{indv_socialmention.Frequency}}</td>
+                                        <td>{{indv_socialmention.Duration}} {{indv_socialmention.Medicine_Timing}}</td>
+                                        <td>{{indv_socialmention.StartDate}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -437,8 +433,8 @@
                         </div> -->
                         <div class="">
                             <p class="headercolor">Notes</p>
-                            <div>
-                                {{notes}}
+                            <div *ngFor="let notes of pres_data">
+                                {{notes.Notes || '-'}}
                             </div>
                         </div>
                     </div>
@@ -448,9 +444,9 @@
                         <div class="panel-body">
                             <div class="">
                                 <p class="headercolor bolder">Diet Advice(If any):</p>
-                                <div>
-                                    {{dietadvice}}
-                                </div>
+                                <div *ngFor="let diet of pres_diet">
+                                        {{diet.pres_diet || '-'}}
+                                    </div>
                             </div>
                         </div>
                     </div>

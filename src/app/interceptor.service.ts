@@ -29,7 +29,7 @@ export class InterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-  //  debugger;
+ 
     var timestamp = this.getMicrotime(true).toString();
     var reqcloned = req.clone({
       setHeaders: {
@@ -38,7 +38,6 @@ export class InterceptorService implements HttpInterceptor {
       }
     });
     return next.handle(reqcloned).do(evt => {
-    //  debugger;
       if (evt instanceof HttpResponse) {
         console.log('---> response', evt);
       }

@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-// const PASSWD = /^[A-Za-z]\w{6,12}*$/;
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -19,10 +18,10 @@ export class SigninComponent implements OnInit {
   }
   login(data) {
     if (data.user == undefined || data.password == undefined) {
-      // alert("Please Enter all the fields");
+    
     }
     else {
-      // this.data = { username: 'admin', password: 'admin' };
+      
       console.log(data);
       this.http.post('http://localhost/global/api/index.php/v1/post/User/login', data).subscribe(resdata => {
         debugger;
@@ -33,8 +32,6 @@ export class SigninComponent implements OnInit {
           this.router.navigate(['/Homescreen/Patientlist']);
         else
           alert("Non Authorized User");
-
-        // routerLink='/Homescreen/Patientlist'
       })
 
     }

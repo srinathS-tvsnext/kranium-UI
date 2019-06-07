@@ -11,7 +11,6 @@ import { MatSnackBar } from '@angular/material';
     styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-    //router: any;
     private listTitles: any[];
     titlee;
     location: Location;
@@ -19,7 +18,7 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
 
 
-    constructor(public snackBar: MatSnackBar, route: ActivatedRoute, public router: Router, location: Location, private element: ElementRef) { // 2
+    constructor(public snackBar: MatSnackBar, route: ActivatedRoute, public router: Router, location: Location, private element: ElementRef) { 
         this.location = location;
         this.sidebarVisible = false;
         router.events.subscribe((event) => {
@@ -68,8 +67,6 @@ export class NavbarComponent implements OnInit {
     };
     sidebarToggle() {
         debugger;
-        // const toggleButton = this.toggleButton;
-        // const body = document.getElementsByTagName('body')[0];
         if (this.sidebarVisible === false) {
             this.sidebarOpen();
         } else {
@@ -96,8 +93,11 @@ export class NavbarComponent implements OnInit {
     }
 
     signout() {
-        sessionStorage.clear();
-        this.openSnackBar("Thank You for Used", "Close");
-        this.router.navigate(['/Signin']);
+        if(confirm("Are you sure want's to logout")){
+            sessionStorage.clear();
+            this.openSnackBar("Thank You for using the application", "Close");
+            this.router.navigate(['/Signin']);
+        }
+        
     }
 }

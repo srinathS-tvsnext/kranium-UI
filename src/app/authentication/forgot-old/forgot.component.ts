@@ -8,7 +8,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
   templateUrl: './forgot.component.html',
   styleUrls: ['./forgot.component.css']
 })
-export class ForgotComponent implements OnInit {
+export class ForgotComponentOld implements OnInit {
 
   constructor() { }
 
@@ -20,6 +20,5 @@ export class ForgotComponent implements OnInit {
 
   passwordFormControl = new FormControl('', [
     Validators.required
-    // Validators.pattern(PASSWD
   ]);
 }

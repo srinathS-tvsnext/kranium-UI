@@ -6,7 +6,6 @@ import { GlobalService } from '../../global.service';
 import { MatSnackBar } from '@angular/material';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-// const PASSWD = /^[A-Za-z]\w{6,12}*$/;
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -14,7 +13,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 })
 
 export class SigninComponent implements OnInit {
-  data = {}; imgurl = '../../assets/img/kranium_logo.png'; image_name;
+  data = {}; imgurl = 'assets/img/kranium_logo.png'; image_name;
   user_access_rights;
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
 
@@ -46,9 +45,7 @@ export class SigninComponent implements OnInit {
               console.log(resnewdata['ResponseObject']);
               debugger;
               sessionStorage.setItem('user_access_rights', resnewdata['ResponseObject'][0].access_rights);
-              // this.user_access_rights = JSON.parse(resnewdata['ResponseObject'][0].access_rights);
-              // console.log(this.user_access_rights);
-              this.openSnackBar("Welcome to Global", "Close");
+              this.openSnackBar("Welcome to Kranium", "Close");
               this.router.navigate(['/Homescreen/Patientlist']);
             }else{
               this.openSnackBar("Please Contact the Admin Team for Permission to Access this Application", "Close");
@@ -56,17 +53,14 @@ export class SigninComponent implements OnInit {
           })
 
         } else if (data.user == "superadmin" && data.password == "superadmin") {
-          // sessionStorage.clear();
           var sup_admin = [{ User_name: "SUPER ADMIN", nr: "super admin", Email: "", MobileNo: "", User_ID: data.user }];
-          // console.log(sup_admin); 
+
           sessionStorage.setItem('logindata', JSON.stringify(sup_admin));
 
           this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_access_rights_superadmin', sup_admin).subscribe(sa_resdata => {
             if (sa_resdata['IsSuccess']) {
               console.log(sa_resdata['ResponseObject']);
               sessionStorage.setItem('user_access_rights', sa_resdata['ResponseObject'][0].access_rights);
-              // this.user_access_rights = JSON.parse(sa_resdata['ResponseObject'][0].access_rights);
-              // console.log(this.user_access_rights);
               this.openSnackBar("Hi Super Admin , Welcome to Global", "Close");
               this.router.navigate(['/Homescreen/Patientlist']);
             }
@@ -97,12 +91,12 @@ export class SigninComponent implements OnInit {
   ]);
 
   foods = [
-    { value: '../../assets/img/kranium_logo.png', viewValue: 'Chennai Perumbakkam' },
-    { value: '../../assets/img/kranium_logo.png', viewValue: 'Bangalore Kengeri' },
-    { value: '../../assets/img/kranium_logo.png', viewValue: 'Bangalore Richmond Road' },
-    { value: '../../assets/img/kranium_logo.png', viewValue: 'Hyderabad Lakdi-ka-pool' },
-    { value: '../../assets/img/kranium_logo.png', viewValue: 'Hyderabad LB Nagar' },
-    { value: '../../assets/img/kranium_logo.png', viewValue: 'Mumbai Parel' },
+    { value: 'assets/img/kranium_logo.png', viewValue: 'Chennai Perumbakkam' },
+    { value: 'assets/img/kranium_logo.png', viewValue: 'Bangalore Kengeri' },
+    { value: 'assets/img/kranium_logo.png', viewValue: 'Bangalore Richmond Road' },
+    { value: 'assets/img/kranium_logo.png', viewValue: 'Hyderabad Lakdi-ka-pool' },
+    { value: 'assets/img/kranium_logo.png', viewValue: 'Hyderabad LB Nagar' },
+    { value: 'assets/img/kranium_logo.png', viewValue: 'Mumbai Parel' },
   ];
 
 
@@ -113,9 +107,6 @@ export class SigninComponent implements OnInit {
       debugger;
       if (resdata['IsSuccess']) {
         debugger;
-        // var body =JSON.parse(resdata['ResponseObject']);
-        // console.log(body);
-        //this.image_name = body.ResponseObject;
         this.image_name = resdata['ResponseObject'];
         console.log(this.image_name);
         debugger;

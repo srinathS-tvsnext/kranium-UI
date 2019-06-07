@@ -13,10 +13,9 @@ import { IMultiSelectOption, IMultiSelectTexts, IMultiSelectSettings } from 'ang
 })
 export class AddrolesComponent implements OnInit {
   roles; items; showGreeting; exampleDatas; viewRole; btn;
-  // optionsModel: number[];
   myOptions: IMultiSelectOption[];
   formusers_drop; add_roles; new_array; userId; edit_data;
-  login_details;disable_rolename;
+  login_details; disable_rolename;
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
@@ -38,33 +37,8 @@ export class AddrolesComponent implements OnInit {
     this.new_array = [];
     this.get_Roles();
     this.get_viewroles();
-    this.disable_rolename=false;
-    this.dropdownList = [
-      // { item_id: 1, item_text: 'Mumbai' },
-      // { item_id: 2, item_text: 'Bangaluru' },
-      // { item_id: 3, item_text: 'Pune' },
-      // { item_id: 4, item_text: 'Navsari' },
-      // { item_id: 5, item_text: 'New Delhi' },
-      {name: "Admin", login_id: "admin", personell_nr: "0", STATUS: "ENABLE"},
-    
-      {name: "Sarannya Mathew", login_id: "107423", personell_nr: "0", STATUS: "ENABLE"},
-      
-      {name: "Venkatesh Sreedevi", login_id: "107424", personell_nr: "0", STATUS: "ENABLE"}
-     
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'login_id',
-      textField: 'name',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 5,
-      allowSearchFilter: true
-    };
+    this.disable_rolename = false;
+
   }
   private value: any = {};
   private _disabledV: string = '0';
@@ -96,8 +70,8 @@ export class AddrolesComponent implements OnInit {
       if (resdata) {
         this.GlobalService.disableloader();
         var data_custom = JSON.parse(resdata['_body']);
-        // this.formusers_drop = [];
-        this.formusers_drop = data_custom['ResponseObject'];
+        this.formusers_drop = [];
+        this.formusers_drop = data_custom;
         if (this.formusers_drop) {
           for (var i = 0; i < this.formusers_drop.length; i++)
             this.formusers_drop[i].id = i + 1;
@@ -118,33 +92,22 @@ export class AddrolesComponent implements OnInit {
     })
   }
 
-  onItemSelect(data) {
-
-  }
-
-  onSelectAll(data){
-
-  }
   save_addroles(data) {
-    console.log(data);
     data.nr = this.login_details[0]['nr'];
     debugger;
-    if((data.userId && data.role) == undefined){
+    if (data.userId == undefined || data.userId.length == 0 || data.role == undefined || data.role == '') {
       this.openSnackBar("Please Enter All Fields", "Close");
-    }else{
-      // var newdata = { "user_data": this.new_array, "role": data.role };
+    } else {
+
       this.GlobalService.enableloader();
       if (this.btn == "Add") {
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Manageroles/add_roles_save', data).subscribe(resdata => {
-          console.log(resdata);
           var newsa = resdata['_body'];
           if (JSON.parse(newsa)['IsSuccess']) {
             this.get_viewroles();
             this.add_roles = {};
             this.GlobalService.disableloader();
             this.openSnackBar("Enter Successfully", "Close");
-            //this.router.navigate(['/Homescreen/Manageroles']);
-            // this.router.navigate(['/Homescreen/Master/Manageroles']);
           } else {
             this.openSnackBar("Retry! Entry Failed", "Close");
             this.GlobalService.disableloader();
@@ -157,15 +120,13 @@ export class AddrolesComponent implements OnInit {
           var newsa = resdata['_body'];
           if (JSON.parse(newsa)['IsSuccess']) {
             this.get_viewroles();
-            this.disable_rolename=false;
+            this.disable_rolename = false;
             this.GlobalService.disableloader();
             this.openSnackBar("updated Successfully", "Close");
             this.add_roles = {};
             this.btn = "Add";
-            //this.router.navigate(['/Homescreen/Manageroles']);
-            // this.router.navigate(['/Homescreen/Master/Manageroles']);
           } else {
-            this.disable_rolename=false;
+            this.disable_rolename = false;
             this.openSnackBar("Retry! Entry Failed", "Close");
             this.GlobalService.disableloader();
           }
@@ -178,10 +139,8 @@ export class AddrolesComponent implements OnInit {
   get_Roles() {
     this.GlobalService.enableloader();
     debugger;
-
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Manageroles/get_roles').subscribe(resdata => {
       debugger;
-      console.log(resdata);
       if (resdata) {
         this.btn = "Add";
         this.GlobalService.disableloader();
@@ -199,7 +158,7 @@ export class AddrolesComponent implements OnInit {
   cancel() {
     this.add_roles = {};
     this.btn = "Add";
-    this.disable_rolename=false;
+    this.disable_rolename = false;
   }
   get_viewroles() {
     this.GlobalService.enableloader();
@@ -218,34 +177,20 @@ export class AddrolesComponent implements OnInit {
     console.log(geteditdata);
     this.btn = "Update";
     debugger;
-    this.disable_rolename=true;
-    // this.add_roles.userId = "";
-    // this.add_roles.role = "";
-    // this.edit_data = [];
-    // console.log(geteditdata.roles_edit);
-    // // this.items = geteditdata.roles_edit;
-    // for (let k = 0; k < geteditdata.roles_edit.length; k++) {
-    //   this.edit_data.push({
-    //     "id": geteditdata.roles_edit[k].create_roles_id.toString(),
-    //     "text": geteditdata.roles_edit[k].user_name
-    //   });
-    // }
-    // this.add_roles.userId = this.edit_data;
-    // this.add_roles.role = geteditdata.roles_name;
+    this.disable_rolename = true;
 
-
-
-  //extra 29.03.18
-  this.edit_data = [{"id":geteditdata.create_roles_id , "text":geteditdata.user_name}];
-  this.add_roles.userId = this.edit_data;
-  this.add_roles.role = geteditdata.roles;
-  //end of 29.03.18
+    //extra 29.03.18
+    this.edit_data = [geteditdata.user_name];
+    this.add_roles.userId = this.edit_data;
+    this.add_roles.role = geteditdata.roles;
+    this.add_roles.id = geteditdata.create_roles_id;
+    //end of 29.03.18
 
   }
 
 
-  delete_role(deleterow,name : string){
-    if(confirm("Are you sure to delete " + name)){
+  delete_role(deleterow, name: string) {
+    if (confirm("Are you sure to delete " + name)) {
       deleterow.nr = this.login_details[0]['nr'];
       this.GlobalService.enableloader();
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Manageroles/delete_roles_user', deleterow).subscribe(resdata => {

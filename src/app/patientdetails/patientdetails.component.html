@@ -70,7 +70,8 @@
                             <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
                                 <div class="" style="display:inline-block;" *ngFor="let sub_menu of acess_rights; let i =index;">
                                     <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='OP Summary')">
-                                        <button type="button" class="btn btn-white btnaction" routerLink='Opsummary' routerLinkActive="active">OP Summary</button>    
+                                        <button type="button" *ngIf="!GlobalService.viewPatientListPage" class="btn btn-white btnaction" routerLink='summary' routerLinkActive="active">OP Summary</button>
+                                        <button type="button" *ngIf="GlobalService.viewPatientListPage" class="btn btn-white btnaction" routerLink='summary' routerLinkActive="active">IP Summary</button>    
                                     </a>
                                     <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Vitals')">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Vitals' routerLinkActive="active">Vitals</button>

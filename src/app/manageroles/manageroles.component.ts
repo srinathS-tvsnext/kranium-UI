@@ -19,7 +19,6 @@ export class ManagerolesComponent implements OnInit {
     this.acess_rights = JSON.parse(sessionStorage.getItem('user_access_rights'));
     this.menu();
     this.form = {};
-    // this.get_role_permission();
     this.get_Departmet();
     this.get_Roles();
     this.exampleDatas = [];
@@ -149,7 +148,6 @@ export class ManagerolesComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
   submenu() {

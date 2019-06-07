@@ -35,10 +35,6 @@ export class MobileComponent implements OnInit {
     console.log(this.mobile_num);
     this.username = sessionStorage.getItem('username');
     console.log(this.username);
-    //alert(this.mobile_num);
-    //normal data and json data print session
-    //console.log(this.mobile_num[0].Mobile);
-    //alert(JSON.stringify(this.mobile_num[0].Mobile));
 
     this.mobilenum(this.username);
     this.splitmobilenum();
@@ -59,17 +55,14 @@ export class MobileComponent implements OnInit {
 
   mobilenum(dat) {
     debugger;
-    //dat.user=this.username;
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/get_forgot_mobileno', dat).subscribe(resdata => {
       debugger;
       console.log(resdata);
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        //console.log(resdata['ResponseObject'][0]);
         this.get_mobilenum = resdata['ResponseObject'];
         console.log(this.get_mobilenum);
-        // console.log("sds");
       }
       else {
         this.GlobalService.disableloader();
@@ -83,7 +76,6 @@ export class MobileComponent implements OnInit {
       this.openSnackBar("Please Enter the Mobile No.", "Close");
     }
     else {
-      //this.router.navigate(['/Otp']);8122055789-testing mani num
       if (data.mobile == this.mobile_num) {
         this.GlobalService.enableloader();
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/get_forgot_otp', data).subscribe(resdata => {
@@ -94,7 +86,6 @@ export class MobileComponent implements OnInit {
             debugger;
             sessionStorage.setItem('otp', resdata['ResponseObject']);
             this.GlobalService.disableloader();
-            //alert(JSON.stringify(resdata));
             this.openSnackBar("Enter the OTP No.", "Close");
             this.router.navigate(['/Otp']);
           }
@@ -120,9 +111,6 @@ export class MobileComponent implements OnInit {
       debugger;
       if (resdata['IsSuccess']) {
         debugger;
-        // var body =JSON.parse(resdata['ResponseObject']);
-        // console.log(body);
-        //this.image_name = body.ResponseObject;
         this.image_name = resdata['ResponseObject'];
         console.log(this.image_name);
         debugger;

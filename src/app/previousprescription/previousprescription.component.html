@@ -3,7 +3,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <p class="" style="font-weight: 600;color:steelblue;">Prescription</p>
-                <div class="col-md-12" *ngFor="let prescri of pres_data">
+                <div class="col-md-12">
                     <!-- <p style="font-weight: 600;">{{prescri_mail.cretaedby}} - {{prescri_mail.CD}} </p> -->
                     <div class="table-responsive">
                         <table class="table table borderless" style='text-align: center'>
@@ -19,21 +19,30 @@
                                     <th style='text-align: center'>Start Date</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>&nbsp; </td>
-                                    <td>{{prescri.Medicine_Name}}</td>
-                                        <td> - </td>
-                                        <td> - </td>
-                                        <td>{{prescri.Frequency}}</td>
-                                        <td>{{prescri.Duration}} {{prescri.Medicine_Timing}}</td>
-                                        <!-- <td> {{prescri.timing}} </td> -->
-                                        <td>{{prescri.StartDate}}</td>
-                                </tr>
+                            <tbody *ngFor="let prescri of pres_data" style="border-top: 0px solid #ddd;">
+                                
+                                    <tr >
+                                        <td>&nbsp; </td>
+                                        <td>{{prescri.Medicine_Name}}</td>
+                                            <td> - </td>
+                                            <td> - </td>
+                                            <td>{{prescri.Frequency}}</td>
+                                            <td>{{prescri.Duration}} {{prescri.Medicine_Timing}}</td>
+                                            <!-- <td> {{prescri.timing}} </td> -->
+                                            <td>{{prescri.StartDate}}</td>
+                                    </tr>
+                                    <tr>
+                                       <td colspan="7">
+                                        <button type="button" class="btn btn-steelblue pull-right" (click)="repaetr_presc(prescri)">Repeat this Prescription</button>
+                                       </td> 
+                                    </tr>
+                                    
+                                
+                                            
                             </tbody>
                         </table>
                     </div>
-                    <button type="button" class="btn btn-steelblue pull-right" (click)="repaetr_presc(prescri)">Repeat this Prescription</button>
+                    
                 </div>
             </div>
         </div>

@@ -45,8 +45,6 @@ export class EditvitalsComponent implements OnInit {
   ngOnInit() {
 
     this.disabledfun = true;
-    // console.log(this.GlobalService.user_access_rights);
-    // this.acess_rights = this.GlobalService.user_access_rights;
     this.acess_rights = JSON.parse(sessionStorage.getItem('user_access_rights'));
     this.del = true;
     this.dels = true;
@@ -56,7 +54,6 @@ export class EditvitalsComponent implements OnInit {
     this.editForm = {};
     this.editForm.height_id = "CM";
     this.editForm.weight_id = "Kg";
-    // this.form.temperature_id = "Celcius";
     this.editForm.temperature_id = 'Fahrenheit';
     this.editForm.pulse_id = "Rate/Min";
     this.editForm.RR_id = "Rate/Min";
@@ -151,7 +148,7 @@ export class EditvitalsComponent implements OnInit {
     debugger;
     var newItemNo = this.vitals_data.allergy.length + 1;
     this.vitals_data.allergy.push({ id: newItemNo, allergy_type1: '', allergy_type2: '', allergy_severity: '', lengthss: false, count: false });
-    // this.form.choice.push({ id: newItemNo, allergy_type1: '', allergy_type2: '', allergy_severity: '', lengthss: false, count: false });
+   
     this.lengthss = false;
     this.count = false;
     if (this.vitals_data.allergy.length > 1) {
@@ -168,7 +165,7 @@ export class EditvitalsComponent implements OnInit {
     debugger;
     var newItemNos = this.vitals_data.medication.length + 1;
     this.vitals_data.medication.push({ ids: newItemNos, activemedication_brandname: '', activemedication_genericname: '', activemedication_frequency: '', length: false, counts: false,dropdown: false });
-    // this.form.medication.push({ ids: newItemNos, activemedication_brandname: '', activemedication_genericname: '', activemedication_frequency: '', length: false, counts: false });
+    
     console.log(this.vitals_data.medication);
     this.length = false;
     this.counts = false;
@@ -205,25 +202,12 @@ export class EditvitalsComponent implements OnInit {
     debugger;
     this.vitals_data.medication.splice(rem_med, 1);
     if (this.vitals_data.medication.length <= 1) {
-      // this.length = false;
-      // this.counts = false;
+
       this.dels = true;
     } else {
       this.dels = false;
     }
-    // for (var i = 0; i < this.vitals_data.medication.length; i++) {
-    //   if (this.vitals_data.medication[i]['id'] === rem_med['id']) {
-    //     this.vitals_data.medication.splice(i, 1);
-    //     if (this.vitals_data.medication.length <= 1) {
-    //       this.length = false;
-    //       this.counts = false;
-    //       this.dels = true;
-    //     } else {
-    //       this.dels = false;
-    //     }
-    //     break;
-    //   }
-    // }
+  
   }
 
 
@@ -1614,7 +1598,7 @@ export class EditvitalsComponent implements OnInit {
       }
       if ((this.ht_cm > 0) && (this.wt_kg > 0) && (this.arr_bmi.length > 0)) {
         this.bmi = this.roundNumber(this.wt_kg / ((this.ht_cm / 100) * (this.ht_cm / 100)), 1);
-        //document.forms[0].bmi.value = bmi;
+        
         if (this.bmi > this.arr_bmi[4]) {
           this.bmi_percentile_range = 'Greater Than 97th</sup> Percentile'; this.bmi_interpretation = 'OBESE';
         } else if (this.bmi > this.arr_bmi[3]) {
@@ -1633,11 +1617,9 @@ export class EditvitalsComponent implements OnInit {
         this.adder = '';
 
         if ((this.age_months > 120) && (this.bmi_interpretation != 'NORMAL')) { this.adder = 'and this can be achieved by altering the weight of the person to be in the range of <font color=red><b>' + this.weight_normal_range + '</b></font>'; } else { this.adder = ''; }
-        // document.getElementById('BMIForAge').innerHTML 
+        
         this.BMIForAge = '<br><h3>BMI For Age:</h3><p><b>The BMI For-Age for the person whose data has been entered lies in this range: <font color=red>' + this.bmi_percentile_range + '</font> and it is interpreted as <font color=red>' + this.bmi_interpretation + '</font></b>.</p><p><b>Please contact a medical doctor for further advice, if required</b></p><p>Note: This indicator compares the body mass index (BMI) of the person with others of the same age, and tells how many individuals in a large group of individuals with the same age would have a BMI lower than that of the person in question.</p><p>For example if your BMI for age is say  between the 15th  percentile and 50th percentile, it means that anywhere between 15 to 50 people out of a group of 100 people of your age would be have a lesser BMI than yours.</p><p>For all purposes, BMI for age between 15th  percentile & 85th  percentile are considered as normal for that age. Those below the 3rd percentile would be considered as <b>severely thin</b> and those above the 97th percentile would be considered as <b>obese</b>. Those between the 3rd percentile & 15th  percentile are considered as <b>thin</b> and those between 85th  percentile and 97th percentile are considered as <b>overweight</b>.</p><p>The <b>NORMAL</b> range BMI for the given age is: <font color=red><b>' + this.bmi_normal_range + '</b></font>' + this.adder + '.';
-        // $('#bmi_interpretation').val(this.bmi_interpretation);
-        // $('#bmi_percentile_range').val(this.bmi_percentile_range);
-        // $('#bmi_normal_range').val(this.bmi_normal_range);
+        
 
       }
 
@@ -1652,12 +1634,10 @@ export class EditvitalsComponent implements OnInit {
           this.height_percentile_range = ''; this.height_interpretation = '';
         }
         this.height_normal_range = this.arr_hfa[0] + '-' + this.arr_hfa[4] + ' cm';
-        // document.getElementById('HeightForAge').innerHTML
+        
 
         this.HeightForAge = '<h3>Length/Height For Age:</h3><p><b>The Height-For-Age for the person whose data has been entered lies in this range: <font color=red>' + this.height_percentile_range + '</font> and it is interpreted as <font color=red>' + this.height_interpretation + '</font></b>.</p><p><b>Please contact a medical doctor for further advice, if required.</b></p><p>Note: This indicator compares the height (length)* of the person with others of the same age, and tells how many individuals in a large group of individuals with the same age would have a height lower than that of the person in question.</p><p>For example if your height for age is say  between the 15th  percentile and 50th percentile, it means that anywhere between 15 to 50 people out of a group of 100 people of your age would be have a lesser height than yours.</p><p>For all purposes, height for age between 3rd percentile & 97th percentile are considered as <b>normal</b> for that age. Those below the 3rd percentile would be considered as <b>stunted</b> and those above the 97th percentile would be considered as <b>too tall</b>.</p><p>The NORMAL height range for the given age is: <font color=red><b>' + this.height_normal_range + '</b></font></p><p>* Height is the standing upright height of the person where as Length is the length of the child (usually <2 years of age) measured while lying down</p>';
-        // $('#height_interpretation').val(this.height_interpretation);
-        // $('#height_percentile_range').val(this.height_percentile_range);
-        // $('#height_normal_range').val(this.height_normal_range);
+       
 
       }
 
@@ -1672,30 +1652,17 @@ export class EditvitalsComponent implements OnInit {
           this.weight_percentile_range = ''; this.weight_interpretation = '';
         }
         this.weight_normal_range = this.arr_wfa[0] + '-' + this.arr_wfa[4] + ' kg';
-        // document.getElementById('WeightForAge').innerHTML
+      
         this.WeightForAge = '<h3>Weight For Age:</h3><p><b>The Weight-For-Age for the person whose data has been entered lies in this range: <font color=red>' + this.weight_percentile_range + '</font> and it is interpreted as <font color=red>' + this.weight_interpretation + '</font></b>.</p><p><b>Please contact a medical doctor for further advice, if required</b></p><p>Note: This indicator compares the weight of the person with others of the same age, and tells how many individuals in a large group of individuals with the same age would have a weight lower than that of the person in question.</p><p>For example if your weight for age is say  between the 15th  percentile and 50th percentile, it means that anywhere between 15 to 50 people out of a group of 100 people of your age would be have a lesser height than yours.</p><p>For all purposes, weight for age between 3rd percentile & 97th percentile are considered as <b>normal</b> for that age. Those below the 3rd percentile would be considered as <b>underweight</b> and those above the 97th percentile would be considered as <b>overweight</b>.</p><p>The <b>NORMAL</b> weight range for the given age is: <font color=red><b>' + this.weight_normal_range + '</b></font></p>';
-        // $('#weight_interpretation').val(this.weight_interpretation);
-        // $('#weight_percentile_range').val(this.weight_percentile_range);
-        // $('#weight_normal_range').val(this.weight_normal_range);
+        
 
       } // end if
     } else if (this.age_months > 228) {
-      // this.height_interpretation = '';
-      // this.height_percentile_range = '';
-      // this.height_normal_range = '';
-      // this.weight_interpretation = '';
-      // this.weight_percentile_range = '';
-      // this.weight_normal_range = '';
-      // this.bmi_interpretation = '';
-      // this.bmi_percentile_range = '';
-      // this.bmi_normal_range = '';
-      // this.HeightForAge = '';
-      // this.WeightForAge = '';
-      // this.BMIForAge = '';
+     
 
       if ((this.ht_cm > 0) && (this.wt_kg > 0)) {
         this.bmi = this.roundNumber(this.wt_kg / ((this.ht_cm / 100) * (this.ht_cm / 100)), 1);
-        //document.forms[0].bmi.value = bmi;
+        
         if (this.bmi > 40) {
           this.bmi_interpretation = 'OBESE CLASS III';
         } else if (this.bmi > 35) {
@@ -1718,7 +1685,7 @@ export class EditvitalsComponent implements OnInit {
         this.bmi_normal_range = '';
         this.weight_normal_range = this.roundNumber((18.5 * (this.ht_cm / 100) * (this.ht_cm / 100)), 1) + '-' + this.roundNumber((25 * (this.ht_cm / 100) * (this.ht_cm / 100)), 1) + ' kg';
         this.alter_maintain = (this.bmi_interpretation == 'NORMAL') ? ' maintaining ' : ' altering ';
-        // document.getElementById('BMIForAge').innerHTML 
+      
         this.BMIForAge = '<br><h3>Body Mass Index:</h3><p><b>The Body Mass Index for the person whose data has been entered is: <font color=red>' + this.bmi + ' kg/m2</font> and it is falls into the category of <font color=red>' + this.bmi_interpretation + '</font></b>.</p><p><b>Please contact a medical doctor for further advice, if required</b></p><p>Note: The body mass index (BMI) is a heuristic proxy for human body fat based on an individuals weight and height. BMI does not actually measure the percentage of body fat.</p><p>The table below describes the various categories and BMI Ranges associated with them.</p><table><tr><td><b>Category</b></td><td><b>BMI Range (kg/m2)</b></td></tr><tr><td>Severely Underweight</td><td>Less Than 16.0</td></tr><tr><td>Underweight</td><td>From 16.0 To 18.5</td></tr><tr><td>Normal</td><td>From 18.5 to 25.0</td></tr><tr><td>Overweight</td><td>From 25.0 to 30.0</td></tr><tr><td>Obese Class I</td><td>From 30.0 to 35.0</td></tr><tr><td>Obese Class II</td><td>From 35.0 to 40.0</td></tr><tr><td>Obese Class III</td><td>Greater Than 40.0</td></tr></table><p></p><p>The <b>NORMAL</b> range for BMI can be achieved by ' + this.alter_maintain + ' your weight to be this range: <font color=red><b>' + this.weight_normal_range + '</b></font>';
 
         this.vitals_data.Formvalue[0].Bmi = this.bmi;
@@ -1741,80 +1708,6 @@ export class EditvitalsComponent implements OnInit {
     this.vitals_data.Formvalue[0].bsa = this.mosteller;
     console.log(this.vitals_data.Formvalue[0].bsa);
   }
-
-  //   function CalculateAge() {
-
-  //   dob = "15/08/1992";
-  //   today = "01/02/2018";
-
-  //   //alert(dob+'-'+today);
-
-  //   //Declare Regex  
-  //   rxDatePattern = /^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/;
-  //   dobArray = dob.match(rxDatePattern); // is format OK?
-
-  //   if (dobArray == null) {
-  //     alert("Please Input Valid Date of Birth");
-  //     return false;
-  //   }
-  //   //Checks for dd/mm/yyyy format.
-  //   dobDay = parseInt(dobArray[1]);
-  //   dobMonth = parseInt(dobArray[3]);
-  //   dobYear = parseInt(dobArray[5]);
-
-  //   todayArray = today.match(rxDatePattern); // is format OK?
-  //   //Checks for dd/mm/yyyy format.
-  //   todayDay = parseInt(todayArray[1]);
-  //   todayMonth = parseInt(todayArray[3]);
-  //   todayYear = parseInt(todayArray[5]);
-
-  //   //alert(dobDay+'-'+dobMonth+'-'+dobYear+'\n'+todayDay+'-'+todayMonth+'-'+todayYear);
-
-  //   if (dobMonth < 1 || dobMonth > 12) {
-  //     alert("Please Input Valid Date of Birth");
-  //     return false;
-  //   } else if (dobDay < 1 || dobDay > 31) {
-  //     alert("Please Input Valid Date of Birth");
-  //     return false;
-  //   } else if ((dobMonth == 4 || dobMonth == 6 || dobMonth == 9 || dobMonth == 11) && dobDay == 31) {
-  //     alert("Please Input Valid Date of Birth");
-  //     return false;
-  //   } else if (dobMonth == 2) {
-  //     isleap = (dobYear % 4 == 0 && (dobYear % 100 != 0 || dobYear % 400 == 0));
-  //     if (dobDay > 29 || (dobDay == 29 && !isleap)) {
-  //       alert("Please Input Valid Date of Birth");
-  //       return false;
-  //     }
-  //   } else if (dobYear < todayYear - 100) {
-  //     alert("Please Input Valid Date of Birth");
-  //     return false;
-  //   }
-
-  //   //alert('I am here');
-
-  //   age_years = todayYear - dobYear;
-  //   if (todayMonth < dobMonth || (todayMonth == dobMonth && todayDay < dobDay)) { age_years--; }
-
-  //   age_months = 0;
-  //   if (todayMonth > dobMonth) {
-  //     age_months += (todayYear - dobYear) * 12;
-  //     age_months += (todayMonth - dobMonth);
-  //   } else {
-  //     if (todayMonth == dobMonth) {
-  //       age_months += (todayYear - dobYear) * 12;
-  //     } else {
-  //       age_months += (12 + todayMonth) - dobMonth;
-  //       age_months += (todayYear - dobYear - 1) * 12;
-  //     }
-  //   }
-  //   if (dobDay > todayDay) { age_months--; }
-
-  //   //alert(age_years+'-'+age_months); 
-
-  //   $('#age_years').val(age_years);
-  //   $('#age_months').val(age_months);
-
-  // }
 
 }
 

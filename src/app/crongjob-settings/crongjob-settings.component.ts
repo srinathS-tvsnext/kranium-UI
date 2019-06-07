@@ -50,7 +50,6 @@ export class CrongjobSettingsComponent implements OnInit {
       disableClose: false
     })
     this.dialogRef_cron.afterClosed().subscribe(() => {
-      // unsubscribe onAdd
       this.get_cronjobslist();
     });
   }
@@ -62,10 +61,10 @@ export class CrongjobSettingsComponent implements OnInit {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/edit_cronjob_items',editdata).subscribe(resdata =>{
       if(resdata['IsSuccess']){
         this.GlobalService.disableloader();
-        //this.openSnackBar("Save Successfully", "Close");
+      
      }else{
         this.GlobalService.disableloader();
-        //this.openSnackBar("Error ! Retry", "Close");
+ 
       }
     })
   }

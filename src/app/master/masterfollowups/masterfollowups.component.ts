@@ -75,24 +75,26 @@ export class MasterfollowupsComponent implements OnInit {
   }
 
   save_crossconsultation(userdata) {
+    if(this.mobileFormControl.status === 'VALID') {
+      userdata.nr = this.login_details[0]['nr'];
+      console.log(userdata);
+      this.GlobalService.enableloader();
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/add_crossconsultaion', userdata).subscribe(resdata => {
+        debugger;
+        if (resdata['IsSuccess']) {
+          this.data = {};
+          this.get_consultationdata();
+          this.GlobalService.disableloader();
+          this.openSnackBar("Save Successfully", "Close");
+        }
+        else {
+          this.GlobalService.disableloader();
+          this.openSnackBar("Some Error! Retry", "Close");
+        }
 
-    userdata.nr = this.login_details[0]['nr'];
-    console.log(userdata);
-    this.GlobalService.enableloader();
-    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/add_crossconsultaion', userdata).subscribe(resdata => {
-      debugger;
-      if (resdata['IsSuccess']) {
-        this.data = {};
-        this.get_consultationdata();
-        this.GlobalService.disableloader();
-        this.openSnackBar("Save Successfully", "Close");
-      }
-      else {
-        this.GlobalService.disableloader();
-        this.openSnackBar("Some Error! Retry", "Close");
-      }
-
-    })
+      })
+    }
+    
 
   }
 
@@ -106,6 +108,7 @@ export class MasterfollowupsComponent implements OnInit {
         // var body =JSON.parse(resdata['_body']);
         // this.vitalunits = body.ResponseObject;
         this.consultaiondata = resdata['ResponseObject'];
+        
         console.log(this.consultaiondata);
         debugger;
         this.GlobalService.disableloader();

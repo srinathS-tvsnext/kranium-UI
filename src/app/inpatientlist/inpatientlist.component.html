@@ -108,8 +108,8 @@
                                   <tr *ngFor="let indv_socialmention of filtered_data; let i = index" (click)="clickOnPatient(indv_socialmention)" class="pointer">
                                       <td>{{indv_socialmention.DateofAdmission.slice(0, 10)}} </td>
                                       <td>{{indv_socialmention.PatientName}}</td>
-                                      <td *ngIf="indv_socialmention.UhID != '0'">{{indv_socialmention.UhID||'-'}}</td>
-                                      <td *ngIf="indv_socialmention.UhID == '0'">-</td>
+                                      <td *ngIf="indv_socialmention.uhid != '0'">{{indv_socialmention.uhid||'-'}}</td>
+                                      <td *ngIf="indv_socialmention.uhid == '0'">-</td>
                                       <td style="text-transform: uppercase;">{{indv_socialmention.Gender}}/{{indv_socialmention.age}}</td>
                                       <td *ngIf="indv_socialmention.encounterno != '0'">{{indv_socialmention.encounterno||'-'}}</td>
                                       <td *ngIf="indv_socialmention.encounterno == '0'">-</td>
@@ -132,6 +132,9 @@
                                   </tr>
                               </tbody>
                           </table>
+                      </div>
+                      <div *ngIf="showPagi" style="text-align: center">
+                        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
                       </div>
                   </div>
               </div>

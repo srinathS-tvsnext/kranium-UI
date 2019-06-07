@@ -42,7 +42,7 @@ export class ManageformsComponent implements OnInit {
       }
     })
   }
-  // name: string
+
   deleteforms(getid,getname : string){
     if(confirm("Are you sure to delete Form " + getname)){
       var user_nr = this.login_details[0]['nr'];
@@ -111,14 +111,14 @@ export class ManageformsComponent implements OnInit {
 
   change_seqno(dataseq) {
     debugger;
-    // console.log(dataseq);
+ 
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/edit_mangeform_seqno', dataseq).subscribe(resdata => {
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        // this.openSnackBar("Sequences Updated Successfully", "Close");
+  
       } else {
         this.GlobalService.disableloader();
-        // this.openSnackBar("Error ! Retry", "Close");
+  
       }
     })
   }

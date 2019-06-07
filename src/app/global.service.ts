@@ -15,12 +15,12 @@ export class GlobalService {
   location: Location;
   patientListName = new Subject();
   viewPatientListPage = false;
-  // baseurl="http://10.91.19.198:8080/global_uat";
-  // baseurl = "http://14.141.212.155:8080/globaluat";
-  // baseurl = "http://172.16.150.200/globaluat";
 
-  baseurl = "http://localhost/global";
-  // baseurl = "http://10.91.19.198:7777/global_uat";
+
+   baseurl = "http://localhost/global";
+ // baseurl = "http://115.112.102.209/global";
+  // baseurl = "http://10.91.19.183/global";
+
   // baseurl = "http://" + window.location.hostname + ":" + window.location.port + "/global";
   // baseurl = "http://" + window.location.hostname + "/global";
 
@@ -29,7 +29,7 @@ export class GlobalService {
   user_access_rights; login_user; login_user_superadmin;
   ngOnInit() {
     // console.log(document.URL);
-    
+
   }
 
   constructor(private http: HttpClient, private router: Router, location: Location) {
@@ -56,7 +56,7 @@ export class GlobalService {
     debugger;
     this.Loader.next(true);
   }
-  savePatientType(msg:string){
+  savePatientType(msg: string) {
     this.patientListName.next(msg)
   }
   getPatientType(): Observable<any> {

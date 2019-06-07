@@ -32,7 +32,6 @@ export class DetailmanageformComponent implements OnInit {
         this.formdatacr = resdata;
         console.log(this.formdatacr);
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
   edit_for(data_edit) {

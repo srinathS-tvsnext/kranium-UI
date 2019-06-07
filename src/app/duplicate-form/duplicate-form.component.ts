@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Http, Headers } from '@angular/http';
-// import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { GlobalService } from '../global.service';
 import { MatSnackBar } from '@angular/material';
 
@@ -169,7 +168,7 @@ export class DuplicateFormComponent implements OnInit {
       } else {
         this.openSnackBar("Error? Retry", "Close");
       }
-      // routerLink='/Manageforms'
+
     })
   }
 

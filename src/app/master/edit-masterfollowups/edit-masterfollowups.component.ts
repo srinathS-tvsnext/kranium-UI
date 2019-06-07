@@ -57,6 +57,9 @@ export class EditMasterfollowupsComponent implements OnInit {
   }
 
   update_followups(updatedata){
+    if(this.mobileFormControl.status === 'INVALID'){
+      return false;
+    }
     if((updatedata.asst_name && updatedata.asst_mob)==""){
       this.openSnackBar("Please Enter All Fields", "Close");
     }else{

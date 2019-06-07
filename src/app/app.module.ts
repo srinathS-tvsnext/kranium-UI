@@ -20,6 +20,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -56,10 +57,12 @@ import { ManagerolesComponent } from './manageroles/manageroles.component';
 import { AddnewmanageformComponent } from './addnewmanageform/addnewmanageform.component';
 import { DetailmanageformComponent } from './detailmanageform/detailmanageform.component';
 import { ForgotComponent } from './authentication/forgot/forgot.component';
+import { ForgotComponentOld } from './authentication/forgot-old/forgot.component'
 import { MobileComponent } from './authentication/mobile/mobile.component';
 import { OtpComponent } from './authentication/otp/otp.component';
 import { PasswordComponent } from './authentication/password/password.component';
 import { SigninComponent } from './authentication/signin/signin.component';
+import { SigninComponentOld } from './authentication/signin_old/signin_old.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { SignupComponent } from './authentication/signup/signup.component';
 
@@ -90,15 +93,12 @@ import { OpsumaryTemplateNameComponent } from './opsumary-template-name/opsumary
 import { MasterComponent } from './master/master.component';
 import { MastervitalsComponent } from './master/mastervitals/mastervitals.component';
 import { MasterfollowupsComponent } from './master/masterfollowups/masterfollowups.component';
-// import { Ng4AutoCompleteTextBoxModule } from 'ng4-autocomplete-textbox'
 import { NguiAutoCompleteModule } from '@ngui/auto-complete';
 
 
 import { GlobalResolver } from './global.resolver';
 
 
-// import { SelectModule } from 'ng2-select';
-// import { NgxPaginationModule } from 'ngx-pagination';
 import { CrongjobSettingsComponent } from './crongjob-settings/crongjob-settings.component';
 import { CongjobpopupComponent } from './congjobpopup/congjobpopup.component';
 import { LanguageComponent } from './master/language/language.component';
@@ -109,7 +109,6 @@ import { AddconfigComponent } from './master/addconfig/addconfig.component';
 import { InvestigationAddShortcodeComponent } from './investigation-add-shortcode/investigation-add-shortcode.component';
 import { EditvitalsComponent } from './editvitals/editvitals.component';
 import { LanguageeditpopupComponent } from './master/languageeditpopup/languageeditpopup.component';
-// import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { DuplicateFormComponent } from './duplicate-form/duplicate-form.component';
 
 import { ManageformTittleComponent } from './master/manageform-tittle/manageform-tittle.component';
@@ -117,8 +116,7 @@ import { ManageformAddtitleComponent } from './master/manageform-addtitle/manage
 import { ManageformEdittittleComponent } from './master/manageform-edittittle/manageform-edittittle.component';
 import { InvestigationEditShortcodeComponent } from './investigation-edit-shortcode/investigation-edit-shortcode.component';
 import { EditconfigComponent } from './master/editconfig/editconfig.component';
-// import {SelectModule} from 'angular2-select';
-// import { QuillEditorModule } from 'ngx-quill-editor';
+
 import { EditMastervitalComponent } from './master/edit-mastervital/edit-mastervital.component';
 import { EditMasterfollowupsComponent } from './master/edit-masterfollowups/edit-masterfollowups.component';
 
@@ -162,8 +160,8 @@ import { InpatientlistComponent } from './inpatientlist/inpatientlist.component'
     ManagerolesComponent,
     AddnewmanageformComponent,
     DetailmanageformComponent,
-    SigninComponent,
-    ForgotComponent,
+    SigninComponent,ForgotComponentOld,
+    ForgotComponent,SigninComponentOld,
     MobileComponent, OtpComponent, PasswordComponent,
     SignupComponent, AddrolesComponent, LanguageeditpopupComponent, InvestigationEditShortcodeComponent, EditconfigComponent,
     ManageformTittleComponent, ManageformAddtitleComponent,
@@ -186,7 +184,7 @@ import { InpatientlistComponent } from './inpatientlist/inpatientlist.component'
     FormsModule, ReactiveFormsModule,
     HttpModule,NguiAutoCompleteModule,
     ComponentsModule, NgSelectModule,
-    CKEditorModule, MatTooltipModule, NgMultiSelectDropDownModule,
+    CKEditorModule, MatTooltipModule, NgMultiSelectDropDownModule, NgxPaginationModule,
     MatButtonModule, MatCheckboxModule, MatSelectModule, MatInputModule, MultiselectDropdownModule,
     MatIconModule, MatToolbarModule, MatTableModule, MatPaginatorModule, MatExpansionModule, MatDialogModule, MatDatepickerModule,
     BrowserAnimationsModule, MatRadioModule, MatAutocompleteModule, MatSlideToggleModule,

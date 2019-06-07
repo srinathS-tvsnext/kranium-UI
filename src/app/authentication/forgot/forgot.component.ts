@@ -46,13 +46,10 @@ export class ForgotComponent implements OnInit {
 
           if (resdata['IsSuccess']) {
             this.mobilenum = resdata['ResponseObject'][0].Mobile;
-            console.log(this.mobilenum);
-            //sessionStorage.setItem('forgotdata', JSON.stringify(resdata['ResponseObject']));
+
             sessionStorage.setItem('username', data.user);
 
             sessionStorage.setItem('forgotdata', this.mobilenum);
-            //alert(JSON.stringify(resdata));
-            //console.log(resdata['ResponseObject'][0]);
             this.GlobalService.disableloader();
             this.openSnackBar("Check Your Mobile No", "Close");
             this.router.navigate(['/Mobile']);
@@ -78,9 +75,6 @@ export class ForgotComponent implements OnInit {
       debugger;
       if (resdata['IsSuccess']) {
         debugger;
-        // var body =JSON.parse(resdata['ResponseObject']);
-        // console.log(body);
-        //this.image_name = body.ResponseObject;
         this.image_name = resdata['ResponseObject'];
         console.log(this.image_name);
         debugger;

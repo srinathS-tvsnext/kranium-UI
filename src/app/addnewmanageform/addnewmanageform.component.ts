@@ -106,11 +106,8 @@ export class AddnewmanageformComponent implements OnInit {
         formdata.User_name = this.logindata_details[i].User_name;
         formdata.nr = this.logindata_details[i].nr;
       }
-      // savedata.CB= this.patientdata_details.;
     }
     socialmen.push(savedata, formdata);
-    //console.log(formdata.f_name,formdata.dept_id['name_formal'],formdata.doctor['name'],formdata.sub_menu_id);
-
     if(formdata.f_name && (formdata.dept_id || formdata.doctor) && formdata.sub_menu_id && savedata[0]['q_name'] && savedata[0]['a_type'] != ""){
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addform', socialmen).subscribe(resdata => {
       debugger;
@@ -121,7 +118,6 @@ export class AddnewmanageformComponent implements OnInit {
         this.openSnackBar("Save Successfully", "Close");
         this.router.navigate(['/Homescreen/Manageforms']);
       }
-      // routerLink='/Manageforms'
     })
   }else{
      this.openSnackBar("Please Enter the all Details", "Close");
@@ -162,9 +158,6 @@ export class AddnewmanageformComponent implements OnInit {
       },
       disableClose: false
     })
-    // this.dialogRef.afterClosed().subscribe(() => {
-    //   this.get_config();
-    // });
   }
 
   get_DoctorsName() {

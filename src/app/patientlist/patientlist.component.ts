@@ -20,7 +20,7 @@ export class PatientlistComponent implements OnInit {
   filterd_data; filtered_data; totalcounts_walk; totalcounts_app; totalcounts_comp; check_d_date;
   superadmin_details; DoctorsName; hidden_doc;doctor;
   constructor(private detectchnge: ChangeDetectorRef, private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
-  totalcount; totalcounts;cur_date_format;
+  totalcount; totalcounts;cur_date_format;config;showPagi
 
 
   ngOnInit() {
@@ -50,6 +50,17 @@ export class PatientlistComponent implements OnInit {
     // this.vital_details();
     // sessionStorage.removeItem('patientdata');
     this.get_DoctorsName();
+
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.filtered_data.length
+    };
+
+  }
+
+  pageChanged(event){
+    this.config.currentPage = event;
   }
 
   refresh() {
@@ -175,6 +186,7 @@ export class PatientlistComponent implements OnInit {
     } else {
       var active = '';
     }
+    this.showPagi = this.filtered_data.length == 0 ? false : true;
   }
 
   filterfunction() {
@@ -232,6 +244,7 @@ export class PatientlistComponent implements OnInit {
           this.openSnackBar("No Appointments Found in this Date", "Close");
         }
         // routerLink='/Homescreen/Patientlist'
+        
       })
     }
   }
@@ -297,6 +310,7 @@ export class PatientlistComponent implements OnInit {
       }
       // this.GlobalService.disableloader();
     }
+    this.showPagi = this.filtered_data.length == 0 ? false : true;
     this.detectchnge.detectChanges();
   }
 
@@ -318,7 +332,7 @@ export class PatientlistComponent implements OnInit {
             this.GlobalService.disableloader();
             this.pat_profile = resdata['ResponseObject'];
             sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
-            this.router.navigate(['/Homescreen/Patientdetails/Opsummary/']);
+            this.router.navigate(['/Homescreen/Patientdetails/summary/']);
           } else {
             this.GlobalService.disableloader();
             this.pat_profile = [];
@@ -395,7 +409,7 @@ export class PatientlistComponent implements OnInit {
             this.GlobalService.disableloader();
             this.pat_profile = resdata['ResponseObject'];
             sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
-            this.router.navigate(['/Homescreen/Patientdetails/Opsummary']);
+            this.router.navigate(['/Homescreen/Patientdetails/summary']);
           } else {
             this.GlobalService.disableloader();
             this.pat_profile = [];

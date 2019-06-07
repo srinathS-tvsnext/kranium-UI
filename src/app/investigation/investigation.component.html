@@ -164,9 +164,9 @@
                             <div *ngIf="sub_view_menu.sub_view_name=='Investigations'">
                                 <p class="headercolor">Investigation List</p>
                                 <div class="col-md-12" *ngIf="sub_view_menu.view">
-                                    <div class="divalignment" *ngFor="let category_tem of Investigation_patient">
-                                        <p class="header">{{category_tem.deptname}}</p>
-                                        <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group" *ngFor="let category_tem_list of category_tem.question">
+                                    <div class="divalignment">
+                                        <!-- <p class="header">{{category_tem.deptname}}</p> -->
+                                        <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group" *ngFor="let category_tem_list of investigation_data">
                                     <button type="button" class="btn btn-white">
                                         <span class="hidden-xs">{{category_tem_list.item_description}}</span>
                                         <!-- <span class="badge badgewhite" (click)="remove_old_tempdata_investigation(category_tem_list)">X</span> -->

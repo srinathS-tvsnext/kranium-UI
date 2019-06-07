@@ -31,10 +31,8 @@ export class OtpComponent implements OnInit {
     this.mobile_num = JSON.parse(sessionStorage.getItem('forgotdata'));
     console.log(this.mobile_num);
     this.otp_num = JSON.parse(sessionStorage.getItem('otp'));
-    //alert(this.otp_num);
     console.log(this.otp_num);
 
-    //this.get_current_otp(data);
   }
   numberFormControl = new FormControl('', [
     Validators.required,
@@ -67,7 +65,6 @@ export class OtpComponent implements OnInit {
   otp() {
     var mob = this.mobile_num;
     console.log(mob);
-    //this.router.navigate(['/Otp']);8122055789-testing mani num
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/get_forgot_otp', mob).subscribe(resdata => {
       debugger;
@@ -77,7 +74,6 @@ export class OtpComponent implements OnInit {
         debugger;
         sessionStorage.setItem('otp', resdata['ResponseObject']);
         this.GlobalService.disableloader();
-        //alert(JSON.stringify(resdata));
         this.openSnackBar("Enter the OTP No.", "Close");
       }
       else {
@@ -95,9 +91,6 @@ export class OtpComponent implements OnInit {
       debugger;
       if (resdata['IsSuccess']) {
         debugger;
-        // var body =JSON.parse(resdata['ResponseObject']);
-        // console.log(body);
-        //this.image_name = body.ResponseObject;
         this.image_name = resdata['ResponseObject'];
         console.log(this.image_name);
         debugger;

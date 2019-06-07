@@ -13,8 +13,7 @@ export class HomescreenComponent implements OnInit {
   acess_rights;
 
   ngOnInit() {
-    
-    // this.acess_rights = this.GlobalService.user_access_rights;
+
     this.acess_rights = JSON.parse(sessionStorage.getItem('user_access_rights'));
   }
 

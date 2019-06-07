@@ -25,7 +25,7 @@ export class PrescriptionComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router, public dialog: MatDialog, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
   freqquantity; arr; barand_gen_name; dropdown_hide;
   dialogRef_drug; template_pres_med_data; contenctdata; hide; showGreeting; exampleDatas; items;
-  brandname; pres_data; acess_rights; tmp; logindata_details;
+  brandname; pres_data; acess_rights; tmp; logindata_details;pres_diet;
   language_list; language_mrg; language_aftn; language_eve; language_nigt; language_bf; language_af;
   datevalidation; pres_doct; hide_editbtn; dietadvice; language; notes; minDt = new Date();
   ngOnInit() {
@@ -69,6 +69,7 @@ export class PrescriptionComponent implements OnInit {
     this.get_pres(this.patientdata_details);
     this.get_pres_doct(this.patientdata_details);
     this.get_language();
+    this.get_Diet(this.patientdata_details);
   }
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
@@ -925,6 +926,24 @@ export class PrescriptionComponent implements OnInit {
         this.GlobalService.disableloader();
       }
     })
+  }
+
+  get_Diet(patientdata_details){
+    this.GlobalService.enableloader();
+    debugger;
+    var pat_data = { uhid: patientdata_details[0].UHIDNO, enc_no: patientdata_details[0].EncounterNo };
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Pastencounter/get_patient_diet', pat_data).subscribe(resdata => {
+      if (resdata['IsSuccess']) {
+        this.GlobalService.disableloader();
+        debugger;
+        this.pres_diet = resdata['ResponseObject'];
+        // sessionStorage.setItem("previous_prescription", JSON.stringify(this.pres_data));
+      } else {
+        this.GlobalService.disableloader();
+      }
+
+    })
+    
   }
 
   get_pres_doct(patientdata_details) {

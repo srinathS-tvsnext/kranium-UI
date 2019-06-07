@@ -28,7 +28,6 @@ export class PasswordComponent implements OnInit {
   ngOnInit() {
     this.get_imagelist();
     this.user_name = sessionStorage.getItem('username');
-    //alert(this.user_name);
     console.log(this.user_name);
 
   }
@@ -83,9 +82,6 @@ export class PasswordComponent implements OnInit {
       debugger;
       if (resdata['IsSuccess']) {
         debugger;
-        // var body =JSON.parse(resdata['ResponseObject']);
-        // console.log(body);
-        //this.image_name = body.ResponseObject;
         this.image_name = resdata['ResponseObject'];
         console.log(this.image_name);
         debugger;

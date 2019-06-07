@@ -17,10 +17,9 @@ export class CreaterolesComponent implements OnInit {
   login_details;
   get_croles;
   crole;
-  // editdata={};
+
   dialogRef_croles;
-  //temp_role_data;
-  //ddd;
+
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -29,7 +28,6 @@ export class CreaterolesComponent implements OnInit {
     console.log(this.login_details);
     this.get_roles(this.login_details);
 
-    //this.temp_role_data = [];
 
   }
 
@@ -45,10 +43,6 @@ export class CreaterolesComponent implements OnInit {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Manageroles/create_roles', data).subscribe(resdata => {
       debugger;
       if (resdata['IsSuccess']) {
-
-        // this.id_surgery.push(resdata['ResponseObject']);
-        // console.log(this.id_surgery);
-        // this.get_surgery(this.patientdata_details);
         this.get_roles(this.login_details);
         this.data = {};
         this.GlobalService.disableloader();

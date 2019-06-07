@@ -19,7 +19,7 @@ export class EditManageformComponent implements OnInit {
 
   ngOnInit() {
     this.login_details = JSON.parse(sessionStorage.getItem('logindata'));
-    // this.choice = [];
+  
     this.formdatacr = [{ id: 1, q_name: '', a_type: '', c_length: '', o_count: '', lengthss: false, count: false, optioncc: [], addbtn: 0 }];
     this.deleteic = false;
     this.addic = false;
@@ -47,7 +47,7 @@ export class EditManageformComponent implements OnInit {
   }
 
   delete(choicesss) {
-    // console.log(choicesss.name);
+
     if(confirm("Are you sure delete this question?")){
       this.GlobalService.enableloader();
       choicesss.nr = this.login_details[0]['nr'];
@@ -102,7 +102,6 @@ export class EditManageformComponent implements OnInit {
           }
         }
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 

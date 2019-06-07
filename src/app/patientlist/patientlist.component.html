@@ -125,13 +125,13 @@
                                         <td style='text-align: center'>Phone No</td>
                                         <td style='text-align: center'>Gender/Age</td>
                                         <td style='text-align: center'>Encounter No.</td>
-                                        <td style='text-align: center'>Consultation type</td>
+                                        <td style='text-align: center'>Consultation Type</td>
                                         <td style='text-align: center'>Payment Status</td>
                                         <td style='text-align: center'>Status</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let indv_socialmention of filtered_data; let i = index" (click)="clickOnPatient(indv_socialmention)"
+                                    <tr *ngFor="let indv_socialmention of filtered_data | paginate: config; let i = index" (click)="clickOnPatient(indv_socialmention)"
                                     [class.pointer]="indv_socialmention.appt_status=='walkin' || indv_socialmention.appt_status=='checkedin' || indv_socialmention.appt_status=='done'">
                                         <td>{{indv_socialmention.DATETIME.slice(11, 19)}} </td>
                                         <td>{{indv_socialmention.name}}</td>
@@ -161,6 +161,10 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div *ngIf="showPagi" style="text-align: center">
+                            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
