@@ -31,8 +31,6 @@ export class EditconfigComponent implements OnInit {
   }
 
   get_ip_det(){
-    // var ip_adds = this.ipdetail.get_detail.ip;
-    // this.editdata.ip_adr = ip_adds;
     var inst_ip_adds = this.ipdetail.get_detail.insert_ip;
     this.editdata.inst_ip_adr = inst_ip_adds;
     var get_ip_adds = this.ipdetail.get_detail.get_ip;

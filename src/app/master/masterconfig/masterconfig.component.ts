@@ -31,9 +31,6 @@ export class MasterconfigComponent implements OnInit {
       console.log(resdata);
       if (resdata) {
         this.GlobalService.disableloader();
-        debugger;
-        //var roo =JSON.parse(resdata['_body']);
-        //this.config = roo.ResponseObject;
         this.configuration = resdata['ResponseObject'];
         console.log(this.configuration);
       } else {

@@ -10,7 +10,6 @@ import { GlobalService } from '../global.service';
 })
 export class ReportviewComponent implements OnInit {
   dialogRef;
-  // dialoggrapRef;
 
   constructor(public dialogviewRef: MatDialogRef<ReportviewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private http: Http, public dialog: MatDialog) { }

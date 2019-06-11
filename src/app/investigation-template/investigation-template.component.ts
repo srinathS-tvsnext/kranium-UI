@@ -64,7 +64,6 @@ export class InvestigationTemplateComponent implements OnInit {
           this.GlobalService.disableloader();
           this.openSnackBar("Error! , Please Retry", "Close");
         }
-        // routerLink='/Homescreen/Patientlist'
       })
     }
 

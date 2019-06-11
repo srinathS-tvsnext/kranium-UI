@@ -1,14 +1,10 @@
-//import { Injectable } from '@angular/core';
 import { Injectable, Inject, OnInit } from '@angular/core';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { DOCUMENT } from '@angular/platform-browser';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-// import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { HttpClient } from '@angular/common/http';
-// import { Router } from '@angular/router';
 
 @Injectable()
 export class GlobalService {
@@ -17,9 +13,9 @@ export class GlobalService {
   viewPatientListPage = false;
 
 
-   baseurl = "http://localhost/global";
- // baseurl = "http://115.112.102.209/global";
-  // baseurl = "http://10.91.19.183/global";
+  // baseurl = "http://localhost/global";
+  // baseurl = "http://115.112.102.209:8080/global";
+   baseurl = "http://10.91.19.183/global";
 
   // baseurl = "http://" + window.location.hostname + ":" + window.location.port + "/global";
   // baseurl = "http://" + window.location.hostname + "/global";
@@ -34,13 +30,6 @@ export class GlobalService {
 
   constructor(private http: HttpClient, private router: Router, location: Location) {
     this.location = location;
-    // console.log(this.location);
-    // var hostname = this.window.location.hostname;
-    // var titlee = this.location.prepareExternalUrl(this.location.path());
-    // console.log(titlee);
-    // console.log(window.location.hostname);
-    // console.log(window.location.host);
-    // console.log(window.location.port);
   }
 
 
@@ -80,8 +69,6 @@ export class GlobalService {
       this.http.post(this.baseurl + '/api/index.php/v1/get/Common/get_access_rights_activity', this.login_user).subscribe(resdata => {
         if (resdata['IsSuccess']) {
           console.log(resdata['ResponseObject']);
-          // this.user_access_rights = JSON.parse(resdata['ResponseObject'][0].access_rights);
-          // console.log(this.user_access_rights);
           sessionStorage.setItem('user_access_rights', resdata['ResponseObject'][0].access_rights);
         }
       })
@@ -89,8 +76,6 @@ export class GlobalService {
       this.http.post(this.baseurl + '/api/index.php/v1/get/Common/get_access_rights_superadmin', this.login_user_superadmin).subscribe(resdata => {
         if (resdata['IsSuccess']) {
           console.log(resdata['ResponseObject']);
-          // this.user_access_rights = JSON.parse(resdata['ResponseObject'][0].access_rights);
-          // console.log(this.user_access_rights);
           sessionStorage.setItem('user_access_rights', resdata['ResponseObject'][0].access_rights);
         }
       })

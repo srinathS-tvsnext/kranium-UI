@@ -12,7 +12,11 @@ import { MatSnackBar } from '@angular/material';
 })
 export class MasterchangepasswordComponent implements OnInit {
 
-  data = {};
+  data = {
+    currentpass: '',
+    newpass: '',
+    re_newpass: '',
+  };
   login_details;
   closeeye_h0;openeye_h0;closeeye_h1;openeye_h1;closeeye_h2;openeye_h2;
   
@@ -38,24 +42,23 @@ export class MasterchangepasswordComponent implements OnInit {
   changePasswd(data) {
     data.User_ID = this.login_details[0].User_ID;
     data.nr = this.login_details[0].nr;
-    if ((data.currentpass && data.newpass && data.re_newpass) == undefined) {
-      debugger;
-      //alert("Please Enter the Password");
+    if ((data.currentpass && data.newpass && data.re_newpass) == undefined || (data.currentpass && data.newpass && data.re_newpass) == '') {
       this.openSnackBar("Please Enter the Fields", "Close");
     }
     else {
-      debugger;
-      //data.username = this.user_name;
       if (data.newpass == data.re_newpass) {
-        debugger;
         this.GlobalService.enableloader();
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/reset_password', data).subscribe(resdata => {
-          debugger;
+          
           console.log(resdata);
           if (resdata['IsSuccess']) {
             debugger;
             this.GlobalService.disableloader();
-            this.data = {};
+            this.data = {
+              currentpass: '',
+              newpass: '',
+              re_newpass: '',
+            };
             this.openSnackBar("Password Changed Successfully !!", "Close");
           } else {
             this.GlobalService.disableloader();

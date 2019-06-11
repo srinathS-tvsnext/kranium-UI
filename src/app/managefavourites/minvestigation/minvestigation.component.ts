@@ -11,5 +11,8 @@ export class MinvestigationComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
+  investigationlistpopupclose() {
+    
+  }
 }

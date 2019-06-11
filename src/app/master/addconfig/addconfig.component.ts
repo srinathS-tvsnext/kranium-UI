@@ -38,7 +38,6 @@ export class AddconfigComponent implements OnInit {
   ];
 
   save_config(data){
-    // console.log(data);
     data.nr = this.login_details[0]['nr'];
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/add_config', data).subscribe(resdata => {

@@ -52,7 +52,6 @@ export class ManageformEdittittleComponent implements OnInit {
        }else{
           this.GlobalService.disableloader();
           this.dialogRef.close();
-          // this.openSnackBar("Error ! Retry", "Close");
         }
       })
     }
@@ -60,7 +59,6 @@ export class ManageformEdittittleComponent implements OnInit {
 
   get_tittle_det(){
     var head = this.tittledetail.get_detail.history_main_form_name;
-    // console.log(eng);
     this.editdata.tittle = head;
   }
 

@@ -44,13 +44,11 @@ export class EditMasterfollowupsComponent implements OnInit {
     var conslt_id = this.followupsdetail.get_detail.sms_cross_consultaion_id;
     var department = this.followupsdetail.get_detail.department;
     var doct_name = this.followupsdetail.get_detail.doctor_name;
-    // var doct_mobile = this.followupsdetail.get_detail.doc_mobileno;
     var asst_name = this.followupsdetail.get_detail.assistant_name;
     var asst_mobile = this.followupsdetail.get_detail.ast_mobileno;
 
     this.editdata.department = department;
     this.editdata.doctor = doct_name;
-    // this.editdata.doctor_mob = doct_mobile;
     this.editdata.asst_name = asst_name;
     this.editdata.asst_mob = asst_mobile;
     

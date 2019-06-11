@@ -103,21 +103,22 @@ export class SigninComponent implements OnInit {
   get_imagelist() {
     this.GlobalService.enableloader();
     debugger;
-    this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_active_image').subscribe(resdata => {
-      debugger;
-      if (resdata['IsSuccess']) {
-        debugger;
-        this.image_name = resdata['ResponseObject'];
-        console.log(this.image_name);
-        debugger;
-        this.GlobalService.disableloader();
-      }
-      else {
-        debugger;
-        this.image_name = resdata['ErrorObject'];
-        this.GlobalService.disableloader();
-      }
-    })
+    // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_active_image').subscribe(resdata => {
+    //   debugger;
+    //   if (resdata['IsSuccess']) {
+    //     debugger;
+        // this.image_name = resdata['ResponseObject'];
+        this.image_name = [{"login_image_id":"12","file_name":"1516790859_loginbg.jpg","thumb_file_name":"1516790859_loginbg_thumb.jpg","active":"1","delete_active":"1","MD":"2018-01-24 16:17:39"}];
+      //   console.log(this.image_name);
+      //   debugger;
+      //   this.GlobalService.disableloader();
+      // }
+      // else {
+      //   debugger;
+      //   this.image_name = resdata['ErrorObject'];
+      //   this.GlobalService.disableloader();
+      // }
+    // })
   }
 
 

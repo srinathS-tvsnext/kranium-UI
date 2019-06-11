@@ -25,8 +25,6 @@ export class InvestigationComponent implements OnInit {
   editbtn_hdn = false;
   cancelbtn_hdn = true;
   ngOnInit() {
-    // console.log(this.GlobalService.user_access_rights);
-    // this.acess_rights = this.GlobalService.user_access_rights;
     this.date_status = JSON.parse(sessionStorage.getItem('datestatus'));
     this.acess_rights = JSON.parse(sessionStorage.getItem('user_access_rights'));
     this.patientdata_details = JSON.parse(sessionStorage.getItem('patientdata'));
@@ -75,7 +73,6 @@ export class InvestigationComponent implements OnInit {
     })
   }
   edit_investigation_temp(data) {
-    // this.hidden=false;
     this.GlobalService.enableloader();
     debugger;
     // get_fav_investigation_list
@@ -106,9 +103,6 @@ export class InvestigationComponent implements OnInit {
       disableClose: true
     })
   }
-  //Investigation_list_componenet
-  //Investigation List
-  // get_investifation_department_masters
   step = 0;
 
   setStep(index: number) {
@@ -135,13 +129,11 @@ export class InvestigationComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
   get_Investigation_category_list(data_invest_id) {
     this.hidden = false;
     this.GlobalService.enableloader();
-    // this.Investigation_template_category=[];
     debugger;
     var id = data_invest_id.nr
     this.invest_caterogyname = data_invest_id.name_formal;
@@ -154,7 +146,6 @@ export class InvestigationComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
 
 
@@ -169,7 +160,6 @@ export class InvestigationComponent implements OnInit {
         index = i;
       }
     });
-    //console.log(index, filteredObj);
     if (index != -1) {
       this.categorylist_array.splice(index, 1);
     }
@@ -177,7 +167,6 @@ export class InvestigationComponent implements OnInit {
       if (vreate_categorylist.checkbox) {
         this.dept_hidden = false;
         this.categorylist_array.push(vreate_categorylist);
-        // console.log(this.categorylist_array);
       
         //distinct check
         if(this.Investigation_template_category){
@@ -232,17 +221,11 @@ export class InvestigationComponent implements OnInit {
       for (var i = 0; i < this.Investigation_template_category.length; i++) {
         for (var j = 0; j < this.Investigation_template_category[i].question.length; j++) {
           if (this.Investigation_template_category[i].question[j].item_code == old_temp_data.item_code) {
-            // this.Investigation_category[i].checkbox = false;
             this.Investigation_template_category[i].question.splice(j, 1);
           }
         }
       }
       console.log(this.Investigation_template_category);
-      // for (var j = 0; j < this.Investigation_category.length; j++) {
-      //   if (this.Investigation_category[j].item_code == rem_cat.item_code) {
-      //     this.Investigation_category[j].checkbox = false;
-      //   }
-      // }
     }
   }
   save_investigation(data, data_edit) {
@@ -262,7 +245,6 @@ export class InvestigationComponent implements OnInit {
         }
       }
     }
-    // console.log(this.array_investi_temperary_favadd);
     if (this.array_investi_temperary_favadd.length != 0) {
       this.GlobalService.enableloader();
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_fav_Inestigation_catogory', this.array_investi_temperary_favadd).subscribe(resdata => {
@@ -313,12 +295,7 @@ export class InvestigationComponent implements OnInit {
         }
       }
     }
-    // var enc_no = this.patientdata_details[0]['EncounterNo'];
-    // var uhid = this.patientdata_details[0]['UHIDNO'];
-    // var nr = this.login_details[0]['nr'];
-    // var pat_detail = { encounter_no: enc_no, uhid: uhid, nr: nr };
 
-    // this.array_investi_temperary.push(pat_detail);
     console.log(this.array_investi_temperary);
     if (this.array_investi_temperary.length != 0) {
       this.GlobalService.enableloader();
@@ -364,7 +341,6 @@ export class InvestigationComponent implements OnInit {
         } else {
           this.hiddengif = false;
           this.Investigation_category = [];
-          // this.GlobalService.disableloader();
         }
       });
     } else {

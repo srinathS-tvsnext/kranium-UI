@@ -36,7 +36,6 @@ export class LanguageComponent implements OnInit {
         debugger;
         var body =JSON.parse(resdata['_body']);
         this.languages = body.ResponseObject;
-        // this.languages = resdata['ResponseObject'];
         console.log(this.languages);
         debugger;
         this.GlobalService.disableloader();

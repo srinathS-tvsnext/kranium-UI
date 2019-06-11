@@ -32,7 +32,8 @@ export class ManagefavouritesComponent implements OnInit {
   dialogRef; dialogRef_drug; template_pres_med_data; contenctdata; Investigation; Investigation_category; invest_caterogyname
   categorylist_array; Investigation_template; Investigation_template_category = []; hidden; opsummar_fav; opsummary_template_list;
   class_active; class_op_active; medicine_kranium_list; medicine_kranium_list1; medicine_kranium__brandname_list; newarray; hiddengif;
-
+  // initialize for build
+  investigation_kranium_list;
   pageSizeOptions = [5, 10, 25, 100];
   pageSizeOptions_drug = [5, 10, 25, 100];
   pageSizeOptions_pres = [5, 10, 25, 100];
@@ -86,14 +87,7 @@ export class ManagefavouritesComponent implements OnInit {
     this.get_opsummary_template();
     this.get_medicine_pres();
     this.get_medicine_drug();
-    // this.get_medicine_kranium_list();
-    // this.get_medicine_kranium__brandname_list();
-    // this.class_active = false;
-    // this.class_op_active=false;
-
-    // this.firstNameControl.valueChanges
-    //   .debounceTime(1000)
-    //   .subscribe(resdata => this.get_medicine_kranium_list(resdata));
+ 
     this.hiddengif = true;
   }
   //add_favouritesprescriptionmedicine
@@ -104,9 +98,6 @@ export class ManagefavouritesComponent implements OnInit {
     });
   }
 
-  //this.GlobalService.enableloader();
-  // this.GlobalService.disableloader();
-  //this.openSnackBar("Save Successfully", "Close");
 
   get_medicine_kranium_list(data_con) {
     // get_medicinelist
@@ -178,7 +169,6 @@ export class ManagefavouritesComponent implements OnInit {
     debugger;
     if (data_con.length > 3) {
       this.newarray = { "searchdata": data_con };
-      // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_medicinelist').subscribe(resdata => {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list_gen', this.newarray).subscribe(resdata => {
         if (resdata['IsSuccess']) {
           debugger;
@@ -300,7 +290,6 @@ export class ManagefavouritesComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
   cancel_drug() {
@@ -337,7 +326,6 @@ export class ManagefavouritesComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
   cancel_pres() {
@@ -374,8 +362,6 @@ export class ManagefavouritesComponent implements OnInit {
         this.GlobalService.disableloader();
       }
     })
-    // console.log(data);
-    // this.med = { 'brand_name': data.brand_name, 'duration_capt': data.duration_capt, 'duration_no': data.duration_no, 'frequency': data.frequency, 'generic_name': data.generic_name, 'prescription_template_map_id': data.prescription_template_map_id };
   }
 
   editmedicine_pres(data) {
@@ -433,9 +419,7 @@ export class ManagefavouritesComponent implements OnInit {
             data.temp_id = this.contenctdata.manage_favourites_prescription_id;
           }
         }
-        // this.idarray.push(data);
-        // this.template_pres_med_data.push(data);
-        // this.med = {};
+
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_favouritesprescriptionmedicine', data).subscribe(resdata => {
           debugger;
           console.log(resdata);
@@ -470,7 +454,6 @@ export class ManagefavouritesComponent implements OnInit {
             this.GlobalService.disableloader();
             this.openSnackBar("Added Error ! Retry", "Close");
           }
-          // routerLink='/Homescreen/Patientlist'
         })
       }
       else {
@@ -481,32 +464,18 @@ export class ManagefavouritesComponent implements OnInit {
           if (resdata['IsSuccess']) {
             debugger;
             this.edittemp_pres(this.contenctdata);
-            // this.idarray.push({ "id": resdata['id'] })
-            // this.formdatactr = resdata;
-            // console.log(this.formdatactr);
+
             this.GlobalService.disableloader();
             this.openSnackBar("Updated Successfully", "Close");
           } else {
             this.GlobalService.disableloader();
             this.openSnackBar("Updated Error ! Retry", "Close");
           }
-          // routerLink='/Homescreen/Patientlist'
         })
       }
     }
   }
 
-  // console.log(this.template_pres_med_data);
-  // var uniqueid = [];
-  // var uniqueobject = [];
-  // for (var i = 0; i < this.template_pres_med_data.length; i++) {
-  //   if (uniqueid.indexOf(this.template_pres_med_data[i].item_code) === -1) {
-  //     uniqueid.push(this.template_pres_med_data[i].item_code);
-  //     uniqueobject.push(this.template_pres_med_data[i]);
-  //   }
-  // }
-  // this.template_pres_med_data = uniqueobject;
-  // console.log(uniqueobject);
   favs = [
     { value: 'steak-0', viewValue: 'Favourite Type 1' },
     { value: 'pizza-1', viewValue: 'Favourite Type 2' },
@@ -606,7 +575,6 @@ export class ManagefavouritesComponent implements OnInit {
         debugger;
         this.Investigation_category = resdata['ResponseObject'];
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 
@@ -631,9 +599,7 @@ export class ManagefavouritesComponent implements OnInit {
     if (this.categorylist_array) {
       for (var i = 0; i < this.categorylist_array.length; i++) {
         if (this.categorylist_array[i].item_code == rem_cat.item_code) {
-          // this.Investigation_category[i].checkbox = false;
           this.categorylist_array.splice(i, 1);
-
         }
       }
       for (var j = 0; j < this.Investigation_category.length; j++) {
@@ -691,10 +657,7 @@ export class ManagefavouritesComponent implements OnInit {
       },
       disableClose: false
     })
-    // this.dialogRef.afterClosed(obj => {
-    //   debugger;
-    //   this.get_investigation_template();
-    // })
+
     this.dialogRef.afterClosed().subscribe(() => {
       // unsubscribe onAdd
       this.get_investigation_template();
@@ -762,11 +725,6 @@ export class ManagefavouritesComponent implements OnInit {
           }
         }
         console.log(this.Investigation_template_category);
-        // for (var j = 0; j < this.Investigation_category.length; j++) {
-        //   if (this.Investigation_category[j].item_code == rem_cat.item_code) {
-        //     this.Investigation_category[j].checkbox = false;
-        //   }
-        // }
       }
 
       old_temp_data.nr = this.login_details[0]['nr'];
@@ -823,9 +781,6 @@ export class ManagefavouritesComponent implements OnInit {
   }
   edit_opsummary(data_opsummary) {
     debugger;
-    // $("#tab_default_13").addClass('active');
-    // this.class_active = true;
-    // this.class_op_active=false;
     console.log(data_opsummary);
     this.opsummary_temp_id = data_opsummary.manage_favourites_opsummary_id;
     this.opsummary_temp_name = data_opsummary.template_name;
@@ -866,16 +821,6 @@ export class ManagefavouritesComponent implements OnInit {
       }
     }
   }
-  // get_medicine_kranium__brandname_list() {
-  //   // get_medicinebrandnamelist
-  //   this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_medicinebrandnamelist').subscribe(resdata => {
-  //     if (resdata['IsSuccess']) {
-  //       debugger;
-  //       this.medicine_kranium__brandname_list = resdata['ResponseObject'];
-  //       console.log(this.medicine_kranium__brandname_list);
-  //     }
-  //   })
-  // }
 
   edit_presc_panel(pres_data) {
     debugger;
@@ -890,23 +835,8 @@ export class ManagefavouritesComponent implements OnInit {
       this.get_medicine_pres();
     });
 
-
-    debugger;
-    // this.GlobalService.enableloader();
-    // debugger;
-    // this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/update_pres_temp_name', pres_data).subscribe(resdata => {
-    //   if (resdata['IsSuccess']) {
-    //     debugger;
-    //     console.log(resdata);
-    //     this.GlobalService.disableloader();
-    //   } else {
-    //     this.GlobalService.disableloader();
-    //   }
-    // })
   }
   edit_drug_panel(drug_data) {
-    // this.GlobalService.enableloader();
-    debugger;
     this.dialogRef_drug = this.dialog.open(TemplatenameDrugPopupComponent, {
       data: {
         Id: drug_data
@@ -917,15 +847,6 @@ export class ManagefavouritesComponent implements OnInit {
       // unsubscribe onAdd
       this.get_medicine_drug();
     });
-    // this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/update_drug_temp_name', drug_data).subscribe(resdata => {
-    //   if (resdata['IsSuccess']) {
-    //     debugger;
-    //     console.log(resdata);
-    //     this.GlobalService.disableloader();
-    //   } else {
-    //     this.GlobalService.disableloader();
-    //   }
-    // })
   }
   edit_inv_panel(inv_data) {
     this.dialogRef_drug = this.dialog.open(InvestigationTemplateComponent, {
@@ -939,19 +860,6 @@ export class ManagefavouritesComponent implements OnInit {
       this.get_investigation_template();
     });
 
-
-    // debugger;
-    // this.GlobalService.enableloader();
-    // debugger;
-    // this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/update_inv_temp_name', inv_data).subscribe(resdata => {
-    //   if (resdata['IsSuccess']) {
-    //     debugger;
-    //     console.log(resdata);
-    //     this.GlobalService.disableloader();
-    //   } else {
-    //     this.GlobalService.disableloader();
-    //   }
-    // })
   }
   edit_op_panel(op_data) {
     console.log(op_data);
@@ -968,10 +876,8 @@ export class ManagefavouritesComponent implements OnInit {
   genericby_brandname(gen_brand) {
     debugger;
     this.newarray = { "searchdata": gen_brand };
-    // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_medicinelist').subscribe(resdata => {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list_gen', this.newarray).subscribe(resdata => {
       if (resdata['IsSuccess']) {
-        debugger;
         this.barand_gen_name = resdata['ResponseObject'];
         console.log(this.barand_gen_name);
       }
@@ -996,7 +902,6 @@ export class ManagefavouritesComponent implements OnInit {
     debugger;
     if (data_con.length) {
       this.newarray = { "searchdata": data_con };
-      // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_medicinelist').subscribe(resdata => {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list', this.newarray).subscribe(resdata => {
         if (resdata['IsSuccess']) {
           debugger;

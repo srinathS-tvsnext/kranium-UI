@@ -21,9 +21,6 @@ export class VitalsComponent implements OnInit {
 
     this.get_vital_patient(this.patientdata_details);
     this.vitals_data = {};
-    // this.GlobalService.get_access_rights_activity();
-    // console.log(this.GlobalService.user_access_rights);
-    // this.acess_rights = this.GlobalService.user_access_rights;
     this.acess_rights = JSON.parse(sessionStorage.getItem('user_access_rights'));
   }
   get_vital_patient(patientdata_details) {
@@ -51,9 +48,7 @@ export class VitalsComponent implements OnInit {
             resData[count][this.vitals_data.Formvalue[j].name] = this.vitals_data.Formvalue[j].value;
           }
           this.vitals_data.Formvalue = resData;
-          
-          // this.addvital_btn = false;
-          // this.editvital_btn = true;
+
           if(this.GlobalService.viewPatientListPage === false && this.vitals_data.Formvalue.length >0) {
             this.addvital_btn = false;
             this.editvital_btn = true;
@@ -84,25 +79,12 @@ export class VitalsComponent implements OnInit {
           this.vitals_data = "";
           this.addvital_btn = true;
           this.editvital_btn = false;
-          // document.getElementById('addvital_btn').style.visibility = 'visible';
-          // document.getElementById('editvital_btn').style.display = 'none';
           this.GlobalService.disableloader();
         }
       })
     }
   }
 
-
-  // vital_details() {
-  //   this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitaldetail').subscribe(resdata => {
-  //     if (resdata['IsSuccess']) {
-  //       sessionStorage.setItem('vital_details_session', JSON.stringify(resdata['ResponseObject']));
-  //       var vital_details_cc = JSON.parse(sessionStorage.getItem('vital_details_session'));
-  //       this.vitals_data_new = vital_details_cc;
-  //       console.log(this.vitals_data_new);
-  //     }
-  //   })
-  // }
   edit_vitals(data_edit) {
     if (data_edit.Formvalue) {
       for (var i = 0; i < data_edit.Formvalue.length; i++) {

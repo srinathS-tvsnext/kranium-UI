@@ -56,7 +56,6 @@ export class LanguageeditpopupComponent implements OnInit {
   }
 
   get_lang_det(){
-    // console.log(this.languagedetail);
     
     var mrg = this.languagedetail.get_detail.mrg;
     var aftn = this.languagedetail.get_detail.aftn;

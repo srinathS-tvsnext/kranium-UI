@@ -46,9 +46,6 @@ export class InvestigationShortcodeComponent implements OnInit {
       console.log(resdata);
       if (resdata) {
         this.GlobalService.disableloader();
-        debugger;
-        //var roo =JSON.parse(resdata['_body']);
-        //this.config = roo.ResponseObject;
         this.shortcodes = resdata['ResponseObject'];
         console.log(this.shortcodes);
       } else {

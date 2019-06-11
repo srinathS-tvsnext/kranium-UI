@@ -28,12 +28,10 @@ export class LoginBackgroundImgComponent implements OnInit {
   }
 
   image_upload(event) {
-    //console.log(event);
     let fileList: FileList = event;
     if (fileList.length > 0) {
       this.GlobalService.enableloader();
       this.chosenfile = fileList[0];
-      //console.log(this.chosenfile);
       let formData: FormData = new FormData();
       formData.append("userfile", this.chosenfile);
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/file_up', formData).subscribe(resdata => {
@@ -67,7 +65,6 @@ export class LoginBackgroundImgComponent implements OnInit {
         debugger;
         var body = JSON.parse(resdata['_body']);
         this.image_name = body.ResponseObject;
-        //  this.image_name = resdata['ResponseObject'];
         this.get_auto_check_image();
         console.log(this.image_name);
         debugger;
@@ -147,50 +144,6 @@ export class LoginBackgroundImgComponent implements OnInit {
     }
   }
 
-  //old flow 
-
-  // change_checkbox(check_image) {
-  //   for (var i = 0; i < this.image_name.length; i++) {
-  //     if (this.image_name[i].file_name != check_image.file_name) {
-  //       this.image_name[i].checkbox = false;
-  //     }
-  //   }
-  // }
-
-  // active_checkbox() {
-  //   var act_img = this.active_image[0];
-  //   debugger;
-  //   for (var i = 0; i < this.image_name.length; i++) {
-  //     if (this.image_name[i].file_name == act_img.file_name) {
-  //       debugger;
-  //       this.image_name[i].checkbox = true;
-  //     }
-  //   }
-  // }
-
-  // change_bg(image_data) {
-  //   console.log(image_data);
-  //   this.GlobalService.enableloader();
-  //   this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/login_image_update', image_data).subscribe(resdata => {
-  //     if (resdata) {
-  //       var body = JSON.parse(resdata['_body']);
-  //       console.log(body);
-  //       if (body['IsSuccess']) {
-  //         this.openSnackBar("Login Background Changed Successfully", "Close");
-  //         this.GlobalService.disableloader();
-  //       } else {
-  //         this.GlobalService.disableloader();
-  //         this.openSnackBar("Some Error !", "Close");
-  //       }
-  //     }
-  //     else {
-  //       this.GlobalService.disableloader();
-  //       this.openSnackBar("Some Error !", "Close");
-  //     }
-  //   })
-  // }
-
-  //old flow 
 
   active_checkbox() {
     var act_img = this.active_image;
@@ -218,7 +171,6 @@ export class LoginBackgroundImgComponent implements OnInit {
           console.log(body);
           if (body['IsSuccess']) {
             this.openSnackBar("Image Added Successfully", "Close");
-            // this.openSnackBar("Login Background Changed Successfully", "Close");
             this.GlobalService.disableloader();
           } else {
             this.GlobalService.disableloader();

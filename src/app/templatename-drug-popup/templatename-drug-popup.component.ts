@@ -74,7 +74,6 @@ export class TemplatenameDrugPopupComponent implements OnInit {
         this.template_drug_data = resdata['ResponseObject'];
         this.dialogRef.close();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 

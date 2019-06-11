@@ -42,7 +42,6 @@ export class PrescriptionshortageComponent implements OnInit {
 
   changesubstitutes(clickdata) {
     console.log(clickdata);
-    // console.log(this.medicine_kranium);
     for (var i = 0; i < this.medicine_kranium.length; i++) {
       if (this.medicine_kranium[i].itemcode != clickdata.itemcode) {
         this.medicine_kranium[i].checkbox = false;

@@ -46,20 +46,7 @@ export class OpsummaryComponent implements OnInit {
     this.get_history_qa(this.patientdata_details);
     this.get_chief_complaints_patient_details(this.patientdata_details);
     this.get_icd_codes_patient(this.patientdata_details);
-    // var data = {
-    //   Active: "1",
-    //   CB: null,
-    //   CD: "2018-01-09 15:44:18",
-    //   MB: null,
-    //   MD: null,
-    //   manage_favourites_opsummary_id: "9",
-    //   opsummary_template: { "firstname": true, "Occupation": true, "Age": true, "Civil": true, "District": true, "Billing": true, "Phone": true, "Status": true, "Refferance": true, "Religion": true, "Mobile": true, "Insurance": true, "State": true, "Email": true, "Nationality": true, "Corporate": true, "Country": true, "Town": true, "Blood": true, "fathertname": true, "Privilege": true, "lastname": true, "Qualification": true, "DOB": true, "Address": true, "Height": true, "Weight": true, "Temperature": true, "BP": true, "Respiratory": true, "BSA": true, "BMI": true, "Pulse": true, "Pain_Assessment": true, "Preferred_Language": true, "Notes": true, "Allergy": true, "Active_Medication": true, "History_Questions_Answers": true, "Examination_Questions_Answers": true, "ICD_description": true, "Consultation_Notes": true, "Procedure": true, "Current_Investigation": true, "Current_Prescription": true, "Diet_Advice": true, "Table_View": true, "Graphical_View": true, "OP_Follow_up": true, "Recommend_IP_Admission": true, "Surgery_Procedure": true, "Cross_Consultation": true, "NOTES_followup": true },
-    //   template_name: "ALL"
-    // };
-    // this.template_change(data);
-    // v1/post/pastencounter/get_history_icd_codes
-    // manage_favourites_opsummary_id
-    // this.opp_template=this.opsummary_template_list[0];
+  
   }
   template_change(data_termp) {
     debugger;
@@ -98,7 +85,6 @@ export class OpsummaryComponent implements OnInit {
           this.GlobalService.disableloader();          
         }
       });
-      // routerLink='/Homescreen/Patientlist'
     })
   }
   get_opsummary_template() {
@@ -175,8 +161,6 @@ export class OpsummaryComponent implements OnInit {
   get_history_consultation_notes(data) {
 
     this.GlobalService.enableloader();
-    debugger;
-    // this.search = { "search": data };
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Pastencounter/get_history_consultation_notes', data).subscribe(resdata => {
       debugger;
       console.log(resdata);
@@ -187,7 +171,6 @@ export class OpsummaryComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 
@@ -218,7 +201,6 @@ export class OpsummaryComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 
@@ -255,7 +237,6 @@ export class OpsummaryComponent implements OnInit {
       if (resdata['IsSuccess']) {
         debugger;
         this.history_qa = resdata['ResponseObject'];
-        //this.history_qa = JSON.parse(this.history_qa);
         console.log(this.history_qa);
       }
     })
@@ -309,7 +290,6 @@ export class OpsummaryComponent implements OnInit {
 
   }
 
-  //width:180px;height:50px; logo.jpg
   printPreview() {
     var toPrint = document.getElementById('printSectionId');
     var popupWin = window.open('', '_blank', 'width=800,height=600,location=no,left=200px');

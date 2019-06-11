@@ -12,4 +12,7 @@ export class MreportsComponent implements OnInit {
   ngOnInit() {
   }
 
+  reportdetview() {
+    
+  }
 }

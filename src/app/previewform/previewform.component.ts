@@ -21,8 +21,6 @@ export class PreviewformComponent implements OnInit {
   ngOnInit() {
     this.login_details = JSON.parse(sessionStorage.getItem('logindata'));
     console.log(this.get_detail);
-    // console.log(this.get_detail[0].form_id);
-    // this.formdatacr = this.get_detail;
     this.get_preview_det(this.get_detail);
   }
 
@@ -47,7 +45,6 @@ export class PreviewformComponent implements OnInit {
         this.formdatacr = resdata['ResponseObject'];
         console.log(this.formdatacr);
       }
-      // routerLink='/Homescreen/Patientlist'
     })
 
   }

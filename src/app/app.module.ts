@@ -62,7 +62,6 @@ import { MobileComponent } from './authentication/mobile/mobile.component';
 import { OtpComponent } from './authentication/otp/otp.component';
 import { PasswordComponent } from './authentication/password/password.component';
 import { SigninComponent } from './authentication/signin/signin.component';
-import { SigninComponentOld } from './authentication/signin_old/signin_old.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { SignupComponent } from './authentication/signup/signup.component';
 
@@ -74,7 +73,7 @@ import { MhistoryComponent } from './managefavourites/mhistory/mhistory.componen
 import { MexaminationComponent } from './managefavourites/mexamination/mexamination.component';
 import { MdiagnosisComponent } from './managefavourites/mdiagnosis/mdiagnosis.component';
 import { MinvestigationComponent } from './managefavourites/minvestigation/minvestigation.component';
-import { MprescriptionComponent } from './managefavourites/mprescription/mprescription.component';
+//import { MprescriptionComponent } from './managefavourites/mprescription/mprescription.component';
 import { MreportsComponent } from './managefavourites/mreports/mreports.component';
 import { MfollowupsComponent } from './managefavourites/mfollowups/mfollowups.component';
 import { AddrolesComponent } from './addroles/addroles.component';
@@ -161,14 +160,14 @@ import { InpatientlistComponent } from './inpatientlist/inpatientlist.component'
     AddnewmanageformComponent,
     DetailmanageformComponent,
     SigninComponent,ForgotComponentOld,
-    ForgotComponent,SigninComponentOld,
+    ForgotComponent,
     MobileComponent, OtpComponent, PasswordComponent,
     SignupComponent, AddrolesComponent, LanguageeditpopupComponent, InvestigationEditShortcodeComponent, EditconfigComponent,
     ManageformTittleComponent, ManageformAddtitleComponent,
     ManageformEdittittleComponent, AuthenticationComponent, HomescreenComponent,
     PrescriptionshortageComponent, MpastencounterComponent, MvitalsComponent,
     MhistoryComponent, MexaminationComponent, MdiagnosisComponent, MinvestigationComponent,
-    MprescriptionComponent, MreportsComponent, MfollowupsComponent, PreviewformComponent,
+    MreportsComponent, MfollowupsComponent, PreviewformComponent,
     TemplatenamePopupComponent, TemplatenameDrugPopupComponent, InvestigationTemplateComponent,
     OpsumaryTemplateNameComponent, MasterComponent, MastervitalsComponent, MasterfollowupsComponent,
     MasterchangepasswordComponent, MasterconfigComponent, CreaterolesComponent,

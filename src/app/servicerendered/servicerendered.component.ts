@@ -13,6 +13,8 @@ import { GlobalService } from '../global.service';
 export class ServicerenderedComponent implements OnInit {
   date; patientdata_details; dropdownList; logindata_details; dropdownList_services; data_service_person;
   hidden_doc;superadmin_details;
+  // initialize for build
+  doctor;
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService) { }
   consilated_date; DoctorsName; dropdownList_services_prescription;
   ngOnInit() {

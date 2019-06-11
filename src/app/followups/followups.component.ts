@@ -26,7 +26,8 @@ export class FollowupsComponent implements OnInit {
   Investigation_category; newarraysss; hidden; categorylist_array; hiddengif;
   Investigation_menu;
   formusers_drop; showGreeting; exampleDatas; items;date_status;
-
+ // for initialize build
+ food;isChecked;Surgery;Department;doctor;toggle;
   options = [
     { value: '1 Month', viewValue: '1 Month' },
     { value: '2 Months', viewValue: '2 Months' },
@@ -72,15 +73,13 @@ export class FollowupsComponent implements OnInit {
     this.get_Departmet();
     this.get_DoctorsName();
 
-    // this.get_SurgeryType();
-    //this.exampleDatas = [];
+
 
     this.patientdata_details = JSON.parse(sessionStorage.getItem('patientdata'));
     console.log(this.patientdata_details);
     this.login_details = JSON.parse(sessionStorage.getItem('logindata'));
     console.log(this.login_details);
 
-    //this.get_surgery(this.patientdata_details);
     this.get_refferal_details(this.patientdata_details);
     this.datevalidation = JSON.parse(sessionStorage.getItem('datestatus'));
 
@@ -151,9 +150,6 @@ export class FollowupsComponent implements OnInit {
       debugger;
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        // var data_custom = JSON.parse(resdata['_body']);
-        // this.formusers_drop = [];
-        // this.formusers_drop = data_custom['ResponseObject'];
         this.formusers_drop = resdata['ResponseObject'];
         if (this.formusers_drop) {
           for (var i = 0; i < this.formusers_drop.length; i++)
@@ -244,30 +240,6 @@ export class FollowupsComponent implements OnInit {
     { value: '13', viewValue: 'Slot 04:30' }
   ];
 
-
-  // it is old add surgery function
-  // savesurgery(data) {
-  //   data.encounter_no = this.patientdata_details[0]['EncounterNo'];
-  //   data.uhid_no = this.patientdata_details[0]['UHIDNO'];
-  //   data.nr = this.login_details[0]['nr'];
-
-  //   this.GlobalService.enableloader();
-  //   this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/add_surgery', data).subscribe(resdata => {
-  //     debugger;
-  //     if (resdata['IsSuccess']) {
-  //       this.GlobalService.disableloader();
-  //       this.id_surgery.push(resdata['ResponseObject']);
-  //       console.log(this.id_surgery);
-  //       this.get_surgery(this.patientdata_details);
-  //       this.openSnackBar("Save Successfully", "Close");
-  //     }
-  //     else {
-  //       this.GlobalService.disableloader();
-  //       this.openSnackBar("Some Error! Retry", "Close");
-  //     }
-
-  //   })
-  // }
 
   delete_surgery(deletedata) {
     this.GlobalService.enableloader();
@@ -387,14 +359,13 @@ export class FollowupsComponent implements OnInit {
         index = i;
       }
     });
-    //console.log(index, filteredObj);
+
     if (index != -1) {
       this.categorylist_array.splice(index, 1);
     }
     else {
       if (vreate_categorylist.checkbox) {
         this.categorylist_array.push(vreate_categorylist);
-        // console.log(this.categorylist_array);
         
         //distinct check
         for(var i = 0; i < this.surgerylist.length; i++) {

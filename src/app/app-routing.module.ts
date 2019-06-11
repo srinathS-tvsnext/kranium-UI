@@ -56,7 +56,7 @@ import { MhistoryComponent } from './managefavourites/mhistory/mhistory.componen
 import { MexaminationComponent } from './managefavourites/mexamination/mexamination.component';
 import { MdiagnosisComponent } from './managefavourites/mdiagnosis/mdiagnosis.component';
 import { MinvestigationComponent } from './managefavourites/minvestigation/minvestigation.component';
-import { MprescriptionComponent } from './managefavourites/mprescription/mprescription.component';
+// import { MprescriptionComponent } from './managefavourites/mprescription/mprescription.component';
 import { MreportsComponent } from './managefavourites/mreports/mreports.component';
 import { MfollowupsComponent } from './managefavourites/mfollowups/mfollowups.component';
 import { MasterComponent } from './master/master.component';
@@ -115,7 +115,7 @@ const routes: Routes = [
             { path: 'MExamination', component: MexaminationComponent, data: { Key: 'Examination' } },
             { path: 'MDiagnosis', component: MdiagnosisComponent, data: { Key: 'Diagnosis' } },
             { path: 'MInvestigation', component: MinvestigationComponent, data: { Key: 'Investigation' } },
-            { path: 'MPrescription', component: MprescriptionComponent, data: { Key: 'Prescription' } },
+            // { path: 'MPrescription', component: MprescriptionComponent, data: { Key: 'Prescription' } },
             { path: 'MFollowups', component: MfollowupsComponent, data: { Key: 'Follow-ups' } },
             { path: 'MReports', component: MreportsComponent, data: { Key: 'Reports' } },
           ]

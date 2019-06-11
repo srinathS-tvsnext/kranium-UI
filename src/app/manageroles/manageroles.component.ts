@@ -163,7 +163,6 @@ export class ManagerolesComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
   subview(data) {
@@ -178,7 +177,6 @@ export class ManagerolesComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
   save(role, data) {
@@ -191,14 +189,11 @@ export class ManagerolesComponent implements OnInit {
       console.log(resdata);
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        console.log(resdata['ResponseObject']);
-        // this.social_sub_views = resdata['ResponseObject'];
         this.openSnackBar("Save Successfully", "Close");
       } else {
         this.GlobalService.disableloader();
         this.openSnackBar("Some Error ! Retry", "Close");
       }
-      // routerLink='/Homescreen/Patientlist'
     })
     // add_roles
   }
@@ -219,16 +214,5 @@ export class ManagerolesComponent implements OnInit {
         this.social_sub_menu = this.social_sub_menu_con;
       }
     })
-  }
-  // createrole(): void {
-  //   this.dialogRef = this.dialog.open(AddrolesComponent, {
-  //     data: {
-  //       width: '600px',
-  //     },
-  //     disableClose: true
-  //   })
-  // }
-  // get_menu
-  // get_submenu
-  // get_subview
+  }  
 }

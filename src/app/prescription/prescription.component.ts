@@ -33,10 +33,6 @@ export class PrescriptionComponent implements OnInit {
     this.date_status = JSON.parse(sessionStorage.getItem('datestatus'));
     this.dropdown_hide = false;
     this.medicine_kranium_list_new_test = [];
-    // sessionStorage.removeItem('previous_prescription');
-    // console.log(this.GlobalService.user_access_rights);
-    // this.acess_rights = this.GlobalService.user_access_rights;
-    // this.acess_rights = [{ "sub_menu_id": "1", "menu_id": "1", "sub_menu_name": "Past Encounters", "CD": "2017-11-08 19:08:17", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "1", "sub_menu_id": "1", "menu_id": "1", "sub_view_name": "Past Encounter Timeline", "Active": "1", "CD": "2017-11-08 19:29:23", "MD": null, "MB": null, "view": true, "add_edit": true }], "add_edit": true, "view": true }, { "sub_menu_id": "2", "menu_id": "1", "sub_menu_name": "Vitals", "CD": "2017-11-08 19:08:17", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "3", "sub_menu_id": "2", "menu_id": "1", "sub_view_name": "vitals", "Active": "1", "CD": "2017-11-08 19:30:50", "MD": null, "MB": null, "view": true, "add_edit": true }, { "sub_view_id": "4", "sub_menu_id": "2", "menu_id": "1", "sub_view_name": "Preferred Language", "Active": "1", "CD": "2017-11-08 19:30:50", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "5", "sub_menu_id": "2", "menu_id": "1", "sub_view_name": "Pain Assessment", "Active": "1", "CD": "2017-11-08 19:31:07", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "6", "sub_menu_id": "2", "menu_id": "1", "sub_view_name": "NOTES", "Active": "1", "CD": "2017-11-08 19:31:20", "MD": null, "MB": null, "view": true, "add_edit": true }, { "sub_view_id": "7", "sub_menu_id": "2", "menu_id": "1", "sub_view_name": "Allergy", "Active": "1", "CD": "2017-11-08 19:31:32", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "8", "sub_menu_id": "2", "menu_id": "1", "sub_view_name": "Active Medication", "Active": "1", "CD": "2017-11-08 19:31:44", "MD": null, "MB": null, "add_edit": true, "view": true }], "add_edit": true, "view": true }, { "sub_menu_id": "3", "menu_id": "1", "sub_menu_name": "History", "CD": "2017-11-08 19:08:38", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "9", "sub_menu_id": "3", "menu_id": "1", "sub_view_name": "Chief Complaints", "Active": "1", "CD": "2017-11-08 19:37:13", "MD": null, "MB": null, "view": true, "add_edit": true }, { "sub_view_id": "10", "sub_menu_id": "3", "menu_id": "1", "sub_view_name": "History Forms", "Active": "1", "CD": "2017-11-08 19:37:28", "MD": null, "MB": null, "add_edit": true, "view": true }], "add_edit": true, "view": true }, { "sub_menu_id": "4", "menu_id": "1", "sub_menu_name": "Examination", "CD": "2017-11-08 19:08:38", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "17", "sub_menu_id": "4", "menu_id": "1", "sub_view_name": "Examination Forms", "Active": "1", "CD": "2017-11-08 19:39:54", "MD": null, "MB": null, "view": true, "add_edit": true }], "view": true, "add_edit": true }, { "sub_menu_id": "5", "menu_id": "1", "sub_menu_name": "Diagnosis", "CD": "2017-11-08 19:08:57", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "22", "sub_menu_id": "5", "menu_id": "1", "sub_view_name": "Consultation Notes", "Active": "1", "CD": "2017-11-08 19:41:51", "MD": null, "MB": null, "view": true, "add_edit": true }, { "sub_view_id": "23", "sub_menu_id": "5", "menu_id": "1", "sub_view_name": "Icd Codes", "Active": "1", "CD": "2017-11-08 19:42:14", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "24", "sub_menu_id": "5", "menu_id": "1", "sub_view_name": "Procedure", "Active": "1", "CD": "2017-11-08 19:42:31", "MD": null, "MB": null, "add_edit": true, "view": true }], "view": true, "add_edit": true }, { "sub_menu_id": "6", "menu_id": "1", "sub_menu_name": "Investigation", "CD": "2017-11-08 19:08:57", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "25", "sub_menu_id": "6", "menu_id": "1", "sub_view_name": "Investigations", "Active": "1", "CD": "2017-11-08 19:46:08", "MD": null, "MB": null, "view": true, "add_edit": true }], "view": true, "add_edit": true }, { "sub_menu_id": "7", "menu_id": "1", "sub_menu_name": "Prescription", "CD": "2017-11-08 19:09:14", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "28", "sub_menu_id": "7", "menu_id": "1", "sub_view_name": "Medication", "Active": "1", "CD": "2017-11-08 19:47:04", "MD": null, "MB": null, "view": true, "add_edit": true }, { "sub_view_id": "29", "sub_menu_id": "7", "menu_id": "1", "sub_view_name": "Notes", "Active": "1", "CD": "2017-11-08 19:47:18", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "30", "sub_menu_id": "7", "menu_id": "1", "sub_view_name": "Diet Advice", "Active": "1", "CD": "2017-11-08 19:47:40", "MD": null, "MB": null, "add_edit": true, "view": true }], "view": true, "add_edit": true }, { "sub_menu_id": "8", "menu_id": "1", "sub_menu_name": "Reports", "CD": "2017-11-08 19:09:14", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "31", "sub_menu_id": "8", "menu_id": "1", "sub_view_name": "Reports Table View", "Active": "1", "CD": "2017-11-08 19:49:12", "MD": null, "MB": null, "view": true, "add_edit": true }, { "sub_view_id": "32", "sub_menu_id": "8", "menu_id": "1", "sub_view_name": "Reports Graphical View", "Active": "1", "CD": "2017-11-08 19:49:12", "MD": null, "MB": null, "add_edit": true, "view": true }], "view": true, "add_edit": true }, { "sub_menu_id": "9", "menu_id": "1", "sub_menu_name": "Follow-up", "CD": "2017-11-08 19:09:31", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "33", "sub_menu_id": "9", "menu_id": "1", "sub_view_name": "OP Follow-up", "Active": "1", "CD": "2017-11-08 19:49:46", "MD": null, "MB": null, "view": true, "add_edit": true }, { "sub_view_id": "34", "sub_menu_id": "9", "menu_id": "1", "sub_view_name": "Recommend IP Admission", "Active": "1", "CD": "2017-11-08 19:50:03", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "35", "sub_menu_id": "9", "menu_id": "1", "sub_view_name": "Surgery / Procedure", "Active": "1", "CD": "2017-11-08 19:50:20", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "36", "sub_menu_id": "9", "menu_id": "1", "sub_view_name": "Cross Consultation", "Active": "1", "CD": "2017-11-08 19:50:35", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "37", "sub_menu_id": "9", "menu_id": "1", "sub_view_name": "NOTES", "Active": "1", "CD": "2017-11-08 19:51:00", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "38", "sub_menu_id": "9", "menu_id": "1", "sub_view_name": "Refer to an External Doctor", "Active": "1", "CD": "2017-11-08 19:51:20", "MD": null, "MB": null, "add_edit": true, "view": true }], "view": true, "add_edit": true }, { "sub_menu_id": "10", "menu_id": "1", "sub_menu_name": "OP Summary", "CD": "2017-11-08 19:09:31", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "39", "sub_menu_id": "10", "menu_id": "1", "sub_view_name": "OP Summary View", "Active": "1", "CD": "2017-11-08 19:58:41", "MD": null, "MB": null, "view": true, "add_edit": true }], "view": true, "add_edit": true }, { "sub_menu_id": "11", "menu_id": "2", "sub_menu_name": "Services Rendered", "CD": "2017-11-09 10:47:36", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "40", "sub_menu_id": "11", "menu_id": "2", "sub_view_name": "Services Rendered View", "Active": "1", "CD": "2017-11-09 10:48:15", "MD": null, "MB": null, "view": true, "add_edit": true }], "view": true, "add_edit": true }, { "sub_menu_id": "14", "menu_id": "3", "sub_menu_name": "Manage Favourites", "CD": "2017-11-09 10:54:38", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "44", "sub_menu_id": "14", "menu_id": "3", "sub_view_name": "Drugs", "Active": "1", "CD": "2017-11-09 10:55:47", "MD": null, "MB": null, "view": true, "add_edit": true }, { "sub_view_id": "45", "sub_menu_id": "14", "menu_id": "3", "sub_view_name": "Prescription", "Active": "1", "CD": "2017-11-09 10:55:47", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "46", "sub_menu_id": "14", "menu_id": "3", "sub_view_name": "Investigation", "Active": "1", "CD": "2017-11-09 10:56:19", "MD": null, "MB": null, "add_edit": true, "view": true }, { "sub_view_id": "47", "sub_menu_id": "14", "menu_id": "3", "sub_view_name": "OP Summary View", "Active": "1", "CD": "2017-11-09 10:56:56", "MD": null, "MB": null, "add_edit": true, "view": true }], "view": true, "add_edit": true }, { "sub_menu_id": "12", "menu_id": "4", "sub_menu_name": "Manage Roles", "CD": "2017-11-09 10:49:43", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "41", "sub_menu_id": "12", "menu_id": "4", "sub_view_name": "Manage Roles View", "Active": "1", "CD": "2017-11-09 10:50:13", "MD": null, "MB": null, "view": true, "add_edit": true }], "view": true, "add_edit": true }, { "sub_menu_id": "13", "menu_id": "5", "sub_menu_name": "Manage Forms", "CD": "2017-11-09 10:51:03", "MD": null, "MB": null, "sub_view": [{ "sub_view_id": "42", "sub_menu_id": "13", "menu_id": "5", "sub_view_name": "Available Forms", "Active": "1", "CD": "2017-11-09 10:51:30", "MD": null, "MB": null, "view": true, "add_edit": true }, { "sub_view_id": "43", "sub_menu_id": "13", "menu_id": "5", "sub_view_name": "Add New Form", "Active": "1", "CD": "2017-11-09 10:52:54", "MD": null, "MB": null, "view": true, "add_edit": true }], "view": true, "add_edit": true }];
     this.acess_rights = JSON.parse(sessionStorage.getItem('user_access_rights'));
     this.new_resdata = [{}];
     this.arr = [];
@@ -164,7 +160,6 @@ export class PrescriptionComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
   cancel_drug() {
@@ -180,7 +175,6 @@ export class PrescriptionComponent implements OnInit {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/check_medicine_quantity_drug', data).subscribe(resdata => {
       if (resdata['IsSuccess']) {
         var tmp = resdata['ResponseObject'][0];
-        // for (var q = 0; q < this.new_resdata.length; q++) {
         if (this.template_pres_med_data.length != 0) {
           debugger;
 
@@ -205,37 +199,6 @@ export class PrescriptionComponent implements OnInit {
           }
         }
         this.template_pres_med_data = uniqueobject;
-        console.log(uniqueobject);
-        // }
-
-
-        // if (tmp.quantity < data.quantity) {
-        //   if (this.template_pres_med_data.length != 0) {
-        //     for (var i = 0; i < this.template_pres_med_data.length; i++) {
-        //       if (this.template_pres_med_data[i].item_code == data.item_code) {
-        //       } else {
-        //         data.quantitystatus = true;
-        //         this.template_pres_med_data.push(data);
-        //       }
-        //     }
-        //   } else {
-        //     data.quantitystatus = true;
-        //     this.template_pres_med_data.push(data);
-        //   }
-        // } else {
-        //   if (this.template_pres_med_data.length != 0) {
-        //     for (var i = 0; i < this.template_pres_med_data.length; i++) {
-        //       if (this.template_pres_med_data[i].item_code == data.item_code) {
-        //       } else {
-        //         data.quantitystatus = false;
-        //         this.template_pres_med_data.push(data);
-        //       }
-        //     }
-        //   } else {
-        //     data.quantitystatus = false;
-        //     this.template_pres_med_data.push(data);
-        //   }
-        // }
       }
     })
   }
@@ -244,13 +207,9 @@ export class PrescriptionComponent implements OnInit {
     this.hide_editbtn = true;
     this.hide = false;
     this.btn = "Update";
-    debugger;
-    // this.med = {};
-    // this.barand_gen_name = [];
     console.log(data);
     this.barand_gen_name = [{ 'itemname': data.brand_name }];
     this.med = { 'brand_name': data.brand_name, 'duration_capt': data.duration_capt, 'duration_no': data.duration_no, 'frequency': data.frequency,'timing': data.timing, 'generic_name': data.generic_name, 'drug_template_map_id': data.drug_template_map_id, "item_code": data.item_code };
-    // this.template_pres_med_data.push(data);
   }
 
   //start Prescription
@@ -268,7 +227,6 @@ export class PrescriptionComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
   cancel_pres() {
@@ -285,7 +243,6 @@ export class PrescriptionComponent implements OnInit {
   }
 
   edittemp_pres(data) {
-    // this.GlobalService.enableloader();
     this.hide = true;
     // getcfav_pres_medicine
     this.contenctdata = data;
@@ -295,13 +252,9 @@ export class PrescriptionComponent implements OnInit {
       console.log(resdata);
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        debugger;
-
-        // this.med_drug = {};
-        // for (var i = 0; i < resdata['ResponseObject'].length; i++) {
         console.log(data);
         this.quanity_sss(resdata['ResponseObject']);
-        // }
+        
 
       } else {
         this.GlobalService.disableloader();
@@ -317,18 +270,13 @@ export class PrescriptionComponent implements OnInit {
     this.new_resdata[0].frequency = resdata[0].Frequency;
     this.new_resdata[0].item_code = resdata[0].item_code;
     this.new_resdata[0].quantity = resdata[0].quantity;
-    // this.new_resdata.brand_gen_name = resdata.Medicine_Name;
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/check_medicine_quantity', resdata).subscribe(resbeedata => {
       if (resbeedata['IsSuccess']) {
-        // this.tmp = resbeedata;
         this.GlobalService.disableloader();
-        // this.new_quantity_final(this.tmp);
         this.tmp = resbeedata['ResponseObject'];
         console.log(this.tmp);
         for (var q = 0; q < this.new_resdata.length; q++) {
-          // for (var p = 0; p < this.tmp.length; p++) {
-          // if (this.tmp[p].quantity < this.new_resdata[q].quantity) {
           if (this.template_pres_med_data.length != 0) {
             debugger;
 
@@ -343,19 +291,6 @@ export class PrescriptionComponent implements OnInit {
             this.new_resdata[q].new_id = this.template_pres_med_data.length + 1;
             this.template_pres_med_data.push(this.new_resdata[q]);
           }
-          //  } 
-          //   else {
-          //   if (this.template_pres_med_data.length != 0) {
-          //     if (this.template_pres_med_data.indexOf(this.new_resdata[q].item_code) == -1) {
-          //       this.new_resdata[q].quantitystatus = false;
-          //       this.template_pres_med_data.push(this.new_resdata[q]);
-          //     }
-          //   } else {
-          //     this.new_resdata[q].quantitystatus = false;
-          //     this.template_pres_med_data.push(this.new_resdata[q]);
-          //   }
-          //   this.GlobalService.disableloader();
-          //  }
           console.log(this.template_pres_med_data);
           var uniqueid = [];
           var uniqueobject = [];
@@ -368,11 +303,8 @@ export class PrescriptionComponent implements OnInit {
           this.template_pres_med_data = uniqueobject;
           console.log(uniqueobject);
         }
-        // }
-
       } else {
         this.GlobalService.disableloader();
-        // this.tmp = resbeedata['ResponseObject'];
         console.log("error");
       }
     });
@@ -427,13 +359,6 @@ export class PrescriptionComponent implements OnInit {
     debugger;
     if (this.template_pres_med_data) {
       for (var i = 0; i < this.template_pres_med_data.length; i++) {
-        // if (this.template_pres_med_data[i].drug_template_map_id === data.drug_template_map_id && this.template_pres_med_data[i].drug_template_map_id != undefined) {
-        //   this.template_pres_med_data.splice(i, 1);
-        // }
-        // if (this.template_pres_med_data[i].prescription_template_map_id === data.prescription_template_map_id && this.template_pres_med_data[i].prescription_template_map_id != undefined) {
-        //   this.template_pres_med_data.splice(i, 1);
-        // }
-        // this.template_pres_med_data.indexOf(this.template_pres_med_data[i].item_code)
         if (this.template_pres_med_data[i].new_id == data.new_id) {
           this.template_pres_med_data.splice(i, 1);
         }
@@ -473,7 +398,6 @@ export class PrescriptionComponent implements OnInit {
         } else {
           this.GlobalService.disableloader();
         }
-        // routerLink='/Homescreen/Patientlist'
       })
     }
     else {
@@ -485,13 +409,10 @@ export class PrescriptionComponent implements OnInit {
           this.GlobalService.disableloader();
           debugger;
           this.edittemp_pres(this.contenctdata);
-          // this.idarray.push({ "id": resdata['id'] })
-          // this.formdatactr = resdata;
-          // console.log(this.formdatactr);
+
         } else {
           this.GlobalService.disableloader();
         }
-        // routerLink='/Homescreen/Patientlist'
       })
     }
 
@@ -592,7 +513,6 @@ export class PrescriptionComponent implements OnInit {
             console.log(this.template_pres_med_data);
             for (var i = 0; i < this.template_pres_med_data.length; i++) {
               if (this.template_pres_med_data[i].item_code == data.item_code) {
-                // this.template_pres_med_data[i].item_code ==
                 this.template_pres_med_data[i].item_code = data.item_code;
                 this.template_pres_med_data[i].brand_name = data.brand_name;
                 this.template_pres_med_data[i].duration_capt = data.duration_capt;
@@ -633,8 +553,6 @@ export class PrescriptionComponent implements OnInit {
       for (var i in data_fav) {
         if (data_fav[i].fav) {
 
-          debugger;
-          // this.GlobalService.enableloader();
           this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_favouritesprescriptionmedicine', data_fav[i]).subscribe(resdata => {
             debugger;
             console.log(resdata);
@@ -660,7 +578,6 @@ export class PrescriptionComponent implements OnInit {
             } else {
               this.GlobalService.disableloader();
             }
-            // routerLink='/Homescreen/Patientlist'
           })
         } else {
           this.GlobalService.disableloader();
@@ -677,14 +594,12 @@ export class PrescriptionComponent implements OnInit {
     debugger;
 
     if (this.patientdata_details) {
-      // this.data_status = {};
       for (var i = 0; i < this.patientdata_details.length; i++) {
         for (var j = 0; j < data.length; j++) {
           data[j].uhid_no = this.patientdata_details[i].UHIDNO;
           data[j].encounter_no = this.patientdata_details[i].EncounterNo;
           data[j].diet_advice = data.diet_advice;
           data[j].language = data.language;
-        //  data[j].notes = data.notes;
           data[j].CB = this.logindata_details[0].User_name;
           data[j].cretaedby = this.logindata_details[0].nr;
         }
@@ -698,11 +613,9 @@ export class PrescriptionComponent implements OnInit {
       debugger;
       console.log(resdata);
       if (resdata['IsSuccess']) {
-      //  this.get_pres(this.patientdata_details);
         this.GlobalService.disableloader();
         this.openSnackBar("Success! Prescription Added Succesfully", "Close");
         debugger;
-        // this.template_pres_med_data = [];
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_patient_prescriptionDiet', data).subscribe(resdata => {
         
           if (resdata['IsSuccess']) {
@@ -711,12 +624,10 @@ export class PrescriptionComponent implements OnInit {
             this.openSnackBar("Error! cant able to add Diet", "Close");
           }
         })
-        // this.template_pres_data = resdata['ResponseObject'];
       } else {
         this.GlobalService.disableloader();
         this.openSnackBar("Error! cant able to add", "Close");
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 
@@ -734,7 +645,6 @@ export class PrescriptionComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 
@@ -815,7 +725,6 @@ export class PrescriptionComponent implements OnInit {
     debugger;
     if (data_con.length > 3) {
       this.newarray = { "searchdata": data_con };
-      // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_medicinelist').subscribe(resdata => {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list', this.newarray).subscribe(resdata => {
         if (resdata['IsSuccess']) {
           debugger;
@@ -845,7 +754,6 @@ export class PrescriptionComponent implements OnInit {
     debugger;
     if (data_con.length > 3) {
       this.newarray = { "searchdata": data_con };
-      // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_medicinelist').subscribe(resdata => {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list_gen', this.newarray).subscribe(resdata => {
         if (resdata['IsSuccess']) {
           debugger;
@@ -860,12 +768,10 @@ export class PrescriptionComponent implements OnInit {
     debugger;
     this.GlobalService.enableloader();
     this.newarray = { "searchdata": data_con.generic_name };
-    // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_medicinelist').subscribe(resdata => {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_similarmedicinelist', this.newarray).subscribe(resdata => {
       if (resdata['IsSuccess']) {
         debugger;
         this.medicine_kranium_list_new_test = [];
-        // this.medicine_kranium_list_new_test = resdata['ResponseObject'];
         var data_med = resdata['ResponseObject'];
         for (var i = 0; i < data_med.length; i++) {
           if (parseInt(data_con.quantity) <= parseInt(data_med[i].quantity)) {
@@ -897,7 +803,6 @@ export class PrescriptionComponent implements OnInit {
 
               console.log(this.template_pres_med_data);
             }
-            // this.get_medicine_pres();
           });
         } else {
           this.openSnackBar("There is no required Quantity In Similar Medicine", "Close");
@@ -913,7 +818,6 @@ export class PrescriptionComponent implements OnInit {
     console.log(patientdata_details);
     var pat_uhid = { uhid: patientdata_details[0].UHIDNO, enc_no: patientdata_details[0].EncounterNo };
     this.GlobalService.enableloader();
-    // this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Pastencounter/get_diagnosis_prescription_patient', pat_uhid).subscribe(resdata => {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Pastencounter/get_prescription_patient', pat_uhid).subscribe(resdata => {
       console.log(resdata);
       if (resdata['IsSuccess']) {
@@ -937,7 +841,6 @@ export class PrescriptionComponent implements OnInit {
         this.GlobalService.disableloader();
         debugger;
         this.pres_diet = resdata['ResponseObject'];
-        // sessionStorage.setItem("previous_prescription", JSON.stringify(this.pres_data));
       } else {
         this.GlobalService.disableloader();
       }
@@ -956,11 +859,9 @@ export class PrescriptionComponent implements OnInit {
         this.GlobalService.disableloader();
         debugger;
         this.pres_doct = resdata['ResponseObject'];
-        // sessionStorage.setItem("previous_prescription", JSON.stringify(this.pres_data));
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 
@@ -1011,7 +912,6 @@ export class PrescriptionComponent implements OnInit {
   genericby_brandname(gen_brand) {
     debugger;
     this.newarray = { "searchdata": gen_brand };
-    // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_medicinelist').subscribe(resdata => {
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list_gen', this.newarray).subscribe(resdata => {
       if (resdata['IsSuccess']) {
         debugger;
@@ -1033,11 +933,9 @@ export class PrescriptionComponent implements OnInit {
     debugger;
     if (data_con.length > 3) {
       this.newarray = { "searchdata": data_con };
-      // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_medicinelist').subscribe(resdata => {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list', this.newarray).subscribe(resdata => {
         if (resdata['IsSuccess']) {
           debugger;
-          // this.dropdown_hide = true;
           this.medicine_kranium_list = resdata['ResponseObject'];
           console.log(this.medicine_kranium_list);
           if (resdata['ResponseObject']) {

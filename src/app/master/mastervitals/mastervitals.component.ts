@@ -94,8 +94,6 @@ export class MastervitalsComponent implements OnInit {
     this.GlobalService.enableloader();
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_vitalunit_type').subscribe(resdata => {
       if (resdata) {
-        // var body =JSON.parse(resdata['_body']);
-        // this.vitalunits = body.ResponseObject;
         this.vitalunit_type = resdata['ResponseObject'];
         console.log(this.vitalunit_type);
         this.GlobalService.disableloader();
@@ -110,8 +108,6 @@ export class MastervitalsComponent implements OnInit {
     this.GlobalService.enableloader();
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_vitalunits').subscribe(resdata => {
       if (resdata) {
-        // var body =JSON.parse(resdata['_body']);
-        // this.vitalunits = body.ResponseObject;
         this.vitalunits = resdata['ResponseObject'];
         console.log(this.vitalunits);
         this.GlobalService.disableloader();

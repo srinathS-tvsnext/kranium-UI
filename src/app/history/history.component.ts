@@ -21,7 +21,6 @@ export class HistoryComponent implements OnInit {
   array; formdatacr_history; history_answer; ffresdata; datevalidation; btn_sav;
   ngOnInit() {
     this.btn_sav = "save";
-    // this.acess_rights = this.GlobalService.user_access_rights;
 
     // datestatus
     this.date_status = JSON.parse(sessionStorage.getItem('datestatus'));
@@ -57,18 +56,14 @@ export class HistoryComponent implements OnInit {
   daytype = [{ "type": "Day" }, { "type": "Week" }, { "type": "Month" }];
   drag_div(data_drag, index_dd) {
     this.dragedobj = index_dd;
-    // debugger;
   }
   drop_div(data_drop, index, dataobbb) {
-    debugger
-    // this.dragedobj
     var new_data_custom = dataobbb[index];
     dataobbb[index] = dataobbb[this.dragedobj];
     dataobbb[this.dragedobj] = new_data_custom;
   }
 
   dragover(data_dragover) {
-    // debugger
     return false;
   }
   viewfor() {
@@ -93,7 +88,6 @@ export class HistoryComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 
@@ -169,14 +163,12 @@ export class HistoryComponent implements OnInit {
             }
           }
           console.log(this.formdatacr);
-          
-          // this.formdatacr_history = resdata;
-          // console.log(this.formdatacr_history);
+ 
         }
         else {
           this.GlobalService.disableloader();
         }
-        // routerLink='/Homescreen/Patientlist'
+
       })
     } else {
       for (var i = 0; i < this.formdatacr.length; i++) {
@@ -212,7 +204,6 @@ export class HistoryComponent implements OnInit {
         } else {
           this.GlobalService.disableloader();
         }
-        // routerLink='/Homescreen/Patientlist'
       })
     }
   }
@@ -296,9 +287,6 @@ export class HistoryComponent implements OnInit {
           this.btn_sav = "Update";
           this.GlobalService.disableloader();
           this.openSnackBar("Save Successfully", "Close");
-          debugger;
-          // this.response = resdata['ResponseObject'];
-          // console.log(this.response);
         } else {
           this.btn_sav = "Update";
           this.GlobalService.disableloader();
@@ -336,8 +324,6 @@ export class HistoryComponent implements OnInit {
         debugger;
         this.get_chief_complaints_patient_details(this.patientdata_details);
         this.history = [];
-        // this.response = resdata['ResponseObject'];
-        // console.log(this.response);
       } else {
         this.GlobalService.disableloader();
         this.openSnackBar("Error! Please Retry", "Close");

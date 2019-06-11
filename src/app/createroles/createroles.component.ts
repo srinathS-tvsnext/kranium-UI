@@ -13,7 +13,12 @@ import { CreaterolesEditComponent } from '../createroles-edit/createroles-edit.c
 })
 export class CreaterolesComponent implements OnInit {
 
-  data = {};
+  data = {
+    crole:'',
+    dur_minutes: '',
+    dur_hours: '',
+    dur_days: '',
+  };
   login_details;
   get_croles;
   crole;
@@ -44,7 +49,13 @@ export class CreaterolesComponent implements OnInit {
       debugger;
       if (resdata['IsSuccess']) {
         this.get_roles(this.login_details);
-        this.data = {};
+        this.data = {
+          crole:'',
+          dur_minutes: '',
+          dur_hours: '',
+          dur_days: '',
+        };
+        
         this.GlobalService.disableloader();
         this.openSnackBar("Save Successfully", "Close");
       }

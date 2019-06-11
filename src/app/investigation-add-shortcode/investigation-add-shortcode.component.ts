@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material';
 export class InvestigationAddShortcodeComponent implements OnInit {
 
   login_details; code; Investigation_menu;
-  categorylist_array; hidden; hiddengif; newarraysss; Investigation_category;
+  categorylist_array; hidden; hiddengif; newarraysss; Investigation_category;investigation_kranium_list;
 
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
 
@@ -63,7 +63,6 @@ export class InvestigationAddShortcodeComponent implements OnInit {
     debugger;
     this.hiddengif = false;
     if (data_con.length > 2) {
-      // this.GlobalService.enableloader();
       this.newarraysss = { "searchdata": data_con };
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Investigation/get_all_investigation_list_search', this.newarraysss).subscribe(resdata => {
         if (resdata['IsSuccess']) {
@@ -71,8 +70,6 @@ export class InvestigationAddShortcodeComponent implements OnInit {
           this.Investigation_category = resdata['ResponseObject'];
           this.hidden = false;
           this.hiddengif = true;
-          // this.GlobalService.disableloader();
-          //searchbox style class add
           var invlist = this.Investigation_category;
           if(invlist.length < 10){
             var myboxclass = document.getElementById("mysearchbox").classList;
@@ -84,7 +81,6 @@ export class InvestigationAddShortcodeComponent implements OnInit {
           //end of searchbox style class
         } else {
           this.hiddengif = false;
-          // this.GlobalService.disableloader();
         }
       })
     }
@@ -99,7 +95,6 @@ export class InvestigationAddShortcodeComponent implements OnInit {
     debugger;
     if (vreate_categorylist.checkbox) {
       this.Investigation_menu = vreate_categorylist.item_long_description;
-      // this.categorylist_array.push(vreate_categorylist);
       this.categorylist_array = vreate_categorylist;
       
       for (var i = 0; i < this.Investigation_category.length; i++) {

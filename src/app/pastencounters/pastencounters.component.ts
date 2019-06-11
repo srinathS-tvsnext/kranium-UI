@@ -24,29 +24,6 @@ export class PastencountersComponent implements OnInit {
     this.logindata_details = JSON.parse(sessionStorage.getItem('logindata'));
     console.log(this.patientdata_details);
     this.ss();
-    // this.is_check_pdf();
-
-    // this.favs = [{
-    //   "Patient_ID": "1020007696",
-    //   "Pastencounter_ID": "201710120000",
-    //   "Doctor_ID": "100486",
-    //   "Doctor_Name": "Dr.Amala Florida(General Physician) . ",
-    //   "cheif_complaints": "The patient is having fever.",
-    //   "Diagnosis": "A01.- Typhoid and paratyphoid fevers",
-    //   "opipstatus": "1",
-    //   "Discharge_date": "2017-10-12",
-    //   "Admission_Date": "2017-10-12 11:09:01"
-    // }, {
-    //   "Patient_ID": "1020007696",
-    //   "Pastencounter_ID": "201710120000",
-    //   "Doctor_ID": "100486",
-    //   "Doctor_Name": "Dr.Anandh Florida(General Physician) . ",
-    //   "cheif_complaints": "The patient is having aids.",
-    //   "Diagnosis": "A01.- Typhoid and paratyphoid fevers",
-    //   "opipstatus": "2",
-    //   "Discharge_date": "2017-10-12",
-    //   "Admission_Date": "2017-10-12 11:09:01"
-    // }]
   }
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
@@ -61,7 +38,6 @@ export class PastencountersComponent implements OnInit {
         this.uhid_no = this.patientdata_details[i].UHIDNO;
         this.pastencounter_no = this.patientdata_details[i].EncounterNo;
       }
-      // savedata.CB= this.patientdata_details.;
     }
     var newarray = { "uhid_no": this.uhid_no, "pastencounter_no": this.pastencounter_no };
     this.GlobalService.enableloader();
@@ -86,16 +62,13 @@ export class PastencountersComponent implements OnInit {
             var month = monthNames[date.getMonth()];
             var year = date.getFullYear();
             this.favs[i].date_custom = day + '-' + month + '-' + year;
-            // if(typeof(this.favs[i].cheif_complaints) != 'string'){
             this.favs[i].cheif_complaints = JSON.parse(this.favs[i].cheif_complaints)[0].allergy_type2
-            // }
           }
         }
       } else {
         debugger;
         this.GlobalService.disableloader();
         this.openSnackBar("Error: No Related Data Found In Pastencounter", "Close");
-        // this.router.navigate(['/Homescreen/Patientdetails/Vitals']);
         this.hidden = false;
         var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -109,7 +82,6 @@ export class PastencountersComponent implements OnInit {
         this.date_custom = day + '-' + month + '-' + year;
         this.login = this.logindata_details[0].User_name;
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 
@@ -203,12 +175,10 @@ export class PastencountersComponent implements OnInit {
     if((this.check_ped_vitaldata || this.check_ped_consultaiondata || this.check_ped_diagnosisdata || this.check_ped_investigationdata || this.check_ped_examinationdata || this.check_ped_history || this.check_ped_history_chiefcomplaints) == "noexist"){
       this.openSnackBar("Past Encounter Details is Empty", "Close");
     }
-    //this.router.navigate(['/Homescreen/Patientdetails/Pastencounterdetails']);
   }
 
   pdf_view(data_pdf) {
     debugger;
-    // http://localhost/global/api/index.php/v1/post/Pastencounter/get_pastencounter_pdf
     var data_edit = { "encounter_no": data_pdf };
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Pastencounter/get_pastencounter_pdf', data_edit).subscribe(resdata => {

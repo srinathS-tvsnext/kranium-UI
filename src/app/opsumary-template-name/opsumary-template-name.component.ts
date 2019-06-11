@@ -15,12 +15,9 @@ export class OpsumaryTemplateNameComponent implements OnInit {
 
   tem_name; opsummary_template_list;
   template_namebox;
-  // dialogRef;
   constructor(public dialogRef: MatDialogRef<OpsumaryTemplateNameComponent>,
     private http: HttpClient, private GlobalService: GlobalService,
     private router: Router, public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public medicineid: any, public snackBar: MatSnackBar) { }
-  // public dialogRef: MdDialogRef<InvestigationlistComponent>,
-  // @Inject(MD_DIALOG_DATA) public data: any, private http: Http
   ngOnInit() {
     console.log(this.medicineid);
     console.log(this.medicineid.Id.opsum_tempid);
@@ -72,7 +69,6 @@ export class OpsumaryTemplateNameComponent implements OnInit {
           this.dialogRef.close();
           this.GlobalService.disableloader();
         }
-        // routerLink='/Homescreen/Patientlist'
       })
     }
   }
@@ -86,7 +82,6 @@ export class OpsumaryTemplateNameComponent implements OnInit {
       if (resdata['IsSuccess']) {
         debugger;
         console.log();
-        // $("#tab_default_2").addClass('active');
         this.opsummary_template_list = resdata['ResponseObject'];
         console.log(this.opsummary_template_list);
       }

@@ -15,12 +15,16 @@ export class CongjobpopupComponent implements OnInit {
 
   login_details;
   disabledhour;disabledday;disabledminute;
-  data={};
+  data={
+    dur_minutes: '',
+    dur_hours: '',
+    dur_days: '',
+  };
 
   constructor(private http: HttpClient, private router: Router,private GlobalService: GlobalService,public snackBar: MatSnackBar,public dialogRef: MatDialogRef<CongjobpopupComponent>, public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public cronjobdetail: any) { }
 
   ngOnInit() {
-    //this.disabledfun = 'true';
+
     console.log(this.cronjobdetail);
     this.login_details = JSON.parse(sessionStorage.getItem('logindata'));
   }
@@ -69,7 +73,6 @@ export class CongjobpopupComponent implements OnInit {
     }
   }
 
-  // data={"dur":this.cronjobdetail['get_detail']['duration'],"dur_type":this.cronjobdetail['get_detail']['duration_type']};
   
   editduration(editdata){
     editdata.cron_id = this.cronjobdetail['get_detail']['cronjob_item_id'];
@@ -80,14 +83,11 @@ export class CongjobpopupComponent implements OnInit {
       if(resdata['IsSuccess']){
         this.GlobalService.disableloader();
         this.openSnackBar("Update Successfully", "Close");
-        //this.get_cronjobslist();
         this.dialogRef.close();
-        //this.router.navigate(['/Homescreen/Master/Mastercronjob']);
      }else{
         this.GlobalService.disableloader();
         this.openSnackBar("Error ! Retry", "Close");
         this.dialogRef.close();
-        //this.router.navigate(['/Homescreen/Master/Mastercronjob']);
       }
     })
   }
@@ -96,18 +96,5 @@ export class CongjobpopupComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  // cornjobdata;
-  // get_cronjobslist(){
-  //   this.GlobalService.enableloader();
-  //   this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/cronjob_items').subscribe(resdata => {
-  //     if(resdata['IsSuccess']){
-  //       this.cornjobdata = resdata['ResponseObject'];
-  //       this.GlobalService.disableloader();
-  //       this.dialogRef.close();
-  //     }else{
-  //       this.GlobalService.disableloader();
-  //     }
-  //   })
-  // }
 
 }

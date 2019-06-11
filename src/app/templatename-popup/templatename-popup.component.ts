@@ -12,10 +12,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class TemplatenamePopupComponent implements OnInit {
   tem_name;
-  // dialogRef;
   constructor(public dialogRef: MatDialogRef<TemplatenamePopupComponent>, private http: HttpClient, private GlobalService: GlobalService, private router: Router, public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public medicineid: any, public snackBar: MatSnackBar) { }
-  // public dialogRef: MdDialogRef<InvestigationlistComponent>,
-  // @Inject(MD_DIALOG_DATA) public data: any, private http: Http
   ngOnInit() {
     console.log(this.medicineid);
     if (this.medicineid.Id.manage_favourites_prescription_id) {
@@ -32,7 +29,6 @@ export class TemplatenamePopupComponent implements OnInit {
     console.log(this.medicineid);
     if (this.medicineid.Id.manage_favourites_prescription_id) {
       this.medicineid.Id.template_name = tempname;
-      // this.GlobalService.enableloader();
       debugger;
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/update_pres_temp_name', this.medicineid.Id).subscribe(resdata => {
         if (resdata['IsSuccess']) {
@@ -49,7 +45,6 @@ export class TemplatenamePopupComponent implements OnInit {
     } else {
       var arrayss = [{ template_name: tempname, id: this.medicineid }]
       debugger;
-      // this.GlobalService.enableloader();
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_favouritesprescriptiontemplate', arrayss).subscribe(resdata => {
         debugger;
         console.log(resdata);
@@ -61,7 +56,6 @@ export class TemplatenamePopupComponent implements OnInit {
           this.dialogRef.close();
           this.GlobalService.disableloader();
         }
-        // routerLink='/Homescreen/Patientlist'
       })
     }
 

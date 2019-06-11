@@ -41,7 +41,6 @@ export class PastencounterdetailsComponent implements OnInit {
   }
   template_change(data_termp) {
     debugger;
-    // this.template = data_termp.opsummary_template;
   }
   get_opsummary_template() {
     // get_opsummary_template
@@ -76,7 +75,6 @@ export class PastencounterdetailsComponent implements OnInit {
 
     this.GlobalService.enableloader();
     debugger;
-    // this.search = { "search": data };
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Pastencounter/get_history_consultation_notes', data).subscribe(resdata => {
       debugger;
       console.log(resdata);
@@ -87,7 +85,6 @@ export class PastencounterdetailsComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 
@@ -108,7 +105,6 @@ export class PastencounterdetailsComponent implements OnInit {
   get_pres(patientdata_details) {
     this.GlobalService.enableloader();
     debugger;
-    // this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Pastencounter/get_diagnosis_prescription_patient', patientdata_details).subscribe(resdata => {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Manageroles/patient_prescription_encounterno', patientdata_details).subscribe(resdata => {  
     debugger;
       console.log(resdata);
@@ -119,7 +115,6 @@ export class PastencounterdetailsComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-      // routerLink='/Homescreen/Patientlist'
     })
   }
 

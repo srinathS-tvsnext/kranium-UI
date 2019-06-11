@@ -33,7 +33,6 @@ export class InvestigationEditShortcodeComponent implements OnInit {
   get_scode_det() {
     var full_code_name = this.scodedetail.get_detail.item_long_description;
     var short_code_name = this.scodedetail.get_detail.shortcode;
-    // console.log(eng);
     this.editdata.item_long_description = full_code_name;
     this.editdata.shortcode = short_code_name;
   }
