@@ -16,6 +16,7 @@
                                     <th style='text-align: center'>Frequency</th>
                                     <th style='text-align: center'>Duration</th>
                                     <!-- <th style='text-align: center'>Medicine Timing</th> -->
+                                    <th style='text-align: center;'>Notes</th>
                                     <th style='text-align: center'>Start Date</th>
                                 </tr>
                             </thead>
@@ -29,11 +30,12 @@
                                             <td>{{prescri.Frequency}}</td>
                                             <td>{{prescri.Duration}} {{prescri.Medicine_Timing}}</td>
                                             <!-- <td> {{prescri.timing}} </td> -->
+                                            <td class="fa fa-eye" style="cursor: pointer" (click)="viewNotes(prescri.Notes)"></td>
                                             <td>{{prescri.StartDate}}</td>
                                     </tr>
                                     <tr>
                                        <td colspan="7">
-                                        <button type="button" class="btn btn-steelblue pull-right" (click)="repaetr_presc(prescri)">Repeat this Prescription</button>
+                                        <button type="button" class="btn btn-steelblue pull-right" (click)="repaetr_presc(prescri)">Repeat</button>
                                        </td> 
                                     </tr>
                                     

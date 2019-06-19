@@ -54,7 +54,7 @@ export class EditvitalsComponent implements OnInit {
     this.editForm = {};
     this.editForm.height_id = "CM";
     this.editForm.weight_id = "Kg";
-    this.editForm.temperature_id = 'Fahrenheit';
+    this.editForm.temperature_id = 'Celsius';
     this.editForm.pulse_id = "Rate/Min";
     this.editForm.RR_id = "Rate/Min";
     this.editForm.respirator_id = "Rate/Min";

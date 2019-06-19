@@ -55,7 +55,7 @@ export class AddvitalsComponent implements OnInit {
     this.form.height_id = "CM";
     this.form.weight_id = "Kg";
  
-    this.form.temperature_id = 'Fahrenheit';
+    this.form.temperature_id = 'Celsius';
     this.form.pulse_id = "Rate/Min";
     this.form.RR_id = "Rate/Min";
     this.form.respirator_id = "Rate/Min";

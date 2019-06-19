@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="">
             <p class="">
-                <strong>VITALS</strong> 
+                <strong></strong> 
             </p>
             <div *ngFor="let form of vitals_data.Formvalue;">
                 <div class="panel panel-default">
@@ -190,9 +190,10 @@
                         </div>
                     </div>
                 </div>
+                <p class="bolder">Pain Assessment</p>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <p class="bolder">Pain Assessment</p>
+                        
                         <!-- <div class='col-md-12'>
                             <div class=" line multicolor-linear"></div>
                             <div class="vl"></div>
@@ -221,13 +222,14 @@
                     </div>
                 </div>
             </div>
+            <p class='bolder'>Allergy</p>
             <div class="panel panel-default">
-                <div class="panel-body" *ngFor="let editallergy of vitals_data.allergy;">
+                <div class="panel-body">
                     <!-- <div class="pull-right">
                         <mat-checkbox color='primary' [(ngModel)]="form.allergy_status"></mat-checkbox>
                     </div> -->
-                    <p class='bolder'>ALLERGY</p>
-                    <fieldset class="quote-fieldset position_bt_top" *ngFor="let choice_frm of editallergy.notes; let i=index;">
+                    
+                    <fieldset class="quote-fieldset position_bt_top" *ngFor="let choice_frm of vitals_data.allergy; let i=index;">
                         <!-- {{choice_frm.allergy_type1}} -->
                         <!-- *ngFor="let choice of choices; let i=index;" -->
                         <div class="table-responsive">
@@ -236,16 +238,16 @@
                                     <td>&nbsp;</td>
                                     <td style='padding-bottom: 35px;'>
                                             <mat-form-field>
-                                        <mat-select placeholder="Allergy Type" [(ngModel)]="choice_frm.allergy_type1">
+                                        <mat-select placeholder="Allergy type" [(ngModel)]="choice_frm.allergy_type1">
                                             <mat-option *ngFor="let food of allergy" [value]="food.viewValue">
                                                 {{ food.viewValue }}
                                             </mat-option>
                                         </mat-select>
                                         </mat-form-field>
                                     </td>
-                                    <td>
+                                    <td style='padding-bottom: 35px;'>
                                         <mat-form-field>
-                                            <input matInput placeholder="Allergic too" value='' [(ngModel)]="choice_frm.allergy_type2">
+                                            <input matInput placeholder="Allergy to" value='' [(ngModel)]="choice_frm.allergy_type2">
                                         </mat-form-field>
                                     </td>
                                     <td style='padding-bottom: 35px;'>
@@ -272,12 +274,13 @@
                     </fieldset>
                 </div>
             </div>
+            <p style="font-weight:600;">Notes</p>
             <div class="panel panel-default">
                 <div class="panel-body" *ngFor="let form of vitals_data.Formvalue;">
                     <!-- <div class="pull-right">
                         <mat-checkbox color='primary' [(ngModel)]="form.notes_status"></mat-checkbox>
                     </div> -->
-                    <p style="font-weight:600;">NOTES:</p>
+                    
                     <mat-form-field class="example-full-width">
                         <input matInput #message maxlength="256" [(ngModel)]="form.GeneralExamination">
                         <mat-hint align="start">
@@ -288,9 +291,10 @@
 
                 </div>
             </div>
+            <p class='bolder'>Active Medication</p>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p class='bolder'>Active Medication</p>
+                    
                     <fieldset class="quote-fieldset position_bt_top" *ngFor="let choice_med_frm of vitals_data.medication; let i=index;">
                         <!-- *ngFor="let choice_med of choices_med; let i=index;" -->
                         <div class="table-responsive">
@@ -314,9 +318,9 @@
                                             <input matInput placeholder="Generic Name" value='loreum ipsum' [(ngModel)]="choice_med_frm.activemedication_genericname">
                                         </mat-form-field>
                                     </td>
-                                    <td style='padding-bottom: 35px;'>
+                                    <td>
                                             <mat-form-field>
-                                        <mat-select placeholder="Frequency" style='width:45%;' [(ngModel)]="choice_med_frm.activemedication_frequency">
+                                        <mat-select placeholder="Frequency" [(ngModel)]="choice_med_frm.activemedication_frequency">
                                             <mat-option *ngFor="let food of prescr" [value]="food.viewValue">
                                                 {{ food.viewValue }}
                                             </mat-option>

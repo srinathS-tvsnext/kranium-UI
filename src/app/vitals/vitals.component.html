@@ -18,7 +18,7 @@
                                 <table class="table table borderless" style='text-align: center'>
                                     <thead class="headercolor">
                                         <tr>
-                                            <!-- <th style='text-align: center'>Date/Time</th> -->
+                                            <th style='text-align: center'>Date</th>
                                             <th style='text-align: center'>Height</th>
                                             <th style='text-align: center'>Weight</th>
                                             <th style='text-align: center'>Temperature</th>
@@ -32,13 +32,14 @@
                                     <tbody *ngFor="let value of vitals_data.Formvalue">
                                         <tr>
                                             <!-- <td>Date</td> -->
-                                            <td>{{value.Height||"-"}} {{'cm'}}</td>
-                                            <td>{{value.Weight||"-"}} {{'cm'}}</td>
-                                            <td>{{value.Temp||"-"}} {{'cm'}}</td>
-                                            <td>{{value.Pulse||"-"}} {{'cm'}}</td>
-                                            <td>{{value.Resp||"-"}} {{'cm'}} </td>
-                                            <td> <span *ngIf="value.Systolic">{{value.Systolic ||"-"}}</span>/<span *ngIf="value.Diastolic">{{value.Diastolic||"-"}}</span>  {{'mm'}} / {{'Hg'}}</td>
-                                            <td>{{value.Bmi||"-"}}</td>
+                                            <td><span *ngIf="value.Date">{{value.Date | date: 'dd/MM/yyyy' }} </span> <span *ngIf="!value.Date">-</span> </td>
+                                            <td><span *ngIf="value.Height">{{value.Height}} {{'cm'}}</span> <span *ngIf="!value.Height">-</span> </td>
+                                            <td><span *ngIf="value.Weight">{{value.Weight}} {{'kg'}}</span> <span *ngIf="!value.Weight">-</span></td>
+                                            <td><span *ngIf="value.Temp">{{value.Temp}} {{'Celsius'}}</span> <span *ngIf="!value.Temp">-</span></td>
+                                            <td><span *ngIf="value.Pulse">{{value.Pulse}} {{'Rate/Min'}}</span> <span *ngIf="!value.Pulse">-</span></td>
+                                            <td><span *ngIf="value.Resp">{{value.Resp}} {{'Rate/Min'}}</span> <span *ngIf="!value.Resp">-</span></td>
+                                            <td> <span *ngIf="value.Systolic">{{value.Systolic}} </span>/<span *ngIf="value.Diastolic">{{value.Diastolic}}</span> {{'mm/Hg'}} </td>
+                                            <td> <span *ngIf="value.Bmi"> {{value.Bmi}}</span></td>
                                             <!-- <td >{{"-"}}</td> -->
                                         </tr>
                                     </tbody>
@@ -54,12 +55,12 @@
                             </div>
                         </div>
                     </div> -->
+                    <p class="bolder">Pain Assessment</p>
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <p class="bolder">Pain Assessment:</p>
                             <div class='col-md-12'>
                                 <div class='col-md-2' *ngFor="let pain of vitals_data.Formvalue">
-                                    <img src="../../assets/img/{{pain.Pain}}" class='imgsize' />
+                                    <img src="../../assets/img/{{pain.Pain}}" alt="No img" class='imgsize' />
                                     <div class='textsiz'>{{pain.Painhurt}}</div>
                                     <div class='painrate'>{{pain.pain_assesment_painrate}}</div>
                                 </div>
@@ -69,9 +70,10 @@
                             </div>
                         </div>
                     </div>
+                    <p class="bolder">Notes</p>
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <p class="bolder">NOTES:</p>
+                            
                             <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.GeneralExamination||"-"}}</p>
                             <!-- <p class="" *ngIf="vitals_data.Formvalue.length==0"> &nbsp; &nbsp; &nbsp; &nbsp; No notes Found</p> -->
 
@@ -83,8 +85,8 @@
                             <table class="table table borderless" style="text-align:center;">
                                 <thead class="headercolor">
                                     <tr>
-                                        <th style='text-align: center'>Allery Type</th>
-                                        <th style='text-align: center'>Allergic Too</th>
+                                        <th style='text-align: center'>Allergy Type</th>
+                                        <th style='text-align: center'>Allergy To</th>
                                         <th style='text-align: center'>Severity</th>
                                     </tr>
                                 </thead>

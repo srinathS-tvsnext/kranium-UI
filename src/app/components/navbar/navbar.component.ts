@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
 
 
-    constructor(public snackBar: MatSnackBar, route: ActivatedRoute, public router: Router, location: Location, private element: ElementRef) { 
+    constructor(public snackBar: MatSnackBar,private globalService: GlobalService, route: ActivatedRoute, public router: Router, location: Location, private element: ElementRef) { 
         this.location = location;
         this.sidebarVisible = false;
         router.events.subscribe((event) => {
@@ -40,6 +40,13 @@ export class NavbarComponent implements OnInit {
         this.listTitles = ROUTES.filter(listTitle => listTitle);
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
+       if(this.titlee = 'OP Summary'){
+            if(this.globalService.viewPatientListPage == true){
+                this.titlee = 'IP Summary'
+            } else {
+                this.titlee = 'OP Summary'
+            }
+       }
     }
 
     openSnackBar(message: string, action: string) {

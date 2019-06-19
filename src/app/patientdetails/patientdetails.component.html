@@ -7,8 +7,8 @@
                         <div class="row">
                             <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
                                 <div class="col-md-10 col-sm-10 col-xs-10" *ngFor="let patient of patient_details">
-                                    <p class="headtext">{{patient.Patient_name}}</p>
-                                    <p class="headtext" style="text-transform: uppercase;">{{patient.Gender}} / {{patient.age}} | UHID: {{patient.UHIDNO}} | Call: {{patient.Phone||'-'}}
+                                    <p class="headtext">{{patient.First_name}} {{patient.Last_name}}</p>
+                                    <p class="headtext" style="text-transform: uppercase;">{{patient.Gender}} / {{patient.Age}} | UHID: {{patient.UHIDNO}} | Call: {{patient.Phone||'-'}}
                                         | Encounter No: {{patient.EncounterNo||'-'}}</p>
                                    
                                 </div>
@@ -19,7 +19,12 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-10 col-sm-10 col-xs-10" *ngFor="let vitals of vitals_data.Formvalue">
+                                <!-- <div class="col-lg-10 col-md-10 col-2">
+                                   <p class="headtext">ACTIVE MEDICATION:  <span *ngFor="let vitals of vitals_data.medication let i= index">
+                                            <span class="headtext"> {{vitals.activemedication_genericname}} </span><span>&nbsp; | &nbsp;</span>
+                                    </span> </p>
+                                </div> -->
+                                <!-- <div class="col-md-10 col-sm-10 col-xs-10" *ngFor="let vitals of vitals_data.Formvalue">
                                     <span class="headtext_status" *ngIf="vitals.notes_status==1">
                                         <span class="headtext">Notes: </span>
                                         <span class="valuetext">{{vitals.notes}}</span>
@@ -55,7 +60,8 @@
                                     <span class="headtext_status" *ngIf="vitals.weight_status==1">
                                         <span class="headtext">Weight:</span>
                                         <span class="valuetext"> {{vitals.weight}}</span>
-                                    </span>&nbsp;
+                                    </span>
+                                    &nbsp;
                                     <div class="headtext_status" *ngIf="vitals.allergy_status==1">
                                         <p *ngFor="let vitals_aller of vitals_data.allergy">
                                             <span class="headtext">Allergy:&nbsp;
@@ -64,7 +70,7 @@
                                             </span>
                                         </p>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                             <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
@@ -77,7 +83,7 @@
                                         <button type="button" class="btn btn-white btnaction" routerLink='Vitals' routerLinkActive="active">Vitals</button>
                                     </a>
                                     <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='History') && !GlobalService.viewPatientListPage">
-                                        <button type="button" class="btn btn-white " routerLink='History' routerLinkActive="active">History</button>                                        
+                                        <button type="button" class="btn btn-white btnaction" routerLink='History' routerLinkActive="active">History</button>                                        
                                     </a>
                                     <a *ngIf="sub_menu.view && (sub_menu.sub_menu_name=='Examination') && !GlobalService.viewPatientListPage">
                                         <button type="button" class="btn btn-white btnaction" routerLink='Examination' routerLinkActive="active">Examination</button>

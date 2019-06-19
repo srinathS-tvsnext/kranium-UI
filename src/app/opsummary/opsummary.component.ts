@@ -135,7 +135,8 @@ export class OpsummaryComponent implements OnInit {
             resData[count][this.vitals_data.Formvalue[j].name] = this.vitals_data.Formvalue[j].value;
           }
           this.vitals_data.Formvalue = resData;
-          
+        }
+      })
           this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getallergydetail', patientdata_details).subscribe(resdata => {
             if (resdata['IsSuccess']) {
               this.vitals_data.allergy = resdata['ResponseObject'];
@@ -144,16 +145,14 @@ export class OpsummaryComponent implements OnInit {
                   this.vitals_data.allergy[i].notes = JSON.parse(this.vitals_data.allergy[i].notes);
                 }
               }
-              this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
-                if (resdata['IsSuccess']) {
-                  this.vitals_data.medication = resdata['ResponseObject'][0].tvs_nxt_form_trimed;
-                  this.vitals_data.medication = JSON.parse(this.vitals_data.medication)
-                }
-              })
             }
-        })
-        }
-      })
+          })
+            this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
+              if (resdata['IsSuccess']) {
+                this.vitals_data.medication = resdata['ResponseObject'][0].tvs_nxt_form_trimed;
+                this.vitals_data.medication = JSON.parse(this.vitals_data.medication)
+              }
+            })
     }
   }
 

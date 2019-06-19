@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="">
             <p class="">
-                <strong>VITALS</strong>
+                <strong>Vitals</strong>
             </p>
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -219,10 +219,10 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="pull-right">
-                        <mat-checkbox color='primary' [(ngModel)]="form.allergy_status"></mat-checkbox>
-                    </div>
-                    <p class='bolder'>ALLERGY</p>
+                    <!-- <div class="pull-right">
+                         <mat-checkbox color='primary' [(ngModel)]="form.allergy_status"></mat-checkbox> 
+                    </div> -->
+                    <p class='bolder'>Allergy</p>
                     <fieldset class="quote-fieldset position_bt_top" *ngFor="let choice of choices; let i=index;">
                         <div class="table-responsive">
                             <table class="table table borderless">
@@ -239,7 +239,7 @@
                                     </td>
                                     <td>
                                         <mat-form-field>
-                                            <input matInput placeholder="Allergic too" value='' [(ngModel)]="form.choice[i].allergy_type2">
+                                            <input matInput placeholder="Allergy to" value='' [(ngModel)]="form.choice[i].allergy_type2">
                                         </mat-form-field>
                                     </td>
                                     <td>
@@ -268,10 +268,10 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="pull-right">
+                    <!-- <div class="pull-right">
                         <mat-checkbox color='primary' [(ngModel)]="form.notes_status"></mat-checkbox>
-                    </div>
-                    <p style="font-weight:600;">NOTES:</p>
+                    </div> -->
+                    <p style="font-weight:600;">Notes:</p>
                     <mat-form-field class="example-full-width">
                         <input matInput #message maxlength="256" [(ngModel)]="form.notes">
                         <mat-hint align="start">

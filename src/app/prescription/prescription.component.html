@@ -7,9 +7,6 @@
                         <div class="container-fluid">
                             <!-- <button type="button" class="btn btn-steelblue pull-right" (click)="investigationlistpopupclose()">Clear Chart</button> -->
                             <div>
-                                <div class="col-md-3">
-                            <button type="button" class="btn btn-steelblue" routerLink='/Homescreen/Patientdetails/Previousprescription'>Prescription History</button>
-                            </div>
                             <div class="col-md-3">
                                 <mat-form-field>
                                     <mat-select class="pull-right " placeholder="Favourite prescription" (selectionChange)="edittemp_pres(med)" [(ngModel)]="med">
@@ -27,6 +24,9 @@
                                         </mat-option>
                                     </mat-select>
                                     </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-steelblue pull-right" routerLink='/Homescreen/Patientdetails/Previousprescription'>Prescription History</button>
                             </div>
                             </div>
                         </div>
@@ -141,6 +141,39 @@
                                         </mat-select>
                                         </mat-form-field>
                                     </div>
+                                    <!-- <div class="col-lg-1 col-md-2">
+                                        <mat-form-field class="setwdh">
+                                            <mat-select placeholder="Morning" style='width:100%;'>
+                                                <mat-option  [value]="0"> 0</mat-option>
+                                                <mat-option  [value]="1/4"> 1/4</mat-option>
+                                                <mat-option  [value]="1/2"> 1/2</mat-option>
+                                                <mat-option  [value]="3/4"> 3/4</mat-option>
+                                                <mat-option  [value]="1"> 1</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-1 col-md-2">
+                                        <mat-form-field class="setwdh">
+                                            <mat-select placeholder="Ofter noon" style='width:100%;'>
+                                                <mat-option  [value]="0"> 0</mat-option>
+                                                <mat-option  [value]="1/4"> 1/4</mat-option>
+                                                <mat-option  [value]="1/2"> 1/2</mat-option>
+                                                <mat-option  [value]="3/4"> 3/4</mat-option>
+                                                <mat-option  [value]="1"> 1</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-1 col-md-2">
+                                        <mat-form-field class="setwdh">
+                                            <mat-select placeholder="Evening" style='width:100%;'>
+                                                <mat-option  [value]="0"> 0</mat-option>
+                                                <mat-option  [value]="1/4"> 1/4</mat-option>
+                                                <mat-option  [value]="1/2"> 1/2</mat-option>
+                                                <mat-option  [value]="3/4"> 3/4</mat-option>
+                                                <mat-option  [value]="1"> 1</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div> -->
                                     <div class="col-lg-2 col-md-6">
                                             <mat-form-field class="setwdh">
                                         <mat-select placeholder="Timing" style='width:100%;' [(ngModel)]="med.timing">
@@ -181,6 +214,14 @@
                                                 <input matInput placeholder="Dossage" value='' [(ngModel)]="med.dosage">
                                             </mat-form-field>
                                     </div>
+                                    <!-- <div class="col-lg-3 col-md-6">
+                                        <mat-form-field class="setwdh">
+                                            <mat-select placeholder="Route" style='width:100%;'>
+                                                <mat-option  [value]="Oral">Oral</mat-option>
+                                                <mat-option  [value]="Intravenous">Intravenous</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div> -->
                                     <div class="col-lg-3 col-md-6">
                                             <mat-form-field class="setwdh">
                                                 <input matInput placeholder="Note" value='' [(ngModel)]="med.notes">
@@ -244,12 +285,13 @@
                                 <thead class="headercolor">
                                     <tr>
                                         <th style='text-align: center'>Medication Name</th>
-                                        <th style='text-align: center'>Quantity</th>
+                                        <!-- <th style='text-align: center'>Quantity</th> -->
                                         <th style='text-align: center'>Route</th>
                                         <th style='text-align: center'>Frequency</th>
                                         <th style='text-align: center'>Timing</th>
                                         <th style='text-align: center'>Duration</th>
                                         <th style='text-align: center'>Favourite</th>
+                                        <th style='text-align: center'>Notes</th>
                                         <th style='text-align: center'>&nbsp; </th>
                                     </tr>
                                 </thead>
@@ -264,7 +306,7 @@
                                         <td *ngIf="!tem_data.quantitystatus">{{tem_data.brand_name}}
                                             <!-- <br><span style="font-size:11px;">({{tem_data.generic_name}})</span> -->
                                         </td>
-                                        <td>{{tem_data.quantity}}</td>
+                                        <!-- <td>{{tem_data.quantity}}</td> -->
                                         <td> - </td>
                                         <td>{{tem_data.frequency}}</td>
                                         <td>{{tem_data.timing}}</td>
@@ -272,6 +314,7 @@
                                         <td>
                                             <mat-checkbox color='primary' [(ngModel)]="tem_data.fav"></mat-checkbox>
                                         </td>
+                                        <td class="fa fa-eye" style="cursor: pointer" (click)="viewNotes(tem_data.notes)"></td>
                                         <td>
                                             <span *ngIf="sub_view_menu.add_edit" [hidden]="hide_editbtn">
                             <i class="material-icons" style="cursor:pointer; color:steelblue;" (click)='edittemp_drug_new(tem_data)'>edit</i>
@@ -296,13 +339,13 @@
                                 </mat-form-field>
                             </div> -->
                             <div>
-                                    <mat-form-field>
+                                    <!-- <mat-form-field>
                                 <mat-select placeholder="Choose Language" [(ngModel)]="template_pres_med_data.language" (ngModelChange)="change_language(template_pres_med_data.language)">
                                     <mat-option *ngFor="let lang of language_list" [value]="lang">
                                         {{ lang.language_name }}
                                     </mat-option>
                                 </mat-select>
-                                </mat-form-field>
+                                </mat-form-field> -->
                                 <div class="pull-right">
                                     <!-- <button type="button" class="btn btn-steelblue" routerLink='/Homescreen/Patientdetails/Previousprescription'>Previous Prescription</button>
             

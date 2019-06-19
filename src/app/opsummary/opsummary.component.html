@@ -37,7 +37,7 @@
                 </span>
                 <span *ngIf="opo_temp.lastname">
                   <div class='col-md-5 headingclr'>Last Name</div>
-                  <div class='col-md-5 contentclr'>-</div>
+                  <div class='col-md-5 contentclr'>{{patient_profile.Last_name || '-' }}</div>
                 </span>
               </div>
               <div class="col-md-12">
@@ -48,7 +48,7 @@
                 </span>
                 <span *ngIf="opo_temp.Occupation">
                   <div class='col-md-5 headingclr'>Occupation</div>
-                  <div class='col-md-5 contentclr'>-</div>
+                  <div class='col-md-5 contentclr'>{{patient_profile.Occupation || '-' }}</div>
                 </span>
               </div>
               <div class="col-md-12">
@@ -59,7 +59,7 @@
                 </span>
                 <span *ngIf="opo_temp.Qualification">
                   <div class='col-md-5 headingclr'>Qualification</div>
-                  <div class='col-md-5 contentclr'>-</div>
+                  <div class='col-md-5 contentclr'>{{patient_profile.Qualification || '-' }}</div>
                 </span>
               </div>
               <div class="col-md-12">
@@ -70,7 +70,7 @@
                 </span>
                 <span *ngIf="opo_temp.Age">
                   <div class='col-md-5 headingclr'>Age</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.age||'-'}}</div>
+                  <div class='col-md-5 contentclr'>{{patient_profile.Age||'-'}}</div>
                 </span>
               </div>
               <div class="col-md-12">
@@ -92,7 +92,7 @@
                 </span>
                 <span *ngIf="opo_temp.Blood">
                   <div class='col-md-5 headingclr'>Blood Group</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Bloodgroup||'-'}}</div>
+                  <div class='col-md-5 contentclr'>{{patient_profile.Blood_group||'-'}}</div>
                 </span>
               </div>
               <div class="col-md-12">
@@ -103,7 +103,7 @@
                 </span>
                 <span *ngIf="opo_temp.Religion">
                   <div class='col-md-5 headingclr'>Religion</div>
-                  <div class='col-md-5 contentclr'>-</div>
+                  <div class='col-md-5 contentclr'>{{patient_profile.Religion || '' }}</div>
                 </span>
               </div>
 
@@ -117,7 +117,7 @@
                 </span>
                 <span *ngIf="opo_temp.Nationality">
                   <div class='col-md-5 headingclr'>Nationality</div>
-                  <div class='col-md-5 contentclr'>-</div>
+                  <div class='col-md-5 contentclr'>{{patient_profile.Nationality || '' }}</div>
                 </span>
               </div>
               <div class="col-md-12">
@@ -139,7 +139,7 @@
                 </span>
                 <span *ngIf="opo_temp.Town">
                   <div class='col-md-5 headingclr'>Town/City</div>
-                  <div class='col-md-5 contentclr'>-</div>
+                  <div class='col-md-5 contentclr'>{{patient_profile.City ||'-'}}</div>
                 </span>
               </div>
               <div class="col-md-12">
@@ -150,7 +150,7 @@
                 </span>
                 <span *ngIf="opo_temp.District">
                   <div class='col-md-5 headingclr'>District</div>
-                  <div class='col-md-5 contentclr'>-</div>
+                  <div class='col-md-5 contentclr'>{{ patient_profile.District || '-'}}</div>
                 </span>
               </div>
               <div class="col-md-12">
@@ -161,7 +161,7 @@
                 </span>
                 <span *ngIf="opo_temp.State">
                   <div class='col-md-5 headingclr'>State</div>
-                  <div class='col-md-5 contentclr'>-</div>
+                  <div class='col-md-5 contentclr'>{{ patient_profile.State || '-'}}</div>
                 </span>
               </div>
               <div class="col-md-12">
@@ -172,7 +172,7 @@
                 </span>
                 <span *ngIf="opo_temp.Country">
                   <div class='col-md-5 headingclr'>Country</div>
-                  <div class='col-md-5 contentclr'>-</div>
+                  <div class='col-md-5 contentclr'>{{ patient_profile.Country || '-'}}</div>
                 </span>
               </div>
               <div class="col-md-12">
@@ -204,7 +204,7 @@
       <p class='bolder'>Vitals</p>
       <div class="panel panel-default">
         <div class="panel-body">
-          <div class="table-responsive">
+          <div class="table-responsive" *ngIf="vitals_data.Formvalue">
             <table class="table table borderless tb" style='text-align: center'>
               <thead class="headercolor">
                 <tr>
@@ -221,18 +221,19 @@
               <tbody *ngFor="let value of vitals_data.Formvalue">
                   <tr>
                       <!-- <td>Date</td> -->
-                      <td>{{value.Height||"-"}} {{'cm'}}</td>
-                      <td>{{value.Weight||"-"}} {{'cm'}}</td>
-                      <td>{{value.Temp||"-"}} {{'cm'}}</td>
-                      <td>{{value.Pulse||"-"}} {{'cm'}}</td>
-                      <td>{{value.Resp||"-"}} {{'cm'}} </td>
-                      <td> <span *ngIf="value.Systolic">{{value.Systolic ||"-"}}</span>/<span *ngIf="value.Diastolic">{{value.Diastolic||"-"}}</span>  {{'mm'}} / {{'Hg'}}</td>
+                      <td><span *ngIf="value.Height">{{value.Height}} {{'cm'}}</span> <span *ngIf="!value.Height">-</span> </td>
+                      <td><span *ngIf="value.Weight">{{value.Weight}} {{'kg'}}</span> <span *ngIf="!value.Weight">-</span></td>
+                      <td><span *ngIf="value.Temp">{{value.Temp}} {{'Celsius'}}</span> <span *ngIf="!value.Temp">-</span></td>
+                      <td><span *ngIf="value.Pulse">{{value.Pulse}} {{'Rate/Min'}}</span> <span *ngIf="!value.Pulse">-</span></td>
+                      <td><span *ngIf="value.Resp">{{value.Resp}} {{'Rate/Min'}}</span> <span *ngIf="!value.Resp">-</span></td>
+                      <td> <span *ngIf="value.Systolic && value.Diastolic">{{value.Systolic}}/{{value.Diastolic}} {{'mm/Hg'}}</span><span *ngIf="!value.Systolic || !value.Diastolic">{{"-"}}</span>  </td>
                       <td>{{value.Bmi||"-"}}</td>
                       <!-- <td >{{"-"}}</td> -->
                   </tr>
               </tbody>
             </table>
           </div>
+          <p *ngIf="!vitals_data.Formvalue">No data found</p>
         </div>
       </div>
       <div class='col-md-12'>&nbsp;</div>
@@ -261,33 +262,37 @@
           </mat-checkbox>
         </span> -->
         <span *ngIf="opo_temp.Pain_Assessment">
+            <p class="bolder">Pain Assessment</p>
           <div class="panel panel-default">
             <div class="panel-body">
-              <p class="bolder">Pain Assessment</p>
+              
               <div class='col-md-12'>
                 <div class='col-md-2' *ngFor="let pain of vitals_data.Formvalue">
-                  <img src="../../assets/img/{{pain.Pain}}" class='imgsize' />
+                  <img src="../../assets/img/{{pain.Pain}}" class='imgsize' alt="No Img"/>
                   <!-- <img src="../globaluat/assets/img/sm3.png" class='imgsize' /> -->
                   <div class='textsiz'>{{pain.Painhurt}}</div>
                   <div class='painrate'>{{pain.pain_assesment_painrate}}</div>
                 </div>
+                
               </div>
+              <p *ngIf="!vitals_data.Formvalue">No data found</p>
             </div>
           </div>
         </span>
       </div>
       <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
+        <!-- <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Notes">
             <span *ngIf="!opo_temp.Notes">Notes</span>
           </mat-checkbox>
-        </span>
+        </span> -->
         <span *ngIf="opo_temp.Notes">
+            <p class="bolder">Notes</p>
           <div class="panel panel-default">
             <div class="panel-body">
-              <p class="bolder">NOTES:</p>
               <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.GeneralExamination||"-"}}
               </p>
+              <p *ngIf="!vitals_data.Formvalue">No data found</p>
             </div>
           </div>
         </span>
@@ -299,14 +304,15 @@
           </mat-checkbox>
         </span>
         <span *ngIf="opo_temp.Allergy">
+            <p class='bolder'>Allergy</p>
           <div class="panel panel-default">
             <div class="panel-body">
-              <p class='bolder'>Allergy</p>
-              <table class="table table borderless" style="text-align:center;">
+              
+              <table class="table table borderless" style="text-align:center;" *ngIf="vitals_data.allergy">
                 <thead class="headercolor">
                   <tr>
                     <th style='text-align: center'>Allergy Type</th>
-                    <th style='text-align: center'>Allergy Too</th>
+                    <th style='text-align: center'>Allergy To</th>
                     <th style='text-align: center'>Severity</th>
                   </tr>
                 </thead>
@@ -319,6 +325,7 @@
                 </tbody>
               </table>
             </div>
+            <p *ngIf="!vitals_data.allergy">No data found</p>
           </div>
         </span>
       </div>
@@ -329,26 +336,29 @@
           </mat-checkbox>
         </span>
         <span *ngIf="opo_temp.Active_Medication">
+            <p class='bolder'>Active Medication</p>
           <div class="panel panel-default">
             <div class="panel-body">
-              <p class='bolder'>Active Medication</p>
-              <div class="table-responsive">
+              
+              <div class="table-responsive" *ngIf="vitals_data.medication">
                 <table class="table table borderless" style="text-align:center;">
                   <thead class="headercolor">
                     <tr>
                       <th style='text-align: center'>Brand Name</th>
+                      <th style='text-align: center'>Generic Name</th>
                       <th style='text-align: center'>Frequency</th>
                     </tr>
                   </thead>
                   <tbody *ngFor="let medi of vitals_data.medication">
                     <tr>
                       <td>{{medi.activemedication_brandname||"-"}}
-                        <br>({{medi.activemedication_genericname||"-"}})</td>
+                        <td>{{medi.activemedication_genericname||"-"}}</td>
                       <td>{{medi.activemedication_frequency||"-"}}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+              <p *ngIf="!vitals_data.medication">No data found</p>
             </div>
           </div>
         </span>
@@ -361,9 +371,10 @@
         </span>
         <span *ngIf="opo_temp.History_Questions_Answers">
           <p class='bolder'>History</p>
+          <p class='bolder'>Chief Complaints</p>
           <div class="panel panel-default">
             <div class="panel-body">
-              <p class='bolder'>Chief Complaints</p>
+              
               <div>
                 <div class="">
                   <span *ngFor="let complaints of history_patient_chief_complaints">
@@ -372,6 +383,7 @@
                         {{complaints.duration}}</span>
                     </button>
                   </span>
+                  <p *ngIf="!history_patient_chief_complaints">No data found</p>
                 </div>
               </div>
             </div>
@@ -379,21 +391,22 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <span *ngFor="let history of history_qa">
-                <p>
+                <p *ngIf="history">
                   <strong>{{history.question}}</strong>
                 </p>
                 <p>{{history.answer}}</p>
               </span>
+              <p *ngIf="!history_qa">No data found</p>
             </div>
           </div>
         </span>
       </div>
       <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
+        <!-- <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Examination_Questions_Answers">
             <span *ngIf="!opo_temp.Examination_Questions_Answers">Examination</span>
           </mat-checkbox>
-        </span>
+        </span> -->
         <span *ngIf="opo_temp.Examination_Questions_Answers">
           <p class='bolder'>Examination</p>
           <div class="panel panel-default">
@@ -404,16 +417,17 @@
                 </p>
                 <p>{{examination.answer}}</p>
               </span>
+              <p *ngIf="!Examination_Questions_Answers">No data found</p>
             </div>
           </div>
         </span>
       </div>
       <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
+        <!-- <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Consultation_Notes">
             <span *ngIf="!opo_temp.Consultation_Notes">Consultation_Notes</span>
           </mat-checkbox>
-        </span>
+        </span> -->
         <span *ngIf="opo_temp.Consultation_Notes">
           <p class='bolder'>Consultation Notes</p>
           <div class="panel panel-default">
@@ -424,6 +438,7 @@
                   <span *ngFor="let notes of consultation_notes">
                     <button type="button" class="btn btn-white">{{notes.notes}}</button>
                   </span>
+                  <p *ngIf="!consultation_notes">No data found</p>
                 </div>
               </div>
             </div>
@@ -452,6 +467,7 @@
                     <button type="button" class="btn btn-white">{{ics_prov.notes}}
                     </button>
                   </span>
+                  <p *ngIf="!diagno_icd_patioent && !diagno_icd_patioent_provitional">No data found</p>
                 </div>
               </div>
             </div>
@@ -459,11 +475,11 @@
         </span>
       </div>
       <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
+        <!-- <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Procedure">
             <span *ngIf="!opo_temp.Procedure">Procedure</span>
           </mat-checkbox>
-        </span>
+        </span> -->
         <span *ngIf="opo_temp.Procedure">
           <p class='bolder'>Procedure</p>
           <div class="panel panel-default">
@@ -476,6 +492,7 @@
                       <span class="hidden-xs">{{prescri_pat.item_description}}</span>
                     </button>
                   </div>
+                  <p *ngIf="!diagno_presc_patioent">No data found</p>
                 </div>
               </div>
             </div>
@@ -510,17 +527,17 @@
         </span>
       </div> -->
       <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
+        <!-- <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Current_Prescription">
             <span *ngIf="!opo_temp.Current_Prescription">Current_Prescription</span>
           </mat-checkbox>
-        </span>
+        </span> -->
         <span *ngIf="opo_temp.Current_Prescription">
           <p class='bolder'>Current Prescription</p>
           <div class="panel panel-default">
             <!-- <p class='bolder'>Prescription</p> -->
             <div class="panel-body">
-              <div class="table-responsive">
+              <div class="table-responsive" *ngIf="pres_data">
                 <table class="table table borderless tb2" style='text-align: center'>
                   <thead class="tableheadercolor">
                     <tr>
@@ -548,6 +565,7 @@
                   </tbody>
                 </table>
               </div>
+              <p *ngIf="!pres_data">No data found</p>
             </div>
           </div>
         </span>

@@ -123,6 +123,7 @@ import { CreaterolesEditComponent } from './createroles-edit/createroles-edit.co
 import { UpdateMfOpsummaryTemplateNameComponent } from './update-mf-opsummary-template-name/update-mf-opsummary-template-name.component';
 import { AddlanguageComponent } from './master/addlanguage/addlanguage.component';
 import { InpatientlistComponent } from './inpatientlist/inpatientlist.component';
+import { NotesPopupComponent } from './notes-popup/notes-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -174,7 +175,7 @@ import { InpatientlistComponent } from './inpatientlist/inpatientlist.component'
     CrongjobSettingsComponent, CongjobpopupComponent, LanguageComponent, LoginBackgroundImgComponent,
     InvestigationShortcodeComponent, EditManageformComponent, AddconfigComponent,
     InvestigationAddShortcodeComponent, EditvitalsComponent, DuplicateFormComponent,
-    EditMastervitalComponent, EditMasterfollowupsComponent, CreaterolesEditComponent, UpdateMfOpsummaryTemplateNameComponent, AddlanguageComponent, InpatientlistComponent,
+    EditMastervitalComponent, EditMasterfollowupsComponent, CreaterolesEditComponent, UpdateMfOpsummaryTemplateNameComponent, AddlanguageComponent, InpatientlistComponent, NotesPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -194,7 +195,7 @@ import { InpatientlistComponent } from './inpatientlist/inpatientlist.component'
     DuplicateFormComponent, LanguageeditpopupComponent, CongjobpopupComponent,
     InvestigationlistComponent, OpsumaryTemplateNameComponent, InvestigationTemplateComponent,
     TemplatenameDrugPopupComponent, ReportviewComponent, ReportgraphicalviewComponent,
-    PreviewformComponent, TemplatenamePopupComponent, InvestigationEditShortcodeComponent,
+    PreviewformComponent, TemplatenamePopupComponent, InvestigationEditShortcodeComponent,NotesPopupComponent,
     EditconfigComponent, CreaterolesEditComponent],
     
   providers: [GlobalService, GlobalResolver, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },MatDatepickerModule],

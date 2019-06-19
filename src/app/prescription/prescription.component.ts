@@ -10,6 +10,7 @@ import { TemplatenamePopupComponent } from '../templatename-popup/templatename-p
 import { TemplatenameDrugPopupComponent } from '../templatename-drug-popup/templatename-drug-popup.component';
 import { GlobalService } from '../global.service';
 import * as _ from 'lodash';
+import { NotesPopupComponent } from '../notes-popup/notes-popup.component';
 
 const NUMBER_REGEX = /^[0-9]*$/;
 
@@ -209,7 +210,7 @@ export class PrescriptionComponent implements OnInit {
     this.btn = "Update";
     console.log(data);
     this.barand_gen_name = [{ 'itemname': data.brand_name }];
-    this.med = { 'brand_name': data.brand_name, 'duration_capt': data.duration_capt, 'duration_no': data.duration_no, 'frequency': data.frequency,'timing': data.timing, 'generic_name': data.generic_name, 'drug_template_map_id': data.drug_template_map_id, "item_code": data.item_code };
+    this.med = { 'brand_name': data.brand_name, 'duration_capt': data.duration_capt, 'duration_no': data.duration_no, 'frequency': data.frequency,'timing': data.timing, 'generic_name': data.generic_name, 'drug_template_map_id': data.drug_template_map_id, "item_code": data.item_code, "startDate": data.startDate, "dosage": data.dosage, "notes":data.notes };
   }
 
   //start Prescription
@@ -956,4 +957,14 @@ export class PrescriptionComponent implements OnInit {
       this.dropdown_hide = false;
     }
   }
+
+  viewNotes(notes){
+  if(notes.length > 0) {
+    this.dialog.open(NotesPopupComponent, {
+      data: {note:notes},
+        disableClose: false
+      })
+    }
+  }
+
 }

@@ -14,6 +14,8 @@ table {
     background-color: transparent;
     color: steelblue;
     border: 1px solid steelblue;
+    font-weight: 600;
+    text-transform: none;
 }
 
 .btn-steelblue:hover{
@@ -59,12 +61,12 @@ table {
 }
 
 .textsiz{
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 10px;
 }
 
 .painrate{
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 15px;
     padding-left:32px;
 }

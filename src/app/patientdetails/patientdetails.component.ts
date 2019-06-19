@@ -34,12 +34,20 @@ export class PatientdetailsComponent implements OnInit {
     this.GlobalService.enableloader();
     debugger;
     if (patientdata_details) {
-      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitaldetail', patientdata_details).subscribe(resdata => {
+      // this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitaldetail', patientdata_details).subscribe(resdata => {
+      //   if (resdata['IsSuccess']) {
+      //     this.GlobalService.disableloader();
+      //     this.vitals_data = resdata['ResponseObject'];
+      //   } else {
+      //     this.GlobalService.disableloader();
+      //   }
+      // })
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          this.GlobalService.disableloader();
-          this.vitals_data = resdata['ResponseObject'];
-        } else {
-          this.GlobalService.disableloader();
+          this.vitals_data.medication =[];
+          for (let i = 0; i < resdata['ResponseObject'].length; i++) {
+            this.vitals_data.medication.push(JSON.parse((resdata['ResponseObject'][i].tvs_nxt_form_trimed))[0])
+          }   
         }
       })
     }
