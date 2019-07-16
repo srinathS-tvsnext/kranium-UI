@@ -32,6 +32,9 @@ export class ReportsComponent implements OnInit {
         this.GlobalService.disableloader();
         this.report_data_new = resdata['ResponseObject'];
         console.log(this.report_data_new);
+        for(let i=0;i<this.report_data_new.length;i++){
+          this.report_data_new[i].result = JSON.parse(this.report_data_new[i].result);
+        }
       }
       else {
         this.GlobalService.disableloader();
@@ -39,14 +42,27 @@ export class ReportsComponent implements OnInit {
     })
   }
 
-  reportdetview(): void {
-    this.dialogRef = this.dialog.open(ReportviewComponent, {
-      data: {
-        width: '600px',
-      },
-      disableClose: true
-    })
-  }
+  // reportdetview(): void {
+  //   this.dialogRef = this.dialog.open(ReportviewComponent, {
+  //     data: {
+  //       width: '600px',
+  //     },
+  //     disableClose: true
+  //   })
+  // }
 
+   reportgraphview(testname) {
+     let graphdata = [];
+     for(let i=0;i<this.report_data_new.length;i++) {
+       let c = i+1
+       if(this.report_data_new[i].test_name == testname) {
+          graphdata.push({result: this.report_data_new[i].result.Results.EnteredValue,normalResult:'T'+c})
+       }
+     }
+    this.dialogRef = this.dialog.open(ReportviewComponent,{
+      width: '500px',
+      data : {graphdata}
+    })
+   }
 
 }

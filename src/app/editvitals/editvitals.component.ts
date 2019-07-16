@@ -54,7 +54,7 @@ export class EditvitalsComponent implements OnInit {
     this.editForm = {};
     this.editForm.height_id = "CM";
     this.editForm.weight_id = "Kg";
-    this.editForm.temperature_id = 'Celsius';
+    this.editForm.temperature_id = 'Fahrenheit';
     this.editForm.pulse_id = "Rate/Min";
     this.editForm.RR_id = "Rate/Min";
     this.editForm.respirator_id = "Rate/Min";
@@ -263,7 +263,7 @@ export class EditvitalsComponent implements OnInit {
     if (this.patientdata_details) {
       for (var i = 0; i < this.patientdata_details.length; i++) {
         update_data.Formvalue[0].uhid_no = this.patientdata_details[i].UHIDNO;
-        update_data.Formvalue[0].pastencounter_no = this.patientdata_details[i].EncounterNo;
+        // update_data.Formvalue[0].pastencounter_no = this.patientdata_details[i].EncounterNo;
       }
     }
     this.GlobalService.enableloader();
@@ -1531,8 +1531,8 @@ export class EditvitalsComponent implements OnInit {
         } else {
           this.gender = "Female";
         }
-        if (this.patientdata_details[i].age) {
-          var DOB = Number(this.patientdata_details[i].age) * 12;
+        if (this.patientdata_details[i].Age) {
+          var DOB = Number(this.patientdata_details[i].Age) * 12;
           this.age_months = Number(DOB);
         }
       }

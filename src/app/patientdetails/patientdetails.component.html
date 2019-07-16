@@ -8,8 +8,8 @@
                             <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
                                 <div class="col-md-10 col-sm-10 col-xs-10" *ngFor="let patient of patient_details">
                                     <p class="headtext">{{patient.First_name}} {{patient.Last_name}}</p>
-                                    <p class="headtext" style="text-transform: uppercase;">{{patient.Gender}} / {{patient.Age}} | UHID: {{patient.UHIDNO}} | Call: {{patient.Phone||'-'}}
-                                        | Encounter No: {{patient.EncounterNo||'-'}}</p>
+                                    <p style="text-transform: uppercase;"> <span class="headtextfnt">{{patient.Gender}} / {{patient.Age}} </span> <span class="headtext"> | UHID: </span>  <span class="headtextfnt"> {{patient.UHIDNO}} </span><span class="headtext"> | Call: </span>   <span  class="headtextfnt"> {{patient.Phone||'-'}} </span> 
+                                        <span class="headtext">  | Encounter No: </span> <span  class="headtextfnt"> {{patient.EncounterNo||'-'}} </span></p>
                                    
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -19,11 +19,11 @@
                                         </a>
                                     </div>
                                 </div>
-                                <!-- <div class="col-lg-10 col-md-10 col-2">
-                                   <p class="headtext">ACTIVE MEDICATION:  <span *ngFor="let vitals of vitals_data.medication let i= index">
-                                            <span class="headtext"> {{vitals.activemedication_genericname}} </span><span>&nbsp; | &nbsp;</span>
+                                <div class="col-lg-10 col-md-10 col-2">
+                                   <p> <span class="headtext">ACTIVE MEDICATION:</span>  <span *ngFor="let vitals of vitals_data.medication let i= index">
+                                            <span class="headtextfnt" *ngIf="vitals.activemedication_brandname"> {{vitals.activemedication_brandname || ''}} </span> <span>&nbsp; | &nbsp;</span>
                                     </span> </p>
-                                </div> -->
+                                </div>
                                 <!-- <div class="col-md-10 col-sm-10 col-xs-10" *ngFor="let vitals of vitals_data.Formvalue">
                                     <span class="headtext_status" *ngIf="vitals.notes_status==1">
                                         <span class="headtext">Notes: </span>

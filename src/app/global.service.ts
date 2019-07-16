@@ -13,7 +13,8 @@ export class GlobalService {
   viewPatientListPage = false;
 
 
-   baseurl = "http://localhost/global";
+    baseurl = "http://localhost/global";
+  // baseurl = "http://192.168.0.255/global";
   // baseurl = "http://115.112.102.209:8080/global";
   // baseurl = "http://10.91.19.183/global";
 

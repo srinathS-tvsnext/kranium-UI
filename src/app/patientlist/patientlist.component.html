@@ -119,7 +119,7 @@
                             <table class=" table font-weight-500" style='text-align: center'>
                                 <thead class="headercolor" data-background-color="#AFE1F5">
                                     <tr>
-                                        <td style='text-align: center'>Time</td>
+                                        <td style='text-align: center'>Date/Time</td>
                                         <td style='text-align: center'>Patient Name</td>
                                         <td style='text-align: center'>UHID</td>
                                         <td style='text-align: center'>Phone No</td>
@@ -133,11 +133,11 @@
                                 <tbody>
                                     <tr *ngFor="let indv_socialmention of filtered_data | paginate: config; let i = index" (click)="clickOnPatient(indv_socialmention)"
                                     [class.pointer]="indv_socialmention.appt_status=='walkin' || indv_socialmention.appt_status=='checkedin' || indv_socialmention.appt_status=='done'">
-                                        <td>{{indv_socialmention.DATETIME.slice(11, 19)}} </td>
+                                        <td>{{indv_socialmention.DATETIME | date: 'dd/MM/yy  h:mm a'}} </td>
                                         <td>{{indv_socialmention.name}}</td>
                                         <td *ngIf="indv_socialmention.uhid != '0'">{{indv_socialmention.uhid||'-'}}</td>
                                         <td *ngIf="indv_socialmention.uhid == '0'">-</td>
-                                        <td>{{indv_socialmention.mobileno}}</td>
+                                        <td>{{indv_socialmention.mobileno || '-'}}</td>
                                         <td style="text-transform: uppercase;">{{indv_socialmention.age}}</td>
                                         <td *ngIf="indv_socialmention.encounterno != '0'">{{indv_socialmention.encounterno||'-'}}</td>
                                         <td *ngIf="indv_socialmention.encounterno == '0'">-</td>

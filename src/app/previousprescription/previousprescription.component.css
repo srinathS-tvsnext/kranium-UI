@@ -21,3 +21,10 @@
     color: white;
     font-size: 10px;
 }
+.noteellipse{
+    white-space: nowrap;
+    width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}

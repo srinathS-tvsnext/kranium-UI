@@ -20,7 +20,7 @@ export class OpsummaryComponent implements OnInit {
   examination_qa;
   history_qa;
   history_patient_chief_complaints; template; opp_template; diagno_icd_patioent;
-  hideen; consolidated_data; hidden_edit; hidden_update; hidden_cancel; hidden_print;diagno_icd_patioent_provitional
+  hideen; consolidated_data; hidden_edit; hidden_update; hidden_cancel; hidden_print; diagno_icd_patioent_provitional
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService) { }
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class OpsummaryComponent implements OnInit {
     this.patientdata_details = JSON.parse(sessionStorage.getItem('patientdata'));
     this.get_vital_patient(this.patientdata_details);
     this.vitals_data = {};
-
+    this.vitals_data.medication = [];
     this.get_history_consultation_notes(this.patientdata_details);
     this.get_procedure_diag_patient(this.patientdata_details);
     this.get_pres(this.patientdata_details);
@@ -46,7 +46,7 @@ export class OpsummaryComponent implements OnInit {
     this.get_history_qa(this.patientdata_details);
     this.get_chief_complaints_patient_details(this.patientdata_details);
     this.get_icd_codes_patient(this.patientdata_details);
-  
+
   }
   template_change(data_termp) {
     debugger;
@@ -77,12 +77,12 @@ export class OpsummaryComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/get_history_icd_provitionalCode', data_icd).subscribe(resdatas => {
-      if (resdatas['IsSuccess']) {
-          this.GlobalService.disableloader();       
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/pastencounter/get_history_icd_provitionalCode', data_icd).subscribe(resdatas => {
+        if (resdatas['IsSuccess']) {
+          this.GlobalService.disableloader();
           this.diagno_icd_patioent_provitional = resdatas['ResponseObject'];
         } else {
-          this.GlobalService.disableloader();          
+          this.GlobalService.disableloader();
         }
       });
     })
@@ -125,34 +125,45 @@ export class OpsummaryComponent implements OnInit {
           this.GlobalService.disableloader();
           let resData = [{}];
           this.vitals_data.Formvalue = resdata['ResponseObject'];
-          for(let j=0;j<this.vitals_data.Formvalue.length;j++){
-            chklength++;
-            if(chklength == 13){
+          for (let j = 0; j < this.vitals_data.Formvalue.length; j++) {
+            //chklength++;
+            chklength = chklength + 1;
+            if (chklength == 1) {
+              resData[count]['Date'] = this.vitals_data.Formvalue[count].DATETIME
+              resData[count]['EncounterNo'] = this.vitals_data.Formvalue[count].EncounterID
+            }
+
+            //If New Encounter add the encounter in Variable
+            if (chklength == 12 && j < this.vitals_data.Formvalue.length - 1) {
               resData.push({});
               chklength = 0;
-              count++;
-            }   
-            resData[count][this.vitals_data.Formvalue[j].name] = this.vitals_data.Formvalue[j].value;
+              count = count + 1;
+            }
+
+            resData[count][this.vitals_data.Formvalue[j].name] = this.vitals_data.Formvalue[j].value.concat('\t'+this.vitals_data.Formvalue[j].unit);
           }
           this.vitals_data.Formvalue = resData;
         }
       })
-          this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getallergydetail', patientdata_details).subscribe(resdata => {
-            if (resdata['IsSuccess']) {
-              this.vitals_data.allergy = resdata['ResponseObject'];
-              for(let i=0;i<this.vitals_data.allergy.length;i++){
-                if(this.vitals_data.allergy[i].notes != ''){
-                  this.vitals_data.allergy[i].notes = JSON.parse(this.vitals_data.allergy[i].notes);
-                }
-              }
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getallergydetail', patientdata_details).subscribe(resdata => {
+        if (resdata['IsSuccess']) {
+          this.vitals_data.allergy = resdata['ResponseObject'];
+          for (let i = 0; i < this.vitals_data.allergy.length; i++) {
+            if (this.vitals_data.allergy[i].notes != '') {
+              this.vitals_data.allergy[i].notes = JSON.parse(this.vitals_data.allergy[i].notes);
             }
-          })
-            this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
-              if (resdata['IsSuccess']) {
-                this.vitals_data.medication = resdata['ResponseObject'][0].tvs_nxt_form_trimed;
-                this.vitals_data.medication = JSON.parse(this.vitals_data.medication)
-              }
-            })
+          }
+        }
+      })
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
+        if (resdata['IsSuccess']) {
+          for (let i = 0; i < resdata['ResponseObject'].length; i++) {
+            this.vitals_data.medication.push(JSON.parse((resdata['ResponseObject'][i].tvs_nxt_form_trimed))[0])
+          }
+          // this.vitals_data.medication = resdata['ResponseObject'][0].tvs_nxt_form_trimed;
+          // this.vitals_data.medication = JSON.parse(this.vitals_data.medication)
+        }
+      })
     }
   }
 

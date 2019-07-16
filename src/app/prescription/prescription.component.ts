@@ -10,7 +10,6 @@ import { TemplatenamePopupComponent } from '../templatename-popup/templatename-p
 import { TemplatenameDrugPopupComponent } from '../templatename-drug-popup/templatename-drug-popup.component';
 import { GlobalService } from '../global.service';
 import * as _ from 'lodash';
-import { NotesPopupComponent } from '../notes-popup/notes-popup.component';
 
 const NUMBER_REGEX = /^[0-9]*$/;
 
@@ -24,9 +23,9 @@ export class PrescriptionComponent implements OnInit {
   edit; food; dialogRef; patientdata_details; old_prescription; medicine_kranium_list; medicine_kranium_list_new_test; newarray; new_resdata;
   array; formdatactr; med; idarray; iddrugarray; med_drug; formdata_drug; template_drug_data; btn; btn_pres; template_pres_data;
   constructor(private http: HttpClient, private router: Router, public dialog: MatDialog, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
-  freqquantity; arr; barand_gen_name; dropdown_hide;
+  freqquantity; arr; barand_gen_name; dropdown_hide;route_data;
   dialogRef_drug; template_pres_med_data; contenctdata; hide; showGreeting; exampleDatas; items;
-  brandname; pres_data; acess_rights; tmp; logindata_details;pres_diet;
+  brandname; pres_data; acess_rights; tmp; logindata_details;pres_diet;sampRoutedata;
   language_list; language_mrg; language_aftn; language_eve; language_nigt; language_bf; language_af;
   datevalidation; pres_doct; hide_editbtn; dietadvice; language; notes; minDt = new Date();
   ngOnInit() {
@@ -42,16 +41,12 @@ export class PrescriptionComponent implements OnInit {
 
     this.old_prescription = JSON.parse(sessionStorage.getItem("previous_prescription"));
 
-    sessionStorage.removeItem("previous_prescription");
-    if (this.old_prescription) {
-      this.prev_pp(this.old_prescription);
-    } else {
-      sessionStorage.removeItem("previous_prescription");
-    }
+  
     console.log(this.old_prescription);
     this.patientdata_details = JSON.parse(sessionStorage.getItem('patientdata'));
     this.logindata_details = JSON.parse(sessionStorage.getItem('logindata'));
     this.datevalidation = JSON.parse(sessionStorage.getItem('datestatus'));
+    this.get_route(this.patientdata_details);
     this.med = {};
     this.med_drug = {};
     this.idarray = [];
@@ -65,7 +60,7 @@ export class PrescriptionComponent implements OnInit {
 
     this.get_pres(this.patientdata_details);
     this.get_pres_doct(this.patientdata_details);
-    this.get_language();
+  //  this.get_language();
     this.get_Diet(this.patientdata_details);
   }
   openSnackBar(message: string, action: string) {
@@ -210,7 +205,7 @@ export class PrescriptionComponent implements OnInit {
     this.btn = "Update";
     console.log(data);
     this.barand_gen_name = [{ 'itemname': data.brand_name }];
-    this.med = { 'brand_name': data.brand_name, 'duration_capt': data.duration_capt, 'duration_no': data.duration_no, 'frequency': data.frequency,'timing': data.timing, 'generic_name': data.generic_name, 'drug_template_map_id': data.drug_template_map_id, "item_code": data.item_code, "startDate": data.startDate, "dosage": data.dosage, "notes":data.notes };
+    this.med = { 'brand_name': data.brand_name, 'duration_capt': data.duration_capt, 'duration_no': data.duration_no, 'frequency': data.frequency,'timing': data.timing, 'generic_name': data.generic_name, 'drug_template_map_id': data.drug_template_map_id, "item_code": data.item_code, "startDate": data.startDate, "route": data.route, "notes":data.notes };
   }
 
   //start Prescription
@@ -265,12 +260,19 @@ export class PrescriptionComponent implements OnInit {
 
   quanity_sss(resdata) {
     debugger;
-    this.new_resdata[0].brand_name = resdata[0].Medicine_Name;
-    this.new_resdata[0].duration_capt = resdata[0].Medicine_Timing;
-    this.new_resdata[0].duration_no = resdata[0].Duration;
-    this.new_resdata[0].frequency = resdata[0].Frequency;
+    // let route = {};
+ this.sampRoutedata =  this.route_data.find(rout => { return rout.name == resdata[0].Route.toUpperCase()})
+    this.new_resdata[0].brand_name = resdata[0].brand_name || resdata[0].Medicine_Name;
+    this.new_resdata[0].duration_capt = resdata[0].duration_capt || resdata[0].Medicine_Timing;
+    this.new_resdata[0].duration_no = resdata[0].duration_no || resdata[0].Duration;
+    this.new_resdata[0].frequency = resdata[0].frequency || resdata[0].Frequency;
     this.new_resdata[0].item_code = resdata[0].item_code;
     this.new_resdata[0].quantity = resdata[0].quantity;
+    this.new_resdata[0].notes = resdata[0].Notes;
+    this.new_resdata[0].timing = resdata[0].food_time;
+    this.new_resdata[0].generic_name = resdata[0].generic_name;
+    this.new_resdata[0].routename = this.sampRoutedata.name;
+    this.new_resdata[0].route = this.sampRoutedata.nr; 
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/check_medicine_quantity', resdata).subscribe(resbeedata => {
       if (resbeedata['IsSuccess']) {
@@ -428,8 +430,8 @@ export class PrescriptionComponent implements OnInit {
   add_medicine_temperary(data) {
     debugger;
     this.hide_editbtn = false;
-    if ((data.brand_name && data.generic_name && data.frequency && data.timing && data.duration_no && data.duration_capt && data.startDate && data.notes) == undefined) {
-      this.openSnackBar("Please Enter all the details", "Close");
+    if ((data.brand_name && data.generic_name) == undefined) {
+      this.openSnackBar("Please Enter Brand name and Generic name details", "Close");
     } else {
       debugger;
       if (this.btn == "Add") {
@@ -850,6 +852,28 @@ export class PrescriptionComponent implements OnInit {
     
   }
 
+  get_route(patientdata_details) { 
+    this.GlobalService.enableloader();
+    debugger;
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_patient_route', patientdata_details).subscribe(resdata => {
+      debugger;
+      console.log(resdata);
+      if (resdata['IsSuccess']) {
+        this.GlobalService.disableloader();
+        debugger;
+        this.route_data = resdata['ResponseObject'];
+      } else {
+        this.GlobalService.disableloader();
+      }
+      sessionStorage.removeItem("previous_prescription");
+      if (this.old_prescription) {
+        this.prev_pp(this.old_prescription);
+      } else {
+        sessionStorage.removeItem("previous_prescription");
+      }
+    })
+  }
+
   get_pres_doct(patientdata_details) {
     this.GlobalService.enableloader();
     debugger;
@@ -955,15 +979,6 @@ export class PrescriptionComponent implements OnInit {
     }
     else {
       this.dropdown_hide = false;
-    }
-  }
-
-  viewNotes(notes){
-  if(notes.length > 0) {
-    this.dialog.open(NotesPopupComponent, {
-      data: {note:notes},
-        disableClose: false
-      })
     }
   }
 

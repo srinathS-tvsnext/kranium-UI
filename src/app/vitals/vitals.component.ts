@@ -12,7 +12,7 @@ import { map } from 'rxjs-compat/operator/map';
 })
 export class VitalsComponent implements OnInit {
   vitals_data; patientdata_details; savedata; acess_rights;
-  addvital_btn; editvital_btn; formVitalData
+  addvital_btn; editvital_btn; formVitalData;vitaldatalength;
   constructor(private http: HttpClient, private GlobalService: GlobalService, private router: Router, ) { }
   datevalidation;
   ngOnInit() {
@@ -45,6 +45,7 @@ export class VitalsComponent implements OnInit {
             if (chklength == 1) {
               resData[count]['Date'] = this.vitals_data.Formvalue[count].DATETIME
               resData[count]['EncounterNo'] = this.vitals_data.Formvalue[count].EncounterID
+              resData[count]['nr'] = this.vitals_data.Formvalue[count].nr
             }
 
             //If New Encounter add the encounter in Variable
@@ -55,6 +56,7 @@ export class VitalsComponent implements OnInit {
             }
 
             resData[count][this.vitals_data.Formvalue[j].name] = this.vitals_data.Formvalue[j].value;
+            resData[count][this.vitals_data.Formvalue[j].name+'unit'] = this.vitals_data.Formvalue[j].unit
           }
           this.vitals_data.Formvalue = resData;
           for (let j = 0; j < this.vitals_data.Formvalue.length; j++) {
@@ -99,6 +101,7 @@ export class VitalsComponent implements OnInit {
               })
             }
           })
+          this.vitaldatalength = this.vitals_data.Formvalue.length;
 
         } else {
           this.vitals_data = "";
@@ -110,69 +113,82 @@ export class VitalsComponent implements OnInit {
     }
   }
 
-  edit_vitals(data_edit) {
-    if (data_edit.Formvalue) {
-      for (var i = 0; i < data_edit.Formvalue.length; i++) {
-        if (data_edit.Formvalue[i].height_status == "1") {
-          data_edit.Formvalue[i].height_status = true;
-        } else {
-          data_edit.Formvalue[i].height_status = false;
-        }
-        if (data_edit.Formvalue[i].weight_status == "1") {
-          data_edit.Formvalue[i].weight_status = true;
-        } else {
-          data_edit.Formvalue[i].weight_status = false;
-        }
-        if (data_edit.Formvalue[i].pulse_status == "1") {
-          data_edit.Formvalue[i].pulse_status = true;
-        } else {
-          data_edit.Formvalue[i].pulse_status = false;
-        }
-        if (data_edit.Formvalue[i].temperature_status == "1") {
-          data_edit.Formvalue[i].temperature_status = true;
-        } else {
-          data_edit.Formvalue[i].temperature_status = false;
-        }
-        if (data_edit.Formvalue[i].respiratory_status == "1") {
-          data_edit.Formvalue[i].respiratory_status = true;
-        } else {
-          data_edit.Formvalue[i].respiratory_status = false;
-        }
-        if (data_edit.Formvalue[i].bp_syaytolic_status == "1") {
-          data_edit.Formvalue[i].bp_syaytolic_status = true;
-        } else {
-          data_edit.Formvalue[i].bp_syaytolic_status = false;
-        }
-        if (data_edit.Formvalue[i].bp_diastolic_status == "1") {
-          data_edit.Formvalue[i].bp_diastolic_status = true;
-        } else {
-          data_edit.Formvalue[i].bp_diastolic_status = false;
-        }
-        if (data_edit.Formvalue[i].bmi_status == "1") {
-          data_edit.Formvalue[i].bmi_status = true;
-        } else {
-          data_edit.Formvalue[i].bmi_status = false;
-        }
-        if (data_edit.Formvalue[i].bsa_status == "1") {
-          data_edit.Formvalue[i].bsa_status = true;
-        } else {
-          data_edit.Formvalue[i].bsa_status = false;
-        }
-        if (data_edit.Formvalue[i].notes_status == "1") {
-          data_edit.Formvalue[i].notes_status = true;
-        } else {
-          data_edit.Formvalue[i].notes_status = false;
-        }
-        if (data_edit.Formvalue[i].allergy_status == "1") {
-          data_edit.Formvalue[i].allergy_status = true;
-        } else {
-          data_edit.Formvalue[i].allergy_status = false;
-        }
+  edit_vitals(data_edit,index) {
 
-      }
-    }
+    // if (data_edit.Formvalue) {
+    //   for (var i = 0; i < data_edit.Formvalue.length; i++) {
+    //     if (data_edit.Formvalue[i].height_status == "1") {
+    //       data_edit.Formvalue[i].height_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].height_status = false;
+    //     }
+    //     if (data_edit.Formvalue[i].weight_status == "1") {
+    //       data_edit.Formvalue[i].weight_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].weight_status = false;
+    //     }
+    //     if (data_edit.Formvalue[i].pulse_status == "1") {
+    //       data_edit.Formvalue[i].pulse_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].pulse_status = false;
+    //     }
+    //     if (data_edit.Formvalue[i].temperature_status == "1") {
+    //       data_edit.Formvalue[i].temperature_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].temperature_status = false;
+    //     }
+    //     if (data_edit.Formvalue[i].respiratory_status == "1") {
+    //       data_edit.Formvalue[i].respiratory_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].respiratory_status = false;
+    //     }
+    //     if (data_edit.Formvalue[i].bp_syaytolic_status == "1") {
+    //       data_edit.Formvalue[i].bp_syaytolic_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].bp_syaytolic_status = false;
+    //     }
+    //     if (data_edit.Formvalue[i].bp_diastolic_status == "1") {
+    //       data_edit.Formvalue[i].bp_diastolic_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].bp_diastolic_status = false;
+    //     }
+    //     if (data_edit.Formvalue[i].bmi_status == "1") {
+    //       data_edit.Formvalue[i].bmi_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].bmi_status = false;
+    //     }
+    //     if (data_edit.Formvalue[i].bsa_status == "1") {
+    //       data_edit.Formvalue[i].bsa_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].bsa_status = false;
+    //     }
+    //     if (data_edit.Formvalue[i].notes_status == "1") {
+    //       data_edit.Formvalue[i].notes_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].notes_status = false;
+    //     }
+    //     if (data_edit.Formvalue[i].allergy_status == "1") {
+    //       data_edit.Formvalue[i].allergy_status = true;
+    //     } else {
+    //       data_edit.Formvalue[i].allergy_status = false;
+    //     }
+
+    //   }
+    // }
     debugger;
-    data_edit.Formvalue = [data_edit.Formvalue[this.formVitalData]]
+    // data_edit.Formvalue = [data_edit.Formvalue[this.formVitalData]]
+    data_edit.Formvalue = data_edit.Formvalue ?  [data_edit.Formvalue[index]] : []
+    data_edit.allergy = data_edit.allergy ?  [data_edit.allergy[index]] : []
+    data_edit.medication = data_edit.medication ?  [data_edit.medication[index]] : []
+    if(data_edit.Formvalue[0] == undefined){
+      data_edit.Formvalue = []
+    }
+    if(data_edit.allergy[0] === undefined){
+      data_edit.allergy = [];
+    }
+    if(data_edit.medication[0] === undefined){
+      data_edit.medication = [];
+    }
     sessionStorage.setItem("vitals_details_edit", JSON.stringify(data_edit));
     this.router.navigate(['/Homescreen/Patientdetails/Editvitals']);
   }

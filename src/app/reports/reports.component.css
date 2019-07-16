@@ -15,3 +15,10 @@ font-weight:600;
 .material-icons{
     cursor: pointer;
 }
+.link {
+    color : #337ab7;
+    cursor: pointer;
+}
+.link:hover {
+    text-decoration: underline;
+}

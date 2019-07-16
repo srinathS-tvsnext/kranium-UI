@@ -292,19 +292,22 @@
                                     <td>&nbsp;</td>
                                     <td>
                                         <mat-form-field style='width:45%;'>
-                                            <input matInput list="medicinelist" name="medicinelist"  placeholder="Brand Name" value='Dolo 650' [(ngModel)]="form.choice_med[i].activemedication_brandname" (ngModelChange)="get_medicine_kranium_list(form.choice_med[i])">
+                                            <input matInput list="medicinelist" name="medicinelist"  placeholder="Brand/Generic Name" value='Dolo 650' [(ngModel)]="form.choice_med[i].activemedication_brandname">
                                         </mat-form-field>
-
+<!-- 
                                         <ul class="searchmodalcustom list-unstyled search-acc-list-ul" *ngIf="form.choice_med[i].dropdown">
                                             <li class="container-fluid  cursor search-acc-list" *ngFor="let data of medicine_kranium_list" class="padding: 5px;">
                                                 <div class="row search-acc-list">
                                                     <div class="col-md-12" (click)="data_click_bind(data,form.choice_med[i])"><span> {{data.itemname}}</span></div>
                                                 </div>
                                             </li>
-                                        </ul>
+                                        </ul> 
 
                                         <mat-form-field style='width:45%;left:5%'>
-                                            <input matInput placeholder="Generic Name" value='loreum ipsum' [(ngModel)]="form.choice_med[i].activemedication_genericname">
+                                            <input matInput placeholder="Dosage" value='loreum ipsum' [(ngModel)]="form.choice_med[i].activemedication_genericname">
+                                        </mat-form-field> -->
+                                        <mat-form-field style='width:45%;left:5%'>
+                                            <input matInput placeholder="Dosage" value='loreum ipsum' [(ngModel)]="form.choice_med[i].actmeddosage">
                                         </mat-form-field>
                                     </td>
                                     <td >

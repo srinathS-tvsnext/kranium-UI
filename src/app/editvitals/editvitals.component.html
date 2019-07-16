@@ -303,19 +303,19 @@
                                     <td>&nbsp;</td>
                                     <td>
                                         <mat-form-field style='width:45%;'>
-                                            <input matInput placeholder="Brand Name" value='Dolo 650' [(ngModel)]="choice_med_frm.activemedication_brandname" (ngModelChange)="get_medicine_kranium_list(choice_med_frm)">
+                                            <input matInput placeholder="Brand name/Generic name" value='Dolo 650' [(ngModel)]="choice_med_frm.activemedication_brandname">
                                         </mat-form-field>
 
-                                        <ul class="searchmodalcustom list-unstyled search-acc-list-ul" *ngIf="choice_med_frm.dropdown">
+                                        <!-- <ul class="searchmodalcustom list-unstyled search-acc-list-ul" *ngIf="choice_med_frm.dropdown">
                                             <li class="container-fluid  cursor search-acc-list" *ngFor="let data of medicine_kranium_list" class="padding: 5px;">
                                                 <div class="row search-acc-list">
                                                     <div class="col-md-12" (click)="data_click_bind(data,choice_med_frm)"><span> {{data.itemname}}</span></div>
                                                 </div>
                                             </li>
-                                        </ul>
+                                        </ul> -->
 
                                         <mat-form-field style='width:45%;'>
-                                            <input matInput placeholder="Generic Name" value='loreum ipsum' [(ngModel)]="choice_med_frm.activemedication_genericname">
+                                            <input matInput placeholder="Dosage" value='loreum ipsum' [(ngModel)]="choice_med_frm.dosage">
                                         </mat-form-field>
                                     </td>
                                     <td>

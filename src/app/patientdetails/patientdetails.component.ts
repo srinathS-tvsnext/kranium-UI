@@ -44,10 +44,13 @@ export class PatientdetailsComponent implements OnInit {
       // })
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          this.vitals_data.medication =[];
-          for (let i = 0; i < resdata['ResponseObject'].length; i++) {
-            this.vitals_data.medication.push(JSON.parse((resdata['ResponseObject'][i].tvs_nxt_form_trimed))[0])
-          }   
+          // if(resdata['ResponseObject'][0].tvs_nxt_form_trimed[0].length >0) {
+            this.vitals_data.medication =[];
+            for (let i = 0; i < resdata['ResponseObject'].length; i++) {
+              this.vitals_data.medication.push(JSON.parse((resdata['ResponseObject'][i].tvs_nxt_form_trimed))[0])
+            }
+          // }
+                               
         }
       })
     }

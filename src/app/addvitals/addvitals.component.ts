@@ -34,7 +34,7 @@ export class AddvitalsComponent implements OnInit {
   socialmentions; form; painscaleimage; style; choice; choices; choices_med; choice_med; vital_details_session;
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
   lengthss; count; length; counts; vitals_data_new; patientdata_details; units_drop;
-  height; weight; temperature; pulse; systolic_distolic; respiration; bmi; bsa;logindata
+  height; weight; temperature; pulse; systolic_distolic; respiration; bmi; bsa; logindata
   // patientdata
 
   openSnackBar(message: string, action: string) {
@@ -44,18 +44,18 @@ export class AddvitalsComponent implements OnInit {
   }
   ngOnInit() {
     this.disabledfun = true;
- 
+
     this.del = true;
     this.dels = true;
     this.logindata = JSON.parse(sessionStorage.getItem('logindata'));
     this.patientdata_details = JSON.parse(sessionStorage.getItem('patientdata'));
- 
+
     this.style = "style=''";
     this.form = {};
     this.form.height_id = "CM";
     this.form.weight_id = "Kg";
- 
-    this.form.temperature_id = 'Celsius';
+
+    this.form.temperature_id = 'Fahrenheit';
     this.form.pulse_id = "Rate/Min";
     this.form.RR_id = "Rate/Min";
     this.form.respirator_id = "Rate/Min";
@@ -79,7 +79,7 @@ export class AddvitalsComponent implements OnInit {
     this.dropdown_hide = false;
   }
   get_vital_units() {
-  
+
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitalunits').subscribe(resdata => {
       if (resdata['IsSuccess']) {
         this.units_drop = resdata['ResponseObject'];
@@ -225,31 +225,31 @@ export class AddvitalsComponent implements OnInit {
         save_newdata.uhid_no = this.patientdata_details[i].UHIDNO;
         save_newdata.pastencounter_no = this.patientdata_details[i].EncounterNo;
       }
-      
+
     }
     this.GlobalService.enableloader();
     // add_viatls_showtop
     debugger;
     save_newdata.Create_ID = this.logindata[0].nr
-    if(confirm("Are you sure want to save")){
-    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addvitals', save_newdata).subscribe(resdata => {
-      debugger;
-      console.log(resdata);
-      if (resdata['IsSuccess']) {
-        this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addallergy', save_newdata).subscribe(resdata => {
-          this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addactmedication', save_newdata).subscribe(resdata => {
+    if (confirm("Are you sure want to save")) {
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addvitals', save_newdata).subscribe(resdata => {
+        debugger;
+        console.log(resdata);
+        if (resdata['IsSuccess']) {
+          this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addallergy', save_newdata).subscribe(resdata => {
+            this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/addactmedication', save_newdata).subscribe(resdata => {
 
+            })
           })
-        })
-        this.GlobalService.disableloader();
-        this.openSnackBar("Save Successully", "Close");
-        this.router.navigate(['/Homescreen/Patientdetails/Vitals']);
-        // this.vital_details();
-      } else {
-        this.GlobalService.disableloader();
-        this.openSnackBar("Error! Please Retry", "Close");
-      }
-    })
+          this.GlobalService.disableloader();
+          this.openSnackBar("Save Successully", "Close");
+          this.router.navigate(['/Homescreen/Patientdetails/Vitals']);
+          // this.vital_details();
+        } else {
+          this.GlobalService.disableloader();
+          this.openSnackBar("Error! Please Retry", "Close");
+        }
+      })
     }
   }
 
@@ -257,7 +257,7 @@ export class AddvitalsComponent implements OnInit {
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitaldetail').subscribe(resdata => {
       if (resdata['IsSuccess']) {
         this.vitals_data_new = resdata['ResponseObject'];
-        
+
       }
     })
   }
@@ -1516,8 +1516,8 @@ export class AddvitalsComponent implements OnInit {
         } else {
           this.gender = "Female";
         }
-        if (this.patientdata_details[i].age) {
-          var DOB = Number(this.patientdata_details[i].age) * 12;
+        if (this.patientdata_details[i].Age) {
+          var DOB = Number(this.patientdata_details[i].Age) * 12;
           this.age_months = Number(DOB);
         }
       }
@@ -1602,9 +1602,11 @@ export class AddvitalsComponent implements OnInit {
         this.adder = '';
 
         if ((this.age_months > 120) && (this.bmi_interpretation != 'NORMAL')) { this.adder = 'and this can be achieved by altering the weight of the person to be in the range of <font color=red><b>' + this.weight_normal_range + '</b></font>'; } else { this.adder = ''; }
- 
+        // document.getElementById('BMIForAge').innerHTML 
         this.BMIForAge = '<br><h3>BMI For Age:</h3><p><b>The BMI For-Age for the person whose data has been entered lies in this range: <font color=red>' + this.bmi_percentile_range + '</font> and it is interpreted as <font color=red>' + this.bmi_interpretation + '</font></b>.</p><p><b>Please contact a medical doctor for further advice, if required</b></p><p>Note: This indicator compares the body mass index (BMI) of the person with others of the same age, and tells how many individuals in a large group of individuals with the same age would have a BMI lower than that of the person in question.</p><p>For example if your BMI for age is say  between the 15th  percentile and 50th percentile, it means that anywhere between 15 to 50 people out of a group of 100 people of your age would be have a lesser BMI than yours.</p><p>For all purposes, BMI for age between 15th  percentile & 85th  percentile are considered as normal for that age. Those below the 3rd percentile would be considered as <b>severely thin</b> and those above the 97th percentile would be considered as <b>obese</b>. Those between the 3rd percentile & 15th  percentile are considered as <b>thin</b> and those between 85th  percentile and 97th percentile are considered as <b>overweight</b>.</p><p>The <b>NORMAL</b> range BMI for the given age is: <font color=red><b>' + this.bmi_normal_range + '</b></font>' + this.adder + '.';
-
+        // $('#bmi_interpretation').val(this.bmi_interpretation);
+        // $('#bmi_percentile_range').val(this.bmi_percentile_range);
+        // $('#bmi_normal_range').val(this.bmi_normal_range);
 
       }
 
@@ -1619,12 +1621,16 @@ export class AddvitalsComponent implements OnInit {
           this.height_percentile_range = ''; this.height_interpretation = '';
         }
         this.height_normal_range = this.arr_hfa[0] + '-' + this.arr_hfa[4] + ' cm';
+        // document.getElementById('HeightForAge').innerHTML
 
         this.HeightForAge = '<h3>Length/Height For Age:</h3><p><b>The Height-For-Age for the person whose data has been entered lies in this range: <font color=red>' + this.height_percentile_range + '</font> and it is interpreted as <font color=red>' + this.height_interpretation + '</font></b>.</p><p><b>Please contact a medical doctor for further advice, if required.</b></p><p>Note: This indicator compares the height (length)* of the person with others of the same age, and tells how many individuals in a large group of individuals with the same age would have a height lower than that of the person in question.</p><p>For example if your height for age is say  between the 15th  percentile and 50th percentile, it means that anywhere between 15 to 50 people out of a group of 100 people of your age would be have a lesser height than yours.</p><p>For all purposes, height for age between 3rd percentile & 97th percentile are considered as <b>normal</b> for that age. Those below the 3rd percentile would be considered as <b>stunted</b> and those above the 97th percentile would be considered as <b>too tall</b>.</p><p>The NORMAL height range for the given age is: <font color=red><b>' + this.height_normal_range + '</b></font></p><p>* Height is the standing upright height of the person where as Length is the length of the child (usually <2 years of age) measured while lying down</p>';
+        // $('#height_interpretation').val(this.height_interpretation);
+        // $('#height_percentile_range').val(this.height_percentile_range);
+        // $('#height_normal_range').val(this.height_normal_range);
 
       }
 
-      if ((this.wt_kg > 0) && (this.arr_wfa.length > 0)) {
+      if ((this.wt_kg > 0) && this.arr_wfa != undefined && (this.arr_wfa.length > 0)) {
         if (this.wt_kg > this.arr_wfa[4]) {
           this.weight_percentile_range = 'Greater Than 97th Percentile'; this.weight_interpretation = 'OVERWEIGHT';
         } else if ((this.wt_kg >= this.arr_wfa[0]) && (this.wt_kg <= this.arr_wfa[4])) {
@@ -1635,14 +1641,32 @@ export class AddvitalsComponent implements OnInit {
           this.weight_percentile_range = ''; this.weight_interpretation = '';
         }
         this.weight_normal_range = this.arr_wfa[0] + '-' + this.arr_wfa[4] + ' kg';
+        // document.getElementById('WeightForAge').innerHTML
         this.WeightForAge = '<h3>Weight For Age:</h3><p><b>The Weight-For-Age for the person whose data has been entered lies in this range: <font color=red>' + this.weight_percentile_range + '</font> and it is interpreted as <font color=red>' + this.weight_interpretation + '</font></b>.</p><p><b>Please contact a medical doctor for further advice, if required</b></p><p>Note: This indicator compares the weight of the person with others of the same age, and tells how many individuals in a large group of individuals with the same age would have a weight lower than that of the person in question.</p><p>For example if your weight for age is say  between the 15th  percentile and 50th percentile, it means that anywhere between 15 to 50 people out of a group of 100 people of your age would be have a lesser height than yours.</p><p>For all purposes, weight for age between 3rd percentile & 97th percentile are considered as <b>normal</b> for that age. Those below the 3rd percentile would be considered as <b>underweight</b> and those above the 97th percentile would be considered as <b>overweight</b>.</p><p>The <b>NORMAL</b> weight range for the given age is: <font color=red><b>' + this.weight_normal_range + '</b></font></p>';
+        // $('#weight_interpretation').val(this.weight_interpretation);
+        // $('#weight_percentile_range').val(this.weight_percentile_range);
+        // $('#weight_normal_range').val(this.weight_normal_range);
 
       } // end if
+      this.form.bmi = this.bmi;
+      this.form.bmi_id = this.bmi_interpretation;
     } else if (this.age_months > 228) {
+      // this.height_interpretation = '';
+      // this.height_percentile_range = '';
+      // this.height_normal_range = '';
+      // this.weight_interpretation = '';
+      // this.weight_percentile_range = '';
+      // this.weight_normal_range = '';
+      // this.bmi_interpretation = '';
+      // this.bmi_percentile_range = '';
+      // this.bmi_normal_range = '';
+      // this.HeightForAge = '';
+      // this.WeightForAge = '';
+      // this.BMIForAge = '';
 
       if ((this.ht_cm > 0) && (this.wt_kg > 0)) {
         this.bmi = this.roundNumber(this.wt_kg / ((this.ht_cm / 100) * (this.ht_cm / 100)), 1);
-  
+        //document.forms[0].bmi.value = bmi;
         if (this.bmi > 40) {
           this.bmi_interpretation = 'OBESE CLASS III';
         } else if (this.bmi > 35) {
@@ -1673,7 +1697,7 @@ export class AddvitalsComponent implements OnInit {
       }
 
     }
-  }
+   }
 
 
   roundNumber(rnum, rlength) {

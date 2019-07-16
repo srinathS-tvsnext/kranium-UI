@@ -211,7 +211,9 @@
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                             <mat-form-field class="setwdh">
-                                                <input matInput placeholder="Dossage" value='' [(ngModel)]="med.dosage">
+                                                <mat-select placeholder="Route"  [(ngModel)]="med.route">
+                                                    <mat-option  [value]="route.nr" *ngFor="let route of route_data">{{route.name}} </mat-option>
+                                                </mat-select>
                                             </mat-form-field>
                                     </div>
                                     <!-- <div class="col-lg-3 col-md-6">
@@ -291,7 +293,7 @@
                                         <th style='text-align: center'>Timing</th>
                                         <th style='text-align: center'>Duration</th>
                                         <th style='text-align: center'>Favourite</th>
-                                        <th style='text-align: center'>Notes</th>
+                                        <th >Notes</th>
                                         <th style='text-align: center'>&nbsp; </th>
                                     </tr>
                                 </thead>
@@ -307,14 +309,14 @@
                                             <!-- <br><span style="font-size:11px;">({{tem_data.generic_name}})</span> -->
                                         </td>
                                         <!-- <td>{{tem_data.quantity}}</td> -->
-                                        <td> - </td>
+                                        <td> {{tem_data.routename}}</td>
                                         <td>{{tem_data.frequency}}</td>
                                         <td>{{tem_data.timing}}</td>
                                         <td>{{tem_data.duration_no}} {{tem_data.duration_capt}}</td>
                                         <td>
                                             <mat-checkbox color='primary' [(ngModel)]="tem_data.fav"></mat-checkbox>
                                         </td>
-                                        <td class="fa fa-eye" style="cursor: pointer" (click)="viewNotes(tem_data.notes)"></td>
+                                        <td class="noteellipse" data-toggle="tooltip" title="{{tem_data.notes}}">{{tem_data.notes}}</td>
                                         <td>
                                             <span *ngIf="sub_view_menu.add_edit" [hidden]="hide_editbtn">
                             <i class="material-icons" style="cursor:pointer; color:steelblue;" (click)='edittemp_drug_new(tem_data)'>edit</i>

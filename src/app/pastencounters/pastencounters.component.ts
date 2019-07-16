@@ -49,37 +49,37 @@ export class PastencountersComponent implements OnInit {
         this.GlobalService.disableloader();
         console.log(resdata['ResponseObject']);
         this.favs = resdata['ResponseObject'];
-        for (var i = 0; i < this.favs.length; i++) {
-          if (this.favs[i]) {
+        // for (var i = 0; i < this.favs.length; i++) {
+        //   if (this.favs[i]) {
             // 2018-01-17 12:20:32
-            var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-            ];
+            // var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            //   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+            // ];
 
-            var date = new Date(this.favs[i].encounter_date);
+            // var date = new Date(this.favs[i].encounter_date);
 
-            var day = date.getDate();
-            var month = monthNames[date.getMonth()];
-            var year = date.getFullYear();
-            this.favs[i].date_custom = day + '-' + month + '-' + year;
-            this.favs[i].cheif_complaints = JSON.parse(this.favs[i].cheif_complaints)[0].allergy_type2
-          }
-        }
+            // var day = date.getDate();
+            // var month = monthNames[date.getMonth()];
+            // var year = date.getFullYear();
+            // this.favs[i].date_custom = day + '-' + month + '-' + year;
+        //     this.favs[i].cheif_complaints = this.favs[i].cheif_complaints
+        //   }
+        // }
       } else {
         debugger;
         this.GlobalService.disableloader();
         this.openSnackBar("Error: No Related Data Found In Pastencounter", "Close");
         this.hidden = false;
-        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        ];
+        // var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        //   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        // ];
 
-        var date = new Date();
+        // var date = new Date();
 
-        var day = date.getDate();
-        var month = monthNames[date.getMonth()];
-        var year = date.getFullYear();
-        this.date_custom = day + '-' + month + '-' + year;
+        // var day = date.getDate();
+        // var month = monthNames[date.getMonth()];
+        // var year = date.getFullYear();
+        // this.date_custom = day + '-' + month + '-' + year;
         this.login = this.logindata_details[0].User_name;
       }
     })

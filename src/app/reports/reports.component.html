@@ -8,12 +8,14 @@
             <thead class="tableheadercolor">
                 <tr>
                     <th style='text-align: center'>&nbsp;</th>
-                    <th style='text-align: center'>Batch Nr</th>
+                    <th style='text-align: center'>Batch No</th>
                     <th style='text-align: center'>Dept Name</th>
                     <th style='text-align: center'>Report Date</th>
                     <th style='text-align: center'>Test Name</th>
                     <th style='text-align: center'>Result</th>
                     <th style='text-align: center'>Normal Range</th>
+                    <th style='text-align: center'>Methodology</th>
+                    <th style='text-align: center'>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,15 +23,13 @@
                     <td>&nbsp; </td>
                     <td>{{value_report.batch_nr}}</td>
                     <td>{{value_report.dept_name}}</td>
-                    <td>{{value_report.encounter_nr}}</td>
-                    <td>{{value_report.send_date}}</td>
-                    <td>{{value_report.name}}</td>
-                    <td>
-                        <!-- <a href="http://112.133.217.60/pdf_ftp.php?enc_id={{food.PATIENT_ID}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a> -->
-
-                        <!-- 172.16.16.200 -->
-                        <a href="http://172.16.16.200/ghchis/modules/laboratory/labprint.php?sid=p6f87581mn7u9fqcohtmj5uc17&lang=en&encounter_nr={{value_report.encounter_nr}}&parameterselect=all&job_id={{value_report.batch_nr}}&dept=bio" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a>
-                        <!-- <i class="material-icons" (click)="reportdetview()">remove_red_eye</i> -->
+                    <td>{{value_report.report_date}}</td>
+                    <td (click)="reportgraphview(value_report.test_name)" class="link">{{value_report.test_name}}</td>
+                        <td>{{value_report.result.Results.EnteredValue}} {{value_report.result.Results.Units}}</td>
+                        <td>{{value_report.result.Results.NormalValue}}</td>
+                        <td>{{value_report.result.Results.Methodology}}</td>
+                    <td>       
+                        <a href="http://192.168.0.132/ghchis/modules/laboratory/labprint.php?sid=p6f87581mn7u9fqcohtmj5uc17&lang=en&encounter_nr={{value_report.encounter_nr}}&parameterselect=all&job_id={{value_report.batch_nr}}&dept=bio" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a>    
                     </td>
                 </tr>
             </tbody>

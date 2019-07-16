@@ -96,14 +96,14 @@
                 </span>
               </div>
               <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
+                <!-- <span class="pull-left" [hidden]=hideen>
                   <mat-checkbox color='primary' [(ngModel)]="opo_temp.Religion">
                     <span *ngIf="!opo_temp.Religion">Religion</span>
                   </mat-checkbox>
-                </span>
+                </span> -->
                 <span *ngIf="opo_temp.Religion">
                   <div class='col-md-5 headingclr'>Religion</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Religion || '' }}</div>
+                  <div class='col-md-5 contentclr'>{{patient_profile.Religion || '-' }}</div>
                 </span>
               </div>
 
@@ -209,6 +209,7 @@
               <thead class="headercolor">
                 <tr>
                     <!-- <th style='text-align: center'>Date/Time</th> -->
+                    <th style='text-align: center'>Date/Time</th>
                     <th style='text-align: center'>Height</th>
                     <th style='text-align: center'>Weight</th>
                     <th style='text-align: center'>Temperature</th>
@@ -221,12 +222,13 @@
               <tbody *ngFor="let value of vitals_data.Formvalue">
                   <tr>
                       <!-- <td>Date</td> -->
-                      <td><span *ngIf="value.Height">{{value.Height}} {{'cm'}}</span> <span *ngIf="!value.Height">-</span> </td>
-                      <td><span *ngIf="value.Weight">{{value.Weight}} {{'kg'}}</span> <span *ngIf="!value.Weight">-</span></td>
-                      <td><span *ngIf="value.Temp">{{value.Temp}} {{'Celsius'}}</span> <span *ngIf="!value.Temp">-</span></td>
-                      <td><span *ngIf="value.Pulse">{{value.Pulse}} {{'Rate/Min'}}</span> <span *ngIf="!value.Pulse">-</span></td>
-                      <td><span *ngIf="value.Resp">{{value.Resp}} {{'Rate/Min'}}</span> <span *ngIf="!value.Resp">-</span></td>
-                      <td> <span *ngIf="value.Systolic && value.Diastolic">{{value.Systolic}}/{{value.Diastolic}} {{'mm/Hg'}}</span><span *ngIf="!value.Systolic || !value.Diastolic">{{"-"}}</span>  </td>
+                      <td><span *ngIf="value.Date">{{value.Date}}</span> <span *ngIf="!value.Date">-</span></td>
+                      <td><span *ngIf="value.Height">{{value.Height}}</span> <span *ngIf="!value.Height">-</span> </td>
+                      <td><span *ngIf="value.Weight">{{value.Weight}}</span> <span *ngIf="!value.Weight">-</span></td>
+                      <td><span *ngIf="value.Temp">{{value.Temp}}</span> <span *ngIf="!value.Temp">-</span></td>
+                      <td><span *ngIf="value.Pulse">{{value.Pulse}} </span> <span *ngIf="!value.Pulse">-</span></td>
+                      <td><span *ngIf="value.Resp">{{value.Resp}} </span> <span *ngIf="!value.Resp">-</span></td>
+                      <td> <span *ngIf="value.Systolic && value.Diastolic">{{value.Systolic}}/{{value.Diastolic}} </span><span *ngIf="!value.Systolic || !value.Diastolic">{{"-"}}</span>  </td>
                       <td>{{value.Bmi||"-"}}</td>
                       <!-- <td >{{"-"}}</td> -->
                   </tr>
@@ -273,9 +275,9 @@
                   <div class='textsiz'>{{pain.Painhurt}}</div>
                   <div class='painrate'>{{pain.pain_assesment_painrate}}</div>
                 </div>
-                
+                <p *ngIf="!vitals_data.Formvalue">No data found</p>
               </div>
-              <p *ngIf="!vitals_data.Formvalue">No data found</p>
+              
             </div>
           </div>
         </span>
@@ -290,19 +292,19 @@
             <p class="bolder">Notes</p>
           <div class="panel panel-default">
             <div class="panel-body">
-              <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.GeneralExamination||"-"}}
+              <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.GeneralExamination || '-'}}
               </p>
-              <p *ngIf="!vitals_data.Formvalue">No data found</p>
+              <!-- <p *ngIf="!vitals_data.Formvalue.GeneralExamination">No data found</p> -->
             </div>
           </div>
         </span>
       </div>
       <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
+        <!-- <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Allergy">
             <span *ngIf="!opo_temp.Allergy">Allergy</span>
           </mat-checkbox>
-        </span>
+        </span> -->
         <span *ngIf="opo_temp.Allergy">
             <p class='bolder'>Allergy</p>
           <div class="panel panel-default">
@@ -324,17 +326,18 @@
                     </tr> 
                 </tbody>
               </table>
+              <p *ngIf="!vitals_data.allergy">No data found</p>
             </div>
-            <p *ngIf="!vitals_data.allergy">No data found</p>
+            
           </div>
         </span>
       </div>
       <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
+        <!-- <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.Active_Medication">
             <span *ngIf="!opo_temp.Active_Medication">Active_Medication</span>
           </mat-checkbox>
-        </span>
+        </span> -->
         <span *ngIf="opo_temp.Active_Medication">
             <p class='bolder'>Active Medication</p>
           <div class="panel panel-default">
@@ -345,14 +348,14 @@
                   <thead class="headercolor">
                     <tr>
                       <th style='text-align: center'>Brand Name</th>
-                      <th style='text-align: center'>Generic Name</th>
+                      <th style='text-align: center'>Dosage</th>
                       <th style='text-align: center'>Frequency</th>
                     </tr>
                   </thead>
                   <tbody *ngFor="let medi of vitals_data.medication">
                     <tr>
                       <td>{{medi.activemedication_brandname||"-"}}
-                        <td>{{medi.activemedication_genericname||"-"}}</td>
+                        <td>{{medi.actmeddosage||"-"}}</td>
                       <td>{{medi.activemedication_frequency||"-"}}</td>
                     </tr>
                   </tbody>
@@ -364,11 +367,11 @@
         </span>
       </div>
       <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
+        <!-- <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.History_Questions_Answers">
             <span *ngIf="!opo_temp.History_Questions_Answers">History</span>
           </mat-checkbox>
-        </span>
+        </span> -->
         <span *ngIf="opo_temp.History_Questions_Answers">
           <p class='bolder'>History</p>
           <p class='bolder'>Chief Complaints</p>
@@ -446,11 +449,11 @@
         </span>
       </div>
       <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
+        <!-- <span class="pull-left" [hidden]=hideen>
           <mat-checkbox color='primary' [(ngModel)]="opo_temp.ICD_description">
             <span *ngIf="!opo_temp.ICD_description">ICD description</span>
           </mat-checkbox>
-        </span>
+        </span> -->
         <span *ngIf="opo_temp.ICD_description">
           <p class='bolder'>ICD Codes</p>
           <div class="panel panel-default">

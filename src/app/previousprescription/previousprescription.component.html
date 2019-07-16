@@ -16,7 +16,7 @@
                                     <th style='text-align: center'>Frequency</th>
                                     <th style='text-align: center'>Duration</th>
                                     <!-- <th style='text-align: center'>Medicine Timing</th> -->
-                                    <th style='text-align: center;'>Notes</th>
+                                    <th>Notes</th>
                                     <th style='text-align: center'>Start Date</th>
                                 </tr>
                             </thead>
@@ -26,15 +26,15 @@
                                         <td>&nbsp; </td>
                                         <td>{{prescri.Medicine_Name}}</td>
                                             <td> - </td>
-                                            <td> - </td>
+                                            <td> {{prescri.Route}} </td>
                                             <td>{{prescri.Frequency}}</td>
                                             <td>{{prescri.Duration}} {{prescri.Medicine_Timing}}</td>
                                             <!-- <td> {{prescri.timing}} </td> -->
-                                            <td class="fa fa-eye" style="cursor: pointer" (click)="viewNotes(prescri.Notes)"></td>
+                                            <td class="noteellipse" data-toggle="tooltip" title="{{prescri.Notes}}"><span>{{prescri.Notes}}</span></td>
                                             <td>{{prescri.StartDate}}</td>
                                     </tr>
                                     <tr>
-                                       <td colspan="7">
+                                       <td colspan="8">
                                         <button type="button" class="btn btn-steelblue pull-right" (click)="repaetr_presc(prescri)">Repeat</button>
                                        </td> 
                                     </tr>

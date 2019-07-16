@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Http, Headers } from '@angular/http';
 import { MatSnackBar } from '@angular/material';
 import { GlobalService } from '../global.service';
-import { NotesPopupComponent } from '../notes-popup/notes-popup.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-previousprescription',
@@ -43,12 +42,5 @@ export class PreviousprescriptionComponent implements OnInit {
     sessionStorage.setItem("previous_prescription", JSON.stringify(presData));
     this.router.navigate(['/Homescreen/Patientdetails/Prescription']);
   }
-  viewNotes(notes){
-    if(notes.length > 0) {
-      this.dialog.open(NotesPopupComponent, {
-        data: {note:notes},
-          disableClose: false
-        })
-      }
-    }
+
 }
