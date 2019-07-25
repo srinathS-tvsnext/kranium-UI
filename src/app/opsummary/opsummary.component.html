@@ -1,630 +1,645 @@
 <div class="row" *ngIf="!date_status.Previousdate">
-  <div class="col-md-12">
-    <mat-form-field>
-      <mat-select class="pull-right paddingselect" placeholder="Select Template" [(ngModel)]="opp_template"
-        (ngModelChange)="template_change(opp_template)">
-        <mat-option *ngFor="let opsummary_template of opsummary_template_list" [value]="opsummary_template">
-          {{ opsummary_template.template_name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-</div>
-<div class="row" id="printSectionId">
-  <div class="col-md-12">
-    <p class="bolder profile">Patient Profile</p>
-    <div class="" *ngFor="let opo_temp of template">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="" *ngFor="let patient_profile of patientdata_details">
-            <div class="col-md-6">
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.firstname">
-                    <span *ngIf="!opo_temp.firstname">Firstname</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.firstname">
-                  <div class='col-md-5 headingclr'>First Name</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.First_name || '-'}}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.lastname">
-                    <span *ngIf="!opo_temp.lastname">lastname</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.lastname">
-                  <div class='col-md-5 headingclr'>Last Name</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Last_name || '-' }}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Occupation">
-                    <span *ngIf="!opo_temp.Occupation">Occupation</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Occupation">
-                  <div class='col-md-5 headingclr'>Occupation</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Occupation || '-' }}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left " [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Qualification">
-                    <span *ngIf="!opo_temp.Qualification">Qualification</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Qualification">
-                  <div class='col-md-5 headingclr'>Qualification</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Qualification || '-' }}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Age">
-                    <span *ngIf="!opo_temp.Age">Age</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Age">
-                  <div class='col-md-5 headingclr'>Age</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Age||'-'}}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.DOB">
-                    <span *ngIf="!opo_temp.DOB">DOB</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.DOB">
-                  <div class='col-md-5 headingclr'>Date Of Birth</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.DOB||'-'}}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Blood">
-                    <span *ngIf="!opo_temp.Blood">Blood</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Blood">
-                  <div class='col-md-5 headingclr'>Blood Group</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Blood_group||'-'}}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <!-- <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Religion">
-                    <span *ngIf="!opo_temp.Religion">Religion</span>
-                  </mat-checkbox>
-                </span> -->
-                <span *ngIf="opo_temp.Religion">
-                  <div class='col-md-5 headingclr'>Religion</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Religion || '-' }}</div>
-                </span>
-              </div>
-
-            </div>
-            <div class="col-md-6">
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Nationality">
-                    <span *ngIf="!opo_temp.Nationality">Nationality</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Nationality">
-                  <div class='col-md-5 headingclr'>Nationality</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Nationality || '' }}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Address">
-                    <span *ngIf="!opo_temp.Address">Address</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Address">
-                  <div class='col-md-5 headingclr'>Address</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Address||'-'}}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Town">
-                    <span *ngIf="!opo_temp.Town">Town</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Town">
-                  <div class='col-md-5 headingclr'>Town/City</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.City ||'-'}}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.District">
-                    <span *ngIf="!opo_temp.District">District</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.District">
-                  <div class='col-md-5 headingclr'>District</div>
-                  <div class='col-md-5 contentclr'>{{ patient_profile.District || '-'}}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.State">
-                    <span *ngIf="!opo_temp.State">State</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.State">
-                  <div class='col-md-5 headingclr'>State</div>
-                  <div class='col-md-5 contentclr'>{{ patient_profile.State || '-'}}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Country">
-                    <span *ngIf="!opo_temp.Country">Country</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Country">
-                  <div class='col-md-5 headingclr'>Country</div>
-                  <div class='col-md-5 contentclr'>{{ patient_profile.Country || '-'}}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Phone">
-                    <span *ngIf="!opo_temp.Mobile">Phone</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Mobile">
-                  <div class='col-md-5 headingclr'>Mobile No.</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Phone||'-'}}</div>
-                </span>
-              </div>
-              <div class="col-md-12">
-                <span class="pull-left" [hidden]=hideen>
-                  <mat-checkbox color='primary' [(ngModel)]="opo_temp.Email">
-                    <span *ngIf="!opo_temp.Email">Email</span>
-                  </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Email">
-                  <div class='col-md-5 headingclr'>Email Id</div>
-                  <div class='col-md-5 contentclr'>{{patient_profile.Email||'-'}}</div>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p class='bolder'>Vitals</p>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive" *ngIf="vitals_data.Formvalue">
-            <table class="table table borderless tb" style='text-align: center'>
-              <thead class="headercolor">
-                <tr>
-                    <!-- <th style='text-align: center'>Date/Time</th> -->
-                    <th style='text-align: center'>Date/Time</th>
-                    <th style='text-align: center'>Height</th>
-                    <th style='text-align: center'>Weight</th>
-                    <th style='text-align: center'>Temperature</th>
-                    <th style='text-align: center'>Pulse</th>
-                    <th style='text-align: center'>Respiratory Rate</th>
-                    <th style='text-align: center'>BP</th>
-                    <th style='text-align: center'>BMI</th>
-                </tr>
-              </thead>
-              <tbody *ngFor="let value of vitals_data.Formvalue">
-                  <tr>
-                      <!-- <td>Date</td> -->
-                      <td><span *ngIf="value.Date">{{value.Date}}</span> <span *ngIf="!value.Date">-</span></td>
-                      <td><span *ngIf="value.Height">{{value.Height}}</span> <span *ngIf="!value.Height">-</span> </td>
-                      <td><span *ngIf="value.Weight">{{value.Weight}}</span> <span *ngIf="!value.Weight">-</span></td>
-                      <td><span *ngIf="value.Temp">{{value.Temp}}</span> <span *ngIf="!value.Temp">-</span></td>
-                      <td><span *ngIf="value.Pulse">{{value.Pulse}} </span> <span *ngIf="!value.Pulse">-</span></td>
-                      <td><span *ngIf="value.Resp">{{value.Resp}} </span> <span *ngIf="!value.Resp">-</span></td>
-                      <td> <span *ngIf="value.Systolic && value.Diastolic">{{value.Systolic}}/{{value.Diastolic}} </span><span *ngIf="!value.Systolic || !value.Diastolic">{{"-"}}</span>  </td>
-                      <td>{{value.Bmi||"-"}}</td>
-                      <!-- <td >{{"-"}}</td> -->
-                  </tr>
-              </tbody>
-            </table>
-          </div>
-          <p *ngIf="!vitals_data.Formvalue">No data found</p>
-        </div>
-      </div>
-      <div class='col-md-12'>&nbsp;</div>
-      <!-- <div class='col-md-12'>
-                <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.Preferred_Language">
-            <span *ngIf="!opo_temp.Preferred_Language">Preferred Language</span>
-                </mat-checkbox>
-                </span>
-                <span *ngIf="opo_temp.Preferred_Language">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class='col-md-12'>
-                <p class="lang-size">Preferred Language :
-                  <span style="color:steelblue">English</span>
-                </p>
-            </div>
-        </div>
+    <div class="col-md-12">
+      <mat-form-field>
+        <mat-select class="pull-right paddingselect" placeholder="Select Template" [(ngModel)]="opp_template"
+          (ngModelChange)="template_change(opp_template)">
+          <mat-option *ngFor="let opsummary_template of opsummary_template_list" [value]="opsummary_template">
+            {{ opsummary_template.template_name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-    </span>
-</div> -->
-      <div class='col-md-12'>
-        <!-- <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.Pain_Assessment">
-            <span *ngIf="!opo_temp.Pain_Assessment">Pain Assessment</span>
-          </mat-checkbox>
-        </span> -->
-        <span *ngIf="opo_temp.Pain_Assessment">
-            <p class="bolder">Pain Assessment</p>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              
-              <div class='col-md-12'>
-                <div class='col-md-2' *ngFor="let pain of vitals_data.Formvalue">
-                  <img src="../../assets/img/{{pain.Pain}}" class='imgsize' alt="No Img"/>
-                  <!-- <img src="../globaluat/assets/img/sm3.png" class='imgsize' /> -->
-                  <div class='textsiz'>{{pain.Painhurt}}</div>
-                  <div class='painrate'>{{pain.pain_assesment_painrate}}</div>
+  </div>
+  <div class="row" id="printSectionId">
+    <div class="col-md-12">
+      <p class="bolder profile">Patient Profile</p>
+      <div class="" *ngFor="let opo_temp of template">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="" *ngFor="let patient_profile of patientdata_details">
+              <div class="col-md-6">
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.firstname">
+                      <span *ngIf="!opo_temp.firstname">Firstname</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.firstname">
+                    <div class='col-md-5 headingclr'>First Name</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.First_name || '-'}}</div>
+                  </span>
                 </div>
-                <p *ngIf="!vitals_data.Formvalue">No data found</p>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.lastname">
+                      <span *ngIf="!opo_temp.lastname">lastname</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.lastname">
+                    <div class='col-md-5 headingclr'>Last Name</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.Last_name || '-' }}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Occupation">
+                      <span *ngIf="!opo_temp.Occupation">Occupation</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.Occupation">
+                    <div class='col-md-5 headingclr'>Occupation</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.Occupation || '-' }}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left " [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Qualification">
+                      <span *ngIf="!opo_temp.Qualification">Qualification</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.Qualification">
+                    <div class='col-md-5 headingclr'>Qualification</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.Qualification || '-' }}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Age">
+                      <span *ngIf="!opo_temp.Age">Age</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.Age">
+                    <div class='col-md-5 headingclr'>Age</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.Age||'-'}}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.DOB">
+                      <span *ngIf="!opo_temp.DOB">DOB</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.DOB">
+                    <div class='col-md-5 headingclr'>Date Of Birth</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.DOB||'-'}}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Blood">
+                      <span *ngIf="!opo_temp.Blood">Blood</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.Blood">
+                    <div class='col-md-5 headingclr'>Blood Group</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.Blood_group||'-'}}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <!-- <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Religion">
+                      <span *ngIf="!opo_temp.Religion">Religion</span>
+                    </mat-checkbox>
+                  </span> -->
+                  <span *ngIf="opo_temp.Religion">
+                    <div class='col-md-5 headingclr'>Religion</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.Religion || '-' }}</div>
+                  </span>
+                </div>
+  
               </div>
-              
+              <div class="col-md-6">
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Nationality">
+                      <span *ngIf="!opo_temp.Nationality">Nationality</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.Nationality">
+                    <div class='col-md-5 headingclr'>Nationality</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.Nationality || '' }}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Address">
+                      <span *ngIf="!opo_temp.Address">Address</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.Address">
+                    <div class='col-md-5 headingclr'>Address</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.Address||'-'}}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Town">
+                      <span *ngIf="!opo_temp.Town">Town</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.Town">
+                    <div class='col-md-5 headingclr'>Town/City</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.City ||'-'}}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.District">
+                      <span *ngIf="!opo_temp.District">District</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.District">
+                    <div class='col-md-5 headingclr'>District</div>
+                    <div class='col-md-5 contentclr'>{{ patient_profile.District || '-'}}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.State">
+                      <span *ngIf="!opo_temp.State">State</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.State">
+                    <div class='col-md-5 headingclr'>State</div>
+                    <div class='col-md-5 contentclr'>{{ patient_profile.State || '-'}}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Country">
+                      <span *ngIf="!opo_temp.Country">Country</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.Country">
+                    <div class='col-md-5 headingclr'>Country</div>
+                    <div class='col-md-5 contentclr'>{{ patient_profile.Country || '-'}}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Phone">
+                      <span *ngIf="!opo_temp.Mobile">Phone</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.Mobile">
+                    <div class='col-md-5 headingclr'>Mobile No.</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.Phone||'-'}}</div>
+                  </span>
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-left" [hidden]=hideen>
+                    <mat-checkbox color='primary' [(ngModel)]="opo_temp.Email">
+                      <span *ngIf="!opo_temp.Email">Email</span>
+                    </mat-checkbox>
+                  </span>
+                  <span *ngIf="opo_temp.Email">
+                    <div class='col-md-5 headingclr'>Email Id</div>
+                    <div class='col-md-5 contentclr'>{{patient_profile.Email||'-'}}</div>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-        </span>
-      </div>
-      <div class='col-md-12'>
-        <!-- <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.Notes">
-            <span *ngIf="!opo_temp.Notes">Notes</span>
-          </mat-checkbox>
-        </span> -->
-        <span *ngIf="opo_temp.Notes">
-            <p class="bolder">Notes</p>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <p class="" *ngFor="let notes of vitals_data.Formvalue"> &nbsp; &nbsp; &nbsp; &nbsp; {{notes.GeneralExamination || '-'}}
-              </p>
-              <!-- <p *ngIf="!vitals_data.Formvalue.GeneralExamination">No data found</p> -->
-            </div>
-          </div>
-        </span>
-      </div>
-      <div class='col-md-12'>
-        <!-- <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.Allergy">
-            <span *ngIf="!opo_temp.Allergy">Allergy</span>
-          </mat-checkbox>
-        </span> -->
-        <span *ngIf="opo_temp.Allergy">
-            <p class='bolder'>Allergy</p>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              
-              <table class="table table borderless" style="text-align:center;" *ngIf="vitals_data.allergy">
+        </div>
+        <p class='bolder'>Vitals</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive" *ngIf="vitals_data.Formvalue">
+              <table class="table table borderless tb" style='text-align: center'>
                 <thead class="headercolor">
                   <tr>
-                    <th style='text-align: center'>Allergy Type</th>
-                    <th style='text-align: center'>Allergy To</th>
-                    <th style='text-align: center'>Severity</th>
+                      <!-- <th style='text-align: center'>Date/Time</th> -->
+                      <th style='text-align: center'>Date/Time</th>
+                      <th style='text-align: center'>Height</th>
+                      <th style='text-align: center'>Weight</th>
+                      <th style='text-align: center'>Temperature</th>
+                      <th style='text-align: center'>Pulse</th>
+                      <th style='text-align: center'>Respiratory Rate</th>
+                      <th style='text-align: center'>BP</th>
+                      <th style='text-align: center'>BMI</th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let allergy of vitals_data.allergy">
-                    <tr *ngFor = "let notes of allergy.notes">
-                        <td>{{notes.allergy_type1||"-"}}</td>
-                        <td>{{notes.allergy_type2||"-"}}</td>
-                        <td>{{notes.allergy_severity||"-"}}</td>
-                    </tr> 
+                <tbody *ngFor="let value of vitals_data.Formvalue">
+                    <tr>
+                        <!-- <td>Date</td> -->
+                        <td><span *ngIf="value.Date">{{value.Date}}</span> <span *ngIf="!value.Date">-</span></td>
+                        <td><span *ngIf="value.Height">{{value.Height}}</span> <span *ngIf="!value.Height">-</span> </td>
+                        <td><span *ngIf="value.Weight">{{value.Weight}}</span> <span *ngIf="!value.Weight">-</span></td>
+                        <td><span *ngIf="value.Temp">{{value.Temp}}</span> <span *ngIf="!value.Temp">-</span></td>
+                        <td><span *ngIf="value.Pulse">{{value.Pulse}} </span> <span *ngIf="!value.Pulse">-</span></td>
+                        <td><span *ngIf="value.Resp">{{value.Resp}} </span> <span *ngIf="!value.Resp">-</span></td>
+                        <td> <span *ngIf="value.Systolic && value.Diastolic">{{value.Systolic}}/{{value.Diastolic}} </span><span *ngIf="!value.Systolic || !value.Diastolic">{{"-"}}</span>  </td>
+                        <td>{{value.Bmi||"-"}}</td>
+                        <!-- <td >{{"-"}}</td> -->
+                    </tr>
                 </tbody>
               </table>
-              <p *ngIf="!vitals_data.allergy">No data found</p>
             </div>
-            
+            <p *ngIf="!vitals_data.Formvalue">No data found</p>
           </div>
-        </span>
-      </div>
-      <div class='col-md-12'>
-        <!-- <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.Active_Medication">
-            <span *ngIf="!opo_temp.Active_Medication">Active_Medication</span>
-          </mat-checkbox>
-        </span> -->
-        <span *ngIf="opo_temp.Active_Medication">
-            <p class='bolder'>Active Medication</p>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              
-              <div class="table-responsive" *ngIf="vitals_data.medication">
-                <table class="table table borderless" style="text-align:center;">
-                  <thead class="headercolor">
-                    <tr>
-                      <th style='text-align: center'>Brand Name</th>
-                      <th style='text-align: center'>Dosage</th>
-                      <th style='text-align: center'>Frequency</th>
-                    </tr>
-                  </thead>
-                  <tbody *ngFor="let medi of vitals_data.medication">
-                    <tr>
-                      <td>{{medi.activemedication_brandname||"-"}}
-                        <td>{{medi.actmeddosage||"-"}}</td>
-                      <td>{{medi.activemedication_frequency||"-"}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <p *ngIf="!vitals_data.medication">No data found</p>
-            </div>
-          </div>
-        </span>
-      </div>
-      <div class='col-md-12'>
-        <!-- <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.History_Questions_Answers">
-            <span *ngIf="!opo_temp.History_Questions_Answers">History</span>
-          </mat-checkbox>
-        </span> -->
-        <span *ngIf="opo_temp.History_Questions_Answers">
-          <p class='bolder'>History</p>
-          <p class='bolder'>Chief Complaints</p>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              
-              <div>
-                <div class="">
-                  <span *ngFor="let complaints of history_patient_chief_complaints">
-                    <button type="button" class="btn btn-white">
-                      <span class="hidden-xs">{{complaints.notes}} {{complaints.duration_count}}
-                        {{complaints.duration}}</span>
-                    </button>
+        </div>
+        <div class='col-md-12'>&nbsp;</div>
+        <!-- <div class='col-md-12'>
+                  <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.Preferred_Language">
+              <span *ngIf="!opo_temp.Preferred_Language">Preferred Language</span>
+                  </mat-checkbox>
                   </span>
-                  <p *ngIf="!history_patient_chief_complaints">No data found</p>
-                </div>
+                  <span *ngIf="opo_temp.Preferred_Language">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class='col-md-12'>
+                  <p class="lang-size">Preferred Language :
+                    <span style="color:steelblue">English</span>
+                  </p>
               </div>
-            </div>
           </div>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <span *ngFor="let history of history_qa">
-                <p *ngIf="history">
-                  <strong>{{history.question}}</strong>
-                </p>
-                <p>{{history.answer}}</p>
-              </span>
-              <p *ngIf="!history_qa">No data found</p>
-            </div>
-          </div>
-        </span>
       </div>
-      <div class='col-md-12'>
-        <!-- <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.Examination_Questions_Answers">
-            <span *ngIf="!opo_temp.Examination_Questions_Answers">Examination</span>
-          </mat-checkbox>
-        </span> -->
-        <span *ngIf="opo_temp.Examination_Questions_Answers">
-          <p class='bolder'>Examination</p>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <span *ngFor="let examination of examination_qa">
-                <p>
-                  <strong>{{examination.question}}</strong>
-                </p>
-                <p>{{examination.answer}}</p>
-              </span>
-              <p *ngIf="!Examination_Questions_Answers">No data found</p>
-            </div>
-          </div>
-        </span>
-      </div>
-      <div class='col-md-12'>
-        <!-- <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.Consultation_Notes">
-            <span *ngIf="!opo_temp.Consultation_Notes">Consultation_Notes</span>
-          </mat-checkbox>
-        </span> -->
-        <span *ngIf="opo_temp.Consultation_Notes">
-          <p class='bolder'>Consultation Notes</p>
-          <div class="panel panel-default">
-            <!-- <p class='bolder'>Diagnosis</p> -->
-            <div class="panel-body">
-              <div>
-                <div class="">
-                  <span *ngFor="let notes of consultation_notes">
-                    <button type="button" class="btn btn-white">{{notes.notes}}</button>
-                  </span>
-                  <p *ngIf="!consultation_notes">No data found</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </span>
-      </div>
-      <div class='col-md-12'>
-        <!-- <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.ICD_description">
-            <span *ngIf="!opo_temp.ICD_description">ICD description</span>
-          </mat-checkbox>
-        </span> -->
-        <span *ngIf="opo_temp.ICD_description">
-          <p class='bolder'>ICD Codes</p>
-          <div class="panel panel-default">
-            <!-- <p class='bolder'>Diagnosis</p> -->
-            <div class="panel-body">
-              <div>
-                <div class="">
-                  <span *ngFor="let ics_pat of diagno_icd_patioent">
-                    <button type="button" class="btn btn-white">{{ics_pat.Diagnosiscode}}
-                      <span class="hidden-xs">{{ics_pat.Description}}</span>
-                    </button>
-                  </span>
-                  <span *ngFor="let ics_prov of diagno_icd_patioent_provitional">
-                    <button type="button" class="btn btn-white">{{ics_prov.notes}}
-                    </button>
-                  </span>
-                  <p *ngIf="!diagno_icd_patioent && !diagno_icd_patioent_provitional">No data found</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </span>
-      </div>
-      <div class='col-md-12'>
-        <!-- <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.Procedure">
-            <span *ngIf="!opo_temp.Procedure">Procedure</span>
-          </mat-checkbox>
-        </span> -->
-        <span *ngIf="opo_temp.Procedure">
-          <p class='bolder'>Procedure</p>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="row">
-                <p>&nbsp; List of Procedure Raised</p>
-                <div class="col-md-12">
-                  <div class="col-md-6" *ngFor="let prescri_pat of diagno_presc_patioent">
-                    <button type="button" class="btn btn-white btncntr">
-                      <span class="hidden-xs">{{prescri_pat.item_description}}</span>
-                    </button>
+      </span>
+  </div> -->
+        <div class='col-md-12'>
+          <!-- <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.Pain_Assessment">
+              <span *ngIf="!opo_temp.Pain_Assessment">Pain Assessment</span>
+            </mat-checkbox>
+          </span> -->
+          <span *ngIf="opo_temp.Pain_Assessment">
+              <p class="bolder">Pain Assessment</p>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                
+                <div class='col-md-12'>
+                  <div class='col-md-2' *ngFor="let pain of vitals_data.Formvalue">
+                    <img src="../../assets/img/{{pain.Pain}}" class='imgsize' alt="No Img"/>
+                    <!-- <img src="../globaluat/assets/img/sm3.png" class='imgsize' /> -->
+                    <div class='textsiz'>{{pain.Painhurt}}</div>
+                    <div class='painrate'>{{pain.pain_assesment_painrate}}</div>
                   </div>
-                  <p *ngIf="!diagno_presc_patioent">No data found</p>
+                  <p *ngIf="!vitals_data.Formvalue">No data found</p>
                 </div>
+                
               </div>
             </div>
-          </div>
-        </span>
-      </div>
-      <!-- <div class='col-md-12'>
-        <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.Current_Investigation">
-            <span *ngIf="!opo_temp.Current_Investigation">Current_Investigation</span>
-          </mat-checkbox>
-        </span>
-        <span *ngIf="opo_temp.Current_Investigation">
-          <p class='bolder'>Current Investigation</p>
-          <div class="panel panel-default"> -->
-            <!-- <p class='bolder'>Investigation</p> -->
-            <!-- <div class="panel-body">
-              <div>
-                <div class="divalignment" *ngFor="let category_tem of Investigation_template_category">
-                  <p class="header">{{category_tem.deptname}}</p>
-                  <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group"
-                    *ngFor="let category_tem_list of category_tem.question">
-                    <button type="button" class="btn btn-white">
-                      <span class="hidden-xs">{{category_tem_list.item_long_description}}</span> -->
-                      <!-- <span class="badge badgewhite" (click)="remove_old_tempdata_investigation(category_tem_list)">X</span> -->
-                    <!-- </button>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </span>
-      </div> -->
-      <div class='col-md-12'>
-        <!-- <span class="pull-left" [hidden]=hideen>
-          <mat-checkbox color='primary' [(ngModel)]="opo_temp.Current_Prescription">
-            <span *ngIf="!opo_temp.Current_Prescription">Current_Prescription</span>
-          </mat-checkbox>
-        </span> -->
-        <span *ngIf="opo_temp.Current_Prescription">
-          <p class='bolder'>Current Prescription</p>
-          <div class="panel panel-default">
-            <!-- <p class='bolder'>Prescription</p> -->
-            <div class="panel-body">
-              <div class="table-responsive" *ngIf="pres_data">
-                <table class="table table borderless tb2" style='text-align: center'>
-                  <thead class="tableheadercolor">
-                    <tr>
-                      <th style='text-align: center;font-weight: 600;'>&nbsp;</th>
-                      <th style='text-align: center;font-weight: 600;'>Medication Name</th>
-                      <th style='text-align: center;font-weight: 600;'>Preparation</th>
-                      <th style='text-align: center;font-weight: 600;'>Route</th>
-                      <th style='text-align: center;font-weight: 600;'>Frequency</th>
-                      <th style='text-align: center;font-weight: 600;'>Duration</th>
-                      <th style='text-align: center;font-weight: 600;'>Medicine Timing</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let prescri of pres_data">
-                      <td>&nbsp; </td>
-                      <td>{{prescri.Medicine_Name}} 
-                        <!-- <br>({{prescri.generic_name}}) -->
-                      </td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td>{{prescri.Frequency}}</td>
-                      <td>{{prescri.Duration}} {{prescri.Medicine_Timing}}</td>
-                      <td> - </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <p *ngIf="!pres_data">No data found</p>
-            </div>
-          </div>
-        </span>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <!-- <span [hidden]=hidden_edit>
-        <button type="button"  class="btn btn-infos active pull-right" (click)="edit_opsummary(opo_temp)">Edit </button>
-      </span>
-        <span [hidden]=hidden_update>
-          <button type="button"  class="btn btn-green active pull-right" (click)="update_opsummary(opo_temp)">Update </button>
-      </span>
-        <span [hidden]=hidden_cancel>
-                    <button type="button" class="btn btn-red active pull-right" (click)="cancel_opsummary()">Cancel</button>
-      </span> -->
-          <span [hidden]=hidden_print>
-            <button type="button" class="btn btn-steelblue active pull-right" (click)="printPreview()">Print
-              Preview</button>
           </span>
         </div>
-      </div>
-    </div>
-
-
-    <!-- <div class="panel panel-default">
-          <p class='bolder'>Reports</p>
-          <div class="panel-body">
-            <div>
-              <p>
-                <strong>Graphical View</strong>
-              </p>
+        <div class='col-md-12'>
+          <!-- <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.Notes">
+              <span *ngIf="!opo_temp.Notes">Notes</span>
+            </mat-checkbox>
+          </span> -->
+          <span *ngIf="opo_temp.Notes">
+              <p class="bolder">Notes</p>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                  <table class="table table borderless tb" style='text-align: center'>
+                      <thead class="headercolor">
+                        <tr>
+                            <!-- <th style='text-align: center'>Date/Time</th> -->
+                            <th style='text-align: left'>Date/Time</th>
+                            <th style='text-align: left'>Notes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let notes of vitals_data.Formvalue">
+                              <!-- <th style='text-align: center'>Date/Time</th> -->
+                              <td style='text-align: left'>{{notes.Date || '-'}}</td>
+                              <td style='text-align: left'>{{notes.GeneralExamination || '-'}}</td>
+                          </tr>
+                      </tbody>
+                    </table>
+                <!-- <p *ngIf="!vitals_data.Formvalue.GeneralExamination">No data found</p> -->
+              </div>
             </div>
-          </div>
+          </span>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div>
-              <p>
-                <strong>Table View</strong>
-              </p>
+        <div class='col-md-12'>
+          <!-- <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.Allergy">
+              <span *ngIf="!opo_temp.Allergy">Allergy</span>
+            </mat-checkbox>
+          </span> -->
+          <span *ngIf="opo_temp.Allergy">
+              <p class='bolder'>Allergy</p>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                
+                <table class="table table borderless" style="text-align:center;" *ngIf="vitals_data.allergy">
+                  <thead class="headercolor">
+                    <tr>
+                      <th style='text-align: center'>Allergy Type</th>
+                      <th style='text-align: center'>Allergy To</th>
+                      <th style='text-align: center'>Severity</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let allergy of vitals_data.allergy">
+                      <tr *ngFor = "let notes of allergy.notes">
+                          <td>{{notes.allergy_type1||"-"}}</td>
+                          <td>{{notes.allergy_type2||"-"}}</td>
+                          <td>{{notes.allergy_severity||"-"}}</td>
+                      </tr> 
+                  </tbody>
+                </table>
+                <p *ngIf="!vitals_data.allergy">No data found</p>
+              </div>
+              
             </div>
-          </div>
+          </span>
         </div>
-        <p class='bolder'>Follow-up</p>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div>
-              <p>
-                <strong>Recommend IP Admission</strong>
-              </p>
-              <p>Recommend : 25/12/2017</p>
+        <div class='col-md-12'>
+          <!-- <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.Active_Medication">
+              <span *ngIf="!opo_temp.Active_Medication">Active_Medication</span>
+            </mat-checkbox>
+          </span> -->
+          <span *ngIf="opo_temp.Active_Medication">
+              <p class='bolder'>Active Medication</p>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                
+                <div class="table-responsive" *ngIf="vitals_data.medication">
+                  <table class="table table borderless" style="text-align:center;">
+                    <thead class="headercolor">
+                      <tr>
+                        <th style='text-align: center'>Brand Name</th>
+                        <th style='text-align: center'>Dosage</th>
+                        <th style='text-align: center'>Frequency</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let medi of vitals_data.medication">
+                      <tr>
+                        <td>{{medi.activemedication_brandname||"-"}}
+                          <td>{{medi.actmeddosage||"-"}}</td>
+                        <td>{{medi.activemedication_frequency||"-"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p *ngIf="!vitals_data.medication">No data found</p>
+              </div>
             </div>
-          </div>
+          </span>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <p class="bolder">NOTES:</p>
-          </div>
+        <div class='col-md-12'>
+          <!-- <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.History_Questions_Answers">
+              <span *ngIf="!opo_temp.History_Questions_Answers">History</span>
+            </mat-checkbox>
+          </span> -->
+          <span *ngIf="opo_temp.History_Questions_Answers">
+            <p class='bolder'>History</p>
+            <p class='bolder'>Chief Complaints</p>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                
+                <div>
+                  <div class="">
+                    <span *ngFor="let complaints of history_patient_chief_complaints">
+                      <button type="button" class="btn btn-white">
+                        <span class="hidden-xs">{{complaints.notes}} {{complaints.duration_count}}
+                          {{complaints.duration}}</span>
+                      </button>
+                    </span>
+                    <p *ngIf="!history_patient_chief_complaints">No data found</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <span *ngFor="let history of history_qa">
+                  <p *ngIf="history">
+                    <strong>{{history.question}}</strong>
+                  </p>
+                  <p>{{history.answer}}</p>
+                </span>
+                <p *ngIf="!history_qa">No data found</p>
+              </div>
+            </div>
+          </span>
+        </div>
+        <div class='col-md-12'>
+          <!-- <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.Examination_Questions_Answers">
+              <span *ngIf="!opo_temp.Examination_Questions_Answers">Examination</span>
+            </mat-checkbox>
+          </span> -->
+          <span *ngIf="opo_temp.Examination_Questions_Answers">
+            <p class='bolder'>Examination</p>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <span *ngFor="let examination of examination_qa">
+                  <p>
+                    <strong>{{examination.question}}</strong>
+                  </p>
+                  <p>{{examination.answer}}</p>
+                </span>
+                <p *ngIf="!Examination_Questions_Answers">No data found</p>
+              </div>
+            </div>
+          </span>
+        </div>
+        <div class='col-md-12'>
+          <!-- <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.Consultation_Notes">
+              <span *ngIf="!opo_temp.Consultation_Notes">Consultation_Notes</span>
+            </mat-checkbox>
+          </span> -->
+          <span *ngIf="opo_temp.Consultation_Notes">
+            <p class='bolder'>Consultation Notes</p>
+            <div class="panel panel-default">
+              <!-- <p class='bolder'>Diagnosis</p> -->
+              <div class="panel-body">
+                <div>
+                  <div class="">
+                    <span *ngFor="let notes of consultation_notes">
+                      <button type="button" class="btn btn-white">{{notes.notes}}</button>
+                    </span>
+                    <p *ngIf="!consultation_notes">No data found</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span>
+        </div>
+        <div class='col-md-12'>
+          <!-- <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.ICD_description">
+              <span *ngIf="!opo_temp.ICD_description">ICD description</span>
+            </mat-checkbox>
+          </span> -->
+          <span *ngIf="opo_temp.ICD_description">
+            <p class='bolder'>ICD Codes</p>
+            <div class="panel panel-default">
+              <!-- <p class='bolder'>Diagnosis</p> -->
+              <div class="panel-body">
+                <div>
+                  <div class="">
+                    <span *ngFor="let ics_pat of diagno_icd_patioent">
+                      <button type="button" class="btn btn-white">{{ics_pat.Diagnosiscode}}
+                        <span class="hidden-xs">{{ics_pat.Description}}</span>
+                      </button>
+                    </span>
+                    <span *ngFor="let ics_prov of diagno_icd_patioent_provitional">
+                      <button type="button" class="btn btn-white">{{ics_prov.notes}}
+                      </button>
+                    </span>
+                    <p *ngIf="!diagno_icd_patioent && !diagno_icd_patioent_provitional">No data found</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span>
+        </div>
+        <div class='col-md-12'>
+          <!-- <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.Procedure">
+              <span *ngIf="!opo_temp.Procedure">Procedure</span>
+            </mat-checkbox>
+          </span> -->
+          <span *ngIf="opo_temp.Procedure">
+            <p class='bolder'>Procedure</p>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <p>&nbsp; List of Procedure Raised</p>
+                  <div class="col-md-12">
+                    <div class="col-md-6" *ngFor="let prescri_pat of diagno_presc_patioent">
+                      <button type="button" class="btn btn-white btncntr">
+                        <span class="hidden-xs">{{prescri_pat.item_description}}</span>
+                      </button>
+                    </div>
+                    <p *ngIf="!diagno_presc_patioent">No data found</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span>
+        </div>
+        <!-- <div class='col-md-12'>
+          <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.Current_Investigation">
+              <span *ngIf="!opo_temp.Current_Investigation">Current_Investigation</span>
+            </mat-checkbox>
+          </span>
+          <span *ngIf="opo_temp.Current_Investigation">
+            <p class='bolder'>Current Investigation</p>
+            <div class="panel panel-default"> -->
+              <!-- <p class='bolder'>Investigation</p> -->
+              <!-- <div class="panel-body">
+                <div>
+                  <div class="divalignment" *ngFor="let category_tem of Investigation_template_category">
+                    <p class="header">{{category_tem.deptname}}</p>
+                    <span class="btn-group btn-group-md" id="withBtnGroup" aria-label="Page Header Actions" role="group"
+                      *ngFor="let category_tem_list of category_tem.question">
+                      <button type="button" class="btn btn-white">
+                        <span class="hidden-xs">{{category_tem_list.item_long_description}}</span> -->
+                        <!-- <span class="badge badgewhite" (click)="remove_old_tempdata_investigation(category_tem_list)">X</span> -->
+                      <!-- </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span>
         </div> -->
+        <div class='col-md-12'>
+          <!-- <span class="pull-left" [hidden]=hideen>
+            <mat-checkbox color='primary' [(ngModel)]="opo_temp.Current_Prescription">
+              <span *ngIf="!opo_temp.Current_Prescription">Current_Prescription</span>
+            </mat-checkbox>
+          </span> -->
+          <span *ngIf="opo_temp.Current_Prescription">
+            <p class='bolder'>Current Prescription</p>
+            <div class="panel panel-default">
+              <!-- <p class='bolder'>Prescription</p> -->
+              <div class="panel-body">
+                <div class="table-responsive" *ngIf="pres_data">
+                  <table class="table table borderless tb2" style='text-align: center'>
+                    <thead class="tableheadercolor">
+                      <tr>
+                        <th style='text-align: center;font-weight: 600;'>&nbsp;</th>
+                        <th style='text-align: center;font-weight: 600;'>Medication Name</th>
+                        <th style='text-align: center;font-weight: 600;'>Preparation</th>
+                        <th style='text-align: center;font-weight: 600;'>Route</th>
+                        <th style='text-align: center;font-weight: 600;'>Frequency</th>
+                        <th style='text-align: center;font-weight: 600;'>Duration</th>
+                        <th style='text-align: center;font-weight: 600;'>Medicine Timing</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let prescri of pres_data">
+                        <td>&nbsp; </td>
+                        <td>{{prescri.Medicine_Name}} 
+                          <!-- <br>({{prescri.generic_name}}) -->
+                        </td>
+                        <td> - </td>
+                        <td> - </td>
+                        <td>{{prescri.Frequency}}</td>
+                        <td>{{prescri.Duration}} {{prescri.Medicine_Timing}}</td>
+                        <td> - </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p *ngIf="!pres_data">No data found</p>
+              </div>
+            </div>
+          </span>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <!-- <span [hidden]=hidden_edit>
+          <button type="button"  class="btn btn-infos active pull-right" (click)="edit_opsummary(opo_temp)">Edit </button>
+        </span>
+          <span [hidden]=hidden_update>
+            <button type="button"  class="btn btn-green active pull-right" (click)="update_opsummary(opo_temp)">Update </button>
+        </span>
+          <span [hidden]=hidden_cancel>
+                      <button type="button" class="btn btn-red active pull-right" (click)="cancel_opsummary()">Cancel</button>
+        </span> -->
+            <span [hidden]=hidden_print>
+              <button type="button" class="btn btn-steelblue active pull-right" (click)="printPreview()">Print
+                Preview</button>
+            </span>
+          </div>
+        </div>
+      </div>
+  
+  
+      <!-- <div class="panel panel-default">
+            <p class='bolder'>Reports</p>
+            <div class="panel-body">
+              <div>
+                <p>
+                  <strong>Graphical View</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div>
+                <p>
+                  <strong>Table View</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+          <p class='bolder'>Follow-up</p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div>
+                <p>
+                  <strong>Recommend IP Admission</strong>
+                </p>
+                <p>Recommend : 25/12/2017</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p class="bolder">NOTES:</p>
+            </div>
+          </div> -->
+  

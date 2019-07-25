@@ -1,7 +1,8 @@
 <div class="" *ngFor="let sub_menu of acess_rights; let i =index;">
     <p class="" *ngFor="let sub_view_menu of sub_menu.sub_view; let i =index;">
+     
         <span *ngIf="sub_view_menu.sub_view_name=='vitals'">
-            <span *ngIf="datevalidation.nowdate">
+            <span>
                 <button *ngIf="sub_view_menu.add_edit && GlobalService.viewPatientListPage == true ||   (GlobalService.viewPatientListPage == false && vitaldatalength == 0)" class="btn btn-steelblue" id="addvital_btn"
                     style="float:right;" routerLink='/Homescreen/Patientdetails/Addvitals'>Add Vitals</button>
                 <!-- <button *ngIf="sub_view_menu.add_edit" class="btn btn-steelblue" id="editvital_btn"
@@ -28,6 +29,7 @@
                                                     <th style='text-align: center'>Respiratory Rate</th>
                                                     <th style='text-align: center'>BP</th>
                                                     <th style='text-align: center'>BMI</th>
+                                                    <th style='text-align: center'></th>
                                                     <!-- <th style='text-align: center'>BSA</th> -->
                                                 </tr>
                                             </thead>
@@ -46,10 +48,11 @@
                                                         <span *ngIf="!value.Pulse">-</span></td>
                                                     <td><span *ngIf="value.Resp">{{value.Resp}} {{value.Respunit}}</span>
                                                         <span *ngIf="!value.Resp">-</span></td>
-                                                    <td> <span *ngIf="value.Systolic">{{value.Systolic}} </span>/<span
-                                                            *ngIf="value.Diastolic">{{value.Diastolic}}</span> {{value.Systolicunit}}/{{value.Diastolicunit}}
+                                                    <td> <span *ngIf="value.Systolic"> {{value.Diastolic}}  </span>/<span
+                                                            *ngIf="value.Diastolic">{{value.Systolic}}</span> {{value.Diastolicunit}}{{value.Systolicunit}}
                                                      </td>
-                                                    <td> <span *ngIf="value.Bmi"> {{value.Bmi}}</span> <span *ngIf="GlobalService.viewPatientListPage != true" class="fa  fa-edit" style="padding-left: 5px;cursor:pointer;color:red" (click)="edit_vitals(vitals_data,i)"></span></td>
+                                                    <td> <span *ngIf="value.Bmi"> {{value.Bmi}}</span> </td>
+                                                    <td><span *ngIf="GlobalService.viewPatientListPage != true" class="fa  fa-edit" style="padding-left: 5px;cursor:pointer;color:red" (click)="edit_vitals(vitals_data,i)"></span></td>
                                                 
                                                     <!-- <td >{{"-"}}</td> -->
                                                 </tr>
@@ -144,7 +147,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody *ngFor="let mdata of vitals_data.medication">
-                                                <tr>
+                                                <tr *ngIf="mdata != undefined">
                                                     <td><span *ngIf="mdata.activemedication_brandname">{{mdata.activemedication_brandname}}</span><span *ngIf="!mdata.activemedication_brandname">-</span> </td>
                                                     <td><span *ngIf="mdata.actmeddosage">{{mdata.actmeddosage}}</span><span *ngIf="!mdata.actmeddosage">-</span></td>
                                                     <td><span *ngIf="mdata.activemedication_frequency"> {{mdata.activemedication_frequency}}</span><span *ngIf="!mdata.activemedication_frequency">-</span></td>

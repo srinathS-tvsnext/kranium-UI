@@ -826,9 +826,12 @@ export class PrescriptionComponent implements OnInit {
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
         this.pres_data = resdata['ResponseObject'];
-        this.language = this.pres_data[0].language;
-        this.notes = this.pres_data[0].notes;
-        this.dietadvice = this.pres_data[0].diet_advice;
+        // this.language = this.pres_data[0].language;
+        if(this.pres_data.length > 0){
+          this.notes = this.pres_data[0].notes;
+          this.dietadvice = this.pres_data[0].diet_advice;
+        }
+        
       } else {
         this.GlobalService.disableloader();
       }

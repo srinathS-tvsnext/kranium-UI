@@ -373,7 +373,7 @@ export class InvestigationComponent implements OnInit {
   }
   delete_investigation_data(delete_data){
     console.log(delete_data);
-    if(confirm("Are you sure delete "+ delete_data.item_long_description)){
+    if(confirm("Are you sure delete "+ delete_data.item_description)){
       delete_data.nr = this.login_details[0]['nr'];
       this.GlobalService.enableloader();
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/delete_investigation_data', delete_data).subscribe(resdata => {

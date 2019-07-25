@@ -12,7 +12,7 @@ import { map } from 'rxjs-compat/operator/map';
 })
 export class VitalsComponent implements OnInit {
   vitals_data; patientdata_details; savedata; acess_rights;
-  addvital_btn; editvital_btn; formVitalData;vitaldatalength;
+  addvital_btn; editvital_btn; formVitalData;vitaldatalength = 0;
   constructor(private http: HttpClient, private GlobalService: GlobalService, private router: Router, ) { }
   datevalidation;
   ngOnInit() {
@@ -91,7 +91,10 @@ export class VitalsComponent implements OnInit {
                   // this.vitals_data.medication = resdata['ResponseObject'];
                  
                   for (let i = 0; i < resdata['ResponseObject'].length; i++) {
-                    this.vitals_data.medication.push(JSON.parse((resdata['ResponseObject'][i].tvs_nxt_form_trimed))[0])
+                    if(resdata['ResponseObject'][i].tvs_nxt_form_trimed != null){
+                      this.vitals_data.medication.push(JSON.parse((resdata['ResponseObject'][i].tvs_nxt_form_trimed))[0])
+                    }
+                   
                 }
               
                 console.log(this.vitals_data.medication);
