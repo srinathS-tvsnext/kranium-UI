@@ -27,14 +27,12 @@ export class AddlanguageComponent implements OnInit {
     });
   }
 
-
   save_language(lang_data){
     console.log(lang_data);
     if(lang_data.language_name && lang_data.morning && lang_data.afternoon && lang_data.evening && lang_data.night && lang_data.bf && lang_data.af != "") {
       lang_data.nr = this.login_details[0]['nr'];
       this.GlobalService.enableloader();
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/add_language', lang_data).subscribe(resdata => {
-        debugger;
         if (resdata['IsSuccess']) {
           this.data={};
           this.GlobalService.disableloader();
@@ -43,8 +41,7 @@ export class AddlanguageComponent implements OnInit {
         else {
           this.GlobalService.disableloader();
           this.openSnackBar("Some Error! Retry", "Close");
-        }
-  
+        }  
       })
     } else {
       this.openSnackBar("Please Enter the All Fields", "Close");

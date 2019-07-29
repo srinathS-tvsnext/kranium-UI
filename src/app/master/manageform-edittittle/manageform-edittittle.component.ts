@@ -12,7 +12,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ManageformEdittittleComponent implements OnInit {
 
-  editdata;login_details;get_mf_tittle;
+  editdata; login_details; get_mf_tittle;
 
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar, public dialogRef: MatDialogRef<ManageformEdittittleComponent>, public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public tittledetail: any) { }
 
@@ -22,7 +22,6 @@ export class ManageformEdittittleComponent implements OnInit {
 
     console.log(this.tittledetail);
     this.get_tittle_det();
-
   }
 
   openSnackBar(message: string, action: string) {
@@ -31,33 +30,32 @@ export class ManageformEdittittleComponent implements OnInit {
     });
   }
 
-  cancel(){
+  cancel() {
     this.dialogRef.close();
   }
 
-
   update_mf_tittle(tittle) {
-    if(tittle.tittle == ""){
+    if (tittle.tittle === '') {
       this.openSnackBar("Please Enter the Title Name", "Close");
-    }else{
+    } else {
       tittle.head_id = this.tittledetail.get_detail.history_main_form_name_id;
-      tittle.nr =  this.login_details[0]['nr'];
+      tittle.nr = this.login_details[0]['nr'];
       console.log(tittle);
       this.GlobalService.enableloader();
-      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/edit_mform_tittle',tittle).subscribe(resdata =>{
-        if(resdata['IsSuccess']){
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/edit_mform_tittle', tittle).subscribe(resdata => {
+        if (resdata['IsSuccess']) {
           this.GlobalService.disableloader();
           this.dialogRef.close();
           this.openSnackBar("Updated Successfully", "Close");
-       }else{
+        } else {
           this.GlobalService.disableloader();
           this.dialogRef.close();
         }
-      })
+      });
     }
   }
 
-  get_tittle_det(){
+  get_tittle_det() {
     var head = this.tittledetail.get_detail.history_main_form_name;
     this.editdata.tittle = head;
   }

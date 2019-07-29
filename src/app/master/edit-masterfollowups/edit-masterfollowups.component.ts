@@ -39,7 +39,6 @@ export class EditMasterfollowupsComponent implements OnInit {
     });
   }
 
-
   get_followups_det(){
     var conslt_id = this.followupsdetail.get_detail.sms_cross_consultaion_id;
     var department = this.followupsdetail.get_detail.department;
@@ -82,8 +81,5 @@ export class EditMasterfollowupsComponent implements OnInit {
   cancel(){
     this.dialogRef.close();
   }
-
-
-
 
 }

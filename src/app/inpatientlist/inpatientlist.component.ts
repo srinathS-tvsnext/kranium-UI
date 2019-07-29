@@ -13,12 +13,13 @@ export class InpatientlistComponent implements OnInit {
 
   socialmentions; bodytobind = []; datecc; tomorrow; datetobinds; pat_profile; vitals_data; consodated_arraay; login_name;
   filterd_data; filtered_data; totalcounts_walk; totalcounts_app; totalcounts_comp; check_d_date;
-  superadmin_details; DoctorsName; hidden_doc;doctor;showPagi
+  superadmin_details; DoctorsName; hidden_doc; doctor; showPagi
 
   constructor(private detectchnge: ChangeDetectorRef, private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
-  totalcount; totalcounts;cur_date_format;
+  totalcount; totalcounts; cur_date_format;
 
   ngOnInit() {
+  
     this.superadmin_details = JSON.parse(sessionStorage.getItem('logindata'));
     console.log(this.superadmin_details);
     if (this.superadmin_details[0].User_ID == 'superadmin') {
@@ -36,16 +37,14 @@ export class InpatientlistComponent implements OnInit {
 
     this.filtered_data = [];
     this.datecc = new Date();
-    console.log(this.datecc);
     var date = this.datecc;
     this.f(this.datecc);
-  
-    this.get_DoctorsName(); 
+    this.get_DoctorsName();
   }
 
   f(data) {
-    this.doctor={};
- 
+    this.doctor = {};
+
     this.bodytobind = [];
     var days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
     var curr = data;
@@ -53,17 +52,13 @@ export class InpatientlistComponent implements OnInit {
     var first = curr.getDate() - curr.getDay();
     var currdate = curr.getDate();
     var currday = curr.getDay(); // get current date
-  
+
     for (var i = 0; i <= 6; i++) {
       var tomorrowdd = new Date(data);
       tomorrowdd.setDate(first + i);
-      debugger;
       if (currdate == tomorrowdd.getDate()) {
         var active = 'active';
-      
         this.get_appointments_byday(curr);
-       
-
       } else {
         var active = '';
       }
@@ -73,8 +68,6 @@ export class InpatientlistComponent implements OnInit {
   }
 
   get_appointments_byday(curr_date) {
-    debugger;
-    console.log(curr_date);
     var consilated_date = "";
     this.GlobalService.enableloader();
     if (curr_date) {
@@ -89,10 +82,9 @@ export class InpatientlistComponent implements OnInit {
       this.consodated_arraay = { 'logindata': this.login_name };
 
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_appointments_ip', this.consodated_arraay).subscribe(resdata => {
-        debugger;
         console.log(resdata);
+        this.GlobalService.disableloader();
         if (resdata['IsSuccess']) {
-
           console.log(resdata['ResponseObject']);
           this.socialmentions = resdata['ResponseObject'];
           if (this.socialmentions) {
@@ -121,13 +113,11 @@ export class InpatientlistComponent implements OnInit {
           this.totalcounts_walk = 0; this.totalcounts_app = 0; this.totalcounts_comp = 0;
           this.openSnackBar("No Appointments Found in this Date", "Close");
         }
-      
       })
     }
   }
 
   get_awalkin_byday(data_fil) {
-    
     if (!this.socialmentions)
       return false;
     if (data_fil == "ALL") {
@@ -138,14 +128,11 @@ export class InpatientlistComponent implements OnInit {
       } else {
         this.totalcount = 0;
       }
-   
     }
     if (data_fil == "walkin") {
       this.filtered_data = [];
-      debugger;
       for (var i = 0; i < this.socialmentions.length; i++) {
         if (this.socialmentions[i].appt_status == "walkin") {
-         
           this.filtered_data.push(this.socialmentions[i]);
         }
       }
@@ -154,12 +141,10 @@ export class InpatientlistComponent implements OnInit {
       } else {
         this.totalcounts_walk = 0;
       }
-     
     }
     if (data_fil == "appointment") {
       this.filtered_data = [];
       for (var i = 0; i < this.socialmentions.length; i++) {
-       
         if (this.socialmentions[i].appt_status == "pending" || this.socialmentions[i].appt_status == "checkedin" || this.socialmentions[i].appt_status == "Followup") {
           this.filtered_data.push(this.socialmentions[i]);
         }
@@ -169,13 +154,11 @@ export class InpatientlistComponent implements OnInit {
       } else {
         this.totalcounts_app = 0;
       }
-  
     }
     if (data_fil == "done") {
       this.filtered_data = [];
       for (var i = 0; i < this.socialmentions.length; i++) {
         if (this.socialmentions[i].appt_status == "done") {
-        
           this.filtered_data.push(this.socialmentions[i]);
         }
       }
@@ -184,7 +167,6 @@ export class InpatientlistComponent implements OnInit {
       } else {
         this.totalcounts_comp = 0;
       }
-    
     }
     this.showPagi = this.filtered_data.length == 0 ? false : true;
     this.detectchnge.detectChanges();
@@ -197,77 +179,64 @@ export class InpatientlistComponent implements OnInit {
   }
 
   get_DoctorsName() {
-    
+    this.GlobalService.enableloader();
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_users_doctor').subscribe(resdata => {
+      this.GlobalService.disableloader();
       if (resdata) {
-    
         this.DoctorsName = resdata['ResponseObject'];
-      } else {
-       
       }
+    }, err => {
+      this.GlobalService.disableloader();
     });
   }
 
   patientlist_detail(patien_data) {
-    debugger;
-    console.log(patien_data);
     this.GlobalService.enableloader();
     console.log(patien_data.appt_status);
     sessionStorage.setItem('datestatus', JSON.stringify(patien_data));
-   
-      debugger;
-  
-        this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_patientprofile', patien_data).subscribe(resdata => {
-          debugger;
-          console.log(resdata);
-          if (resdata['IsSuccess']) {
-            this.GlobalService.disableloader();
-            this.pat_profile = resdata['ResponseObject'];
-            sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
-            this.router.navigate(['/Homescreen/Patientdetails/summary/']);
-          } else {
-            this.GlobalService.disableloader();
-            this.pat_profile = [];
-            this.openSnackBar("No Patient Found", "Close");
-          }
-        
-        })
-  
+
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_patientprofile', patien_data).subscribe(resdata => {
+      if (resdata['IsSuccess']) {
+        this.GlobalService.disableloader();
+        this.pat_profile = resdata['ResponseObject'];
+        sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
+        this.router.navigate(['/Homescreen/Patientdetails/summary/']);
+      } else {
+        this.GlobalService.disableloader();
+        this.pat_profile = [];
+        this.openSnackBar('No Patient Found', 'Close');
+      }
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
 
   refresh() {
-    this.doctor={};
+    this.doctor = {};
     this.datecc = new Date();
     this.f(this.datecc);
   }
   old_patientlist_detail(patien_data) {
-    debugger;
-    console.log(patien_data);
-    console.log(patien_data.appt_status);
-    // get_patientprofile
+    this.GlobalService.enableloader();
     sessionStorage.setItem('datestatus', JSON.stringify(patien_data));
-   
-      debugger;
-  
-        this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_pastencounterdetail', patien_data).subscribe(resdata => {
-          debugger;
-          console.log(resdata);
-          if (resdata['IsSuccess']) {
-            this.GlobalService.disableloader();
-            this.pat_profile = resdata['ResponseObject'];
-            sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
-            this.router.navigate(['/Homescreen/Patientdetails/Opsummary/']);
-          } else {
-            this.GlobalService.disableloader();
-            this.pat_profile = [];
-            this.openSnackBar("No Patient Found", "Close");
-          }
-          
-        })
-     
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_pastencounterdetail', patien_data).subscribe(resdata => {
+      if (resdata['IsSuccess']) {
+        this.GlobalService.disableloader();
+        this.pat_profile = resdata['ResponseObject'];
+        sessionStorage.setItem('patientdata', JSON.stringify(resdata['ResponseObject']));
+        this.router.navigate(['/Homescreen/Patientdetails/Opsummary/']);
+      } else {
+        this.GlobalService.disableloader();
+        this.pat_profile = [];
+        this.openSnackBar("No Patient Found", "Close");
+      }
+    }, err => {
+      this.GlobalService.disableloader();
+    });
+
   }
-  clickOnPatient(patientDetail){
-    this.GlobalService.savePatientType('inPatientList');   
-      this.patientlist_detail(patientDetail);
+  clickOnPatient(patientDetail) {
+    this.GlobalService.savePatientType('inPatientList');
+    this.patientlist_detail(patientDetail);
   }
 }

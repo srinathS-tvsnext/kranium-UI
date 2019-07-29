@@ -40,10 +40,8 @@ export class OpsumaryTemplateNameComponent implements OnInit {
     if (this.medicineid.Id.opsum_tempid) {
       this.medicineid.Id.opsum_tempname = tempname;
       this.GlobalService.enableloader();
-      debugger;
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/update_op_temp_name', this.medicineid.Id).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
           console.log(resdata);
           this.openSnackBar("Updated successfully", "Close");
           this.GlobalService.disableloader();
@@ -52,13 +50,15 @@ export class OpsumaryTemplateNameComponent implements OnInit {
           this.dialogRef.close();
           this.GlobalService.disableloader();
         }
+      }, err => {
+        this.GlobalService.disableloader();
       })
     } else {
       var arrayss = [{ template_name: tempname, id: this.medicineid }]
-      debugger;
+
       this.GlobalService.enableloader();
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_opsummary_template', arrayss).subscribe(resdata => {
-        debugger;
+
         console.log(resdata);
         if (resdata) {
           this.openSnackBar("Saved successfully", "Close");
@@ -77,10 +77,10 @@ export class OpsumaryTemplateNameComponent implements OnInit {
 
   get_opsummary_template() {
     // get_opsummary_template
-    debugger;
+
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/get_opsummary_template').subscribe(resdata => {
       if (resdata['IsSuccess']) {
-        debugger;
+
         console.log();
         this.opsummary_template_list = resdata['ResponseObject'];
         console.log(this.opsummary_template_list);

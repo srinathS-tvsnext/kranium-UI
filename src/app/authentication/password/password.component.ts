@@ -34,13 +34,13 @@ export class PasswordComponent implements OnInit {
   paswordFormControl = new FormControl('', [
     Validators.required,
     // Validators.pattern(EMAIL_REGEX)
-    ]
+  ]
   );
 
   CpaswordFormControl = new FormControl('', [
     Validators.required,
     // Validators.pattern(EMAIL_REGEX)
-    ]
+  ]
   );
 
 
@@ -53,11 +53,9 @@ export class PasswordComponent implements OnInit {
       if (data.password == data.Cpassword) {
         this.GlobalService.enableloader();
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/forgot_chpassword', data).subscribe(resdata => {
-          debugger;
-          console.log(resdata);
 
+          console.log(resdata);
           if (resdata['IsSuccess']) {
-            debugger;
             this.GlobalService.disableloader();
             sessionStorage.clear();
             this.openSnackBar("Password Reset Successfully", "Close");
@@ -66,8 +64,7 @@ export class PasswordComponent implements OnInit {
             this.GlobalService.disableloader();
             this.openSnackBar("Non Authorized User", "Close");
           }
-
-        })
+        });
       }
       else {
         this.openSnackBar("!Invalid Confirm Password", "Close");
@@ -77,22 +74,17 @@ export class PasswordComponent implements OnInit {
 
   get_imagelist() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_active_image').subscribe(resdata => {
-      debugger;
       if (resdata['IsSuccess']) {
-        debugger;
         this.image_name = resdata['ResponseObject'];
         console.log(this.image_name);
-        debugger;
         this.GlobalService.disableloader();
       }
       else {
-        debugger;
         this.image_name = resdata['ErrorObject'];
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
 
 

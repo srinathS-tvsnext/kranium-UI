@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { GlobalService } from './global.service';
 import { Router } from '@angular/router';
@@ -8,21 +8,21 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   myData: Array<any>;
   loaderStatus: Boolean = true;
   vitalStatus: Boolean = true;
 
-  constructor(private globalService: GlobalService,private location: Location,private route:Router){
+  constructor(private globalService: GlobalService, private location: Location, private route: Router) {
     this.globalService.getLoaderStatus()
       .subscribe(res => this.loaderStatus = res);
-      console.log('sts',this.loaderStatus)
+    console.log('sts', this.loaderStatus)
   }
 
-  ngOnInit(){
-    
-   this.globalService.get_access_rights_activity();
-    if(sessionStorage.getItem('user_access_rights')) {
+  ngOnInit() {
+
+    this.globalService.get_access_rights_activity();
+    if (sessionStorage.getItem('user_access_rights')) {
       this.route.navigate(['Homescreen/Patientlist'])
     }
   }

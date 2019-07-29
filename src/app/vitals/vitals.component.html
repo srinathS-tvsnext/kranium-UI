@@ -3,7 +3,7 @@
      
         <span *ngIf="sub_view_menu.sub_view_name=='vitals'">
             <span>
-                <button *ngIf="sub_view_menu.add_edit && GlobalService.viewPatientListPage == true ||   (GlobalService.viewPatientListPage == false && vitaldatalength == 0)" class="btn btn-steelblue" id="addvital_btn"
+                <button *ngIf="(sub_view_menu.add_edit && GlobalService.viewPatientListPage == true) ||   (GlobalService.viewPatientListPage == false && vitaldatalength == 0)" class="btn btn-steelblue" id="addvital_btn"
                     style="float:right;" routerLink='/Homescreen/Patientdetails/Addvitals'>Add Vitals</button>
                 <!-- <button *ngIf="sub_view_menu.add_edit" class="btn btn-steelblue" id="editvital_btn"
                     style="float:right;" (click)="edit_vitals(vitals_data)">Edit Vitals</button> -->

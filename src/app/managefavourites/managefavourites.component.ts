@@ -22,7 +22,7 @@ import { GlobalService } from '../global.service';
 })
 export class ManagefavouritesComponent implements OnInit {
   login_details;
-  opsummary_temp_id;opsummary_temp_name;
+  opsummary_temp_id; opsummary_temp_name;
   tittle; barand_gen_name; dropdown_hide; sav_presc_temp; investi_btn; Investigation_menu;
   array; formdatactr; med; idarray; iddrugarray; med_drug; formdata_drug; template_drug_data; btn; btn_pres; template_pres_data;
   length_value; itemsperpages; itemsperpages_pres; itemsperpages_drug; itemsperpages_inv; length_value_opsummary;
@@ -42,7 +42,7 @@ export class ManagefavouritesComponent implements OnInit {
   pageEvent: PageEvent;
 
   setPageSizeOptions(setPageSizeOptionsInput) {
-    debugger;
+
     this.itemsperpages_drug = setPageSizeOptionsInput;
   }
   setPageSizeOptions_pesc(size) {
@@ -87,7 +87,7 @@ export class ManagefavouritesComponent implements OnInit {
     this.get_opsummary_template();
     this.get_medicine_pres();
     this.get_medicine_drug();
- 
+
     this.hiddengif = true;
   }
   //add_favouritesprescriptionmedicine
@@ -101,13 +101,13 @@ export class ManagefavouritesComponent implements OnInit {
 
   get_medicine_kranium_list(data_con) {
     // get_medicinelist
-    debugger;
+
     this.hiddengif = false;
     if (data_con.length > 3) {
       this.newarray = { "searchdata": data_con };
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list', this.newarray).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
+
           this.dropdown_hide = true;
           if (resdata['ResponseObject'].length == 1) {
             this.medicine_kranium_list = resdata['ResponseObject'];
@@ -133,13 +133,13 @@ export class ManagefavouritesComponent implements OnInit {
 
   get_medicine_kranium_list1(data_con) {
     // get_medicinelist
-    debugger;
+
     this.hiddengif = false;
     if (data_con.length > 3) {
       this.newarray = { "searchdata": data_con };
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list', this.newarray).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
+
           this.dropdown_hide = true;
           if (resdata['ResponseObject'].length == 1) {
             this.medicine_kranium_list1 = resdata['ResponseObject'];
@@ -165,17 +165,13 @@ export class ManagefavouritesComponent implements OnInit {
   }
 
   get_medicine_kranium_list_gen(data_con) {
-    // get_medicinelist
-    debugger;
+    // get_medicinelist    
     if (data_con.length > 3) {
       this.newarray = { "searchdata": data_con };
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list_gen', this.newarray).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
-
           this.medicine_kranium_list = resdata['ResponseObject'];
           console.log(this.medicine_kranium_list);
-
         }
       })
     }
@@ -193,19 +189,17 @@ export class ManagefavouritesComponent implements OnInit {
       // unsubscribe onAdd
       this.get_medicine_pres();
       this.template_pres_med_data = [];
-      
+
     });
   }
 
   //End ed for prescription
 
-
   add_medicine_drug(data) {
-    if((data.brand_name && data.generic_name && data.frequency && data.duration_no && data.duration_capt) == null){     
+    if ((data.brand_name && data.generic_name && data.frequency && data.duration_no && data.duration_capt) == null) {
       this.openSnackBar("Please Enter the All Fields", "Close");
-    }else{
+    } else {
       this.GlobalService.enableloader();
-      debugger;
       console.log(data);
       if (this.medicine_kranium_list) {
         for (var i = 0; i < this.medicine_kranium_list.length; i++) {
@@ -218,10 +212,8 @@ export class ManagefavouritesComponent implements OnInit {
       if (this.btn == "Update") {
         // update_favouritesdrugnmedicine
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/update_favouritesdrugnmedicine', data).subscribe(resdata => {
-          debugger;
           console.log(resdata);
           if (resdata['IsSuccess']) {
-            debugger;
             console.log(resdata['ResponseObject']);
             this.GlobalService.disableloader();
             this.btn = "Add";
@@ -244,10 +236,8 @@ export class ManagefavouritesComponent implements OnInit {
         this.iddrugarray = [];
         this.btn = "Add";
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_favouritesdrugnmedicine', data).subscribe(resdata => {
-          debugger;
           console.log(resdata);
           if (resdata['IsSuccess']) {
-            debugger;
             this.iddrugarray.push({ "id": resdata['id'] });
             this.formdata_drug = resdata['data'];
             console.log(this.formdatactr);
@@ -277,12 +267,9 @@ export class ManagefavouritesComponent implements OnInit {
   // getcfav_drug
   get_medicine_drug() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/getcfav_drug').subscribe(resdata => {
-      debugger;
       console.log(resdata);
       if (resdata['IsSuccess']) {
-        debugger;
         this.med_drug = {};
         this.template_drug_data = resdata['ResponseObject'];
         this.length_value = this.template_drug_data.length;
@@ -297,28 +284,21 @@ export class ManagefavouritesComponent implements OnInit {
     this.med_drug = {};
   }
 
-
   edittemp_drug(data) {
     this.btn = "Update";
-    debugger;
     console.log(data);
     this.barand_gen_name = [{ "itemname": data.brand_name }];
     this.med_drug = { "template_id": data.template_id, 'brand_name': data.brand_name, 'duration_capt': data.duration_capt, 'duration_no': data.duration_no, 'frequency': data.frequency, 'generic_name': data.generic_name, 'drug_template_map_id': data.drug_template_map_id };
-
   }
   //End code for drug
-
 
   //start Prescription
   // getcfav_pres
   get_medicine_pres() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/getcfav_pres').subscribe(resdata => {
-      debugger;
       console.log(resdata);
       if (resdata['IsSuccess']) {
-        debugger;
         this.med = {};
         this.template_pres_data = resdata['ResponseObject'];
         this.length_value_presc = this.template_pres_data.length;
@@ -333,14 +313,13 @@ export class ManagefavouritesComponent implements OnInit {
     this.med = {};
   }
   cancel_tempprescription_master() {
-    debugger;
     this.btn_pres = "Add";
     this.med = {};
     this.template_pres_med_data = [];
     this.contenctdata = [];
     this.sav_presc_temp = true;
   }
-  clear_prestemp_name(){
+  clear_prestemp_name() {
     this.template_pres_med_data = [];
     this.sav_presc_temp = true;
   }
@@ -349,16 +328,13 @@ export class ManagefavouritesComponent implements OnInit {
     this.GlobalService.enableloader();
     this.sav_presc_temp = false;
     this.contenctdata = data;
-    debugger;
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/getcfav_pres_medicine', this.contenctdata).subscribe(resdata => {
-      debugger;
       console.log(resdata);
       if (resdata['IsSuccess']) {
-        debugger;
         this.med = {};
         this.template_pres_med_data = resdata['ResponseObject'];
         this.GlobalService.disableloader();
-      }else{
+      } else {
         this.GlobalService.disableloader();
       }
     })
@@ -367,14 +343,11 @@ export class ManagefavouritesComponent implements OnInit {
   editmedicine_pres(data) {
     // getcfav_pres_medicine
     this.btn_pres = "Update";
-    debugger;
-    console.log(data);
-
     this.barand_gen_name = [{ "itemname": data.brand_name, }];
     this.med = { "template_id": data.template_id, 'brand_name': data.brand_name, 'duration_capt': data.duration_capt, 'duration_no': data.duration_no, 'frequency': data.frequency, 'generic_name': data.generic_name, 'prescription_template_map_id': data.prescription_template_map_id };
   }
   // update_favouritespres_medicine
-  deletemedicine_pres(data){
+  deletemedicine_pres(data) {
     console.log(data);
     this.GlobalService.enableloader();
     var presc_id = [{ "presc_id": data.prescription_template_map_id }];
@@ -382,7 +355,7 @@ export class ManagefavouritesComponent implements OnInit {
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
         this.openSnackBar("Delete Successfully", "Close");
-      }else{
+      } else {
         this.openSnackBar("Please Retry", "Close");
         this.GlobalService.disableloader();
       }
@@ -398,10 +371,9 @@ export class ManagefavouritesComponent implements OnInit {
   }
 
   add_medicine(data) {
-    if((data.brand_name && data.generic_name && data.frequency && data.duration_no && data.duration_capt) == null){     
+    if ((data.brand_name && data.generic_name && data.frequency && data.duration_no && data.duration_capt) == null) {
       this.openSnackBar("Please Enter the All Fields", "Close");
-    }else{
-      debugger;
+    } else {
       if (this.medicine_kranium_list1) {
         for (var i = 0; i < this.medicine_kranium_list1.length; i++) {
           if (this.medicine_kranium_list1[i].itemname = data.brand_name) {
@@ -421,10 +393,7 @@ export class ManagefavouritesComponent implements OnInit {
         }
 
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_favouritesprescriptionmedicine', data).subscribe(resdata => {
-          debugger;
-          console.log(resdata);
           if (resdata['IsSuccess']) {
-            debugger;
             this.template_pres_med_data = resdata['data'];
             console.log(this.template_pres_med_data);
             this.med = [];
@@ -459,12 +428,9 @@ export class ManagefavouritesComponent implements OnInit {
       else {
         this.GlobalService.enableloader();
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/update_favouritespres_medicine', data).subscribe(resdata => {
-          debugger;
           console.log(resdata);
           if (resdata['IsSuccess']) {
-            debugger;
             this.edittemp_pres(this.contenctdata);
-
             this.GlobalService.disableloader();
             this.openSnackBar("Updated Successfully", "Close");
           } else {
@@ -551,10 +517,10 @@ export class ManagefavouritesComponent implements OnInit {
 
   get_Investigation() {
     this.GlobalService.enableloader();
-    debugger;
+
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_investifation_department_masters').subscribe(resdata => {
       if (resdata['IsSuccess']) {
-        debugger;
+
         this.Investigation = resdata['ResponseObject'];
         console.log(this.Investigation);
         this.GlobalService.disableloader();
@@ -567,19 +533,19 @@ export class ManagefavouritesComponent implements OnInit {
     this.hidden = false;
     this.categorylist_array = [];
     this.Investigation_template_category = [];
-    debugger;
+
     var id = data_invest_id.nr
     this.invest_caterogyname = data_invest_id.name_formal;
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_investifation_masters', id).subscribe(resdata => {
       if (resdata['IsSuccess']) {
-        debugger;
+
         this.Investigation_category = resdata['ResponseObject'];
       }
     })
   }
 
   create_category_list(vreate_categorylist) {
-    debugger;
+
     this.categorylist_array.push(vreate_categorylist);
 
     var uniqueid = [];
@@ -595,7 +561,7 @@ export class ManagefavouritesComponent implements OnInit {
   }
 
   remove_temp(rem_cat) {
-    debugger;
+
     if (this.categorylist_array) {
       for (var i = 0; i < this.categorylist_array.length; i++) {
         if (this.categorylist_array[i].item_code == rem_cat.item_code) {
@@ -611,12 +577,12 @@ export class ManagefavouritesComponent implements OnInit {
   }
   save_investigation() {
     console.log(this.categorylist_array);
-    debugger;
+
     if (this.investi_btn == "Add") {
       if (this.categorylist_array.length != 0) {
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_fav_Inestigation_catogory', this.categorylist_array).subscribe(resdata => {
           if (resdata['IsSuccess']) {
-            debugger;
+
             console.log(resdata['ResponseObject']);
             var data_id = resdata['ID'];
             this.pop_InvestigationComponent(data_id);
@@ -627,7 +593,6 @@ export class ManagefavouritesComponent implements OnInit {
     }
   }
   update_investigation(category_tem) {
-    debugger;
     if (this.categorylist_array.length != 0) {
       category_tem[0].data_new = this.categorylist_array;
     }
@@ -636,7 +601,7 @@ export class ManagefavouritesComponent implements OnInit {
       if (category_tem.length != 0) {
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/upadte_fav_Inestigation_catogory', category_tem).subscribe(resdata => {
           if (resdata['IsSuccess']) {
-            debugger;
+
             console.log(resdata['ResponseObject']);
             this.Investigation_template_category = [];
             this.categorylist_array = [];
@@ -666,11 +631,9 @@ export class ManagefavouritesComponent implements OnInit {
 
   get_investigation_template() {
     this.GlobalService.enableloader();
-    debugger;
     // get_fav_investigation_template
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/get_fav_investigation_template').subscribe(resdata => {
       if (resdata['IsSuccess']) {
-        debugger;
         this.Investigation_template = resdata['ResponseObject'];
         this.length_value_investigation = this.Investigation_template.length;
         console.log(this.Investigation_template);
@@ -691,7 +654,6 @@ export class ManagefavouritesComponent implements OnInit {
 
 
   edit_investigation_temp(data) {
-    debugger;
     // get_fav_investigation_list
     this.investi_btn = "Update";
     this.hidden = true;
@@ -699,8 +661,6 @@ export class ManagefavouritesComponent implements OnInit {
     this.Investigation_category = [];
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/get_fav_investigation_list', data).subscribe(resdata => {
       if (resdata['IsSuccess']) {
-        debugger;
-        console.log();
         this.Investigation_template_category = resdata['ResponseObject'];
         console.log(this.Investigation_template_category);
       }
@@ -711,10 +671,10 @@ export class ManagefavouritesComponent implements OnInit {
     this.investi_btn = "Add";
   }
   remove_old_tempdata_investigation(old_temp_data) {
-    if(confirm("Are you sure Delete")){
+    if (confirm("Are you sure Delete")) {
       this.GlobalService.enableloader();
       console.log(old_temp_data);
-      debugger;
+
       if (this.Investigation_template_category) {
         for (var i = 0; i < this.Investigation_template_category.length; i++) {
           for (var j = 0; j < this.Investigation_template_category[i].question.length; j++) {
@@ -732,7 +692,7 @@ export class ManagefavouritesComponent implements OnInit {
         if (resdata['IsSuccess']) {
           this.GlobalService.disableloader();
           this.openSnackBar("Delete Successully", "Close");
-        }else{
+        } else {
           this.GlobalService.disableloader();
         }
       })
@@ -742,9 +702,9 @@ export class ManagefavouritesComponent implements OnInit {
   //Opsummary Manage favourites
   save_opsummary(data) {
     console.log(data);
-    debugger;
-    this.array = { "acces": data , "opsum_tempid" : this.opsummary_temp_id , "opsum_tempname" :this.opsummary_temp_name };
-    debugger;
+
+    this.array = { "acces": data, "opsum_tempid": this.opsummary_temp_id, "opsum_tempname": this.opsummary_temp_name };
+
     this.dialogRef_drug = this.dialog.open(OpsumaryTemplateNameComponent, {
       data: {
         Id: this.array
@@ -759,11 +719,9 @@ export class ManagefavouritesComponent implements OnInit {
   get_opsummary_template() {
     // get_opsummary_template
     this.GlobalService.enableloader();
-    debugger;
+
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/get_opsummary_template').subscribe(resdata => {
       if (resdata['IsSuccess']) {
-        debugger;
-        console.log();
         this.opsummary_template_list = resdata['ResponseObject'];
         this.length_value_opsummary = this.opsummary_template_list.length;
         console.log(this.opsummary_template_list);
@@ -773,14 +731,13 @@ export class ManagefavouritesComponent implements OnInit {
       }
     })
   }
-  
-  addnew_opsumm(){
-    this.opsummar_fav={};
+
+  addnew_opsumm() {
+    this.opsummar_fav = {};
     this.opsummary_temp_id = "";
     this.opsummary_temp_name = "";
   }
   edit_opsummary(data_opsummary) {
-    debugger;
     console.log(data_opsummary);
     this.opsummary_temp_id = data_opsummary.manage_favourites_opsummary_id;
     this.opsummary_temp_name = data_opsummary.template_name;
@@ -789,7 +746,7 @@ export class ManagefavouritesComponent implements OnInit {
   }
   //autosearch api
   get_medicine_kranium_cat_list_gen(data_con) {
-    debugger;
+
     this.hiddengif = false;
     if (data_con.length > 3) {
       this.newarray = { "searchdata": data_con }; this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_all_investigation_list', this.newarray).subscribe(resdata => {
@@ -799,10 +756,10 @@ export class ManagefavouritesComponent implements OnInit {
           this.Investigation_category = resdata['ResponseObject'];
           //searchbox style class add
           var invlist = this.Investigation_category;
-          if(invlist.length < 10){
+          if (invlist.length < 10) {
             var myboxclass = document.getElementById("mysearchbox").classList;
             myboxclass.add("myboxsize");
-          }else{
+          } else {
             var myboxclass = document.getElementById("mysearchbox").classList;
             myboxclass.remove("myboxsize");
           }
@@ -823,7 +780,6 @@ export class ManagefavouritesComponent implements OnInit {
   }
 
   edit_presc_panel(pres_data) {
-    debugger;
     this.dialogRef_drug = this.dialog.open(TemplatenamePopupComponent, {
       data: {
         Id: pres_data
@@ -874,7 +830,7 @@ export class ManagefavouritesComponent implements OnInit {
     });
   }
   genericby_brandname(gen_brand) {
-    debugger;
+
     this.newarray = { "searchdata": gen_brand };
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list_gen', this.newarray).subscribe(resdata => {
       if (resdata['IsSuccess']) {
@@ -885,13 +841,13 @@ export class ManagefavouritesComponent implements OnInit {
   }
 
   data_click_bind(data_cc) {
-    debugger;
+
     this.med.brand_gen_name = data_cc;
     this.dropdown_hide = false;
     this.get_medicine_kranium_list_forcustomdropdown(data_cc);
   }
   data_click_bind_prec(data_ccs) {
-    debugger;
+
     this.med_drug.brand_genric_name = data_ccs;
     this.dropdown_hide = false;
     this.get_medicine_kranium_list_prescription(data_ccs);
@@ -899,12 +855,12 @@ export class ManagefavouritesComponent implements OnInit {
 
   get_medicine_kranium_list_forcustomdropdown(data_con) {
     // get_medicinelist
-    debugger;
+
     if (data_con.length) {
       this.newarray = { "searchdata": data_con };
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list', this.newarray).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
+
           // this.dropdown_hide = true;
           this.medicine_kranium_list1 = resdata['ResponseObject'];
           console.log(this.medicine_kranium_list);
@@ -926,13 +882,13 @@ export class ManagefavouritesComponent implements OnInit {
   }
   get_medicine_kranium_list_prescription(data_con) {
     // get_medicinelist
-    debugger;
+
     this.hiddengif = false;
     if (data_con.length) {
       this.newarray = { "searchdata": data_con };
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_medicine_list', this.newarray).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
+
           if (resdata['ResponseObject'].length == 1) {
             this.medicine_kranium_list = resdata['ResponseObject'];
             console.log(this.medicine_kranium_list);
@@ -959,11 +915,11 @@ export class ManagefavouritesComponent implements OnInit {
 
 
   clickMethod_presc(data, name: string) {
-    debugger;
+
     if (confirm("Are you sure to delete " + name)) {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/delete_prescription_template', data).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
+
           this.openSnackBar("Deleted Successfully", "Close");
           this.get_medicine_pres();
         }
@@ -971,11 +927,11 @@ export class ManagefavouritesComponent implements OnInit {
     }
   }
   clickMethod_drug(data, name: string) {
-    debugger;
+
     if (confirm("Are you sure to delete " + name)) {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/delete_drug_template', data).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
+
           this.openSnackBar("Deleted Successfully", "Close");
           this.get_medicine_drug();
         }
@@ -983,12 +939,12 @@ export class ManagefavouritesComponent implements OnInit {
     }
   }
   clickMethod_inves(data, name: string) {
-    debugger;
+
     if (confirm("Are you sure to delete " + name)) {
       // delete_investigation_template
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/delete_investigation_template', data).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
+
           this.openSnackBar("Deleted Successfully", "Close");
           this.get_investigation_template();
           this.Investigation_template_category = [];
@@ -999,11 +955,11 @@ export class ManagefavouritesComponent implements OnInit {
     }
   }
   clickMethod_opsum(data, name: string) {
-    debugger;
+
     if (confirm("Are you sure to delete " + name)) {
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/delete_opsummary_template', data).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
+
           this.openSnackBar("Deleted Successfully", "Close");
           this.get_opsummary_template();
         }

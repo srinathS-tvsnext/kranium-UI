@@ -41,7 +41,7 @@ export class AddconfigComponent implements OnInit {
     data.nr = this.login_details[0]['nr'];
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/add_config', data).subscribe(resdata => {
-      debugger;
+      
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
         this.openSnackBar("Save Successfully", "Close");
@@ -51,8 +51,9 @@ export class AddconfigComponent implements OnInit {
         this.GlobalService.disableloader();
         this.openSnackBar("Some Error! Retry", "Close");
       }
-
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
 
 }

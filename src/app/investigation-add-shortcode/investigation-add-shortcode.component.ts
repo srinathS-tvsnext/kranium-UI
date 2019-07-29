@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material';
 export class InvestigationAddShortcodeComponent implements OnInit {
 
   login_details; code; Investigation_menu;
-  categorylist_array; hidden; hiddengif; newarraysss; Investigation_category;investigation_kranium_list;
+  categorylist_array; hidden; hiddengif; newarraysss; Investigation_category; investigation_kranium_list;
 
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
 
@@ -42,7 +42,6 @@ export class InvestigationAddShortcodeComponent implements OnInit {
 
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Investigation/add_shortcode', data).subscribe(resdata => {
-      debugger;
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
         this.openSnackBar("Save Successfully", "Close");
@@ -52,29 +51,28 @@ export class InvestigationAddShortcodeComponent implements OnInit {
         this.GlobalService.disableloader();
         this.openSnackBar("Some Error! Retry", "Close");
       }
-
-    })
-
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
-
 
   //procedure search
   get_medicine_kranium_list_gen(data_con) {
-    debugger;
+    this.GlobalService.enableloader();
     this.hiddengif = false;
     if (data_con.length > 2) {
       this.newarraysss = { "searchdata": data_con };
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Investigation/get_all_investigation_list_search', this.newarraysss).subscribe(resdata => {
+        this.GlobalService.disableloader();
         if (resdata['IsSuccess']) {
-          debugger;
           this.Investigation_category = resdata['ResponseObject'];
           this.hidden = false;
           this.hiddengif = true;
           var invlist = this.Investigation_category;
-          if(invlist.length < 10){
+          if (invlist.length < 10) {
             var myboxclass = document.getElementById("mysearchbox").classList;
             myboxclass.add("myboxsize");
-          }else{
+          } else {
             var myboxclass = document.getElementById("mysearchbox").classList;
             myboxclass.remove("myboxsize");
           }
@@ -82,7 +80,9 @@ export class InvestigationAddShortcodeComponent implements OnInit {
         } else {
           this.hiddengif = false;
         }
-      })
+      }, err => {
+        this.GlobalService.disableloader();
+      });
     }
   }
   //End of procedure search
@@ -92,13 +92,12 @@ export class InvestigationAddShortcodeComponent implements OnInit {
     this.hidden = true;
   }
   create_category_list(vreate_categorylist) {
-    debugger;
+
     if (vreate_categorylist.checkbox) {
       this.Investigation_menu = vreate_categorylist.item_long_description;
       this.categorylist_array = vreate_categorylist;
-      
+
       for (var i = 0; i < this.Investigation_category.length; i++) {
-        debugger;
         if (this.Investigation_category[i].item_code == vreate_categorylist.item_code) {
           this.Investigation_category[i].checkbox = true;
         } else {
@@ -109,9 +108,7 @@ export class InvestigationAddShortcodeComponent implements OnInit {
     }
   }
 
-
   remove_temp(rem_cat) {
-    debugger;
     console.log(rem_cat);
     if (this.Investigation_category) {
       for (var i = 0; i < this.categorylist_array.length; i++) {
@@ -140,6 +137,5 @@ export class InvestigationAddShortcodeComponent implements OnInit {
   prevStep() {
     this.step--;
   }
-
 
 }

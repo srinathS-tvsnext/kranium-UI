@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class ManagerolesComponent implements OnInit {
   dialogRef; socialmentions; form; social_sub_menu; social_sub_views; array;
-  Departmentname; RolesName; items; exampleDatas; showGreeting;social_sub_menu_con;acess_rights;
+  Departmentname; RolesName; items; exampleDatas; showGreeting; social_sub_menu_con; acess_rights;
   constructor(private http: HttpClient, private router: Router, public dialog: MatDialog, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
   ngOnInit() {
     this.acess_rights = JSON.parse(sessionStorage.getItem('user_access_rights'));
@@ -98,12 +98,10 @@ export class ManagerolesComponent implements OnInit {
     this.step--;
   }
   get_Departmet() {
-    this.GlobalService.enableloader();
-    debugger;
+    this.GlobalService.enableloader();    
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_investifation_department_masters').subscribe(resdata => {
       if (resdata['IsSuccess']) {
-        this.GlobalService.disableloader();
-        debugger;
+        this.GlobalService.disableloader();        
         this.Departmentname = resdata['ResponseObject'];
         console.log(this.Departmentname);
         this.showGreeting = true;
@@ -117,29 +115,25 @@ export class ManagerolesComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
 
   get_Roles() {
-    this.GlobalService.enableloader();
-    debugger;
-    this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Manageroles/get_roles').subscribe(resdata => {
-      debugger;
+    this.GlobalService.enableloader();    
+    this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Manageroles/get_roles').subscribe(resdata => {      
       if (resdata['IsSuccess']) {
-        this.GlobalService.disableloader();
-        debugger;
+        this.GlobalService.disableloader();        
         this.RolesName = resdata['ResponseObject'];
         console.log(this.RolesName);
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
 
   menu() {
     this.GlobalService.enableloader();
-    this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Manageroles/get_menu').subscribe(resdata => {
-      debugger;
+    this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Manageroles/get_menu').subscribe(resdata => {      
       console.log(resdata);
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
@@ -148,12 +142,11 @@ export class ManagerolesComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
   submenu() {
     this.GlobalService.enableloader();
-    this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Manageroles/get_submenu').subscribe(resdata => {
-      debugger;
+    this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Manageroles/get_submenu').subscribe(resdata => {      
       console.log(resdata);
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
@@ -163,12 +156,11 @@ export class ManagerolesComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
   subview(data) {
     this.GlobalService.enableloader();
-    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Manageroles/get_subview', data).subscribe(resdata => {
-      debugger;
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Manageroles/get_subview', data).subscribe(resdata => {      
       console.log(resdata);
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
@@ -179,13 +171,10 @@ export class ManagerolesComponent implements OnInit {
       }
     })
   }
-  save(role, data) {
-    debugger;
+  save(role, data) {    
     this.GlobalService.enableloader();
-    this.array = { "acces": data, "roles_name": role };
-    debugger;
-    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/add_roles', this.array).subscribe(resdata => {
-      debugger;
+    this.array = { "acces": data, "roles_name": role };    
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/add_roles', this.array).subscribe(resdata => {      
       console.log(resdata);
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
@@ -194,15 +183,13 @@ export class ManagerolesComponent implements OnInit {
         this.GlobalService.disableloader();
         this.openSnackBar("Some Error ! Retry", "Close");
       }
-    })
+    });
     // add_roles
   }
 
-  get_role_permission(data) {
-    debugger;
+  get_role_permission(data) {    
     this.GlobalService.enableloader();
-    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_access_permission', data).subscribe(resdata => {
-      debugger;
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_access_permission', data).subscribe(resdata => {      
       console.log(resdata);
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
@@ -213,6 +200,6 @@ export class ManagerolesComponent implements OnInit {
         this.GlobalService.disableloader();
         this.social_sub_menu = this.social_sub_menu_con;
       }
-    })
-  }  
+    });
+  }
 }

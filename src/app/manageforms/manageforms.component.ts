@@ -33,7 +33,7 @@ export class ManageformsComponent implements OnInit {
 
   get_forms() {
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_sampleforms').subscribe(resdata => {
-      debugger;
+
       console.log(resdata);
       if (resdata) {
         this.formdata = resdata;
@@ -43,12 +43,12 @@ export class ManageformsComponent implements OnInit {
     })
   }
 
-  deleteforms(getid,getname : string){
-    if(confirm("Are you sure to delete Form " + getname)){
+  deleteforms(getid, getname: string) {
+    if (confirm("Are you sure to delete Form " + getname)) {
       var user_nr = this.login_details[0]['nr'];
-      var getdata = {"formID" : getid , "nr" : user_nr};
+      var getdata = { "formID": getid, "nr": user_nr };
       this.GlobalService.enableloader();
-      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/delete_sampleforms' , getdata).subscribe(resdata => {
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/delete_sampleforms', getdata).subscribe(resdata => {
         if (resdata['IsSuccess']) {
           this.get_forms();
           this.GlobalService.disableloader();
@@ -63,68 +63,53 @@ export class ManageformsComponent implements OnInit {
 
   get_Departmet() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_investifation_department_masters').subscribe(resdata => {
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        debugger;
         this.Departmentname = resdata['ResponseObject'];
         console.log(this.Departmentname);
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
   get_DoctorsName() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_users_doctor').subscribe(resdata => {
-      debugger;
       if (resdata) {
-        debugger;
         this.GlobalService.disableloader();
         this.DoctorsName = resdata['ResponseObject'];
-        debugger;
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
   docname = [
     { value: '1', viewValue: 'Examination' },
     { value: '2', viewValue: 'History' }
   ];
   viewforms(data) {
-    debugger;
     this.router.navigate(['/Homescreen/Detailmanageform', data]);
   }
   editforms(data) {
-    debugger;
     this.router.navigate(['/Homescreen/Editform', data]);
   }
 
   cloneforms(data) {
-    debugger;
     this.router.navigate(['/Homescreen/duplicateform', data.form_id]);
   }
 
-
   change_seqno(dataseq) {
-    debugger;
- 
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/edit_mangeform_seqno', dataseq).subscribe(resdata => {
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-  
       } else {
         this.GlobalService.disableloader();
-  
       }
     })
   }
 
   update_filter(filter_data) {
-    debugger;
     this.GlobalService.enableloader();
     if (filter_data.dept_id) {
       this.data_filter.name_formal = filter_data.dept_id.name_formal;
@@ -150,20 +135,17 @@ export class ManageformsComponent implements OnInit {
     }
 
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/getsampleform_filter', this.data_filter).subscribe(resdata => {
-      debugger;
-      console.log(resdata);
       if (resdata['IsSuccess']) {
-        debugger;
         this.formdata = resdata['ResponseObject'];
         this.GlobalService.disableloader();
       } else {
         this.formdata = [];
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
+
   clear_search() {
-    debugger;
     this.form = {};
     this.get_forms();
   }

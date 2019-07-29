@@ -19,7 +19,7 @@ export class SigninComponent implements OnInit {
 
 
   ngOnInit() {
-     this.get_imagelist();
+    this.get_imagelist();
   }
 
   openSnackBar(message: string, action: string) {
@@ -43,20 +43,19 @@ export class SigninComponent implements OnInit {
           this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_access_rights_activity', resdata['ResponseObject']).subscribe(resnewdata => {
             if (resnewdata['IsSuccess']) {
               console.log(resnewdata['ResponseObject']);
-              debugger;
+
               sessionStorage.setItem('user_access_rights', resnewdata['ResponseObject'][0].access_rights);
               this.openSnackBar("Welcome to Kranium", "Close");
               this.router.navigate(['/Homescreen/Patientlist']);
-            }else{
+            } else {
               this.openSnackBar("Please Contact the Admin Team for Permission to Access this Application", "Close");
             }
-          })
+          });
 
         } else if (data.user == "superadmin" && data.password == "superadmin") {
           var sup_admin = [{ User_name: "SUPER ADMIN", nr: "super admin", Email: "", MobileNo: "", User_ID: data.user }];
 
           sessionStorage.setItem('logindata', JSON.stringify(sup_admin));
-
           this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_access_rights_superadmin', sup_admin).subscribe(sa_resdata => {
             if (sa_resdata['IsSuccess']) {
               console.log(sa_resdata['ResponseObject']);
@@ -64,19 +63,20 @@ export class SigninComponent implements OnInit {
               this.openSnackBar("Hi Super Admin , Welcome to Global", "Close");
               this.router.navigate(['/Homescreen/Patientlist']);
             }
-          })
+          }, err => {
+            this.GlobalService.disableloader();
+          });
 
         }
         else {
-          this.GlobalService.disableloader();
-          this.openSnackBar("Please Ensure that Given Credentials are Correct !!", "Close");
+          this.GlobalService.enableloader();
+          // this.openSnackBar("Please Ensure that Given Credentials are Correct !!", "Close");
         }
-      })
+      });
     }
   }
 
   submitForm(data) {
-    debugger;
     console.log(data);
   }
 
@@ -102,24 +102,23 @@ export class SigninComponent implements OnInit {
 
   get_imagelist() {
     this.GlobalService.enableloader();
-    debugger;
+
     // this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_active_image').subscribe(resdata => {
-    //   debugger;
+    //   
     //   if (resdata['IsSuccess']) {
-    //     debugger;
-        // this.image_name = resdata['ResponseObject'];
-        this.image_name = [{"login_image_id":"12","file_name":"1516790859_loginbg.jpg","thumb_file_name":"1516790859_loginbg_thumb.jpg","active":"1","delete_active":"1","MD":"2018-01-24 16:17:39"}];
-      //   console.log(this.image_name);
-      //   debugger;
-      //   this.GlobalService.disableloader();
-      // }
-      // else {
-      //   debugger;
-      //   this.image_name = resdata['ErrorObject'];
-      //   this.GlobalService.disableloader();
-      // }
+    //     
+    // this.image_name = resdata['ResponseObject'];
+    this.image_name = [{ "login_image_id": "12", "file_name": "1516790859_loginbg.jpg", "thumb_file_name": "1516790859_loginbg_thumb.jpg", "active": "1", "delete_active": "1", "MD": "2018-01-24 16:17:39" }];
+    //   console.log(this.image_name);
+    //   
+    //   this.GlobalService.disableloader();
+    // }
+    // else {
+    //   
+    //   this.image_name = resdata['ErrorObject'];
+    //   this.GlobalService.disableloader();
+    // }
     // })
   }
-
 
 }

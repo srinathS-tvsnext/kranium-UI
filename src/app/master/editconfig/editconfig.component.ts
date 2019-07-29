@@ -12,7 +12,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class EditconfigComponent implements OnInit {
 
-  login_details;editdata;
+  login_details; editdata;
 
   constructor(private http: HttpClient, private router: Router, private GlobalService: GlobalService, public snackBar: MatSnackBar, public dialogRef: MatDialogRef<EditconfigComponent>, public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public ipdetail: any) { }
 
@@ -30,33 +30,32 @@ export class EditconfigComponent implements OnInit {
     });
   }
 
-  get_ip_det(){
+  get_ip_det() {
     var inst_ip_adds = this.ipdetail.get_detail.insert_ip;
     this.editdata.inst_ip_adr = inst_ip_adds;
     var get_ip_adds = this.ipdetail.get_detail.get_ip;
     this.editdata.get_ip_adr = get_ip_adds;
   }
 
-  update_ip_addr(dataip){
+  update_ip_addr(dataip) {
     dataip.ip_id = this.ipdetail.get_detail.configuration_id;
-    dataip.nr =  this.login_details[0]['nr'];
+    dataip.nr = this.login_details[0]['nr'];
     console.log(dataip);
     this.GlobalService.enableloader();
-    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/edit_ip_config',dataip).subscribe(resdata =>{
-      if(resdata['IsSuccess']){
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/edit_ip_config', dataip).subscribe(resdata => {
+      if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
         this.dialogRef.close();
         this.openSnackBar("Updated Successfully", "Close");
-     }else{
+      } else {
         this.GlobalService.disableloader();
         this.dialogRef.close();
       }
-    })
+    });
   }
 
-  closepopup(){
+  closepopup() {
     this.dialogRef.close();
   }
-
 
 }

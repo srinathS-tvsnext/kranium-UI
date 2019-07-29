@@ -51,59 +51,47 @@ export class LoginBackgroundImgComponent implements OnInit {
           this.GlobalService.disableloader();
           this.openSnackBar("Some Error !", "Close");
         }
-
-      })
+      }, err => {
+        this.GlobalService.disableloader();
+      });
     }
   }
 
   get_imagelist() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_lg_imagename').subscribe(resdata => {
-      debugger;
       if (resdata) {
-        debugger;
         var body = JSON.parse(resdata['_body']);
         this.image_name = body.ResponseObject;
         this.get_auto_check_image();
         console.log(this.image_name);
-        debugger;
         this.GlobalService.disableloader();
       }
       else {
-        debugger;
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
 
   get_first_image() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_lg_first_image').subscribe(resdata => {
-      debugger;
       if (resdata) {
-        debugger;
         var body = JSON.parse(resdata['_body']);
         this.first_image = body.ResponseObject;
         console.log(this.first_image);
-        debugger;
         this.GlobalService.disableloader();
       }
       else {
-        debugger;
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
 
   get_auto_check_image() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_active_image').subscribe(resdata => {
-      debugger;
       if (resdata) {
-        debugger;
         var body = JSON.parse(resdata['_body']);
         this.active_image = body.ResponseObject;
         console.log(this.active_image);
@@ -111,11 +99,9 @@ export class LoginBackgroundImgComponent implements OnInit {
         this.GlobalService.disableloader();
       }
       else {
-        debugger;
         this.GlobalService.disableloader();
       }
-    })
-
+    });
   }
 
   delete_image(image_data) {
@@ -144,13 +130,12 @@ export class LoginBackgroundImgComponent implements OnInit {
     }
   }
 
-
   active_checkbox() {
     var act_img = this.active_image;
     for (var i = 0; i < this.image_name.length; i++) {
-      if(this.active_image == undefined){
+      if (this.active_image == undefined) {
 
-      }else{
+      } else {
         for (var j = 0; j < this.active_image.length; j++) {
           if (this.image_name[i].file_name == act_img[j].file_name) {
             this.image_name[i].checkbox = true;
@@ -163,7 +148,7 @@ export class LoginBackgroundImgComponent implements OnInit {
 
   change_bg(image_data) {
     console.log(image_data.checkbox);
-    if((image_data.checkbox == undefined) || (image_data.checkbox == false)){
+    if ((image_data.checkbox == undefined) || (image_data.checkbox == false)) {
       this.GlobalService.enableloader();
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/login_image_add', image_data).subscribe(resdata => {
         if (resdata) {
@@ -182,27 +167,26 @@ export class LoginBackgroundImgComponent implements OnInit {
           this.openSnackBar("Some Error !", "Close");
         }
       })
-    }else if(image_data.checkbox == true){
-        this.GlobalService.enableloader();
-        this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/login_image_update', image_data).subscribe(resdata => {
-          if (resdata) {
-            var body = JSON.parse(resdata['_body']);
-            console.log(body);
-            if (body['IsSuccess']) {
-              this.openSnackBar("Image Removed Successfully", "Close");
-              this.GlobalService.disableloader();
-            } else {
-              this.GlobalService.disableloader();
-              this.openSnackBar("Some Error !", "Close");
-            }
-          }
-          else {
+    } else if (image_data.checkbox == true) {
+      this.GlobalService.enableloader();
+      this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/login_image_update', image_data).subscribe(resdata => {
+        if (resdata) {
+          var body = JSON.parse(resdata['_body']);
+          console.log(body);
+          if (body['IsSuccess']) {
+            this.openSnackBar("Image Removed Successfully", "Close");
+            this.GlobalService.disableloader();
+          } else {
             this.GlobalService.disableloader();
             this.openSnackBar("Some Error !", "Close");
           }
-        })
+        }
+        else {
+          this.GlobalService.disableloader();
+          this.openSnackBar("Some Error !", "Close");
+        }
+      });
     }
   }
-
 
 }

@@ -12,8 +12,8 @@ import { ManageformEdittittleComponent } from '../../master/manageform-edittittl
   styleUrls: ['./manageform-tittle.component.css']
 })
 export class ManageformTittleComponent implements OnInit {
-  
-  mftittle;dialogRef_tittle;login_details;acess_rights;
+
+  mftittle; dialogRef_tittle; login_details; acess_rights;
 
   constructor(private http: Http, private GlobalService: GlobalService, public snackBar: MatSnackBar, private router: Router, public dialog: MatDialog) { }
 
@@ -45,7 +45,7 @@ export class ManageformTittleComponent implements OnInit {
     })
   }
 
-  edit_row(edit_row){
+  edit_row(edit_row) {
     console.log(edit_row);
     this.dialogRef_tittle = this.dialog.open(ManageformEdittittleComponent, {
       data: {
@@ -58,50 +58,52 @@ export class ManageformTittleComponent implements OnInit {
     });
   }
 
-  disable_tittle(disablerow){
-    disablerow.nr =  this.login_details[0]['nr'];
+  disable_tittle(disablerow) {
+    disablerow.nr = this.login_details[0]['nr'];
     console.log(disablerow);
     this.GlobalService.enableloader();
-    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/disable_mf_tittle',disablerow).subscribe(resdata => {
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/disable_mf_tittle', disablerow).subscribe(resdata => {
       if (resdata) {
         var body = JSON.parse(resdata['_body']);
-        if(body['IsSuccess']) {
+        if (body['IsSuccess']) {
           this.GlobalService.disableloader();
           this.get_mf_tittle();
-          this.openSnackBar("Disabled Successfully","Close");
+          this.openSnackBar("Disabled Successfully", "Close");
         } else {
           this.GlobalService.disableloader();
-          this.openSnackBar("Please Retry","Close");
-        }  
+          this.openSnackBar("Please Retry", "Close");
+        }
       }
       else {
         this.GlobalService.disableloader();
-        this.openSnackBar("Please Retry","Close");
+        this.openSnackBar("Please Retry", "Close");
       }
-    })
+    });
   }
 
-  enable_tittle(enablerow){
-    enablerow.nr =  this.login_details[0]['nr'];
+  enable_tittle(enablerow) {
+    enablerow.nr = this.login_details[0]['nr'];
     console.log(enablerow);
     this.GlobalService.enableloader();
-    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/enable_mf_tittle',enablerow).subscribe(resdata => {
+    this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Masters/enable_mf_tittle', enablerow).subscribe(resdata => {
       if (resdata) {
         var body = JSON.parse(resdata['_body']);
-        if(body['IsSuccess']) {
+        if (body['IsSuccess']) {
           this.GlobalService.disableloader();
           this.get_mf_tittle();
-          this.openSnackBar("Enabled Successfully","Close");
+          this.openSnackBar("Enabled Successfully", "Close");
         } else {
           this.GlobalService.disableloader();
-          this.openSnackBar("Please Retry","Close");
-        }  
+          this.openSnackBar("Please Retry", "Close");
+        }
       }
       else {
         this.GlobalService.disableloader();
-        this.openSnackBar("Please Retry","Close");
+        this.openSnackBar("Please Retry", "Close");
       }
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
 
 }

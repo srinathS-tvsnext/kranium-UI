@@ -19,7 +19,6 @@ export class InvestigationEditShortcodeComponent implements OnInit {
   ngOnInit() {
     this.editdata = {};
     this.login_details = JSON.parse(sessionStorage.getItem('logindata'));
-
     console.log(this.scodedetail);
     this.get_scode_det();
   }
@@ -38,16 +37,13 @@ export class InvestigationEditShortcodeComponent implements OnInit {
   }
 
   update_scode(dataedit) {
-    debugger;
     dataedit.investigation_master_id = this.scodedetail.get_detail.investigation_master_id;
     dataedit.MB = this.login_details[0]['nr'];
     console.log(dataedit);
-    debugger;
+
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Investigation/edit_master_shortcode', dataedit).subscribe(resdata => {
-      debugger;
       if (resdata['IsSuccess']) {
-        debugger;
         this.GlobalService.disableloader();
         this.dialogRef.close();
         this.openSnackBar("Updated Successfully", "Close");
@@ -55,8 +51,7 @@ export class InvestigationEditShortcodeComponent implements OnInit {
         this.GlobalService.disableloader();
         this.openSnackBar("Error ! Retry", "Close");
       }
-    })
-
+    });
   }
 
 }

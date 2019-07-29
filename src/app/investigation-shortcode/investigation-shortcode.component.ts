@@ -21,11 +21,8 @@ export class InvestigationShortcodeComponent implements OnInit {
     this.get_shortcode();
   }
   synch_json() {
-    debugger;
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/post/Investigation/shortcode_to_json_sink').subscribe(resdata => {
-      debugger;
       console.log(resdata);
       if (resdata) {
         this.GlobalService.disableloader();
@@ -33,17 +30,15 @@ export class InvestigationShortcodeComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
     // shortcode_to_json_sink
   }
 
-
   get_shortcode() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/post/Investigation/get_shortcode').subscribe(resdata => {
-      debugger;
-      console.log(resdata);
       if (resdata) {
         this.GlobalService.disableloader();
         this.shortcodes = resdata['ResponseObject'];
@@ -51,9 +46,10 @@ export class InvestigationShortcodeComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
-
 
   edit_row(edit_row) {
     console.log(edit_row);

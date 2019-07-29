@@ -25,7 +25,7 @@ export class PrescriptionComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router, public dialog: MatDialog, private GlobalService: GlobalService, public snackBar: MatSnackBar) { }
   freqquantity; arr; barand_gen_name; dropdown_hide;route_data;
   dialogRef_drug; template_pres_med_data; contenctdata; hide; showGreeting; exampleDatas; items;
-  brandname; pres_data; acess_rights; tmp; logindata_details;pres_diet;sampRoutedata;
+  brandname; pres_data; acess_rights; tmp; logindata_details;pres_diet;sampRoutedata;freaquencyloop =[];
   language_list; language_mrg; language_aftn; language_eve; language_nigt; language_bf; language_af;
   datevalidation; pres_doct; hide_editbtn; dietadvice; language; notes; minDt = new Date();
   ngOnInit() {
@@ -434,6 +434,9 @@ export class PrescriptionComponent implements OnInit {
       this.openSnackBar("Please Enter Brand name and Generic name details", "Close");
     } else {
       debugger;
+      // get route name
+     data.routeName = this.route_data.find(x=> x.nr == data.route).name
+
       if (this.btn == "Add") {
         if (this.medicine_kranium_list) {
           for (var i = 0; i < this.medicine_kranium_list.length; i++) {
@@ -501,6 +504,7 @@ export class PrescriptionComponent implements OnInit {
                   this.template_pres_med_data[i].quantity = data.quantity;
                   this.template_pres_med_data[i].quantitystatus = data.quantitystatus;
                   this.template_pres_med_data[i].notes = data.notes;
+                  // this.template_pres_med_data[i].routeValueName = data.routeName //
 
                 }
               }
@@ -527,6 +531,7 @@ export class PrescriptionComponent implements OnInit {
                 this.template_pres_med_data[i].quantity = data.quantity;
                 this.template_pres_med_data[i].quantitystatus = data.quantitystatus;
                 this.template_pres_med_data[i].notes = data.notes;
+                // this.template_pres_med_data[i].routeValueName = data.routeNasme
               }
             }
             this.med = {};
@@ -674,11 +679,10 @@ export class PrescriptionComponent implements OnInit {
   ];
 
   prescr = [
-    { value: 'steak-0', viewValue: '1 - 0 - 1' },
-    { value: 'steak-0', viewValue: '1 - 1 - 1' },
-    { value: 'pizza-1', viewValue: '0 - 1 - 0' },
-    { value: 'tacos-2', viewValue: '1 - 1 - 0' },
-    { value: 'umm-2', viewValue: '0 - 1 - 1' }
+    { value: 'steak-0', viewValue: '24-Hours' },
+    { value: 'steak-0', viewValue: '12-Hours' },
+    { value: 'pizza-1', viewValue: '8-Hours' },
+    { value: 'pizza-1', viewValue: '4-Hours' }
   ]
   timing = [
     { value: 'umm-2', viewValue: 'Before Food' },
@@ -985,4 +989,16 @@ export class PrescriptionComponent implements OnInit {
     }
   }
 
+  frequencyselection(frequencydata) {
+    let i;
+    this.freaquencyloop = []
+    frequencydata == '24-Hours' ? i=1 : '';
+    frequencydata == '12-Hours' ? i=2 : '';
+    frequencydata == '8-Hours' ? i=3 : '';
+    frequencydata == '4-Hours' ? i=6 : '';
+    for(let j=0;j<i;j++){
+      let cnt = j+1;
+      this.freaquencyloop.push({'model':'dosage'+cnt,'value':''})
+    }
+  }
 }

@@ -47,47 +47,48 @@ export class InvestigationComponent implements OnInit {
   }
   get_last_investigation(patientdata_details) {
     // get_opsummary_template
-    debugger;
+    this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/get_last_investigation', patientdata_details).subscribe(resdata => {
       if (resdata['IsSuccess']) {
-        debugger;
-        console.log();
+        this.GlobalService.disableloader();
         this.Investigation_patient = resdata['ResponseObject'];
         console.log(this.Investigation_template_category);
       }
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
   get_investigation_template() {
     this.GlobalService.enableloader();
-    debugger;
     // get_fav_investigation_template
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/get_fav_investigation_template').subscribe(resdata => {
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        debugger;
         this.Investigation_template = resdata['ResponseObject'];
         console.log(this.Investigation_template);
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
   edit_investigation_temp(data) {
     this.GlobalService.enableloader();
-    debugger;
     // get_fav_investigation_list
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/get_fav_investigation_list', data).subscribe(resdata => {
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        debugger;
-        console.log();
         this.Investigation_template_category = resdata['ResponseObject'];
         console.log(this.Investigation_template_category);
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
+
   foods = [
     { value: 'steak-0', viewValue: 'Favourite 1' },
     { value: 'pizza-1', viewValue: 'Favourite 2' },
@@ -101,7 +102,7 @@ export class InvestigationComponent implements OnInit {
         width: '600px',
       },
       disableClose: true
-    })
+    });
   }
   step = 0;
 
@@ -119,36 +120,34 @@ export class InvestigationComponent implements OnInit {
 
   get_Investigation() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Cjmaster/get_investifation_department_masters').subscribe(resdata => {
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        debugger;
         this.Investigation = resdata['ResponseObject'];
         console.log(this.Investigation);
       } else {
         this.GlobalService.disableloader();
       }
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
+
   get_Investigation_category_list(data_invest_id) {
     this.hidden = false;
     this.GlobalService.enableloader();
-    debugger;
     var id = data_invest_id.nr
     this.invest_caterogyname = data_invest_id.name_formal;
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_investifation_masters', id).subscribe(resdata => {
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
-        debugger;
         this.Investigation_category = resdata['ResponseObject'];
-
       } else {
         this.GlobalService.disableloader();
       }
-    })
-
-
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
 
 
@@ -167,26 +166,23 @@ export class InvestigationComponent implements OnInit {
       if (vreate_categorylist.checkbox) {
         this.dept_hidden = false;
         this.categorylist_array.push(vreate_categorylist);
-      
+
         //distinct check
-        if(this.Investigation_template_category){
-          for(var i = 0; i < this.Investigation_template_category.length; i++) {
-            for(var j = 0; j < this.Investigation_template_category[i].question.length; j++){
-              if(this.Investigation_template_category[i].question[j].item_code == vreate_categorylist.item_code ){
+        if (this.Investigation_template_category) {
+          for (var i = 0; i < this.Investigation_template_category.length; i++) {
+            for (var j = 0; j < this.Investigation_template_category[i].question.length; j++) {
+              if (this.Investigation_template_category[i].question[j].item_code == vreate_categorylist.item_code) {
                 this.openSnackBar("This Procedure is Already Raised , Please Select Another One", "Close");
-                vreate_categorylist.checkbox=false;
+                vreate_categorylist.checkbox = false;
                 this.categorylist_array.splice(-1);
-              }else{ } 
-            } 
+              } else { }
+            }
           }
         }
         //End of distinct check
-        
       }
-
     }
   }
-
 
   clrprocedure() {
     this.Investigation_menu = [];
@@ -195,7 +191,6 @@ export class InvestigationComponent implements OnInit {
   }
 
   remove_temp(rem_cat) {
-    debugger;
     if (this.Investigation_category) {
       for (var i = 0; i < this.categorylist_array.length; i++) {
         if (this.categorylist_array[i].item_code == rem_cat.item_code) {
@@ -208,7 +203,6 @@ export class InvestigationComponent implements OnInit {
         }
       }
     }
-
   }
 
   removeall() {
@@ -216,7 +210,6 @@ export class InvestigationComponent implements OnInit {
   }
 
   remove_old_tempdata_investigation(old_temp_data) {
-    debugger;
     if (this.Investigation_template_category) {
       for (var i = 0; i < this.Investigation_template_category.length; i++) {
         for (var j = 0; j < this.Investigation_template_category[i].question.length; j++) {
@@ -229,7 +222,6 @@ export class InvestigationComponent implements OnInit {
     }
   }
   save_investigation(data, data_edit) {
-    debugger;
     this.array_investi_temperary_favadd = [];
     if (data) {
       for (var i = 0; i < data.length; i++) {
@@ -254,7 +246,6 @@ export class InvestigationComponent implements OnInit {
           this.dept_hidden = true;
           this.GlobalService.disableloader();
           this.openSnackBar("Saved Successfully", "Close");
-          debugger;
           console.log(resdata['ResponseObject']);
           var data_id = resdata['ID'];
           this.dialogRef = this.dialog.open(InvestigationTemplateComponent, {
@@ -268,12 +259,13 @@ export class InvestigationComponent implements OnInit {
           this.GlobalService.disableloader();
           this.openSnackBar("Error! , Please Retry", "Close");
         }
-      })
+      }, err => {
+        this.GlobalService.disableloader();
+      });
     }
   }
 
   save_normal_investigation(data, data_edit) {
-    debugger;
     this.array_investi_temperary = [];
     if (data) {
       for (var i = 0; i < data.length; i++) {
@@ -307,19 +299,19 @@ export class InvestigationComponent implements OnInit {
           this.get_investigation_data();
           this.openSnackBar("Added Successfully..!", "Close");
           this.GlobalService.disableloader();
-          debugger;
           console.log(resdata['ResponseObject']);
         } else {
           this.openSnackBar("Error! , Please Retry", "Close");
           this.GlobalService.disableloader();
         }
-      })
+      }, err => {
+        this.GlobalService.disableloader();
+      });
     }
   }
 
   //autosearch api
   get_medicine_kranium_list_gen(data_con) {
-    debugger;
     this.hiddengif = false;
     if (data_con.length > 2) {
       this.newarray = { "searchdata": data_con }; this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_all_investigation_list', this.newarray).subscribe(resdata => {
@@ -330,10 +322,10 @@ export class InvestigationComponent implements OnInit {
           this.active_checkbox(this.Investigation_category);
           //searchbox style class add
           var invlist = this.Investigation_category;
-          if(invlist.length < 10){
+          if (invlist.length < 10) {
             var myboxclass = document.getElementById("mysearchbox").classList;
             myboxclass.add("myboxsize");
-          }else{
+          } else {
             var myboxclass = document.getElementById("mysearchbox").classList;
             myboxclass.remove("myboxsize");
           }
@@ -352,13 +344,12 @@ export class InvestigationComponent implements OnInit {
     }
   }
 
-//extra flow procedure raised
+  //extra flow procedure raised
   get_investigation_data() {
     var enc_no = this.patientdata_details[0].EncounterNo;
-    var mydata = {'encounter_no': enc_no };
+    var mydata = { 'encounter_no': enc_no };
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Managefavourites/get_investigation_data', mydata).subscribe(resdata => {
-      debugger;
       if (resdata['IsSuccess']) {
         this.investigation_data = resdata['ResponseObject'];
         this.active_checkbox(this.investigation_data);
@@ -368,12 +359,13 @@ export class InvestigationComponent implements OnInit {
         this.investigation_data = [];
         this.GlobalService.disableloader();
       }
-
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
-  delete_investigation_data(delete_data){
+  delete_investigation_data(delete_data) {
     console.log(delete_data);
-    if(confirm("Are you sure delete "+ delete_data.item_description)){
+    if (confirm("Are you sure delete " + delete_data.item_description)) {
       delete_data.nr = this.login_details[0]['nr'];
       this.GlobalService.enableloader();
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/delete_investigation_data', delete_data).subscribe(resdata => {
@@ -386,22 +378,21 @@ export class InvestigationComponent implements OnInit {
           this.GlobalService.disableloader();
           this.openSnackBar("Error! , Please Retry", "Close");
         }
-      })
+      }, err=>{
+        this.GlobalService.disableloader();
+      });
     }
   }
-  edit_investigation_data(active_data){
-    console.log(active_data);
-    
+  edit_investigation_data(active_data) {
     this.checkbox_hdn_data = false;
     this.button_hdn_data = true;
     this.editbtn_hdn = true;
-    this.cancelbtn_hdn = false;
-    console.log(active_data);
-    for(var i = 0; i < active_data.length; i++){
+    this.cancelbtn_hdn = false;   
+    for (var i = 0; i < active_data.length; i++) {
       active_data[i].checkbox = true;
     }
   }
-  cancel_investigation_data(){
+  cancel_investigation_data() {
     this.checkbox_hdn_data = true;
     this.button_hdn_data = false;
     this.editbtn_hdn = false;
@@ -409,17 +400,14 @@ export class InvestigationComponent implements OnInit {
   }
   active_checkbox(investigation_item) {
     var act_item = this.investigation_data;
-    debugger;
-    for(var i =  0; i < investigation_item.length; i++){
-      for(var j = 0; j < this.investigation_data.length; j++){
+    for (var i = 0; i < investigation_item.length; i++) {
+      for (var j = 0; j < this.investigation_data.length; j++) {
         if (investigation_item[i].item_code == this.investigation_data[j].item_code) {
-          debugger;
           investigation_item[i].checkbox = true;
         }
       }
     }
   }
   //end of extra flow procedure raised
-
-
+  
 }

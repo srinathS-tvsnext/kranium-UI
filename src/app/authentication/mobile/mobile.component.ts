@@ -54,10 +54,10 @@ export class MobileComponent implements OnInit {
 
 
   mobilenum(dat) {
-    debugger;
+    
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/get_forgot_mobileno', dat).subscribe(resdata => {
-      debugger;
+      
       console.log(resdata);
       if (resdata['IsSuccess']) {
         this.GlobalService.disableloader();
@@ -79,11 +79,11 @@ export class MobileComponent implements OnInit {
       if (data.mobile == this.mobile_num) {
         this.GlobalService.enableloader();
         this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/get_forgot_otp', data).subscribe(resdata => {
-          debugger;
+          
           console.log(resdata);
 
           if (resdata['IsSuccess']) {
-            debugger;
+            
             sessionStorage.setItem('otp', resdata['ResponseObject']);
             this.GlobalService.disableloader();
             this.openSnackBar("Enter the OTP No.", "Close");
@@ -106,18 +106,18 @@ export class MobileComponent implements OnInit {
 
   get_imagelist() {
     this.GlobalService.enableloader();
-    debugger;
+    
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_active_image').subscribe(resdata => {
-      debugger;
+      
       if (resdata['IsSuccess']) {
-        debugger;
+        
         this.image_name = resdata['ResponseObject'];
         console.log(this.image_name);
-        debugger;
+        
         this.GlobalService.disableloader();
       }
       else {
-        debugger;
+        
         this.image_name = resdata['ErrorObject'];
         this.GlobalService.disableloader();
       }

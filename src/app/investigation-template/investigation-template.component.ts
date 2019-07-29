@@ -35,10 +35,8 @@ export class InvestigationTemplateComponent implements OnInit {
     if (this.medicineid.Id.manage_favourites_investigation_id) {
       this.medicineid.Id.template_name = tempname;
       this.GlobalService.enableloader();
-      debugger;
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/update_inv_temp_name', this.medicineid.Id).subscribe(resdata => {
         if (resdata['IsSuccess']) {
-          debugger;
           console.log(resdata);
           this.openSnackBar("Updated sccessfully", "Close");
           this.GlobalService.disableloader();
@@ -47,13 +45,13 @@ export class InvestigationTemplateComponent implements OnInit {
           this.dialogRef.close();
           this.GlobalService.disableloader();
         }
-      })
+      }, err => {
+        this.GlobalService.disableloader();
+      });
     } else {
       var arrayss = [{ template_name: tempname, id: this.medicineid }]
-      debugger;
       this.GlobalService.enableloader();
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/Managefavourites/add_favourites_Inestigation_template', arrayss).subscribe(resdata => {
-        debugger;
         console.log(resdata);
         if (resdata) {
           this.GlobalService.disableloader();
@@ -64,7 +62,9 @@ export class InvestigationTemplateComponent implements OnInit {
           this.GlobalService.disableloader();
           this.openSnackBar("Error! , Please Retry", "Close");
         }
-      })
+      }, err => {
+        this.GlobalService.disableloader();
+      });
     }
 
   }

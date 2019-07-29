@@ -37,16 +37,14 @@ export class OtpComponent implements OnInit {
   numberFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(NUMBER_REGEX)
-    ]
+  ]
   );
 
   get_current_otp(data) {
     this.GlobalService.enableloader();
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/post/User/get_current_otp').subscribe(resdata => {
       console.log(resdata);
-
       if (resdata['IsSuccess']) {
-        debugger;
         this.GlobalService.disableloader();
         if (data.otp == this.otp_num) {
           this.openSnackBar("OTP Verfication is Successfully", "Close");
@@ -57,21 +55,18 @@ export class OtpComponent implements OnInit {
       } else {
         this.GlobalService.disableloader();
       }
-
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
-
 
   otp() {
     var mob = this.mobile_num;
     console.log(mob);
     this.GlobalService.enableloader();
     this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/post/User/get_forgot_otp', mob).subscribe(resdata => {
-      debugger;
       console.log(resdata);
-
       if (resdata['IsSuccess']) {
-        debugger;
         sessionStorage.setItem('otp', resdata['ResponseObject']);
         this.GlobalService.disableloader();
         this.openSnackBar("Enter the OTP No.", "Close");
@@ -80,28 +75,26 @@ export class OtpComponent implements OnInit {
         this.GlobalService.disableloader();
         this.openSnackBar("Please Retry!", "Close");
       }
-
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
 
   get_imagelist() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_active_image').subscribe(resdata => {
-      debugger;
       if (resdata['IsSuccess']) {
-        debugger;
         this.image_name = resdata['ResponseObject'];
         console.log(this.image_name);
-        debugger;
         this.GlobalService.disableloader();
       }
       else {
-        debugger;
         this.image_name = resdata['ErrorObject'];
         this.GlobalService.disableloader();
       }
-    })
+    }, err => {
+      this.GlobalService.disableloader();
+    });
   }
 
 

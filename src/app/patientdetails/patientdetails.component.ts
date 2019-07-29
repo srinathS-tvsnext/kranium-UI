@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute, NavigationEnd  } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { GlobalService } from '../global.service';
 @Component({
   selector: 'app-patientdetails',
@@ -10,16 +10,17 @@ import { GlobalService } from '../global.service';
 })
 export class PatientdetailsComponent implements OnInit {
   acess_rights;
-  patient_details; vitals_data_new; vital_details_cc;vitals_data;viewBtn;
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute , private GlobalService: GlobalService) { }
+  patient_details; vitals_data_new; vital_details_cc; vitals_data; viewBtn;
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private GlobalService: GlobalService) { }
 
   ngOnInit() {
-    this.GlobalService.getPatientType().subscribe(res =>{
+    this.GlobalService.getPatientType().subscribe(res => {
+      this.GlobalService.enableloader();
       this.GlobalService.viewPatientListPage = res === 'inPatientList' ? true : false;
     })
     this.acess_rights = JSON.parse(sessionStorage.getItem('user_access_rights'));
     console.log(this.acess_rights);
-    
+
     this.GlobalService.showontop
       .subscribe(res => this.vitals_data = res);
 
@@ -32,7 +33,6 @@ export class PatientdetailsComponent implements OnInit {
 
   get_vital_patient(patientdata_details) {
     this.GlobalService.enableloader();
-    debugger;
     if (patientdata_details) {
       // this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/get_vitaldetail', patientdata_details).subscribe(resdata => {
       //   if (resdata['IsSuccess']) {
@@ -43,17 +43,18 @@ export class PatientdetailsComponent implements OnInit {
       //   }
       // })
       this.http.post(this.GlobalService.baseurl + '/api/index.php/v1/get/Common/getactmedicationdetail', patientdata_details).subscribe(resdata => {
+        this.GlobalService.disableloader();
         if (resdata['IsSuccess']) {
           // if(resdata['ResponseObject'][0].tvs_nxt_form_trimed[0].length >0) {
-            this.vitals_data.medication =[];
-            for (let i = 0; i < resdata['ResponseObject'].length; i++) {
-              this.vitals_data.medication.push(JSON.parse((resdata['ResponseObject'][i].tvs_nxt_form_trimed))[0])
-            }
-          // }
-                               
+          this.vitals_data.medication = [];
+          for (let i = 0; i < resdata['ResponseObject'].length; i++) {
+            this.vitals_data.medication.push(JSON.parse((resdata['ResponseObject'][i].tvs_nxt_form_trimed))[0])
+          }
         }
-      })
+      }, err => {
+        this.GlobalService.disableloader();
+      });
     }
   }
-  
+
 }

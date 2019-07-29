@@ -13,9 +13,9 @@ import { LanguageeditpopupComponent } from '../../master/languageeditpopup/langu
 })
 export class LanguageComponent implements OnInit {
 
-  languages;dialogRef_lang;
+  languages; dialogRef_lang;
 
-  constructor(private http: Http, private GlobalService: GlobalService, public snackBar: MatSnackBar, private router: Router,public dialog: MatDialog) { }
+  constructor(private http: Http, private GlobalService: GlobalService, public snackBar: MatSnackBar, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.get_language();
@@ -29,32 +29,27 @@ export class LanguageComponent implements OnInit {
 
   get_language() {
     this.GlobalService.enableloader();
-    debugger;
     this.http.get(this.GlobalService.baseurl + '/api/index.php/v1/get/Masters/get_language').subscribe(resdata => {
-      debugger;
       if (resdata) {
-        debugger;
-        var body =JSON.parse(resdata['_body']);
+        var body = JSON.parse(resdata['_body']);
         this.languages = body.ResponseObject;
         console.log(this.languages);
-        debugger;
         this.GlobalService.disableloader();
       }
       else {
-        debugger;
         this.GlobalService.disableloader();
       }
-    })
+    });
   }
 
-  edit_row(edit_row){
+  edit_row(edit_row) {
     console.log(edit_row);
     this.dialogRef_lang = this.dialog.open(LanguageeditpopupComponent, {
       data: {
         get_detail: edit_row
       },
       disableClose: false
-    })
+    });
     this.dialogRef_lang.afterClosed().subscribe(() => {
       this.get_language();
     });
