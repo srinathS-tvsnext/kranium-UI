@@ -39,7 +39,7 @@
     "googleapis": "^37.2.0",
     "jquery": "^3.3.1",
     "md-autocomplete": "0.0.1-alpha.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ng-multiselect-dropdown": "^0.2.3",
     "ng-speech-recognition": "^2.0.1",
     "ng2-auto-complete": "^0.12.0",
